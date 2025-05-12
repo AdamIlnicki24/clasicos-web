@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@svgr/webpack": "^8.1.0",
+    "autoprefixer": "^10.4.21",
     "firebase": "^11.6.1",
     "next": "15.3.1",
     "react": "^19.0.0",
