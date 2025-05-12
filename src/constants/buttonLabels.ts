@@ -1,0 +1,1 @@
+export const BACK_TO_HOMEPAGE_LABEL = "Wróć do strony głównej";
