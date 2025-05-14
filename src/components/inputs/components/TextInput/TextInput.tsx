@@ -39,7 +39,7 @@ export function TextInput({
         }}
         size="lg"
         onChange={handleInputChange}
-        labelPlacement="outside"
+        labelPlacement="outside-left"
         variant="faded"
         {...properties}
       />
