@@ -20,6 +20,7 @@ import {
 import { SubmitButton } from "@/components/buttons/SubmitButton/SubmitButton";
 import { LOG_IN_BUTTON_LABEL } from "@/constants/buttonLabels";
 import { Spinner } from "@heroui/react";
+import { auth } from "@/firebase";
 
 export function LogInForm() {
   // TODO: Create refs
@@ -29,12 +30,14 @@ export function LogInForm() {
   const onSubmitHandler = async (values: LogInFormData) => {
     setIsPending(true);
 
-    const auth = getAuth();
-
     await signInWithEmailAndPassword(auth, values.email, values.password)
-      .then(async () => {
+      .then(async ({ user }) => {
         toast.success(LOG_IN_SUCCESS_TOAST);
         setIsPending(false);
+        if (process.env.NODE_ENV === "development") {
+          const token = await user.getIdToken();
+          console.log("Token:", token);
+        }
       })
       .catch((error: FirebaseError) => {
         const errorCode = error.code;
