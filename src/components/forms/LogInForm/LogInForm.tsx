@@ -1,14 +1,18 @@
 "use client";
 
+import { SubmitButton } from "@/components/buttons/SubmitButton/SubmitButton";
 import { EmailInput } from "@/components/inputs/EmailInput/EmailInput";
 import { PasswordInput } from "@/components/inputs/PasswordInput/PasswordInput";
+import { LOG_IN_BUTTON_LABEL } from "@/constants/buttonLabels";
 import {
   LOG_IN_ERROR_TOAST,
   LOG_IN_INVALID_CREDENTIALS_TOAST,
   LOG_IN_SUCCESS_TOAST,
 } from "@/constants/toasts";
+import { auth } from "@/firebase";
+import { Spinner } from "@heroui/react";
 import { FirebaseError } from "firebase/app";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { Formik } from "formik";
 import { useState } from "react";
 import { toast } from "react-toastify";
@@ -17,10 +21,6 @@ import {
   LogInFormData,
   logInFormSchema,
 } from "./logInFormSchema";
-import { SubmitButton } from "@/components/buttons/SubmitButton/SubmitButton";
-import { LOG_IN_BUTTON_LABEL } from "@/constants/buttonLabels";
-import { Spinner } from "@heroui/react";
-import { auth } from "@/firebase";
 
 export function LogInForm() {
   // TODO: Create refs
