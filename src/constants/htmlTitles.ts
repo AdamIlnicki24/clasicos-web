@@ -1,1 +1,1 @@
-export const HOMEPAGE_HTML_TITLE = "Clasicos";
+export const HOMEPAGE_HTML_TITLE = "El Clasico - Barcelona vs Real Madryt";
