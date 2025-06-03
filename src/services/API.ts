@@ -9,16 +9,18 @@ const api = axios.create({
 api.interceptors.request.use(async (config) => {
   if (!config.headers) {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    //@ts-ignore
+    // @ts-ignore
     config.headers = {};
   }
 
   const user = (await auth.currentUser?.getIdTokenResult()) as unknown as {
     token: string | null;
   };
-  console.log("user", user);
 
-  // set auth token
+  if (process.env.NODE_ENV === "development") {
+    console.log("User:", user);
+  }
+
   if (user && user.token) {
     config.headers["Authorization"] = `Bearer ${user.token}`;
   }
