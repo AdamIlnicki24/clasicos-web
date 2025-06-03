@@ -4,6 +4,7 @@ html {
   scroll-behavior: smooth;
 }
 
+/* TODO: Remove selector below before release to production */
 /* Selector added in order to facilitate development */
 body {
   border: 5px solid red;
