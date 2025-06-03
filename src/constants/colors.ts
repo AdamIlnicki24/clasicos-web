@@ -1,9 +1,9 @@
 export const colors = {
-  primaryColor: "#",
-  secondaryColor: "#",
-  accentColor: "#",
+  primaryColor: "#022FAC",
+  secondaryColor: "#00532F",
+  accentColor: "#484554",
   defaultWhite: "#FFF",
   defaultBlack: "#000",
-  defaultGreen: "#22c55e",
-  textDanger: "#dc3545",
+  defaultGreen: "#22C55E",
+  textDanger: "#DC3545",
 };
