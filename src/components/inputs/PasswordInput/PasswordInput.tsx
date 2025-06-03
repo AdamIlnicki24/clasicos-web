@@ -3,7 +3,7 @@ import { PASSWORD_PLACEHOLDER } from "@/constants/placeholders";
 import { TextInput } from "../components/TextInput/TextInput";
 import { useState } from "react";
 import { useFormikContext } from "formik";
-import { PASSWORD_MAX_LENGTH } from "@/constants/maxLengths";
+import { PASSWORD_MAX_LENGTH } from "@/constants/lengths";
 import { EyeButton } from "@/components/buttons/EyeButton/EyeButton";
 
 export function PasswordInput() {

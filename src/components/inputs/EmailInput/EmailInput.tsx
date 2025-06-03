@@ -1,4 +1,4 @@
-import { EMAIL_MAX_LENGTH } from "@/constants/maxLengths";
+import { EMAIL_MAX_LENGTH } from "@/constants/lengths";
 import { EMAIL_PLACEHOLDER } from "@/constants/placeholders";
 import { useFormikContext } from "formik";
 import { TextInputProps, TextInput } from "../components/TextInput/TextInput";
