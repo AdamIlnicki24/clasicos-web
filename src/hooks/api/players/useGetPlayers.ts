@@ -23,7 +23,7 @@ const getPlayers = async (position?: Position): Promise<Player[]> => {
 
 export function useGetPlayers(position?: Position) {
   return useQuery({
-    queryKey: ["players", position || "all"],
+    queryKey: ["getPlayers", position || "all"],
     queryFn: () => getPlayers(position),
   });
 }

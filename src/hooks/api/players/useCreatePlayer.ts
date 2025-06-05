@@ -1,4 +1,4 @@
-import { CreatePlayerFormData } from "@/components/forms/players/CreatePlayerForm/createPlayerFormSchema";
+import { CreatePlayerFormData } from "@/components/forms/admin/players/CreatePlayerForm/createPlayerFormSchema";
 import { PLAYERS_API_ENDPOINT } from "@/constants/apiEndpoints";
 import { api } from "@/services/API";
 import { Player } from "@/types/player";

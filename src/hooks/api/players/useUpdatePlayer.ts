@@ -1,4 +1,4 @@
-import { updatePlayerFormData } from "@/components/forms/players/updatePlayerForm/updatePlayerFormSchema";
+import { UpdatePlayerFormData } from "@/components/forms/admin/players/UpdatePlayerForm/updatePlayerFormSchema";
 import { PLAYERS_API_ENDPOINT } from "@/constants/apiEndpoints";
 import { api } from "@/services/API";
 import { Player } from "@/types/player";
@@ -9,19 +9,21 @@ interface UpdatePlayerResponse {
 }
 
 const updatePlayer = async (
+  uuid: string,
   formData: UpdatePlayerFormData
 ): Promise<Player> => {
-  const { data } = await api.post<UpdatePlayerFormData, UpdatePlayerResponse>(
-    PLAYERS_API_ENDPOINT,
+  const { data } = await api.patch<UpdatePlayerFormData, UpdatePlayerResponse>(
+    `${PLAYERS_API_ENDPOINT}/${uuid}`,
     formData
   );
 
   return data;
 };
 
-export function useupdatePlayer() {
+export function useUpdatePlayer(uuid: string) {
   return useMutation({
-    mutationKey: ["updatePlayer"],
-    mutationFn: (formData: updatePlayerFormData) => updatePlayer(formData),
+    mutationKey: ["updatePlayer", uuid],
+    mutationFn: (formData: UpdatePlayerFormData) =>
+      updatePlayer(uuid, formData),
   });
 }
