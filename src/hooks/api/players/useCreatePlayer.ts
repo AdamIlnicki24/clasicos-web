@@ -2,7 +2,6 @@ import { CreatePlayerFormData } from "@/components/forms/players/CreatePlayerFor
 import { PLAYERS_API_ENDPOINT } from "@/constants/apiEndpoints";
 import { api } from "@/services/API";
 import { Player } from "@/types/player";
-import { Position } from "@/types/position";
 import { useMutation } from "@tanstack/react-query";
 
 interface CreatePlayerResponse {
@@ -10,31 +9,19 @@ interface CreatePlayerResponse {
 }
 
 const createPlayer = async (
-  formData: CreatePlayerFormData,
-  position?: Position
-) => {
-  let endpoint = PLAYERS_API_ENDPOINT;
-
-  const queryParams = new URLSearchParams();
-
-  if (position) queryParams.append("position", position);
-
-  if (queryParams.toString()) {
-    endpoint += `?${queryParams.toString()}`;
-  }
-
+  formData: CreatePlayerFormData
+): Promise<Player> => {
   const { data } = await api.post<CreatePlayerFormData, CreatePlayerResponse>(
-    endpoint,
+    PLAYERS_API_ENDPOINT,
     formData
   );
 
   return data;
 };
 
-export function useCreatePlayer(position?: Position) {
+export function useCreatePlayer() {
   return useMutation({
-    mutationKey: ["createPlayer", position],
-    mutationFn: (formData: CreatePlayerFormData) =>
-      createPlayer(formData, position),
+    mutationKey: ["createPlayer"],
+    mutationFn: (formData: CreatePlayerFormData) => createPlayer(formData),
   });
 }

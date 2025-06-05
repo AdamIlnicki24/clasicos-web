@@ -7,5 +7,5 @@ export interface Player {
   nationality: string;
   position: Position;
   createdAt: string;
-  updatedAt?: string;
+  updatedAt: string;
 }
