@@ -6,21 +6,20 @@ import { PLAYER_SURNAME_LABEL } from "@/constants/labels";
 
 export function PlayerSurnameInput({}: TextInputProps) {
   const { handleChange, handleBlur, values, errors, touched, setFieldValue } =
-    useFormikContext<{ playerSurname: string }>();
+    useFormikContext<{ surname: string }>();
 
   return (
     <TextInput
-      type="playerSurname"
-      onChange={handleChange("playerSurname")}
-      onBlur={handleBlur("playerSurname")}
-      value={values.playerSurname}
-      color={touched.playerSurname && !errors.playerSurname ? "success" : "default"}
-      isInvalid={touched.playerSurname && !!errors.playerSurname}
-      errorMessage={touched.playerSurname && errors.playerSurname}
+      onChange={handleChange("surname")}
+      onBlur={handleBlur("surname")}
+      value={values.surname}
+      color={touched.surname && !errors.surname ? "success" : "default"}
+      isInvalid={touched.surname && !!errors.surname}
+      errorMessage={touched.surname && errors.surname}
       isRequired
       isClearable
       onClear={() => {
-        setFieldValue("playerSurname", "");
+        setFieldValue("surname", "");
       }}
       label={PLAYER_SURNAME_LABEL}
       placeholder={PLAYER_SURNAME_PLACEHOLDER}

@@ -3,3 +3,4 @@ export const PASSWORD_LABEL = "Hasło:";
 export const PLAYER_SURNAME_LABEL = "Nazwisko:";
 export const PLAYER_NAME_LABEL = "Imię:";
 export const PLAYER_NATIONALITY_LABEL = "Narodowość:";
+export const PLAYER_POSITION_LABEL = "Pozycja:";

@@ -1,6 +1,6 @@
 import { SelectOption } from "@/types/selectOption";
 
-export const positionSelectOptions: SelectOption[] = [
+export const playerPositionSelectOptions: SelectOption[] = [
   {
     label: "Bramkarz",
     value: "goalkeeper",

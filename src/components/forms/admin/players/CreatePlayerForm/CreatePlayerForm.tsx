@@ -10,6 +10,10 @@ import {
     createPlayerFormSchema,
     initialValues,
 } from "./createPlayerFormSchema";
+import { PlayerNationalityAutocomplete } from "@/components/inputs/autocompletes/PlayerNationalityAutocomplete/PlayerNationalityAutocomplete";
+import { PlayerNameInput } from "@/components/inputs/inputs/PlayerNameInput/PlayerNameInput";
+import { PlayerSurnameInput } from "@/components/inputs/inputs/PlayerSurnameInput/PlayerSurnameInput";
+import { PlayerPositionSelect } from "@/components/inputs/selects/PlayerPositionSelect/PlayerPositionSelect";
 
 interface CreatePlayerFormProps {
   // TODO: Think about the name of the prop
@@ -17,8 +21,8 @@ interface CreatePlayerFormProps {
 }
 
 export function CreatePlayerForm({ onClose }: CreatePlayerFormProps) {
-  const playerNameInputRef = useRef<HTMLInputElement>(null);
-  const playerSurnameInputRef = useRef<HTMLInputElement>(null);
+  const nameInputRef = useRef<HTMLInputElement>(null);
+  const surnameInputRef = useRef<HTMLInputElement>(null);
 
   const queryClient = useQueryClient();
 
@@ -55,10 +59,10 @@ export function CreatePlayerForm({ onClose }: CreatePlayerFormProps) {
       validationSchema={createPlayerFormSchema}
     >
       <>
-        {/* <PlayerNameInput ref={} onKeyDown={} /> */}
-        {/* <PlayerSurnameInput ref={} onKeyDown={} /> */}
-        {/* <PlayerNationalityAutocomplete /> */}
-        {/* <PlayerPositionSelect /> */}
+        <PlayerNameInput ref={nameInputRef} onKeyDown={() => {}} />
+        <PlayerSurnameInput ref={surnameInputRef} onKeyDown={() => {}} />
+        <PlayerNationalityAutocomplete />
+        <PlayerPositionSelect />
         <SubmitButton
           title={isPending ? <Spinner size="md" /> : SUBMIT_FORM_BUTTON_LABEL}
         />
