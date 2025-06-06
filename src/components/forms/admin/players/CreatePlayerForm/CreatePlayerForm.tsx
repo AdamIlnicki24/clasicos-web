@@ -1,3 +1,5 @@
+"use client";
+
 import { SubmitButton } from "@/components/buttons/SubmitButton/SubmitButton";
 import { SUBMIT_FORM_BUTTON_LABEL } from "@/constants/buttonLabels";
 import { useCreatePlayer } from "@/hooks/api/players/useCreatePlayer";
@@ -6,14 +8,17 @@ import { useQueryClient } from "@tanstack/react-query";
 import { Formik } from "formik";
 import { useRef } from "react";
 import {
-    CreatePlayerFormData,
-    createPlayerFormSchema,
-    initialValues,
+  CreatePlayerFormData,
+  createPlayerFormSchema,
+  initialValues,
 } from "./createPlayerFormSchema";
 import { PlayerNationalityAutocomplete } from "@/components/inputs/autocompletes/PlayerNationalityAutocomplete/PlayerNationalityAutocomplete";
 import { PlayerNameInput } from "@/components/inputs/inputs/PlayerNameInput/PlayerNameInput";
 import { PlayerSurnameInput } from "@/components/inputs/inputs/PlayerSurnameInput/PlayerSurnameInput";
 import { PlayerPositionSelect } from "@/components/inputs/selects/PlayerPositionSelect/PlayerPositionSelect";
+import { toast } from "react-toastify";
+import { PLAYER_HAS_BEEN_CREATED_TOAST } from "@/constants/toasts";
+import { ApiError } from "@/types/apiError";
 
 interface CreatePlayerFormProps {
   // TODO: Think about the name of the prop
@@ -39,7 +44,7 @@ export function CreatePlayerForm({ onClose }: CreatePlayerFormProps) {
           queryKey: ["getPlayers"],
         });
 
-        // TODO: Toast success message
+        toast.success(PLAYER_HAS_BEEN_CREATED_TOAST);
 
         if (onClose) onClose();
       },
@@ -47,7 +52,7 @@ export function CreatePlayerForm({ onClose }: CreatePlayerFormProps) {
         if (process.env.NODE_ENV === "development") {
           console.error("Error:", error);
         }
-        // TODO: Toast error message
+        toast.error((error as ApiError).response.data.message);
       },
     });
   };
