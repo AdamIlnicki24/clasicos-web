@@ -14,7 +14,7 @@ export interface CreatePlayerFormData {
   position: string;
 }
 
-export const createEmailFormSchema = object({
+export const createPlayerFormSchema = object({
   name: string().max(
     PLAYER_NAME_MAX_LENGTH,
     `${MAX_LENGTH_ERROR_MESSAGE} ${PLAYER_NAME_MAX_LENGTH} znaków.`

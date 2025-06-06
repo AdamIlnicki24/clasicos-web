@@ -1,6 +1,6 @@
 import { PASSWORD_LABEL } from "@/constants/labels";
 import { PASSWORD_PLACEHOLDER } from "@/constants/placeholders";
-import { TextInput } from "../components/TextInput/TextInput";
+import { TextInput } from "../../components/TextInput/TextInput";
 import { useState } from "react";
 import { useFormikContext } from "formik";
 import { PASSWORD_MAX_LENGTH } from "@/constants/lengths";

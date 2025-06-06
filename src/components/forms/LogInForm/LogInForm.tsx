@@ -1,8 +1,8 @@
 "use client";
 
 import { SubmitButton } from "@/components/buttons/SubmitButton/SubmitButton";
-import { EmailInput } from "@/components/inputs/EmailInput/EmailInput";
-import { PasswordInput } from "@/components/inputs/PasswordInput/PasswordInput";
+import { EmailInput } from "@/components/inputs/inputs/EmailInput/EmailInput";
+import { PasswordInput } from "@/components/inputs/inputs/PasswordInput/PasswordInput";
 import { LOG_IN_BUTTON_LABEL } from "@/constants/buttonLabels";
 import {
   LOG_IN_ERROR_TOAST,

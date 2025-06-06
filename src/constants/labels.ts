@@ -1,2 +1,5 @@
 export const EMAIL_LABEL = "Adres e-mail:";
 export const PASSWORD_LABEL = "Hasło:";
+export const PLAYER_SURNAME_LABEL = "Nazwisko:";
+export const PLAYER_NAME_LABEL = "Imię:";
+export const PLAYER_NATIONALITY_LABEL = "Narodowość:";
