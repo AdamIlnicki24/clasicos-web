@@ -14,11 +14,16 @@ export interface UpdatePlayerFormData {
   position: string;
 }
 
-export const updateEmailFormSchema = object({
-  name: string().max(
-    PLAYER_NAME_MAX_LENGTH,
-    `${MAX_LENGTH_ERROR_MESSAGE} ${PLAYER_NAME_MAX_LENGTH} znaków.`
-  ),
+export const updatePlayerFormSchema = object({
+  name: string()
+    .trim()
+    .max(
+      PLAYER_NAME_MAX_LENGTH,
+      `${MAX_LENGTH_ERROR_MESSAGE} ${PLAYER_NAME_MAX_LENGTH} znaków.`
+    )
+    .transform((value) => (value === "" ? undefined : value))
+    .nullable()
+    .notRequired(),
   surname: string()
     .max(
       PLAYER_SURNAME_MAX_LENGTH,

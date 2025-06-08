@@ -15,10 +15,15 @@ export interface CreatePlayerFormData {
 }
 
 export const createPlayerFormSchema = object({
-  name: string().max(
-    PLAYER_NAME_MAX_LENGTH,
-    `${MAX_LENGTH_ERROR_MESSAGE} ${PLAYER_NAME_MAX_LENGTH} znaków.`
-  ),
+  name: string()
+    .trim()
+    .max(
+      PLAYER_NAME_MAX_LENGTH,
+      `${MAX_LENGTH_ERROR_MESSAGE} ${PLAYER_NAME_MAX_LENGTH} znaków.`
+    )
+    .transform((value) => (value === "" ? undefined : value))
+    .nullable()
+    .notRequired(),
   surname: string()
     .max(
       PLAYER_SURNAME_MAX_LENGTH,
