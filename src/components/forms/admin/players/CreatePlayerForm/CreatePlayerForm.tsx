@@ -28,6 +28,7 @@ interface CreatePlayerFormProps {
 export function CreatePlayerForm({ onClose }: CreatePlayerFormProps) {
   const nameInputRef = useRef<HTMLInputElement>(null);
   const surnameInputRef = useRef<HTMLInputElement>(null);
+  // TODO: Create refs
 
   const queryClient = useQueryClient();
 
