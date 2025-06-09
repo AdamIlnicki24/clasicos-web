@@ -1,4 +1,4 @@
-import { LogInForm } from "@/components/forms/LogInForm/LogInForm";
+import { LogInForm } from "@/components/forms/public/LogInForm/LogInForm";
 
 export function LogInContent() {
   return (
