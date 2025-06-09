@@ -4,3 +4,7 @@ export const PLAYER_SURNAME_LABEL = "Nazwisko:";
 export const PLAYER_NAME_LABEL = "Imię:";
 export const PLAYER_NATIONALITY_LABEL = "Narodowość:";
 export const PLAYER_POSITION_LABEL = "Pozycja:";
+export const GOALKEEPERS_LABEL = "Bramkarze:";
+export const DEFENDERS_LABEL = "Obrońcy:";
+export const MIDFIELDERS_LABEL = "Pomocnicy:";
+export const FORWARDS_LABEL = "Napastnicy:";

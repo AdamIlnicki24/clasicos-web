@@ -1,4 +1,7 @@
-import { Select as HeroUISelect, SelectProps } from "@heroui/react";
+import {
+  Select as HeroUISelect,
+  SelectProps,
+} from "@heroui/react";
 
 export function Select({ ...properties }: SelectProps) {
   return (
