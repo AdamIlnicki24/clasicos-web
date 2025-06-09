@@ -16,6 +16,7 @@ import { toast } from "react-toastify";
 import { COMMENT_HAS_BEEN_CREATED_TOAST } from "@/constants/toasts";
 import { ApiError } from "@/types/apiError";
 import { useParams } from "next/navigation";
+import { CommentContentTextarea } from "@/components/inputs/textareas/CommentContentTextarea/CommentContentTextarea";
 
 interface CreateCommentFormProps {
   // TODO: Think about the name of the prop
@@ -65,7 +66,7 @@ export function CreateCommentForm({ onClose }: CreateCommentFormProps) {
       validationSchema={createCommentFormSchema}
     >
       <>
-        {/* <CommentContentTextarea /> */}
+        <CommentContentTextarea />
         <SubmitButton
           title={isPending ? <Spinner size="md" /> : SUBMIT_FORM_BUTTON_LABEL}
         />
