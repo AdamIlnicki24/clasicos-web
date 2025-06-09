@@ -42,10 +42,3 @@ export const updateTeamFormSchema = object({
     .length(FORWARDS_LENGTH, FORWARDS_LENGTH_ERROR_MESSAGE)
     .required(REQUIRED),
 });
-
-export const initialValues: UpdateTeamFormData = {
-  goalkeepers: [],
-  defenders: [],
-  midfielders: [],
-  forwards: [],
-};
