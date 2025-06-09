@@ -1,22 +1,18 @@
-"use client";
-
-import { Input, InputProps } from "@heroui/react";
+import {
+  TextAreaProps as HeroUITextareaProps,
+  Textarea as HeroUITextarea,
+} from "@heroui/react";
 import { ChangeEvent, useEffect, useState } from "react";
 
-export interface TextInputProps extends InputProps {
+export interface TextareaProps extends HeroUITextareaProps {
   isCounterShown?: boolean;
 }
 
-// TODO: Finish this component
-
-export function TextInput({
-  isCounterShown = true,
-  ...properties
-}: TextInputProps) {
+export function Textarea({ isCounterShown, ...properties }: TextareaProps) {
   const [currentLength, setCurrentLength] = useState(
     properties.value?.toString().length || 0
   );
-  
+
   const maxLength = properties.maxLength;
 
   useEffect(() => {
@@ -31,17 +27,19 @@ export function TextInput({
   };
 
   return (
-    <div className="relative w-full">
-      <Input
+    <div className="relative">
+      <HeroUITextarea
         classNames={{
-          inputWrapper: "border-2 border-defaultGreen",
-          input: "text-[1.2rem]",
+          label: "text-[1.1rem] ps-2",
+          input:
+            "text-[1.2rem] leading-none text-defaultWhite group-data-[has-value=true]:text-defaultWhite",
           errorMessage: "text-[1rem]",
+          inputWrapper: "text-defaultWhite border-2 border-primaryColor",
         }}
         size="lg"
-        onChange={handleInputChange}
-        labelPlacement="outside-left"
+        labelPlacement="outside"
         variant="faded"
+        onChange={handleInputChange}
         {...properties}
       />
       {isCounterShown && maxLength && (

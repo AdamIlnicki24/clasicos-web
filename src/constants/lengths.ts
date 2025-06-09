@@ -13,4 +13,4 @@ export const DEFENDERS_LENGTH = 4;
 export const MIDFIELDERS_LENGTH = 3;
 export const FORWARDS_LENGTH = 3;
 
-export const COMMENT_MAX_LENGTH = 511;
+export const COMMENT_CONTENT_MAX_LENGTH = 511;

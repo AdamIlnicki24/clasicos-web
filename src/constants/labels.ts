@@ -8,3 +8,4 @@ export const GOALKEEPERS_LABEL = "Bramkarze:";
 export const DEFENDERS_LABEL = "Obrońcy:";
 export const MIDFIELDERS_LABEL = "Pomocnicy:";
 export const FORWARDS_LABEL = "Napastnicy:";
+export const COMMENT_CONTENT_LABEL = "Komentarz:";
