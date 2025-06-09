@@ -15,6 +15,7 @@ import {
 import { toast } from "react-toastify";
 import { TEAM_HAS_BEEN_CREATED_TOAST } from "@/constants/toasts";
 import { ApiError } from "@/types/apiError";
+import { DefendersSelect } from "@/components/inputs/selects/DefendersSelect/DefendersSelect";
 
 interface CreateTeamFormProps {
   // TODO: Think about the name of the prop
@@ -65,9 +66,9 @@ export function CreateTeamForm({ onClose }: CreateTeamFormProps) {
       validationSchema={createTeamFormSchema}
     >
       <>
-        {/* <GoalkeepersSelect />
+        {/* <GoalkeepersSelect /> */}
         <DefendersSelect />
-        <MidfieldersSelect />
+        {/* <MidfieldersSelect />
         <ForwardsSelect /> */}
         <SubmitButton
           title={isPending ? <Spinner size="md" /> : SUBMIT_FORM_BUTTON_LABEL}
