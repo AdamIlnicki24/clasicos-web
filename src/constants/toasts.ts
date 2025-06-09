@@ -7,3 +7,5 @@ export const PLAYER_HAS_BEEN_UPDATED_TOAST = "Poprawnie edytowano piłkarza.";
 export const TEAM_HAS_BEEN_CREATED_TOAST = "Poprawnie utworzono drużynę.";
 export const COMMENT_HAS_BEEN_CREATED_TOAST = "Poprawnie dodano komentarz.";
 export const TEAM_HAS_BEEN_UPDATED_TOAST = "Poprawnie edytowano drużynę.";
+export const PROFILE_DATA_HAS_BEEN_UPDATED_TOAST =
+  "Zaktualizowano dane profilowe.";

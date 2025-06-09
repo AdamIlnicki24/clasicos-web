@@ -8,7 +8,6 @@ export interface User {
   uuid: string;
   firebaseId: string;
   email: string;
-  nick: string;
   role: Role;
   createdAt: string;
   acceptedPrivacyPolicyAt?: string;

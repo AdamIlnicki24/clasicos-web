@@ -9,3 +9,6 @@ export const DEFENDERS_LABEL = "Obrońcy:";
 export const MIDFIELDERS_LABEL = "Pomocnicy:";
 export const FORWARDS_LABEL = "Napastnicy:";
 export const COMMENT_CONTENT_LABEL = "Komentarz:";
+export const NICK_LABEL = "Nick:";
+export const FAVORITE_CLUB_LABEL = "Ulubiony klub:";
+export const FAVORITE_FOOTBALLER_LABEL = "Ulubiony piłkarz:";

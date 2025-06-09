@@ -2,7 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import { api } from "@/services/API";
 import { Team } from "@/types/team";
 import { TEAM_API_ENDPOINT } from "@/constants/apiEndpoints";
-import { UpdateTeamFormData } from "@/components/forms/team/UpdateTeamForm/updateTeamFormSchema";
+import { UpdateTeamFormData } from "@/components/forms/me/team/UpdateTeamForm/updateTeamFormSchema";
 
 interface UpdateTeamResponse {
   data: Team;
