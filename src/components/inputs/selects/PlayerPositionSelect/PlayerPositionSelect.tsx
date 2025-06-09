@@ -15,7 +15,7 @@ export function PlayerPositionSelect({}: PlayerPositionSelectProps) {
     <Select
       name="position"
       label={PLAYER_POSITION_LABEL}
-      labelPlacement="inside"
+      labelPlacement="outside"
       isInvalid={touched.position && !!errors.position}
       errorMessage={touched.position && errors.position}
       isRequired
