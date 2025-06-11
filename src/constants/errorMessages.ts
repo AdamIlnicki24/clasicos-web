@@ -19,3 +19,8 @@ export const GOALKEEPERS_LENGTH_ERROR_MESSAGE = `Musisz wybrać dokładnie ${GOA
 export const DEFENDERS_LENGTH_ERROR_MESSAGE = `Musisz wybrać dokładnie ${DEFENDERS_LENGTH} obrońców.`;
 export const MIDFIELDERS_LENGTH_ERROR_MESSAGE = `Musisz wybrać dokładnie ${MIDFIELDERS_LENGTH} pomocników.`;
 export const FORWARDS_LENGTH_ERROR_MESSAGE = `Musisz wybrać dokładnie ${FORWARDS_LENGTH} napastników.`;
+
+export const USER_CONTEXT_ERROR_MESSAGE =
+  "UserContext must be within UserContextProvider";
+export const USER_CANNOT_BE_LOADED_ERROR_MESSAGE =
+  "Wystąpił błąd podczas ładowania danych użytkownika. Spróbuj ponownie później.";

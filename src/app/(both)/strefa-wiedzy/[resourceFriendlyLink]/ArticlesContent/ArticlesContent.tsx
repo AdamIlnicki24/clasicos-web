@@ -5,6 +5,7 @@ import { CreateCommentCard } from "@/components/cards/comments/CreateCommentCard
 import { CreateAccountCard } from "@/components/cards/CreateAccountCard/CreateAccountCard";
 import { YOU_NEED_TO_HAVE_AN_ACCOUNT } from "@/constants/texts";
 import { useGetComments } from "@/hooks/api/comments/useGetComments";
+import { useUser } from "@/hooks/context/useUser";
 import { ApiError } from "@/types/apiError";
 import { CommentWithCount } from "@/types/comment";
 import { useParams } from "next/navigation";
@@ -12,11 +13,16 @@ import { useParams } from "next/navigation";
 export function ArticlesContent() {
   const { resourceFriendlyLink } = useParams();
 
+  if (!resourceFriendlyLink) return <Loading />;
+
   const { data, isLoading, isError, error } = useGetComments(
     resourceFriendlyLink as string
   );
 
-  if (isLoading) return <Loading />;
+  const { user, isUserLoading } = useUser();
+
+  if (isUserLoading || isLoading) return <Loading />;
+
   if (isError) {
     if (process.env.NODE_ENV === "development") {
       console.error("Error:", error);
@@ -27,13 +33,13 @@ export function ArticlesContent() {
   return (
     <section className="grid min-h-svh place-items-center">
       <p>Artykuł</p>
-      {zalogowany ? (
+      {user ? (
         <CreateCommentCard />
       ) : (
         <CreateAccountCard bodyText={YOU_NEED_TO_HAVE_AN_ACCOUNT} />
       )}
       <h2>Komentarze:</h2>
-      {data ? (
+      {data && data.length > 0 ? (
         <ul>
           {data.map((comment: CommentWithCount) => (
             <li key={comment.uuid}>{comment.content}</li>
