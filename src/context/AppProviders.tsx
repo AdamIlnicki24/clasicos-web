@@ -4,6 +4,8 @@ import { HeroUIProvider } from "@heroui/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { ReactNode, useState } from "react";
+import { MobileProvider } from "./MobileContext";
+import { UserProvider } from "./UserContext";
 
 // TODO: Improve this component
 
@@ -23,9 +25,13 @@ export function AppProviders({ children }: { children: ReactNode }) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <HeroUIProvider locale="pl-PL" navigate={router.push}>
-        {children}
-      </HeroUIProvider>
+      <MobileProvider>
+        <UserProvider>
+          <HeroUIProvider locale="pl-PL" navigate={router.push}>
+            {children}
+          </HeroUIProvider>
+        </UserProvider>
+      </MobileProvider>
     </QueryClientProvider>
   );
 }
