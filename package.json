@@ -19,9 +19,11 @@
     "formik": "^2.4.6",
     "framer-motion": "^12.11.0",
     "i18n-iso-countries": "^7.14.0",
+    "lodash": "^4.17.21",
     "next": "15.3.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-responsive": "^10.0.1",
     "react-toastify": "^11.0.5",
     "yup": "^1.6.1"
   },
