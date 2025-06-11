@@ -1,6 +1,9 @@
 "use client";
 
 import Loading from "@/app/loading";
+import { CreateCommentCard } from "@/components/cards/comments/CreateCommentCard/CreateCommentCard";
+import { CreateAccountCard } from "@/components/cards/CreateAccountCard/CreateAccountCard";
+import { YOU_NEED_TO_HAVE_AN_ACCOUNT } from "@/constants/texts";
 import { useGetComments } from "@/hooks/api/comments/useGetComments";
 import { ApiError } from "@/types/apiError";
 import { CommentWithCount } from "@/types/comment";
@@ -24,6 +27,11 @@ export function ArticlesContent() {
   return (
     <section className="grid min-h-svh place-items-center">
       <p>Artykuł</p>
+      {zalogowany ? (
+        <CreateCommentCard />
+      ) : (
+        <CreateAccountCard bodyText={YOU_NEED_TO_HAVE_AN_ACCOUNT} />
+      )}
       <h2>Komentarze:</h2>
       {data ? (
         <ul>
