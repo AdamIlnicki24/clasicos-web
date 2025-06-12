@@ -1,6 +1,6 @@
 import { colors } from "./src/constants/colors";
 import type { Config } from "tailwindcss";
-const { heroui } = require("@heroui/react");
+import { heroui } from "@heroui/react";
 
 const config: Config = {
   content: [
