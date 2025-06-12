@@ -4,7 +4,7 @@
 import { Card, CardBody, CardFooter, Link } from "@heroui/react";
 import Info from "@/assets/icons/info.svg";
 import { LOG_IN, OR, REGISTER } from "@/constants/texts";
-import { lowerFirst } from "lodash";
+import { colors } from "@/constants/colors";
 
 interface CreateAccountCardProps {
   bodyText: string;
@@ -12,15 +12,16 @@ interface CreateAccountCardProps {
 
 export function CreateAccountCard({ bodyText }: CreateAccountCardProps) {
   return (
-    <Card className="bg-accentColor flex">
+    <Card className="flex bg-accentColor">
       {/* TODO: Change icon's color to defaultWhite */}
-      <Info />
+      <Info color={colors.defaultWhite} width={32} />
       <div>
         <CardBody>{bodyText}</CardBody>
         <CardFooter>
           <Link>{LOG_IN}</Link>
-          <span>{lowerFirst(OR)}</span>
-          <Link>{lowerFirst(REGISTER)}</Link>
+          <span className="px-1">{OR.toLowerCase()}</span>
+          <Link>{REGISTER.toLowerCase()}</Link>
+          <span>.</span>
         </CardFooter>
       </div>
     </Card>
