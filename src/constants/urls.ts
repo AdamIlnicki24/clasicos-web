@@ -5,5 +5,6 @@ export const REGISTER_URL = "/zarejestruj-sie";
 export const KNOWLEDGE_ZONE_URL = "/strefa-wiedzy";
 export const USERS_URL = "/uzytkownicy";
 export const MY_PROFILE_URL = "/moj-profil";
+export const PRIVACY_POLICY_URL = "/polityka-prywatnosci";
 
 // TODO: Add urls to sitemap
