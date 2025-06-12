@@ -36,6 +36,7 @@ export function TextInput({
         classNames={{
           inputWrapper: "border-2 border-defaultGreen",
           input: "text-[1.2rem]",
+          label: "text-defaultWhite",
           errorMessage: "text-[1rem]",
         }}
         size="lg"

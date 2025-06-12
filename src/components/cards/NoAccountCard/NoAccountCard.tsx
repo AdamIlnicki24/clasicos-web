@@ -6,11 +6,11 @@ import Info from "@/assets/icons/info.svg";
 import { LOG_IN, OR, REGISTER } from "@/constants/texts";
 import { colors } from "@/constants/colors";
 
-interface CreateAccountCardProps {
+interface NoAccountCardProps {
   bodyText: string;
 }
 
-export function CreateAccountCard({ bodyText }: CreateAccountCardProps) {
+export function NoAccountCard({ bodyText }: NoAccountCardProps) {
   return (
     <Card className="flex bg-accentColor">
       {/* TODO: Change icon's color to defaultWhite */}

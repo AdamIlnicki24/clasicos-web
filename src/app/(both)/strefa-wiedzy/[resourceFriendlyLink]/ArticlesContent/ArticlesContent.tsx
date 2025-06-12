@@ -2,7 +2,7 @@
 
 import Loading from "@/app/loading";
 import { CreateCommentCard } from "@/components/cards/comments/CreateCommentCard/CreateCommentCard";
-import { CreateAccountCard } from "@/components/cards/CreateAccountCard/CreateAccountCard";
+import { NoAccountCard } from "@/components/cards/NoAccountCard/NoAccountCard";
 import { YOU_NEED_TO_HAVE_AN_ACCOUNT } from "@/constants/texts";
 import { useGetComments } from "@/hooks/api/comments/useGetComments";
 import { useUser } from "@/hooks/context/useUser";
@@ -36,7 +36,7 @@ export function ArticlesContent() {
       {user ? (
         <CreateCommentCard />
       ) : (
-        <CreateAccountCard bodyText={YOU_NEED_TO_HAVE_AN_ACCOUNT} />
+        <NoAccountCard bodyText={YOU_NEED_TO_HAVE_AN_ACCOUNT} />
       )}
       <h2>Komentarze:</h2>
       {data && data.length > 0 ? (

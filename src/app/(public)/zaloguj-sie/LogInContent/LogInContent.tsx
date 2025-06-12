@@ -1,9 +1,9 @@
-import { LogInForm } from "@/components/forms/public/LogInForm/LogInForm";
+import { LogInCard } from "@/components/cards/public/LogInCard/LogInCard";
 
 export function LogInContent() {
   return (
-    <div className="grid min-h-svh place-items-center">
-      <LogInForm />
+    <div className="min-h-svh flex flex-col items-center justify-center">
+      <LogInCard />
     </div>
   );
 }

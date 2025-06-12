@@ -44,7 +44,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pl" className={`${lato.className} antialiased`}>
-      <body className="bg-defaultWhite text-defaultBlack">
+      <body className="bg-defaultBlack text-defaultWhite">
         <AppProviders>
           <ToastContainer
             position="top-right"
