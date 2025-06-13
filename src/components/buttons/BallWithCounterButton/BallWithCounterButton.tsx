@@ -11,6 +11,7 @@ export function BallWithCounterButton({
 }: BallWithCounterButtonProps) {
   return (
     <Button className="relative inline-block" isIconOnly {...properties}>
+      {/* TODO: Improve icon */}
       <Ball />
       <span className="text-defaultWhite pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[0.75rem] font-bold">
         {count}
