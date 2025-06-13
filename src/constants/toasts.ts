@@ -1,7 +1,15 @@
 export const LOG_IN_SUCCESS_TOAST = "Poprawnie zalogowano.";
+export const REGISTER_SUCCESS_TOAST = "Poprawnie zarejestrowano konto.";
 export const LOG_IN_INVALID_CREDENTIALS_TOAST =
   "Nieprawidłowy login lub hasło.";
 export const LOG_IN_ERROR_TOAST = "Podczas logowania do serwisu wystąpił błąd.";
+export const REGISTER_ERROR_TOAST =
+  "Podczas rejestracji do serwisu wystąpił błąd.";
+export const EMAIL_HAS_NOT_BEEN_SENT_ERROR_TOAST =
+  "Nie udało się wysłać maila";
+export const EXISTING_USER_ERROR_TOAST =
+  "Użytkownik o podanym adresie e-mail już istnieje.";
+export const RESET_PASSWORD_EMAIL_SENT_TOAST = "Na podany adres e-mail wysłaliśmy wiadomość z linkiem do zresetowania hasła."
 export const PLAYER_HAS_BEEN_CREATED_TOAST = "Poprawnie utworzono piłkarza.";
 export const PLAYER_HAS_BEEN_UPDATED_TOAST = "Poprawnie edytowano piłkarza.";
 export const TEAM_HAS_BEEN_CREATED_TOAST = "Poprawnie utworzono drużynę.";

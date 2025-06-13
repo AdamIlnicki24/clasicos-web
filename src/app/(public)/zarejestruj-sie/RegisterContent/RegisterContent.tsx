@@ -1,7 +1,7 @@
 export function RegisterContent() {
   return (
-    <div className="grid min-h-svh place-items-center">
-      {/* <RegisterForm /> */}
+    <div className="flex min-h-svh flex-col items-center justify-center">
+      <RegisterCard />
     </div>
   );
 }
