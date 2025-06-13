@@ -8,3 +8,7 @@ export const COMMENT_CONTENT_PLACEHOLDER = "Tutaj napisz komentarz";
 export const NICK_PLACEHOLDER = "Wpisz nick";
 export const FAVORITE_CLUB_PLACEHOLDER = "Mój ulubiony klub";
 export const FAVORITE_FOOTBALLER_PLACEHOLDER = "Mój ulubiony piłkarz";
+export const SUGGEST_ADDING_PLAYER_PLACEHOLDER = "Guti";
+export const SUGGEST_ADDING_PLAYER_MESSAGE_PLACEHOLDER = `Uważam, że ${SUGGEST_ADDING_PLAYER_PLACEHOLDER} powinien znaleźć się w bazie z uwagi na jego dokonania.`;
+export const SUGGEST_FIX_MESSAGE_PLACEHOLDER =
+  "Cześć! Mam problem z formularzem...";
