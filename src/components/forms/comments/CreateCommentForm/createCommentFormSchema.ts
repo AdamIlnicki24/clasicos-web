@@ -10,7 +10,7 @@ export const createCommentFormSchema = object({
   content: string()
     .max(
       COMMENT_CONTENT_MAX_LENGTH,
-      `${MAX_LENGTH_ERROR_MESSAGE} ${COMMENT_CONTENT_MAX_LENGTH} znaków.`
+      `${MAX_LENGTH_ERROR_MESSAGE} ${COMMENT_CONTENT_MAX_LENGTH} znaki.`
     )
     .required(REQUIRED),
 });
