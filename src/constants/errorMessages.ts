@@ -24,3 +24,10 @@ export const USER_CONTEXT_ERROR_MESSAGE =
   "UserContext must be within UserContextProvider";
 export const USER_CANNOT_BE_LOADED_ERROR_MESSAGE =
   "Wystąpił błąd podczas ładowania danych użytkownika. Spróbuj ponownie później.";
+
+export const INVALID_EMAIL_ADDRESS_ERROR_MESSAGE =
+  "Podany adres e-mail jest nieprawidłowy";
+export const EMAIL_HAS_NOT_BEEN_SENT_ERROR_MESSAGE =
+  "Nie udało się wysłać maila. Spróbuj ponownie później.";
+export const YOU_CANNOT_SUGGEST_ADDING_PLAYER =
+  "Musisz być zalogowany, żeby zasugerować dodanie piłkarza do bazy";

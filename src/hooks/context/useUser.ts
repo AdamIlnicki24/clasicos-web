@@ -6,7 +6,7 @@ export const useUser = () => {
   const context = useContext(UserContext);
   if (!context) {
     if (process.env.NODE_ENV === "development") {
-      throw new Error(USER_CONTEXT_ERROR_MESSAGE);
+      console.error(USER_CONTEXT_ERROR_MESSAGE);
     }
   }
   return context;

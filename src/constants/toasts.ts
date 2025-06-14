@@ -7,6 +7,7 @@ export const REGISTER_ERROR_TOAST =
   "Podczas rejestracji do serwisu wystąpił błąd.";
 export const EMAIL_HAS_NOT_BEEN_SENT_ERROR_TOAST =
   "Nie udało się wysłać maila";
+export const SUGGESTION_HAS_BEEN_SENT_TOAST = "Sugestia została przesłana do administratora."
 export const EXISTING_USER_ERROR_TOAST =
   "Użytkownik o podanym adresie e-mail już istnieje.";
 export const RESET_PASSWORD_EMAIL_SENT_TOAST = "Na podany adres e-mail wysłaliśmy wiadomość z linkiem do zresetowania hasła."

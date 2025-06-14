@@ -1,11 +1,29 @@
 "use server";
 
-import { EMAIL_HAS_BEEN_SENT } from "@/constants/actions";
+import { SuggestAddingPlayerFormData } from "@/components/forms/suggestions/SuggestAddingPlayerForm/suggestAddingPlayerFormSchema";
+import {
+  ADMIN_EMAIL,
+  EMAIL_HAS_BEEN_SENT,
+  FROM,
+  SUBJECT_FOR_ADMIN,
+  SUBJECT_FOR_VISITOR,
+} from "@/constants/actions";
+import { INVALID_EMAIL_ADDRESS_ERROR_CODE } from "@/constants/errorCodes";
+import {
+  EMAIL_HAS_NOT_BEEN_SENT_ERROR_MESSAGE,
+  INVALID_EMAIL_ADDRESS_ERROR_MESSAGE,
+} from "@/constants/errorMessages";
 import { logoBase64 } from "@/constants/images";
+import { HOME_URL } from "@/constants/urls";
+import { revalidatePath } from "next/cache";
 import nodemailer from "nodemailer";
 import Mail from "nodemailer/lib/mailer";
 
 // TODO: Create email
+
+interface SuggestAddingPlayerEmailFormData extends SuggestAddingPlayerFormData {
+  email: string;
+}
 
 const transporter = nodemailer.createTransport({
   host: process.env.EMAIL_SERVER,
@@ -32,11 +50,7 @@ const generateSuggestAddingPlayerEmailToAdminHTML = ({
   email,
   player,
   message,
-}: {
-  email: string;
-  player: string;
-  message: string;
-}): string => {
+}: SuggestAddingPlayerEmailFormData): string => {
   const { src, alt } = logoBase64;
   // TODO: Check whether I need double double quotes in src and alt
   return `<body style="padding: 1rem">
@@ -67,11 +81,7 @@ const generateSuggestAddingPlayerEmailToVisitorHTML = ({
   email,
   player,
   message,
-}: {
-  email: string;
-  player: string;
-  message: string;
-}): string => {
+}: SuggestAddingPlayerEmailFormData): string => {
   const { src, alt } = logoBase64;
   // TODO: Check whether I need double double quotes in src and alt
   return `<body style="padding: 1rem">
@@ -96,3 +106,50 @@ const generateSuggestAddingPlayerEmailToVisitorHTML = ({
     </h6>
     </body>`;
 };
+
+export const createPlayerSuggestion = async ({
+  email,
+  player,
+  message,
+}: SuggestAddingPlayerEmailFormData) => {
+  const mailToAdminOptions: Mail.Options = {
+    from: FROM,
+    to: ADMIN_EMAIL,
+    subject: SUBJECT_FOR_ADMIN,
+    html: generateSuggestAddingPlayerEmailToAdminHTML({
+      email,
+      player,
+      message,
+    }),
+  };
+
+  const mailToVisitorOptions: Mail.Options = {
+    from: FROM,
+    to: email,
+    subject: SUBJECT_FOR_VISITOR,
+    html: generateSuggestAddingPlayerEmailToVisitorHTML({
+      email,
+      player,
+      message,
+    }),
+  };
+
+  try {
+    await Promise.all([
+      sendMailPromise(mailToAdminOptions),
+      sendMailPromise(mailToVisitorOptions),
+    ]);
+
+    revalidatePath(HOME_URL);
+
+    return { success: true };
+  } catch (error) {
+    if (error === INVALID_EMAIL_ADDRESS_ERROR_CODE) {
+      return { error: INVALID_EMAIL_ADDRESS_ERROR_MESSAGE };
+    } else {
+      return { error: EMAIL_HAS_NOT_BEEN_SENT_ERROR_MESSAGE };
+    }
+  }
+};
+
+// TODO: Add actions for fix suggestion

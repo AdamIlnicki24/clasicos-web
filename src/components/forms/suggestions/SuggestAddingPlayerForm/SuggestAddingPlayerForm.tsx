@@ -1,41 +1,54 @@
+import { createPlayerSuggestion } from "@/actions/actions";
+import { SubmitButton } from "@/components/buttons/SubmitButton/SubmitButton";
+import { SuggestPlayerInput } from "@/components/inputs/inputs/SuggestPlayerInput/SuggestPlayerInput";
+import { MessageTextarea } from "@/components/inputs/textareas/MessageTextarea/MessageTextarea";
+import { SUBMIT_FORM_BUTTON_LABEL } from "@/constants/buttonLabels";
+import { YOU_CANNOT_SUGGEST_ADDING_PLAYER } from "@/constants/errorMessages";
+import { SUGGEST_ADDING_PLAYER_MESSAGE_PLACEHOLDER } from "@/constants/placeholders";
+import { SUGGESTION_HAS_BEEN_SENT_TOAST } from "@/constants/toasts";
+import { useUser } from "@/hooks/context/useUser";
+import { Spinner } from "@heroui/react";
+import { Formik } from "formik";
+import { useState } from "react";
 import { toast } from "react-toastify";
 import {
   initialValues,
   SuggestAddingPlayerFormData,
   suggestAddingPlayerFormSchema,
 } from "./suggestAddingPlayerFormSchema";
-import { SubmitButton } from "@/components/buttons/SubmitButton/SubmitButton";
-import { SUBMIT_FORM_BUTTON_LABEL } from "@/constants/buttonLabels";
-import { Spinner } from "@heroui/react";
-import { Formik } from "formik";
-import { useState } from "react";
-import { MessageTextarea } from "@/components/inputs/textareas/MessageTextarea/MessageTextarea";
-import { SUGGEST_ADDING_PLAYER_MESSAGE_PLACEHOLDER } from "@/constants/placeholders";
-import { SuggestPlayerInput } from "@/components/inputs/inputs/SuggestPlayerInput/SuggestPlayerInput";
 
 export function SuggestAddingPlayerForm() {
   // TODO: Think about adding form ref
 
   const [isPending, setIsPending] = useState(false);
 
-  const onSubmitHandler = async (values: SuggestAddingPlayerFormData) => {
+  const { user } = useUser();
+
+  if (!user) {
+    return <div>{YOU_CANNOT_SUGGEST_ADDING_PLAYER}</div>;
+  }
+
+  const email = user.email;
+
+  const onSubmitHandler = async ({
+    player,
+    message,
+  }: SuggestAddingPlayerFormData) => {
     setIsPending(true);
 
-    if (process.env.NODE_ENV === "development") {
-      console.log("Values:", values);
-    }
-
     // TODO: Finish below
-    await createPlayerSuggestion(values).then((response) => {
-      if (process.env.NODE_ENV === "development") {
-        console.log("Response:", response);
+    await createPlayerSuggestion({ player, message, email }).then(
+      (response) => {
+        if (process.env.NODE_ENV === "development") {
+          console.log("Response:", response);
+        }
+        if (response.success) {
+          toast.success(SUGGESTION_HAS_BEEN_SENT_TOAST);
+        } else {
+          toast.error(response.error);
+        }
       }
-      if (response.success) {
-        toast.success();
-      } else {
-        toast.error(response.error);
-      }
-    });
+    );
 
     setIsPending(false);
   };
