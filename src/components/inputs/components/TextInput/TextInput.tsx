@@ -1,7 +1,8 @@
 "use client";
 
+import { MobileContext } from "@/context/MobileContext";
 import { Input, InputProps } from "@heroui/react";
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useContext, useEffect, useState } from "react";
 
 export interface TextInputProps extends InputProps {
   isCounterShown?: boolean;
@@ -10,13 +11,15 @@ export interface TextInputProps extends InputProps {
 // TODO: Finish this component
 
 export function TextInput({
-  isCounterShown = true,
+  isCounterShown = false,
   ...properties
 }: TextInputProps) {
+  const isMobile = useContext(MobileContext);
+
   const [currentLength, setCurrentLength] = useState(
     properties.value?.toString().length || 0
   );
-  
+
   const maxLength = properties.maxLength;
 
   useEffect(() => {
@@ -33,20 +36,29 @@ export function TextInput({
   return (
     <div className="relative w-full">
       <Input
+        // classNames={{
+        //   inputWrapper: "border-2 border-defaultGreen",
+        //   input: "text-[1.1rem]",
+        //   label: "text-defaultBlack pb-1",
+        //   errorMessage: "text-[1.1rem]",
+        // }}
         classNames={{
-          inputWrapper: "border-2 border-defaultGreen",
-          input: "text-[1.2rem]",
-          label: "text-defaultWhite",
-          errorMessage: "text-[1rem]",
+          label:
+            "text-secondaryTextColor/60 group-data-[filled-within=true]:text-secondaryTextColor/60 font-medium text-[0.9rem]",
+          inputWrapper: "border-0",
+          input:
+            "text-defaultBlack font-semibold leading-tight placeholder:font-medium placeholder:text-defaultBlack/30 placeholder:italic",
+          errorMessage: "font-semibold ",
+          clearButton: "text-defaultBlack/80",
         }}
         size="lg"
         onChange={handleInputChange}
-        labelPlacement="outside-left"
+        labelPlacement="inside"
         variant="faded"
         {...properties}
       />
       {isCounterShown && maxLength && (
-        <div className="text-defaultWhite/50 absolute top-0 right-0 pe-3 text-end text-[0.8rem]">
+        <div className="absolute right-0 top-0 pe-3 text-end text-[0.8rem] text-defaultWhite/50">
           {currentLength} / {maxLength}
         </div>
       )}

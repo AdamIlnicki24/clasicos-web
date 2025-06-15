@@ -1,12 +1,14 @@
-import { PASSWORD_LABEL } from "@/constants/labels";
-import { PASSWORD_PLACEHOLDER } from "@/constants/placeholders";
-import { TextInput } from "../../components/TextInput/TextInput";
-import { useState } from "react";
-import { useFormikContext } from "formik";
-import { PASSWORD_MAX_LENGTH } from "@/constants/lengths";
-import { EyeButton } from "@/components/buttons/EyeButton/EyeButton";
+"use client";
 
-export function PasswordInput() {
+import { EyeButton } from "@/components/buttons/EyeButton/EyeButton";
+import { PASSWORD_LABEL } from "@/constants/labels";
+import { PASSWORD_MAX_LENGTH } from "@/constants/lengths";
+import { PASSWORD_PLACEHOLDER } from "@/constants/placeholders";
+import { useFormikContext } from "formik";
+import { useState } from "react";
+import { TextInput, TextInputProps } from "../../components/TextInput/TextInput";
+
+export function PasswordInput({}: TextInputProps) {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   const { handleChange, handleBlur, values, errors, touched, setFieldValue } =
@@ -25,7 +27,7 @@ export function PasswordInput() {
       // TODO: Think about property below
       color={touched.password && !errors.password ? "success" : "default"}
       isInvalid={touched.password && !!errors.password}
-      errorMessage={errors.password}
+      errorMessage={touched.password && errors.password}
       isRequired
       isClearable
       onClear={() => {
@@ -35,10 +37,12 @@ export function PasswordInput() {
       placeholder={PASSWORD_PLACEHOLDER}
       maxLength={PASSWORD_MAX_LENGTH}
       endContent={
-        <EyeButton
-          onPress={togglePasswordVisibility}
-          isPasswordVisible={isPasswordVisible}
-        />
+        <>
+          <EyeButton
+            onPress={togglePasswordVisibility}
+            isPasswordVisible={isPasswordVisible}
+          />
+        </>
       }
     />
   );

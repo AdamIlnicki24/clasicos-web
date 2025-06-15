@@ -1,13 +1,12 @@
+import { EMAIL_LABEL } from "@/constants/labels";
 import { EMAIL_MAX_LENGTH } from "@/constants/lengths";
 import { EMAIL_PLACEHOLDER } from "@/constants/placeholders";
 import { useFormikContext } from "formik";
 import {
-  TextInputProps,
-  TextInput,
+  TextInput
 } from "../../components/TextInput/TextInput";
-import { EMAIL_LABEL } from "@/constants/labels";
 
-export function EmailInput({ ...properties }: TextInputProps) {
+export function EmailInput() {
   const { handleChange, handleBlur, values, errors, touched, setFieldValue } =
     useFormikContext<{ email: string }>();
 
@@ -28,7 +27,6 @@ export function EmailInput({ ...properties }: TextInputProps) {
       label={EMAIL_LABEL}
       placeholder={EMAIL_PLACEHOLDER}
       maxLength={EMAIL_MAX_LENGTH}
-      {...properties}
     />
   );
 }
