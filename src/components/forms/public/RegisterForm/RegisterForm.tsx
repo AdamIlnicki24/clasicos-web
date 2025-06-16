@@ -1,3 +1,5 @@
+"use client";
+
 import { SubmitButton } from "@/components/buttons/SubmitButton/SubmitButton";
 import { EmailInput } from "@/components/inputs/inputs/EmailInput/EmailInput";
 import { PasswordInput } from "@/components/inputs/inputs/PasswordInput/PasswordInput";
@@ -56,14 +58,19 @@ export function RegisterForm() {
       onSubmit={onSubmitHandler}
       validationSchema={registerFormSchema}
     >
-      <>
-        <EmailInput />
-        <PasswordInput />
-        <PrivacyPolicyCheckbox />
-        <SubmitButton
-          title={isPending ? <Spinner size="md" /> : REGISTER_BUTTON_LABEL}
-        />
-      </>
+      <div className="flex flex-col gap-4">
+        <div className="grid grid-cols-1 gap-4">
+          <EmailInput />
+          <PasswordInput />
+
+          <PrivacyPolicyCheckbox />
+        </div>
+        <div className="flex justify-center pt-4">
+          <SubmitButton
+            title={isPending ? <Spinner size="md" /> : REGISTER_BUTTON_LABEL}
+          />
+        </div>
+      </div>
     </Formik>
   );
 }
