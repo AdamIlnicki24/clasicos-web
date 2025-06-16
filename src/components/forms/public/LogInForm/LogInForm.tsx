@@ -67,9 +67,10 @@ export function LogInForm() {
           <EmailInput />
           <PasswordInput />
         </div>
-        <div className="pt-4 flex justify-center">
+        <div className="flex justify-center pt-4">
           <SubmitButton
-            title={isPending ? <Spinner size="md" /> : LOG_IN_BUTTON_LABEL} variant="bordered"
+            title={isPending ? <Spinner size="md" /> : LOG_IN_BUTTON_LABEL}
+            variant="bordered"
           />
         </div>
       </div>
