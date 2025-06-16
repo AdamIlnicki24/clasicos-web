@@ -19,11 +19,11 @@ export function Button({
   const buttonStyle =
     variant === "shadow"
       ? "bg-defaultGreen text-defaultBlack"
-      : "bg-defaultWhite border-defaultGreen text-defaultBlack";
+      : "bg-defaultWhite text-primaryColor";
 
   return (
     <HeroUIButton
-      className={`rounded-xl py-7 text-[1.25rem] font-bold ${buttonStyle}`}
+      className={`rounded-xl py-7 px-10 text-[1.25rem] font-bold ${buttonStyle}`}
       variant={variant}
       size="lg"
       {...properties}
