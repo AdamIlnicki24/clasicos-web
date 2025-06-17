@@ -30,12 +30,12 @@ export function MyProfileContent() {
     <div>
       <Button title={UPDATE_ABOUT_ME_DATA} onPress={onSubmitHandler} />
       <div className="lg:grid-cols-[2fr_3fr]: grid grid-cols-1">
-        <UserDataCard
+        {/* <UserDataCard
           nick={nick}
           createdAt={createdAt}
           recommendationsCount={recommendationsCount}
         />
-        <AboutMeCard />
+        <AboutMeCard /> */}
       </div>
     </div>
   );
