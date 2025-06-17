@@ -3,7 +3,6 @@ import { SubmitButton } from "@/components/buttons/SubmitButton/SubmitButton";
 import { SuggestPlayerInput } from "@/components/inputs/inputs/SuggestPlayerInput/SuggestPlayerInput";
 import { MessageTextarea } from "@/components/inputs/textareas/MessageTextarea/MessageTextarea";
 import { SUBMIT_FORM_BUTTON_LABEL } from "@/constants/buttonLabels";
-import { YOU_CANNOT_SUGGEST_ADDING_PLAYER } from "@/constants/errorMessages";
 import { SUGGEST_ADDING_PLAYER_MESSAGE_PLACEHOLDER } from "@/constants/placeholders";
 import { SUGGESTION_HAS_BEEN_SENT_TOAST } from "@/constants/toasts";
 import { useUser } from "@/hooks/context/useUser";
@@ -16,6 +15,7 @@ import {
   SuggestAddingPlayerFormData,
   suggestAddingPlayerFormSchema,
 } from "./suggestAddingPlayerFormSchema";
+import { YOU_MUST_BE_LOGGED_IN } from "@/constants/errorMessages";
 
 export function SuggestAddingPlayerForm() {
   // TODO: Think about adding form ref
@@ -25,7 +25,7 @@ export function SuggestAddingPlayerForm() {
   const { user } = useUser();
 
   if (!user) {
-    return <div>{YOU_CANNOT_SUGGEST_ADDING_PLAYER}</div>;
+    return <div>{YOU_MUST_BE_LOGGED_IN}</div>;
   }
 
   const email = user.email;

@@ -29,5 +29,4 @@ export const INVALID_EMAIL_ADDRESS_ERROR_MESSAGE =
   "Podany adres e-mail jest nieprawidłowy";
 export const EMAIL_HAS_NOT_BEEN_SENT_ERROR_MESSAGE =
   "Nie udało się wysłać maila. Spróbuj ponownie później.";
-export const YOU_CANNOT_SUGGEST_ADDING_PLAYER =
-  "Musisz być zalogowany, żeby zasugerować dodanie piłkarza do bazy";
+export const YOU_MUST_BE_LOGGED_IN = "Nie jesteś zalogowany.";
