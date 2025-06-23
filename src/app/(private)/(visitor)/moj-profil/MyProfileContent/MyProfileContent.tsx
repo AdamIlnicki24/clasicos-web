@@ -3,12 +3,16 @@
 import { Button } from "@/components/buttons/Button/Button";
 import { AboutMeCard } from "@/components/cards/AboutMeCard/AboutMeCard";
 import { UserDataCard } from "@/components/cards/NickCard/NickCard";
+import { UpdateMeModal } from "@/components/modals/UpdateMeModal/UpdateMeModal";
 import { UPDATE_ABOUT_ME_DATA } from "@/constants/buttonLabels";
 import { YOU_MUST_BE_LOGGED_IN } from "@/constants/errorMessages";
 import { useGetUserRecommendationsCount } from "@/hooks/api/recommendations/useGetUserRecommendationsCount";
 import { useUser } from "@/hooks/context/useUser";
+import { useDisclosure } from "@heroui/react";
 
 export function MyProfileContent() {
+  // TODO: User will always have visitor object
+
   const { user } = useUser();
 
   if (!user) {
@@ -19,10 +23,11 @@ export function MyProfileContent() {
     user.uuid
   );
 
-  const nick = user.visitor?.nick;
+  const visitor = user.visitor;
+  const nick = visitor.nick;
   const createdAt = user.createdAt;
-  const favoriteClub = user.visitor?.favoriteClub;
-  const favoriteFootballer = user.visitor?.favoriteFootballer;
+  const favoriteClub = visitor.favoriteClub;
+  const favoriteFootballer = visitor.favoriteFootballer;
 
   console.log("Nick:", nick);
   console.log("fav club:", favoriteClub);
@@ -33,15 +38,19 @@ export function MyProfileContent() {
   if (!nick || !favoriteClub || !favoriteFootballer)
     return <span>Brak informacji</span>;
 
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
   const onSubmitHandler = () => {
+    onOpen();
     if (process.env.NODE_ENV === "development") {
       console.log("Modal with update form should be displayed");
     }
+    
   };
 
   //   return <UpdateMeForm visitor={} />;
   return (
-    <div className="">
+    <>
       <div className="flex justify-end pe-12 pt-8">
         <Button
           title={UPDATE_ABOUT_ME_DATA}
@@ -60,6 +69,11 @@ export function MyProfileContent() {
           favoriteFootballer={favoriteFootballer}
         />
       </div>
-    </div>
+      <UpdateMeModal
+        visitor={visitor}
+        isOpen={isOpen}
+        onOpenChange={onOpenChange}
+      />
+    </>
   );
 }

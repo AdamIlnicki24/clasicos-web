@@ -13,7 +13,7 @@ export function AboutMeCard({
   favoriteFootballer,
 }: AboutMeCardProps) {
   return (
-    <Card className="bg-defaultBlack">
+    <Card className="bg-defaultBlack text-defaultWhite">
       <CardBody className="flex flex-col items-center">
         <Heading HeadingTag="h2" title="O mnie" />
         <div>Ulubiony klub: {favoriteClub}</div>
