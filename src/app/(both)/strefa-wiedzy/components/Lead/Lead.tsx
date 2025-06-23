@@ -1,5 +1,9 @@
 import { ReactNode } from "react";
 
-export function Lead({ children }: { children: ReactNode }) {
-  return <p className="p-6 my-8 leading-relaxed tracking-wide bg-accentColor rounded-lg">{children}</p>;
+export function Lead({ text }: { text: ReactNode }) {
+  return (
+    <p className="my-8 rounded-lg bg-accentColor p-6 leading-relaxed tracking-wide">
+      {text}
+    </p>
+  );
 }
