@@ -3,6 +3,7 @@ import { LOG_IN_URL } from "@/constants/urls";
 import Ball from "@/assets/icons/ball.svg";
 import { Heading } from "@/components/headings/Heading/Heading";
 import { Link } from "@heroui/react";
+import { DO_YOU_HAVE_AN_ACCOUNT, LOG_IN } from "@/constants/texts";
 
 export function RegisterContent() {
   return (
@@ -14,9 +15,9 @@ export function RegisterContent() {
       <RegisterCard />
       <div className="space-y-3 pt-6">
         <div className="space-x-2">
-          <span>Masz już konto?</span>
+          <span>{DO_YOU_HAVE_AN_ACCOUNT}</span>
           <Link href={LOG_IN_URL} className="font-bold text-defaultWhite">
-            Zaloguj się
+            {LOG_IN}
           </Link>
         </div>
       </div>

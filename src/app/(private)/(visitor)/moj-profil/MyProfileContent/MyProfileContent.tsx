@@ -4,8 +4,9 @@ import { Button } from "@/components/buttons/Button/Button";
 import { AboutMeCard } from "@/components/cards/AboutMeCard/AboutMeCard";
 import { UserDataCard } from "@/components/cards/NickCard/NickCard";
 import { UpdateMeModal } from "@/components/modals/UpdateMeModal/UpdateMeModal";
-import { UPDATE_ABOUT_ME_DATA } from "@/constants/buttonLabels";
+import { UPDATE_ABOUT_ME_DATA_BUTTON_LABEL } from "@/constants/buttonLabels";
 import { YOU_MUST_BE_LOGGED_IN } from "@/constants/errorMessages";
+import { NO_INFORMATION } from "@/constants/texts";
 import { useGetUserRecommendationsCount } from "@/hooks/api/recommendations/useGetUserRecommendationsCount";
 import { useUser } from "@/hooks/context/useUser";
 import { useDisclosure } from "@heroui/react";
@@ -23,9 +24,10 @@ export function MyProfileContent() {
     user.uuid
   );
 
-  const visitor = user.visitor;
-  const nick = visitor.nick;
   const createdAt = user.createdAt;
+  const visitor = user.visitor;
+
+  const nick = visitor.nick;
   const favoriteClub = visitor.favoriteClub;
   const favoriteFootballer = visitor.favoriteFootballer;
 
@@ -36,7 +38,7 @@ export function MyProfileContent() {
 
   // TODO: Improve fallback below
   if (!nick || !favoriteClub || !favoriteFootballer)
-    return <span>Brak informacji</span>;
+    return <span>{NO_INFORMATION}</span>;
 
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
@@ -45,15 +47,13 @@ export function MyProfileContent() {
     if (process.env.NODE_ENV === "development") {
       console.log("Modal with update form should be displayed");
     }
-    
   };
 
-  //   return <UpdateMeForm visitor={} />;
   return (
     <>
       <div className="flex justify-end pe-12 pt-8">
         <Button
-          title={UPDATE_ABOUT_ME_DATA}
+          title={UPDATE_ABOUT_ME_DATA_BUTTON_LABEL}
           onPress={onSubmitHandler}
           mode="secondary"
         />

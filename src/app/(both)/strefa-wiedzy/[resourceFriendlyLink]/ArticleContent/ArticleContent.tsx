@@ -3,7 +3,9 @@
 import Loading from "@/app/loading";
 import { CreateCommentCard } from "@/components/cards/comments/CreateCommentCard/CreateCommentCard";
 import { NoAccountCard } from "@/components/cards/NoAccountCard/NoAccountCard";
-import { YOU_NEED_TO_HAVE_AN_ACCOUNT } from "@/constants/texts";
+import { Heading } from "@/components/headings/Heading/Heading";
+import { COMMENTS_HEADING } from "@/constants/headings";
+import { NO_COMMENTS_YET, YOU_NEED_TO_HAVE_AN_ACCOUNT } from "@/constants/texts";
 import { useGetComments } from "@/hooks/api/comments/useGetComments";
 import { useUser } from "@/hooks/context/useUser";
 import { ApiError } from "@/types/apiError";
@@ -43,7 +45,7 @@ export function ArticleContent({
       ) : (
         <NoAccountCard bodyText={YOU_NEED_TO_HAVE_AN_ACCOUNT} />
       )}
-      <h2>Komentarze:</h2>
+      <Heading HeadingTag="h2" title={COMMENTS_HEADING} />
       {data && data.length > 0 ? (
         <ul>
           {data.map((comment: CommentWithCount) => (
@@ -51,7 +53,7 @@ export function ArticleContent({
           ))}
         </ul>
       ) : (
-        <p>Nie ma jeszcze komentarzy</p>
+        <p>{NO_COMMENTS_YET}</p>
       )}
     </section>
   );

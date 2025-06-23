@@ -1,6 +1,7 @@
 import Ball from "@/assets/icons/ball.svg";
 import { ForgotPasswordCard } from "@/components/cards/public/ForgotPasswordCard/ForgotPasswordCard";
 import { Heading } from "@/components/headings/Heading/Heading";
+import { NO_ACCOUNT_YET, REGISTER } from "@/constants/texts";
 import { REGISTER_URL } from "@/constants/urls";
 import { Link } from "@heroui/react";
 
@@ -14,9 +15,9 @@ export function ForgotPasswordContent() {
       <ForgotPasswordCard />
       <div className="space-y-3 pt-6">
         <div className="space-x-2">
-          <span>Nie posiadasz konta?</span>
+          <span>{NO_ACCOUNT_YET}</span>
           <Link href={REGISTER_URL} className="font-bold text-defaultWhite">
-            Zarejestruj się
+            {REGISTER}
           </Link>
         </div>
       </div>

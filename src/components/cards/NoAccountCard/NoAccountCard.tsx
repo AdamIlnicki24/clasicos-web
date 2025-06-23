@@ -1,5 +1,4 @@
 // TODO: Add shadow in secondary color
-// TODO: Check colors connection with tailwind
 
 import { Card, CardBody, CardFooter, Link } from "@heroui/react";
 import Info from "@/assets/icons/info.svg";
@@ -13,7 +12,6 @@ interface NoAccountCardProps {
 export function NoAccountCard({ bodyText }: NoAccountCardProps) {
   return (
     <Card className="flex bg-accentColor">
-      {/* TODO: Change icon's color to defaultWhite */}
       <Info color={colors.defaultWhite} width={32} />
       <div>
         <CardBody>{bodyText}</CardBody>

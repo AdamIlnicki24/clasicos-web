@@ -3,6 +3,12 @@ import { Heading } from "@/components/headings/Heading/Heading";
 import { FORGOT_PASSWORD_URL, REGISTER_URL } from "@/constants/urls";
 import { Link } from "@heroui/react";
 import Ball from "@/assets/icons/ball.svg";
+import {
+  NO_ACCOUNT_YET,
+  FORGOT_PASSWORD,
+  REGISTER,
+  REMIND_PASSWORD,
+} from "@/constants/texts";
 
 export function LogInContent() {
   return (
@@ -14,18 +20,18 @@ export function LogInContent() {
       <LogInCard />
       <div className="space-y-3 pt-6">
         <div className="space-x-2">
-          <span>Zapomniałeś hasła?</span>
+          <span>{FORGOT_PASSWORD}</span>
           <Link
             href={FORGOT_PASSWORD_URL}
             className="font-bold text-defaultWhite"
           >
-            Przypomnij hasło
+            {REMIND_PASSWORD}
           </Link>
         </div>
         <div className="space-x-2">
-          <span>Nie posiadasz konta?</span>
+          <span>{NO_ACCOUNT_YET}</span>
           <Link href={REGISTER_URL} className="font-bold text-defaultWhite">
-            Zarejestruj się
+            {REGISTER}
           </Link>
         </div>
       </div>

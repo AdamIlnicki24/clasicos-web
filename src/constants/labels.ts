@@ -14,3 +14,5 @@ export const FAVORITE_CLUB_LABEL = "Ulubiony klub:";
 export const FAVORITE_FOOTBALLER_LABEL = "Ulubiony piłkarz:";
 export const MESSAGE_LABEL = "Wiadomość:";
 export const PLAYER_SUGGESTION_LABEL = "Sugerowany piłkarz:";
+export const OBTAINED_RECOMMENDATIONS_LABEL = "Uzyskane rekomendacje:";
+export const CREATED_AT_LABEL = "Data dołączenia:";

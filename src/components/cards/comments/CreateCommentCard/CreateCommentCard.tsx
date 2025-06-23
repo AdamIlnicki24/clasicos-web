@@ -1,5 +1,4 @@
 // TODO: Add shadow in secondary color
-// TODO: Check colors connection with tailwind
 
 import { Card } from "@heroui/react";
 
