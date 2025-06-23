@@ -15,7 +15,7 @@ export default function FigoArticle() {
         Kiedy w 1995 roku Luís Figo trafił do Barcelony, zrobił to niemal bez
         rozgłosu – klub zapłacił Sportingowi zaledwie 2.2 mln funtów, a
         Portugalczyk dołączył do zespołu. W ostatnim sezonie Johana Cruyffa
-        Portugalczyk otrzymał czas na aklimatyzację. Już jednak w pierwszym
+        Portugalczyk otrzymał czas na aklimatyzację. Już jednak w pierwszym{" "}
         <strong>El Clásico</strong> zaimponował skutecznością: po remisie na
         Bernabéu, w rewanżu na Camp Nou zdobył drugą bramkę w zwycięstwie 3:0.
       </Lead>
@@ -265,7 +265,7 @@ export default function FigoArticle() {
         W historii <strong>El Clásico</strong> Luís Figo zapisał się na długo
         przed swoim transferem. Z każdym kolejnym rokiem był gwarantem
         widowiskowych momentów i drużynowych sukcesów, co jeszcze zwiększało
-        jego wagę w tych pojedynkach. Dla miłośników starć
+        jego wagę w tych pojedynkach. Dla miłośników starć{" "}
         <strong>Barcelona vs Real Madryt</strong> Figo kojarzony jest z obrazem
         tragicznej zdrady. Kiedy Figo opuszczał Camp Nou, z bohaterskiego
         Portugalczyka zamienił się w symbol podziału: zarzucano mu, że obrócił
