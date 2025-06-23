@@ -1,10 +1,31 @@
-import { ArticlesContent } from "./ArticlesContent/ArticlesContent";
+import { notFound } from "next/navigation";
+import dynamic from "next/dynamic";
+import { ArticleContent } from "./ArticleContent/ArticleContent.jsx";
 
-export default function Page() {
-  return (
-    <>
-      <h1>To jest dynamiczny Page z artykułem</h1>
-      <ArticlesContent />
-    </>
-  );
+const componentsMap = {
+  figo: dynamic(() => import("../components/articles/FigoArticle")),
+} as const;
+
+export async function generateStaticParams() {
+  return Object.keys(componentsMap).map((resourceFriendlyLink) => ({
+    resourceFriendlyLink,
+  }));
+}
+
+export default async function Page({
+  params,
+}: {
+  params: {
+    resourceFriendlyLink: keyof typeof componentsMap;
+  };
+}) {
+  const { resourceFriendlyLink } = await params;
+
+  const ArticleComponent = componentsMap[resourceFriendlyLink];
+
+  if (!ArticleComponent) {
+    notFound();
+  }
+
+  return <ArticleContent ArticleComponent={<ArticleComponent />} />;
 }

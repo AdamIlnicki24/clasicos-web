@@ -9,8 +9,13 @@ import { useUser } from "@/hooks/context/useUser";
 import { ApiError } from "@/types/apiError";
 import { CommentWithCount } from "@/types/comment";
 import { useParams } from "next/navigation";
+import { ReactNode } from "react";
 
-export function ArticlesContent() {
+export function ArticleContent({
+  ArticleComponent,
+}: {
+  ArticleComponent: ReactNode;
+}) {
   const { resourceFriendlyLink } = useParams();
 
   if (!resourceFriendlyLink) return <Loading />;
@@ -32,7 +37,7 @@ export function ArticlesContent() {
 
   return (
     <section className="grid min-h-svh place-items-center">
-      <p>Artykuł</p>
+      <div>{ArticleComponent}</div>
       {user ? (
         <CreateCommentCard />
       ) : (

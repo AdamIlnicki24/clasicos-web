@@ -8,6 +8,8 @@ interface UpdateMeModalProps extends Omit<ModalProps, "children"> {
   onOpenChange: (open: boolean) => void;
 }
 
+// TODO: Think about handling nick's change
+
 export function UpdateMeModal({ visitor, isOpen, onOpenChange }: UpdateMeModalProps) {
   return (
     <Modal
