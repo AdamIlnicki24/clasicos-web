@@ -70,7 +70,7 @@ export function LogInForm() {
         <div className="flex justify-center pt-4">
           <SubmitButton
             title={isPending ? <Spinner size="md" /> : LOG_IN_BUTTON_LABEL}
-            variant="bordered"
+            mode="primary"
           />
         </div>
       </div>

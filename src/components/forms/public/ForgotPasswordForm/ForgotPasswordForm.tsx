@@ -60,7 +60,7 @@ export function ForgotPasswordForm() {
             title={
               isPending ? <Spinner size="md" /> : RESET_PASSWORD_BUTTON_LABEL
             }
-            variant="bordered"
+            mode="primary"
           />
         </div>
       </div>

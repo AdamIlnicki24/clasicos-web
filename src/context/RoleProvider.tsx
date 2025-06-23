@@ -1,3 +1,5 @@
+"use client";
+
 import Loading from "@/app/loading";
 import { USER_CANNOT_BE_LOADED_ERROR_MESSAGE } from "@/constants/errorMessages";
 import { MY_PROFILE_URL, USERS_URL } from "@/constants/urls";

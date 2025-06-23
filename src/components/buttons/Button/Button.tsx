@@ -8,23 +8,19 @@ import { ReactNode } from "react";
 
 export interface ButtonProps extends Omit<HeroUIButtonProps, "title"> {
   title: ReactNode;
-  variant?: "shadow" | "bordered";
+  mode?: "primary" | "secondary";
 }
 
-export function Button({
-  title,
-  variant = "shadow",
-  ...properties
-}: ButtonProps) {
+export function Button({ title, mode = "primary", ...properties }: ButtonProps) {
   const buttonStyle =
-    variant === "shadow"
-      ? "bg-defaultGreen text-defaultBlack"
+    mode === "secondary"
+      ? "bg-primaryColor text-defaultWhite"
       : "bg-defaultWhite text-primaryColor";
 
   return (
     <HeroUIButton
-      className={`rounded-xl py-7 px-10 text-[1.25rem] font-bold ${buttonStyle}`}
-      variant={variant}
+      className={`rounded-xl px-10 py-7 text-[1.25rem] font-bold ${buttonStyle}`}
+      mode={mode}
       size="lg"
       {...properties}
     >

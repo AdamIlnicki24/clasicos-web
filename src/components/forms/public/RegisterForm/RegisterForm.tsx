@@ -22,6 +22,8 @@ import {
 } from "./registerFormSchema";
 import { PrivacyPolicyCheckbox } from "@/components/inputs/checkboxes/PrivacyPolicyCheckbox/PrivacyPolicyCheckbox";
 
+// TODO: Currently user is created in firebase, but not in db
+
 export function RegisterForm() {
   const [isPending, setIsPending] = useState(false);
 

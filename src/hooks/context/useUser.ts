@@ -1,3 +1,5 @@
+"use client";
+
 import { USER_CONTEXT_ERROR_MESSAGE } from "@/constants/errorMessages";
 import { UserContext } from "@/context/UserContext";
 import { useContext } from "react";
