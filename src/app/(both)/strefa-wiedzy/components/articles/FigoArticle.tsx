@@ -1,23 +1,17 @@
 import { Heading } from "@/components/headings/Heading/Heading";
 import { Lead } from "../Lead/Lead";
 import { Paragraph } from "../Paragraph/Paragraph";
+import parse from "html-react-parser";
+import { FIGO_HISTORY_ARTICLE_LEAD } from "@/constants/articles";
+import { FIGO_HISTORY_ARTICLE_HEADING } from "@/constants/headings";
 
 export default function FigoArticle() {
   return (
     <article className="mx-auto flex w-[80%] flex-col pb-10 text-[22px] lg:w-[60%]">
       <div className="text-center">
-        <Heading
-          title="Jak Luis Figo przeszedł z Barcelony do Realu i odmienił Clasicos"
-          HeadingTag="h1"
-        />
+        <Heading title={FIGO_HISTORY_ARTICLE_HEADING} HeadingTag="h1" />
       </div>
-      <Lead />
-        Kiedy w 1995 roku Luís Figo trafił do Barcelony, zrobił to niemal bez
-        rozgłosu – klub zapłacił Sportingowi zaledwie 2.2 mln funtów, a
-        Portugalczyk dołączył do zespołu. W ostatnim sezonie Johana Cruyffa
-        Portugalczyk otrzymał czas na aklimatyzację. Już jednak w pierwszym{" "}
-        <strong>El Clásico</strong> zaimponował skutecznością: po remisie na
-        Bernabéu, w rewanżu na Camp Nou zdobył drugą bramkę w zwycięstwie 3:0.
+      <Lead text={parse(FIGO_HISTORY_ARTICLE_LEAD)} />
       <Heading title="Wpływ Figo na Barcelonę" HeadingTag="h2" size="md" />
       <Paragraph>
         W latach 1996–1998 Barça przeszła pod wodzą trenera Bobby’ego Robsona

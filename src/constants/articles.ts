@@ -1,6 +1,2 @@
-export const LUIS_FIGO_BEGINNINGS_IN_BARCELONA_LEAD = `Kiedy w 1995 roku Luís Figo trafił do Barcelony, zrobił to niemal bez
-rozgłosu – klub zapłacił Sportingowi zaledwie 2.2 mln funtów, a
-Portugalczyk dołączył do zespołu. W ostatnim sezonie Johana Cruyffa
-Portugalczyk otrzymał czas na aklimatyzację. Już jednak w pierwszym
-<strong>El Clásico</strong> zaimponował skutecznością: po remisie na
-Bernabéu, w rewanżu na Camp Nou zdobył drugą bramkę w zwycięstwie 3:0.`;
+export const FIGO_HISTORY_ARTICLE_LEAD =
+  "Kiedy w 1995 roku Luís Figo trafił do Barcelony, zrobił to niemal bez rozgłosu – klub zapłacił Sportingowi zaledwie 2.2 mln funtów, a Portugalczyk dołączył do zespołu. W ostatnim sezonie Johana Cruyffa Portugalczyk otrzymał czas na aklimatyzację. Już jednak w pierwszym <strong>El Clásico</strong> zaimponował skutecznością: po remisie na Bernabéu, w rewanżu na Camp Nou zdobył drugą bramkę w zwycięstwie 3:0.";

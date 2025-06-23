@@ -1,0 +1,1 @@
+export const FIGO_HISTORY_ARTICLE_HEADING = "Jak Luis Figo przeszedł z Barcelony do Realu i odmienił Clasicos"

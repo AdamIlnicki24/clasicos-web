@@ -6,5 +6,6 @@ export const KNOWLEDGE_ZONE_URL = "/strefa-wiedzy";
 export const USERS_URL = "/uzytkownicy";
 export const MY_PROFILE_URL = "/moj-profil";
 export const PRIVACY_POLICY_URL = "/polityka-prywatnosci";
+export const FIGO_HISTORY_URL = `${KNOWLEDGE_ZONE_URL}/jak-luis-figo-przeszedl-z-barcelony-do-realu-i-odmienil-el-clasico`;
 
 // TODO: Add urls to sitemap
