@@ -31,10 +31,10 @@ export function Textarea({ isCounterShown, ...properties }: TextareaProps) {
       <HeroUITextarea
         classNames={{
           label:
-            "text-[1.1rem] text-defaultWhite ps-2 group-data-[filled-within=true]:text-defaultWhite",
+            "text-[1.1rem] text-defaultWhite ps-2 group-data-[filled-within=true]:text-defaultWhite font-bold",
           input:
             "text-[1.2rem] leading-none text-defaultBlack group-data-[has-value=true]:text-defaultBlack",
-          errorMessage: "text-[1rem]",
+          errorMessage: "text-[1rem] font-bold",
           inputWrapper: "text-defaultWhite border-2 border-primaryColor",
         }}
         size="lg"
