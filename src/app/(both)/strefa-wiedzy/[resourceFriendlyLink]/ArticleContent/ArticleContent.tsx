@@ -1,11 +1,16 @@
 "use client";
 
 import Loading from "@/app/loading";
+import { CommentCard } from "@/components/cards/comments/CommentCard/CommentCard";
 import { CreateCommentCard } from "@/components/cards/comments/CreateCommentCard/CreateCommentCard";
 import { NoAccountCard } from "@/components/cards/NoAccountCard/NoAccountCard";
 import { Heading } from "@/components/headings/Heading/Heading";
 import { COMMENTS_HEADING } from "@/constants/headings";
-import { NO_COMMENTS_YET, YOU_NEED_TO_HAVE_AN_ACCOUNT } from "@/constants/texts";
+import {
+  NO_COMMENTS_YET,
+  NO_INFORMATION,
+  YOU_NEED_TO_HAVE_AN_ACCOUNT,
+} from "@/constants/texts";
 import { useGetComments } from "@/hooks/api/comments/useGetComments";
 import { useUser } from "@/hooks/context/useUser";
 import { ApiError } from "@/types/apiError";
@@ -45,13 +50,21 @@ export function ArticleContent({
       ) : (
         <NoAccountCard bodyText={YOU_NEED_TO_HAVE_AN_ACCOUNT} />
       )}
-      <Heading HeadingTag="h2" title={COMMENTS_HEADING} />
+      <div className="rounded-br-3xl rounded-tr-3xl bg-primaryColor pe-12 ps-4">
+        <Heading HeadingTag="h2" title={COMMENTS_HEADING} />
+      </div>
       {data && data.length > 0 ? (
-        <ul>
+        <div className="flex flex-col">
           {data.map((comment: CommentWithCount) => (
-            <li key={comment.uuid}>{comment.content}</li>
+            <CommentCard
+              key={comment.uuid}
+              content={comment.content}
+              createdAt={comment.createdAt}
+              recommendationsCount={comment._count.recommendations}
+              nick={comment.user.visitor.nick ?? NO_INFORMATION}
+            />
           ))}
-        </ul>
+        </div>
       ) : (
         <p>{NO_COMMENTS_YET}</p>
       )}

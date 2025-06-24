@@ -21,6 +21,7 @@ export function KnowledgeZoneContent() {
       <KnowledgeZoneCard
         src={luisFigo.src}
         alt={luisFigo.alt}
+        // TODO: Add sizes
         title={FIGO_HISTORY_ARTICLE_HEADING}
         lead={parse(FIGO_HISTORY_ARTICLE_LEAD)}
         onPress={() => pushToArticle(FIGO_HISTORY_URL)}

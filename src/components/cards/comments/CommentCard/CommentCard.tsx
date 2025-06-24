@@ -7,26 +7,27 @@ interface CommentCardProps {
   nick: string;
   recommendationsCount: number;
   createdAt: string;
+  content: string;
 }
 
 export function CommentCard({
   nick,
   recommendationsCount,
   createdAt,
+  content,
 }: CommentCardProps) {
-  <Card className="bg-accentColor">
-    <CardHeader>
-      <div className="flex justify-between">
-        <UserChip nick={nick} />
-        <div className="gap-x-2">
-          <BallWithCounterButton count={recommendationsCount} />
-          <CommentDate createdAt={createdAt} />
+  return (
+    <Card className="bg-accentColor">
+      <CardHeader>
+        <div className="flex justify-between">
+          <UserChip nick={nick} />
+          <div className="gap-x-2">
+            <BallWithCounterButton count={recommendationsCount} />
+            <CommentDate createdAt={createdAt} />
+          </div>
         </div>
-      </div>
-    </CardHeader>
-    <CardBody>
-      Room-filling sound, Intelligent assistant. Smart home control. Works
-      seamlessly with iPhone. Check it out
-    </CardBody>
-  </Card>;
+      </CardHeader>
+      <CardBody>{content}</CardBody>
+    </Card>
+  );
 }

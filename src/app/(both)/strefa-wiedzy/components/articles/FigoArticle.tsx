@@ -4,12 +4,25 @@ import { Paragraph } from "../Paragraph/Paragraph";
 import parse from "html-react-parser";
 import { FIGO_HISTORY_ARTICLE_LEAD } from "@/constants/articles";
 import { FIGO_HISTORY_ARTICLE_HEADING } from "@/constants/headings";
+import Image from "next/image";
+import { luisFigo } from "@/constants/images";
 
 export default function FigoArticle() {
   return (
     <article className="mx-auto flex w-[80%] flex-col pb-10 text-[22px] lg:w-[60%]">
-      <div className="text-center">
+      <div className="text-center py-6">
         <Heading title={FIGO_HISTORY_ARTICLE_HEADING} HeadingTag="h1" />
+      </div>
+      {/* TODO: Add sizes */}
+      <div className="flex flex-col items-center">
+        <div className="relative aspect-square w-[100%] sm:w-[45%]">
+          <Image
+            fill
+            className="rounded-3xl object-cover pb-4"
+            src={luisFigo.src}
+            alt={luisFigo.alt}
+          />
+        </div>
       </div>
       <Lead text={parse(FIGO_HISTORY_ARTICLE_LEAD)} />
       <Heading title="Wpływ Figo na Barcelonę" HeadingTag="h2" size="md" />

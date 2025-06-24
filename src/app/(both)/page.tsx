@@ -1,10 +1,9 @@
 "use client";
 
+import { LOG_OUT_BUTTON_LABEL } from "@/constants/buttonLabels";
 import { useUser } from "@/hooks/context/useUser";
 import { Button } from "@heroui/react";
 import { toast } from "react-toastify";
-import FigoArticle from "./strefa-wiedzy/components/articles/FigoArticle";
-import { LOG_OUT_BUTTON_LABEL } from "@/constants/buttonLabels";
 
 export default function Page() {
   const { logOut } = useUser();
