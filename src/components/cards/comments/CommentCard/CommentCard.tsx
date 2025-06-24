@@ -17,17 +17,15 @@ export function CommentCard({
   content,
 }: CommentCardProps) {
   return (
-    <Card className="bg-accentColor">
-      <CardHeader>
-        <div className="flex justify-between">
-          <UserChip nick={nick} />
-          <div className="gap-x-2">
-            <BallWithCounterButton count={recommendationsCount} />
-            <CommentDate createdAt={createdAt} />
-          </div>
+    <Card className="w-[60%] bg-accentColor">
+      <CardHeader className="flex justify-between">
+        <UserChip nick={nick} />
+        <div className="flex gap-x-6">
+          <BallWithCounterButton count={recommendationsCount} />
+          <CommentDate createdAt={createdAt} />
         </div>
       </CardHeader>
-      <CardBody>{content}</CardBody>
+      <CardBody className="text-defaultWhite">{content}</CardBody>
     </Card>
   );
 }

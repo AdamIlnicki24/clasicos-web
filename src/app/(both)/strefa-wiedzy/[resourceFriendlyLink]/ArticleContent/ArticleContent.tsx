@@ -50,11 +50,11 @@ export function ArticleContent({
       ) : (
         <NoAccountCard bodyText={YOU_NEED_TO_HAVE_AN_ACCOUNT} />
       )}
-      <div className="rounded-br-3xl rounded-tr-3xl bg-primaryColor pe-12 ps-4">
+      <div className="rounded-br-3xl rounded-tr-3xl bg-primaryColor my-6 pe-12 ps-4">
         <Heading HeadingTag="h2" title={COMMENTS_HEADING} />
       </div>
       {data && data.length > 0 ? (
-        <div className="flex flex-col">
+        <div className="flex flex-col gap-y-4 items-center w-full pb-8">
           {data.map((comment: CommentWithCount) => (
             <CommentCard
               key={comment.uuid}
