@@ -1,10 +1,13 @@
+import { Metadata } from "next";
 import { KnowledgeZoneContent } from "./components/KnowledgeZoneContent/KnowledgeZoneContent";
+import { KNOWLEDGE_ZONE_PAGE_META_DESCRIPTION } from "@/constants/metaDescriptions";
+import { KNOWLEDGE_ZONE_PAGE_HTML_TITLE } from "@/constants/htmlTitles";
+
+export const metadata: Metadata = {
+  title: KNOWLEDGE_ZONE_PAGE_HTML_TITLE,
+  description: KNOWLEDGE_ZONE_PAGE_META_DESCRIPTION,
+};
 
 export default function KnowledgeZonePage() {
-  return (
-    <>
-      <h1>To jest strona z różnymi artykułami</h1>
-      <KnowledgeZoneContent />
-    </>
-  );
+  return <KnowledgeZoneContent />;
 }

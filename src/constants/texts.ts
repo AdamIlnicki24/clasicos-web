@@ -10,3 +10,4 @@ export const FORGOT_PASSWORD = "Zapomniałeś hasła?";
 export const REMIND_PASSWORD = "Przypomnij hasło";
 export const NO_ACCOUNT_YET = "Nie posiadasz konta?";
 export const DO_YOU_HAVE_AN_ACCOUNT = "Masz już konto?";
+export const ENIGMA = "Enigma";
