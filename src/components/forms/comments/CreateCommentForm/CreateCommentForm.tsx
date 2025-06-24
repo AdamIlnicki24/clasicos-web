@@ -65,12 +65,14 @@ export function CreateCommentForm({ onClose }: CreateCommentFormProps) {
       onSubmit={onSubmitHandler}
       validationSchema={createCommentFormSchema}
     >
-      <>
+      <div className="flex flex-col gap-y-8">
         <CommentContentTextarea />
-        <SubmitButton
-          title={isPending ? <Spinner size="md" /> : SUBMIT_FORM_BUTTON_LABEL}
-        />
-      </>
+        <div className="flex justify-center">
+          <SubmitButton
+            title={isPending ? <Spinner size="md" /> : SUBMIT_FORM_BUTTON_LABEL}
+          />
+        </div>
+      </div>
     </Formik>
   );
 }
