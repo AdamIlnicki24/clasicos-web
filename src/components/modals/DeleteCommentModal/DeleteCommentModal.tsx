@@ -35,18 +35,22 @@ export function DeleteCommentModal({
         {(onClose) => (
           <>
             <ModalBody>
-              <p>{DELETE_COMMENT_WARNING}</p>
-              <Button
-                title={YES_BUTTON_LABEL}
-                onPress={onDeleteHandler}
-                color="danger"
-                isLoading={isPending}
-              />
-              <Button
-                title={NO_BUTTON_LABEL}
-                onPress={onClose}
-                color="default"
-              />
+              <p className="py-3 text-center text-defaultBlack">
+                {DELETE_COMMENT_WARNING}
+              </p>
+              <div className="flex justify-center gap-x-4">
+                <Button
+                  className="font-bold"
+                  onPress={onDeleteHandler}
+                  color="danger"
+                  isLoading={isPending}
+                >
+                  {YES_BUTTON_LABEL}
+                </Button>
+                <Button className="font-bold" onPress={onClose}>
+                  {NO_BUTTON_LABEL}
+                </Button>
+              </div>
             </ModalBody>
           </>
         )}

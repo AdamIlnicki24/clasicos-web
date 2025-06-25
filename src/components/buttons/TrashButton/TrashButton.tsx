@@ -10,7 +10,7 @@ export function TrashButton({ ...properties }: ButtonProps) {
       className="pointer-events-auto"
       {...properties}
     >
-      <TrashIcon className="pointer-events-none text-defaultRed" />
+      <TrashIcon className="pointer-events-none" />
     </Button>
   );
 }

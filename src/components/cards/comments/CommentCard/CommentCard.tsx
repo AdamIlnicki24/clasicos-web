@@ -28,7 +28,7 @@ export function CommentCard({
         <UserChip nick={nick} />
         <div className="flex gap-x-6">
           {user?.role === "Admin" && onTrashPress && (
-            <TrashButton color="warning" onPress={onTrashPress} />
+            <TrashButton color="danger" onPress={onTrashPress} />
           )}
           <BallWithCounterButton count={recommendationsCount} />
           <CommentDate createdAt={createdAt} />
