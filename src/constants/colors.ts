@@ -5,5 +5,5 @@ export const colors = {
   defaultWhite: "#FFF",
   defaultBlack: "#000",
   defaultGreen: "#22C55E",
-  textDanger: "#DC3545",
+  defaultRed: "#DC3545",
 };

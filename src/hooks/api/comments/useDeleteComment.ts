@@ -18,9 +18,9 @@ const deleteComment = async (
   return data;
 };
 
-export function useDeleteComment(resourceFriendlyLink: string, uuid: string) {
+export function useDeleteComment(resourceFriendlyLink: string) {
   return useMutation({
-    mutationKey: ["deleteComment", resourceFriendlyLink, uuid],
-    mutationFn: () => deleteComment(resourceFriendlyLink, uuid),
+    mutationKey: ["deleteComment", resourceFriendlyLink],
+    mutationFn: (uuid: string) => deleteComment(resourceFriendlyLink, uuid),
   });
 }

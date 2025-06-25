@@ -6,9 +6,10 @@ import { UserDataCard } from "@/components/cards/NickCard/NickCard";
 import { UpdateMeModal } from "@/components/modals/UpdateMeModal/UpdateMeModal";
 import { UPDATE_ABOUT_ME_DATA_BUTTON_LABEL } from "@/constants/buttonLabels";
 import { YOU_MUST_BE_LOGGED_IN } from "@/constants/errorMessages";
-import { NO_INFORMATION } from "@/constants/texts";
+import { ENIGMA, NO_INFORMATION } from "@/constants/texts";
 import { useGetUserRecommendationsCount } from "@/hooks/api/recommendations/useGetUserRecommendationsCount";
 import { useUser } from "@/hooks/context/useUser";
+import { formatDate } from "@/utils/date";
 import { useDisclosure } from "@heroui/react";
 
 export function MyProfileContent() {
@@ -36,10 +37,6 @@ export function MyProfileContent() {
   console.log("fav player:", favoriteFootballer);
   console.log("User:", user);
 
-  // TODO: Improve fallback below
-  if (!nick || !favoriteClub || !favoriteFootballer)
-    return <span>{NO_INFORMATION}</span>;
-
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   const onSubmitHandler = () => {
@@ -60,13 +57,13 @@ export function MyProfileContent() {
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-[9fr_11fr]">
         <UserDataCard
-          nick={nick}
-          createdAt={createdAt}
+          nick={nick ?? ENIGMA}
+          createdAt={formatDate(createdAt)}
           recommendationsCount={recommendationsCount ?? 0}
         />
         <AboutMeCard
-          favoriteClub={favoriteClub}
-          favoriteFootballer={favoriteFootballer}
+          favoriteClub={favoriteClub ?? NO_INFORMATION}
+          favoriteFootballer={favoriteFootballer ?? NO_INFORMATION}
         />
       </div>
       <UpdateMeModal

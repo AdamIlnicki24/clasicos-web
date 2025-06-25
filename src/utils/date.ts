@@ -6,5 +6,5 @@ dayjs.extend(utc);
 dayjs.extend(timezone);
 
 export function formatDate(date: string): string {
-  return dayjs.utc(date).tz("Europe/Warsaw").format("YYYY-MM-DD - HH:mm");
+  return dayjs.utc(date).tz("Europe/Warsaw").format("YYYY-MM-DD | HH:mm");
 }

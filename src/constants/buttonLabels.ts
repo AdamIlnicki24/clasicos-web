@@ -6,3 +6,5 @@ export const SUBMIT_FORM_BUTTON_LABEL = "Prześlij";
 export const RESET_PASSWORD_BUTTON_LABEL = "Zresetuj hasło";
 export const UPDATE_ABOUT_ME_DATA_BUTTON_LABEL = "Wprowadź zmiany";
 export const LOG_OUT_BUTTON_LABEL = "Wyloguj się";
+export const YES_BUTTON_LABEL = "Tak";
+export const NO_BUTTON_LABEL = "Nie";

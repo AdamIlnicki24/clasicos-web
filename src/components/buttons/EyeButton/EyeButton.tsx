@@ -8,14 +8,15 @@ interface EyeButtonProps extends ButtonProps {
   isPasswordVisible: boolean;
 }
 
+// TODO: Improve this component
+
 export function EyeButton({
   isPasswordVisible,
   ...properties
 }: EyeButtonProps) {
   return (
     <Button
-      className="focus:outline-none"
-      isIconOnly={true}
+      isIconOnly
       variant="light"
       size="sm"
       tabIndex={-1}
