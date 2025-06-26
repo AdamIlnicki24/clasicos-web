@@ -42,6 +42,18 @@ export function ProfileContent() {
   } = useGetUser(uuid as string);
   const { user: me, isUserLoading: isMeLoading } = useUser();
 
+  const { data: recommendationsCount } = useGetUserRecommendationsCount(
+    uuid as string
+  );
+
+  const { mutate: banMutate, isPending: isBanning } = useBanUser(
+    user?.uuid ?? ""
+  );
+
+  const { mutate: unbanMutate, isPending: isUnbanning } = useUnbanUser(
+    user?.uuid ?? ""
+  );
+
   if (isUserLoading || isMeLoading) return <Loading />;
 
   if (!user || isUserError) {
@@ -52,22 +64,12 @@ export function ProfileContent() {
     return <div>{YOU_MUST_BE_LOGGED_IN}</div>;
   }
 
-  const { data: recommendationsCount } = useGetUserRecommendationsCount(
-    uuid as string
-  );
-
   const { visitor, createdAt } = user;
   const { nick, favoriteClub, favoriteFootballer } = visitor;
 
   const isAdmin = me.role === "Admin";
   const isMe = me.uuid === user.uuid;
   const isUserBanned = Boolean(visitor.bannedAt);
-
-  const { mutate: banMutate, isPending: isBanning } = useBanUser(user.uuid);
-
-  const { mutate: unbanMutate, isPending: isUnbanning } = useUnbanUser(
-    user.uuid
-  );
 
   const onBanHandler = () => {
     banMutate(undefined, {
