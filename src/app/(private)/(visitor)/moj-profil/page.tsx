@@ -1,5 +1,5 @@
-import { MyProfileContent } from "./MyProfileContent/MyProfileContent";
+import { ProfileContent } from "./ProfileContent/ProfileContent";
 
 export default function MyProfilePage() {
-  return <MyProfileContent />;
+  return <ProfileContent />;
 }

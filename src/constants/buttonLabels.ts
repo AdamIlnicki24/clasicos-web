@@ -8,3 +8,5 @@ export const UPDATE_ABOUT_ME_DATA_BUTTON_LABEL = "Wprowadź zmiany";
 export const LOG_OUT_BUTTON_LABEL = "Wyloguj się";
 export const YES_BUTTON_LABEL = "Tak";
 export const NO_BUTTON_LABEL = "Nie";
+export const BAN_BUTTON_LABEL = "Zbanuj";
+export const UNBAN_BUTTON_LABEL = "Odbanuj";
