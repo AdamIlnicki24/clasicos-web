@@ -27,7 +27,7 @@ export function DefendersSelect() {
       {defenders.map((defender: Player) => (
         <SelectItem
           key={defender.uuid}
-        >{`${defender.name ?? ""} ${defender.surname}`}</SelectItem>
+        >{`${defender.name ? defender.name + " " : ""}${defender.surname}`}</SelectItem>
       ))}
     </Select>
   );

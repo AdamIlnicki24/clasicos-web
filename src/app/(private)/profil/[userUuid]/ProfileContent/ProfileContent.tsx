@@ -16,6 +16,7 @@ import {
   USER_HAS_BEEN_BANNED_TOAST,
   USER_HAS_BEEN_UNBANNED_TOAST,
 } from "@/constants/toasts";
+import { PROFILE_URL, TEAM_URL } from "@/constants/urls";
 import { useGetUserRecommendationsCount } from "@/hooks/api/recommendations/useGetUserRecommendationsCount";
 import { useBanUser } from "@/hooks/api/users/useBanUser";
 import { useGetUser } from "@/hooks/api/users/useGetUser";
@@ -25,13 +26,15 @@ import { ApiError } from "@/types/apiError";
 import { formatDate } from "@/utils/date";
 import { Spinner, useDisclosure } from "@heroui/react";
 import { useQueryClient } from "@tanstack/react-query";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 
 export function ProfileContent() {
   const queryClient = useQueryClient();
 
-  const { uuid } = useParams();
+  const { userUuid } = useParams();
+
+  const router = useRouter();
 
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
@@ -39,11 +42,11 @@ export function ProfileContent() {
     data: user,
     isLoading: isUserLoading,
     isError: isUserError,
-  } = useGetUser(uuid as string);
+  } = useGetUser(userUuid as string);
   const { user: me, isUserLoading: isMeLoading } = useUser();
 
   const { data: recommendationsCount } = useGetUserRecommendationsCount(
-    uuid as string
+    userUuid as string
   );
 
   const { mutate: banMutate, isPending: isBanning } = useBanUser(
@@ -64,12 +67,16 @@ export function ProfileContent() {
     return <div>{YOU_MUST_BE_LOGGED_IN}</div>;
   }
 
-  const { visitor, createdAt } = user;
+  const { visitor, createdAt, team } = user;
   const { nick, favoriteClub, favoriteFootballer } = visitor;
 
   const isAdmin = me.role === "Admin";
   const isMe = me.uuid === user.uuid;
   const isUserBanned = Boolean(visitor.bannedAt);
+
+  const checkOutTeam = () => {
+    router.push(`${PROFILE_URL}/${userUuid}/${TEAM_URL}/${team?.uuid}`);
+  };
 
   const onBanHandler = () => {
     banMutate(undefined, {
@@ -148,6 +155,7 @@ export function ProfileContent() {
         <AboutMeCard
           favoriteClub={favoriteClub ?? NO_INFORMATION}
           favoriteFootballer={favoriteFootballer ?? NO_INFORMATION}
+          checkOutTeam={checkOutTeam}
         />
       </div>
       <UpdateMeModal

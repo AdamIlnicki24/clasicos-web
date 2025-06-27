@@ -27,7 +27,7 @@ export function GoalkeepersSelect() {
       {goalkeepers.map((goalkeeper: Player) => (
         <SelectItem
           key={goalkeeper.uuid}
-        >{`${goalkeeper.name ?? ""} ${goalkeeper.surname}`}</SelectItem>
+        >{`${goalkeeper.name ? goalkeeper.name + " " : ""}${goalkeeper.surname}`}</SelectItem>
       ))}
     </Select>
   );

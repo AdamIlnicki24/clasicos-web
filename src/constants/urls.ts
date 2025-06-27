@@ -4,7 +4,8 @@ export const FORGOT_PASSWORD_URL = "/zapomnialem-hasla";
 export const REGISTER_URL = "/zarejestruj-sie";
 export const KNOWLEDGE_ZONE_URL = "/strefa-wiedzy";
 export const USERS_URL = "/uzytkownicy";
-export const MY_PROFILE_URL = "/moj-profil";
+export const PROFILE_URL = "/profil";
+export const TEAM_URL = "/druzyna";
 export const PRIVACY_POLICY_URL = "/polityka-prywatnosci";
 export const FIGO_HISTORY_URL = `${KNOWLEDGE_ZONE_URL}/jak-luis-figo-przeszedl-z-barcelony-do-realu-i-odmienil-el-clasico`;
 

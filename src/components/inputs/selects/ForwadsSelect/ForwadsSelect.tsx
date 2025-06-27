@@ -27,7 +27,7 @@ export function ForwardsSelect() {
       {forwards.map((forward: Player) => (
         <SelectItem
           key={forward.uuid}
-        >{`${forward.name ?? ""} ${forward.surname}`}</SelectItem>
+        >{`${forward.name ? forward.name + " " : ""}${forward.surname}`}</SelectItem>
       ))}
     </Select>
   );

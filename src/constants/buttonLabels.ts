@@ -10,3 +10,6 @@ export const YES_BUTTON_LABEL = "Tak";
 export const NO_BUTTON_LABEL = "Nie";
 export const BAN_BUTTON_LABEL = "Zbanuj";
 export const UNBAN_BUTTON_LABEL = "Odbanuj";
+export const CREATE_TEAM_BUTTON_LABEL = "Stwórz drużynę";
+export const UPDATE_TEAM_BUTTON_LABEL = "Edytuj drużynę";
+export const CHECK_OUT_TEAM_BUTTON_LABEL = "Zobacz drużynę";
