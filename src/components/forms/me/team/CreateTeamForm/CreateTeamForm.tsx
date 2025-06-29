@@ -73,9 +73,12 @@ export function CreateTeamForm({ onClose }: CreateTeamFormProps) {
         <DefendersSelect />
         <MidfieldersSelect />
         <ForwardsSelect />
-        <SubmitButton
-          title={isPending ? <Spinner size="md" /> : SUBMIT_FORM_BUTTON_LABEL}
-        />
+        <div className="flex justify-center py-4">
+          <SubmitButton
+            title={isPending ? <Spinner size="md" /> : SUBMIT_FORM_BUTTON_LABEL}
+            mode="secondary"
+          />
+        </div>
       </div>
     </Formik>
   );

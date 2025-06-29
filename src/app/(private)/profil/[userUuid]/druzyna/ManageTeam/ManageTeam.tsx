@@ -23,17 +23,23 @@ export function ManageTeam() {
   if (isLoading) return <Loading />;
 
   return (
-    <>
-      <Heading HeadingTag="h1" title={YOUR_TEAM_HEADING} />;
-      <Heading
-        HeadingTag="h2"
-        title={team ? UPDATE_TEAM_HEADING : CREATE_TEAM_HEADING}
-      />
-      <Button
-        title={team ? UPDATE_TEAM_BUTTON_LABEL : CREATE_TEAM_BUTTON_LABEL}
-        onPress={onOpen}
-        mode="secondary"
-      />
+    <div className="min-h-svh flex flex-col items-center">
+      <div className="flex flex-col items-center justify-center gap-y-3">
+        <Heading HeadingTag="h1" title={YOUR_TEAM_HEADING} />
+        <Heading
+          HeadingTag="h2"
+          title={team ? UPDATE_TEAM_HEADING : CREATE_TEAM_HEADING}
+          size="md"
+        />
+        <Button
+          title={team ? UPDATE_TEAM_BUTTON_LABEL : CREATE_TEAM_BUTTON_LABEL}
+          onPress={onOpen}
+          mode="secondary"
+        />
+      </div>
+      <div className="flex items-center justify-center pt-8">
+        <p>Po stworzeniu drużyny, pojawi się ona poniżej</p>
+      </div>
       {team ? (
         <UpdateTeamModal
           isOpen={isOpen}
@@ -43,6 +49,6 @@ export function ManageTeam() {
       ) : (
         <CreateTeamModal isOpen={isOpen} onOpenChange={onOpenChange} />
       )}
-    </>
+    </div>
   );
 }
