@@ -4,11 +4,12 @@ import { Player } from "@/types/player";
 import { useGetPlayers } from "@/hooks/api/players/useGetPlayers";
 import { useFormikContext } from "formik";
 import { GOALKEEPERS_LABEL } from "@/constants/labels";
+import { GOALKEEPERS_LENGTH } from "@/constants/lengths";
 
 export function GoalkeepersSelect() {
   const { data: goalkeepers = [] } = useGetPlayers("Goalkeeper");
 
-  const { handleChange, values, errors, touched } = useFormikContext<{
+  const { values, errors, touched, setFieldValue } = useFormikContext<{
     goalkeepers: string[];
   }>();
 
@@ -17,17 +18,20 @@ export function GoalkeepersSelect() {
       name="goalkeepers"
       label={GOALKEEPERS_LABEL}
       labelPlacement="outside"
-      isInvalid={touched.goalkeepers && !!errors.goalkeepers}
+      isInvalid={!!(touched.goalkeepers && errors.goalkeepers)}
       errorMessage={touched.goalkeepers && errors.goalkeepers}
       isRequired
-      onChange={handleChange}
-      selectedKeys={values.goalkeepers || []}
-      multiple
+      onSelectionChange={(keys) => {
+        const goalkeepersArray = Array.from(keys) as string[];
+        if (goalkeepersArray.length <= GOALKEEPERS_LENGTH)
+          setFieldValue("goalkeepers", goalkeepersArray);
+      }}
+      selectedKeys={new Set(values.goalkeepers)}
     >
-      {goalkeepers.map((goalkeeper: Player) => (
+      {goalkeepers.map((defender: Player) => (
         <SelectItem
-          key={goalkeeper.uuid}
-        >{`${goalkeeper.name ? goalkeeper.name + " " : ""}${goalkeeper.surname}`}</SelectItem>
+          key={defender.uuid}
+        >{`${defender.name ? defender.name + " " : ""}${defender.surname}`}</SelectItem>
       ))}
     </Select>
   );

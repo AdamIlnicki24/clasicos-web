@@ -4,11 +4,12 @@ import { Player } from "@/types/player";
 import { useGetPlayers } from "@/hooks/api/players/useGetPlayers";
 import { useFormikContext } from "formik";
 import { FORWARDS_LABEL } from "@/constants/labels";
+import { FORWARDS_LENGTH } from "@/constants/lengths";
 
 export function ForwardsSelect() {
   const { data: forwards = [] } = useGetPlayers("Forward");
 
-  const { handleChange, values, errors, touched } = useFormikContext<{
+  const { values, errors, touched, setFieldValue } = useFormikContext<{
     forwards: string[];
   }>();
 
@@ -17,12 +18,16 @@ export function ForwardsSelect() {
       name="forwards"
       label={FORWARDS_LABEL}
       labelPlacement="outside"
-      isInvalid={touched.forwards && !!errors.forwards}
+      isInvalid={!!(touched.forwards && errors.forwards)}
       errorMessage={touched.forwards && errors.forwards}
       isRequired
-      onChange={handleChange}
-      selectedKeys={values.forwards || []}
-      multiple
+      onSelectionChange={(keys) => {
+        const forwardsArray = Array.from(keys) as string[];
+        if (forwardsArray.length <= FORWARDS_LENGTH)
+          setFieldValue("forwards", forwardsArray);
+      }}
+      selectedKeys={new Set(values.forwards)}
+      selectionMode="multiple"
     >
       {forwards.map((forward: Player) => (
         <SelectItem
