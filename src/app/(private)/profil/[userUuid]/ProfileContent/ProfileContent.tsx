@@ -75,7 +75,7 @@ export function ProfileContent() {
   const isUserBanned = Boolean(visitor.bannedAt);
 
   const checkOutTeam = () => {
-    router.push(`${PROFILE_URL}/${userUuid}/${TEAM_URL}/${team?.uuid}`);
+    router.push(`${PROFILE_URL}/${userUuid}/${TEAM_URL}`);
   };
 
   const onBanHandler = () => {
