@@ -9,15 +9,17 @@ import { SUBMIT_FORM_BUTTON_LABEL } from "@/constants/buttonLabels";
 import { TEAM_HAS_BEEN_UPDATED_TOAST } from "@/constants/toasts";
 import { useUpdateMyTeam } from "@/hooks/api/team/me/useUpdateMyTeam";
 import { ApiError } from "@/types/apiError";
-import { TeamPlayer } from "@/types/teamPlayer";
 import { Spinner } from "@heroui/react";
 import { useQueryClient } from "@tanstack/react-query";
 import { Formik } from "formik";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import {
+  initialValues,
   UpdateTeamFormData,
   updateTeamFormSchema,
 } from "./updateTeamFormSchema";
+import { TeamPlayer } from "@/types/teamPlayer";
 
 interface UpdateTeamFormProps {
   // TODO: Think about the name of the prop
@@ -31,26 +33,33 @@ export function UpdateTeamForm({ onClose, teamPlayers }: UpdateTeamFormProps) {
   //   const midfieldersRef = useRef<HTMLSelectElement>(null);
   //   const forwardsRef = useRef<HTMLSelectElement>(null);
 
+  const [dynamicInitialValues, setDynamicInitialValues] =
+    useState<UpdateTeamFormData>(initialValues);
+
+  useEffect(() => {
+    setDynamicInitialValues({
+      goalkeepers: teamPlayers
+        .filter((teamPlayer) => teamPlayer.player.position === "Goalkeeper")
+        .map((teamPlayer) => teamPlayer.player.uuid),
+      defenders: teamPlayers
+        .filter((teamPlayer) => teamPlayer.player.position === "Defender")
+        .map((teamPlayer) => teamPlayer.player.uuid),
+      midfielders: teamPlayers
+        .filter((teamPlayer) => teamPlayer.player.position === "Midfielder")
+        .map((teamPlayer) => teamPlayer.player.uuid),
+      forwards: teamPlayers
+        .filter((teamPlayer) => teamPlayer.player.position === "Forward")
+        .map((teamPlayer) => teamPlayer.player.uuid),
+    });
+  }, [teamPlayers]);
+
+  console.log("Current values:", dynamicInitialValues);
+
   const queryClient = useQueryClient();
 
   // TODO: Think about proper usage of getPlayers hook
 
   const { mutate, isPending } = useUpdateMyTeam();
-
-  const initialValues: UpdateTeamFormData = {
-    goalkeepers: teamPlayers
-      .filter((teamPlayer) => teamPlayer.player.position === "Goalkeeper")
-      .map((teamPlayer) => teamPlayer.player.uuid),
-    defenders: teamPlayers
-      .filter((teamPlayer) => teamPlayer.player.position === "Defender")
-      .map((teamPlayer) => teamPlayer.player.uuid),
-    midfielders: teamPlayers
-      .filter((teamPlayer) => teamPlayer.player.position === "Midfielder")
-      .map((teamPlayer) => teamPlayer.player.uuid),
-    forwards: teamPlayers
-      .filter((teamPlayer) => teamPlayer.player.position === "Forward")
-      .map((teamPlayer) => teamPlayer.player.uuid),
-  };
 
   const onSubmitHandler = (values: UpdateTeamFormData) => {
     if (process.env.NODE_ENV === "development") {
@@ -79,9 +88,10 @@ export function UpdateTeamForm({ onClose, teamPlayers }: UpdateTeamFormProps) {
 
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={dynamicInitialValues}
       onSubmit={onSubmitHandler}
       validationSchema={updateTeamFormSchema}
+      enableReinitialize
     >
       <>
         <GoalkeepersSelect />
@@ -90,6 +100,7 @@ export function UpdateTeamForm({ onClose, teamPlayers }: UpdateTeamFormProps) {
         <ForwardsSelect />
         <SubmitButton
           title={isPending ? <Spinner size="md" /> : SUBMIT_FORM_BUTTON_LABEL}
+          mode="secondary"
         />
       </>
     </Formik>
