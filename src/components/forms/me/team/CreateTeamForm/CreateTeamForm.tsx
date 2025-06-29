@@ -68,7 +68,7 @@ export function CreateTeamForm({ onClose }: CreateTeamFormProps) {
       onSubmit={onSubmitHandler}
       validationSchema={createTeamFormSchema}
     >
-      <>
+      <div className="flex flex-col gap-y-4">
         <GoalkeepersSelect />
         <DefendersSelect />
         <MidfieldersSelect />
@@ -76,7 +76,7 @@ export function CreateTeamForm({ onClose }: CreateTeamFormProps) {
         <SubmitButton
           title={isPending ? <Spinner size="md" /> : SUBMIT_FORM_BUTTON_LABEL}
         />
-      </>
+      </div>
     </Formik>
   );
 }

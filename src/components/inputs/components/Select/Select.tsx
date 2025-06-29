@@ -16,13 +16,13 @@ export function Select({ ...properties }: SelectProps) {
         listboxWrapper: "",
         mainWrapper: "",
         popoverContent: "",
-        selectorIcon: "",
+        selectorIcon: "text-defaultBlack",
         spinner: "",
         errorMessage: "text-[1rem]",
-        label: "text-[1rem]",
+        label: "text-[1.1rem]",
         trigger: "border-2 border-primaryColor",
         listbox: "text-defaultBlack",
-        value: "text-defaultBlack",
+        value: "text-defaultBlack text-[1.2rem]",
       }}
       {...properties}
     >
