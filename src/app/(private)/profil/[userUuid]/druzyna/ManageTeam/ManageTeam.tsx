@@ -74,12 +74,15 @@ export function ManageTeam() {
       <div className="flex items-center justify-center pt-8">
         {!data && <p>Po stworzeniu drużyny, pojawi się ona poniżej</p>}
       </div>
-      <UpdateTeamModal
-        isOpen={isOpen}
-        onOpenChange={onOpenChange}
-        teamPlayers={data?.teamPlayers ?? []}
-      />
-      <CreateTeamModal isOpen={isOpen} onOpenChange={onOpenChange} />
+      {data ? (
+        <UpdateTeamModal
+          isOpen={isOpen}
+          onOpenChange={onOpenChange}
+          teamPlayers={data?.teamPlayers ?? []}
+        />
+      ) : (
+        <CreateTeamModal isOpen={isOpen} onOpenChange={onOpenChange} />
+      )}
     </div>
   );
 }
