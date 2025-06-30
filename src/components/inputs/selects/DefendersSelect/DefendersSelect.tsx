@@ -9,10 +9,9 @@ import { DEFENDERS_LENGTH } from "@/constants/lengths";
 export function DefendersSelect() {
   const { data: defenders = [] } = useGetPlayers("Defender");
 
-  const { values, errors, touched, setFieldValue } =
-    useFormikContext<{
-      defenders: string[];
-    }>();
+  const { values, errors, touched, setFieldValue } = useFormikContext<{
+    defenders: string[];
+  }>();
 
   return (
     <Select

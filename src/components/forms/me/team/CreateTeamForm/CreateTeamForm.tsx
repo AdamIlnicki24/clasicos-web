@@ -19,6 +19,7 @@ import { DefendersSelect } from "@/components/inputs/selects/DefendersSelect/Def
 import { ForwardsSelect } from "@/components/inputs/selects/ForwadsSelect/ForwadsSelect";
 import { GoalkeepersSelect } from "@/components/inputs/selects/GoalkeepersSelect/GoalkeepersSelect";
 import { MidfieldersSelect } from "@/components/inputs/selects/MidfieldersSelect/MidfieldersSelect";
+import { useTeamStore } from "@/store/useTeamStore";
 
 interface CreateTeamFormProps {
   // TODO: Think about the name of the prop
@@ -30,6 +31,9 @@ export function CreateTeamForm({ onClose }: CreateTeamFormProps) {
   //   const defendersRef = useRef<HTMLSelectElement>(null);
   //   const midfieldersRef = useRef<HTMLSelectElement>(null);
   //   const forwardsRef = useRef<HTMLSelectElement>(null);
+
+  const { setTeam, goalkeepers, defenders, midfielders, forwards } =
+    useTeamStore();
 
   const queryClient = useQueryClient();
 
@@ -44,6 +48,7 @@ export function CreateTeamForm({ onClose }: CreateTeamFormProps) {
 
     mutate(values, {
       onSuccess: async () => {
+        setTeam(values);
         await queryClient.invalidateQueries({
           // TODO: Think about key below
           queryKey: ["getMyTeam"],
@@ -64,9 +69,16 @@ export function CreateTeamForm({ onClose }: CreateTeamFormProps) {
 
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={{
+        ...initialValues,
+        goalkeepers,
+        defenders,
+        midfielders,
+        forwards,
+      }}
       onSubmit={onSubmitHandler}
       validationSchema={createTeamFormSchema}
+      enableReinitialize
     >
       <div className="flex flex-col gap-y-4">
         <GoalkeepersSelect />

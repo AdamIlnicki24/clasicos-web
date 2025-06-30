@@ -8,18 +8,19 @@ import { MidfieldersSelect } from "@/components/inputs/selects/MidfieldersSelect
 import { SUBMIT_FORM_BUTTON_LABEL } from "@/constants/buttonLabels";
 import { TEAM_HAS_BEEN_UPDATED_TOAST } from "@/constants/toasts";
 import { useUpdateMyTeam } from "@/hooks/api/team/me/useUpdateMyTeam";
+import { useTeamStore } from "@/store/useTeamStore";
 import { ApiError } from "@/types/apiError";
+import { TeamPlayer } from "@/types/teamPlayer";
 import { Spinner } from "@heroui/react";
 import { useQueryClient } from "@tanstack/react-query";
 import { Formik } from "formik";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { toast } from "react-toastify";
 import {
   initialValues,
   UpdateTeamFormData,
   updateTeamFormSchema,
 } from "./updateTeamFormSchema";
-import { TeamPlayer } from "@/types/teamPlayer";
 
 interface UpdateTeamFormProps {
   // TODO: Think about the name of the prop
@@ -33,27 +34,33 @@ export function UpdateTeamForm({ onClose, teamPlayers }: UpdateTeamFormProps) {
   //   const midfieldersRef = useRef<HTMLSelectElement>(null);
   //   const forwardsRef = useRef<HTMLSelectElement>(null);
 
-  const [dynamicInitialValues, setDynamicInitialValues] =
-    useState<UpdateTeamFormData>(initialValues);
+  const { goalkeepers, defenders, midfielders, forwards, setTeam } =
+    useTeamStore();
 
   useEffect(() => {
-    setDynamicInitialValues({
-      goalkeepers: teamPlayers
-        .filter((teamPlayer) => teamPlayer.player.position === "Goalkeeper")
-        .map((teamPlayer) => teamPlayer.player.uuid),
-      defenders: teamPlayers
-        .filter((teamPlayer) => teamPlayer.player.position === "Defender")
-        .map((teamPlayer) => teamPlayer.player.uuid),
-      midfielders: teamPlayers
-        .filter((teamPlayer) => teamPlayer.player.position === "Midfielder")
-        .map((teamPlayer) => teamPlayer.player.uuid),
-      forwards: teamPlayers
-        .filter((teamPlayer) => teamPlayer.player.position === "Forward")
-        .map((teamPlayer) => teamPlayer.player.uuid),
-    });
-  }, [teamPlayers]);
-
-  console.log("Current values:", dynamicInitialValues);
+    if (
+      goalkeepers.length === 0 &&
+      defenders.length === 0 &&
+      midfielders.length === 0 &&
+      forwards.length === 0
+    ) {
+      const team = {
+        goalkeepers: teamPlayers
+          .filter((teamPlayer) => teamPlayer.player.position === "Goalkeeper")
+          .map((teamPlayer) => teamPlayer.player.uuid),
+        defenders: teamPlayers
+          .filter((teamPlayer) => teamPlayer.player.position === "Defender")
+          .map((teamPlayer) => teamPlayer.player.uuid),
+        midfielders: teamPlayers
+          .filter((teamPlayer) => teamPlayer.player.position === "Midfielder")
+          .map((teamPlayer) => teamPlayer.player.uuid),
+        forwards: teamPlayers
+          .filter((teamPlayer) => teamPlayer.player.position === "Forward")
+          .map((teamPlayer) => teamPlayer.player.uuid),
+      };
+      setTeam(team);
+    }
+  }, [teamPlayers, goalkeepers, defenders, midfielders, forwards]);
 
   const queryClient = useQueryClient();
 
@@ -88,7 +95,13 @@ export function UpdateTeamForm({ onClose, teamPlayers }: UpdateTeamFormProps) {
 
   return (
     <Formik
-      initialValues={dynamicInitialValues}
+      initialValues={{
+        ...initialValues,
+        goalkeepers,
+        defenders,
+        midfielders,
+        forwards,
+      }}
       onSubmit={onSubmitHandler}
       validationSchema={updateTeamFormSchema}
       enableReinitialize

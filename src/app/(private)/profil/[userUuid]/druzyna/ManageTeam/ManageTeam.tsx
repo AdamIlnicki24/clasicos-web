@@ -13,12 +13,36 @@ import {
   YOUR_TEAM_HEADING,
 } from "@/constants/headings";
 import { useGetMyTeam } from "@/hooks/api/team/me/useGetMyTeam";
+import { useTeamStore } from "@/store/useTeamStore";
 import { useDisclosure } from "@heroui/react";
+import { useEffect } from "react";
 
 export function ManageTeam() {
-  const { data: team, isLoading } = useGetMyTeam();
+  const { data, isLoading } = useGetMyTeam();
 
-  console.log("Team:", team);
+  const setTeam = useTeamStore((state) => state.setTeam);
+
+  console.log("Team:", data);
+
+  useEffect(() => {
+    if (data) {
+      const team = {
+        goalkeepers: data.teamPlayers
+          .filter((teamPlayer) => teamPlayer.player.position === "Goalkeeper")
+          .map((teamPlayer) => teamPlayer.player.uuid),
+        defenders: data.teamPlayers
+          .filter((teamPlayer) => teamPlayer.player.position === "Defender")
+          .map((teamPlayer) => teamPlayer.player.uuid),
+        midfielders: data.teamPlayers
+          .filter((teamPlayer) => teamPlayer.player.position === "Midfielder")
+          .map((teamPlayer) => teamPlayer.player.uuid),
+        forwards: data.teamPlayers
+          .filter((teamPlayer) => teamPlayer.player.position === "Forward")
+          .map((teamPlayer) => teamPlayer.player.uuid),
+      };
+      setTeam(team);
+    }
+  }, [data]);
 
   const { onOpen, isOpen, onOpenChange } = useDisclosure();
 
@@ -30,10 +54,10 @@ export function ManageTeam() {
         <Heading HeadingTag="h1" title={YOUR_TEAM_HEADING} />
         <Heading
           HeadingTag="h2"
-          title={team ? UPDATE_TEAM_HEADING : CREATE_TEAM_HEADING}
+          title={data ? UPDATE_TEAM_HEADING : CREATE_TEAM_HEADING}
           size="md"
         />
-        {team ? (
+        {data ? (
           <Button
             title={UPDATE_TEAM_BUTTON_LABEL}
             onPress={onOpen}
@@ -48,12 +72,12 @@ export function ManageTeam() {
         )}
       </div>
       <div className="flex items-center justify-center pt-8">
-        {!team && <p>Po stworzeniu drużyny, pojawi się ona poniżej</p>}
+        {!data && <p>Po stworzeniu drużyny, pojawi się ona poniżej</p>}
       </div>
       <UpdateTeamModal
         isOpen={isOpen}
         onOpenChange={onOpenChange}
-        teamPlayers={team?.teamPlayers ?? []}
+        teamPlayers={data?.teamPlayers ?? []}
       />
       <CreateTeamModal isOpen={isOpen} onOpenChange={onOpenChange} />
     </div>
