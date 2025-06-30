@@ -1,8 +1,10 @@
+import { ReactNode } from "react";
+
 interface PitchBoardProps {
-  goalkeepers: string[];
-  defenders: string[];
-  midfielders: string[];
-  forwards: string[];
+  goalkeepers: ReactNode[];
+  defenders: ReactNode[];
+  midfielders: ReactNode[];
+  forwards: ReactNode[];
 }
 
 export function PitchBoard({

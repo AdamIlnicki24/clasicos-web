@@ -10,10 +10,7 @@ export function PlayerTile({ name, surname }: PlayerTileProps) {
   return (
     <div className="border-1 border-defaultWhite bg-transparent">
       <Player color={colors.defaultWhite} />
-      <p>
-        {name && <span>{name}</span>}
-        <span>{surname}</span>
-      </p>
+      <p>{`${name ? name + " " : ""}${surname}`}</p>
     </div>
   );
 }

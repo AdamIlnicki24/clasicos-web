@@ -30,3 +30,5 @@ export const INVALID_EMAIL_ADDRESS_ERROR_MESSAGE =
 export const EMAIL_HAS_NOT_BEEN_SENT_ERROR_MESSAGE =
   "Nie udało się wysłać maila. Spróbuj ponownie później.";
 export const YOU_MUST_BE_LOGGED_IN = "Nie jesteś zalogowany.";
+export const TEAM_CANNOT_BE_LOADED_ERROR_MESSAGE =
+  "Nie udało się załadować drużyny.";
