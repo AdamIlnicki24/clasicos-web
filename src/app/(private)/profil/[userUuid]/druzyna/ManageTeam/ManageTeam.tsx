@@ -48,7 +48,7 @@ export function ManageTeam() {
         )}
       </div>
       <div className="flex items-center justify-center pt-8">
-        <p>Po stworzeniu drużyny, pojawi się ona poniżej</p>
+        {!team && <p>Po stworzeniu drużyny, pojawi się ona poniżej</p>}
       </div>
       <UpdateTeamModal
         isOpen={isOpen}
