@@ -6,4 +6,5 @@ export const colors = {
   defaultBlack: "#000",
   defaultGreen: "#22C55E",
   defaultRed: "#DC3545",
+  linkColor: "#6580D9",
 };

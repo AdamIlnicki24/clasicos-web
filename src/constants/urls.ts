@@ -3,6 +3,7 @@ export const LOG_IN_URL = "/zaloguj-sie";
 export const FORGOT_PASSWORD_URL = "/zapomnialem-hasla";
 export const REGISTER_URL = "/zarejestruj-sie";
 export const KNOWLEDGE_ZONE_URL = "/strefa-wiedzy";
+export const FORUM_URL = "/forum";
 export const USERS_URL = "/uzytkownicy";
 export const PROFILE_URL = "/profil";
 export const TEAM_URL = "/druzyna";
