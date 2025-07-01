@@ -19,8 +19,6 @@ import { revalidatePath } from "next/cache";
 import nodemailer from "nodemailer";
 import Mail from "nodemailer/lib/mailer";
 
-// TODO: Create email
-
 interface SuggestAddingPlayerEmailFormData extends SuggestAddingPlayerFormData {
   email: string;
 }
@@ -94,9 +92,6 @@ const generateSuggestAddingPlayerEmailToVisitorHTML = ({
       <h3>Twoja wiadomość:</h3>
       <p style="font-size: 1.2rem; border: 1px solid #000; border-radius: 2.5rem; padding: 16px">
       ${message}
-    </p>
-    <p style="font-size: 1.2rem; padding-top: 8px; padding-bottom: 8px">
-      Odpowiemy tak szybko, jak tylko możliwe.
     </p>
    <h3 style="margin-bottom: 0; font-weight: 400">Pozdrawiamy</h3>
     <h3 style="margin-top: 5px; font-weight: 400">Zespół Industrial Technical Service</h3>
