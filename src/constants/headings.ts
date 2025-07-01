@@ -11,3 +11,4 @@ export const CREATE_TEAM_HEADING =
   "Wybierz jedenastkę najlepszych piłkarzy Klasyków!";
 export const UPDATE_TEAM_HEADING = "Edytuj swoją drużynę";
 export const TEAM_HEADING = "Drużyna";
+export const USERS_TABLE_HEADING = "Tabela użytkowników";

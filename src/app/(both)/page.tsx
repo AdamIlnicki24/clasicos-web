@@ -15,7 +15,7 @@ import { toast } from "react-toastify";
 import Ball from "@/assets/icons/ball.svg";
 
 export default function Page() {
-  const { logOut } = useUser();
+  const { logOut, user } = useUser();
 
   const router = useRouter();
 
@@ -45,7 +45,7 @@ export default function Page() {
           fanatykami, a także stworzysz swoją jedenastkę najlepszych piłkarzy w
           historii Klasyków.
         </p>
-        <div className="flex items-center gap-x-4 py-6">
+        {!user && <div className="flex items-center gap-x-4 py-6">
           <Button
             onPress={() => pushToPublicPage(LOG_IN_URL)}
             title={LOG_IN_BUTTON_LABEL}
@@ -55,7 +55,7 @@ export default function Page() {
             onPress={() => pushToPublicPage(REGISTER_URL)}
             title={REGISTER_BUTTON_LABEL}
           />
-        </div>
+        </div>}
         <div className="space-y-4">
           <p>
             Zapraszamy również do naszej{" "}

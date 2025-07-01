@@ -1,6 +1,6 @@
 import { BallWithCounterButton } from "@/components/buttons/BallWithCounterButton/BallWithCounterButton";
 import { TrashButton } from "@/components/buttons/TrashButton/TrashButton";
-import { UserChip } from "@/components/chips/UserChip";
+import { UserChip } from "@/components/chips/UserChip/UserChip";
 import { User } from "@/types/user";
 import { Card, CardBody, CardHeader, useDisclosure } from "@heroui/react";
 import { CommentDate } from "../components/CommentDate/CommentDate";
