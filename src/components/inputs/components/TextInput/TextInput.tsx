@@ -53,6 +53,7 @@ export function TextInput({
         }}
         size="lg"
         onChange={handleInputChange}
+        // TODO: Think about using labelPlacement as prop
         labelPlacement="inside"
         variant="faded"
         {...properties}

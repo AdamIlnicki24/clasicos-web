@@ -8,11 +8,12 @@ import { useParams } from "next/navigation";
 import { useGetUser } from "@/hooks/api/users/useGetUser";
 import { YOU_MUST_BE_LOGGED_IN } from "@/constants/errorMessages";
 import { Link, useDisclosure } from "@heroui/react";
+import { SuggestAddingPlayerModal } from "@/components/modals/SuggestAddingPlayerModal/SuggestAddingPlayerModal";
 
 export function TeamContent() {
   const { userUuid } = useParams();
 
-  const { onOpen } = useDisclosure();
+  const { onOpen, isOpen, onOpenChange } = useDisclosure();
 
   const {
     data: user,
@@ -37,7 +38,7 @@ export function TeamContent() {
   return (
     <>
       {isMe ? <ManageTeam /> : <GetTeam />}
-      <div className="pb-16 ps-6 text-[1.5rem] flex justify-center">
+      <div className="flex justify-center pb-16 ps-6 text-[1.5rem]">
         <p>
           <Link
             className="text-[1.5rem] text-linkColor"
@@ -49,6 +50,7 @@ export function TeamContent() {
           , aby zasugerować dodanie piłkarza do bazy.
         </p>
       </div>
+      <SuggestAddingPlayerModal isOpen={isOpen} onOpenChange={onOpenChange} />
     </>
   );
 }

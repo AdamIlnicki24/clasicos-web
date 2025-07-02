@@ -26,16 +26,18 @@ export function Textarea({ isCounterShown, ...properties }: TextareaProps) {
     }
   };
 
+  // TODO: Improve input abd textarea styling
+
   return (
     <div className="relative">
       <HeroUITextarea
         classNames={{
           label:
-            "text-[1.1rem] text-defaultWhite ps-2 group-data-[filled-within=true]:text-defaultWhite font-bold",
+            "text-[1.1rem] text-defaultBlack ps-2 group-data-[filled-within=true]:text-defaultBlack",
           input:
             "text-[1.2rem] leading-none text-defaultBlack group-data-[has-value=true]:text-defaultBlack",
           errorMessage: "text-[1rem] font-bold",
-          inputWrapper: "text-defaultWhite border-2 border-primaryColor",
+          inputWrapper: "text-defaultBlack border-2 border-primaryColor",
         }}
         size="lg"
         labelPlacement="outside"
@@ -44,7 +46,7 @@ export function Textarea({ isCounterShown, ...properties }: TextareaProps) {
         {...properties}
       />
       {isCounterShown && maxLength && (
-        <div className="absolute right-0 top-0 pe-3 text-end text-[0.8rem] text-defaultWhite/50">
+        <div className="absolute right-0 top-0 pe-3 text-end text-[0.8rem] text-defaultBlack/50">
           {currentLength} / {maxLength}
         </div>
       )}

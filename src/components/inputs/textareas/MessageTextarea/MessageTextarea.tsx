@@ -1,12 +1,13 @@
 import { MESSAGE_LABEL } from "@/constants/labels";
 import { MESSAGE_MAX_LENGTH } from "@/constants/lengths";
-import { SUGGEST_ADDING_PLAYER_MESSAGE_PLACEHOLDER } from "@/constants/placeholders";
 import { useFormikContext } from "formik";
 import { Textarea, TextareaProps } from "../../components/Textarea/Textarea";
 
-export function MessageTextarea({}: TextareaProps) {
+export function MessageTextarea({ ...properties }: TextareaProps) {
   const { handleChange, handleBlur, values, errors, touched, setFieldValue } =
     useFormikContext<{ message: string }>();
+
+  // TODO: Use separate textarea component in fix form
 
   return (
     <Textarea
@@ -16,7 +17,6 @@ export function MessageTextarea({}: TextareaProps) {
       color={touched.message && !errors.message ? "success" : "default"}
       isInvalid={touched.message && !!errors.message}
       errorMessage={touched.message && errors.message}
-      isRequired
       isClearable
       onClear={() => {
         setFieldValue("message", "");
@@ -24,6 +24,7 @@ export function MessageTextarea({}: TextareaProps) {
       label={MESSAGE_LABEL}
       maxLength={MESSAGE_MAX_LENGTH}
       isCounterShown
+      {...properties}
     />
   );
 }

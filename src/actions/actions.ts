@@ -140,6 +140,8 @@ export const createPlayerSuggestion = async ({
     return { success: true };
   } catch (error) {
     if (error === INVALID_EMAIL_ADDRESS_ERROR_CODE) {
+      // TODO: Fix error below
+      console.log("Email:", email);
       return { error: INVALID_EMAIL_ADDRESS_ERROR_MESSAGE };
     } else {
       return { error: EMAIL_HAS_NOT_BEEN_SENT_ERROR_MESSAGE };

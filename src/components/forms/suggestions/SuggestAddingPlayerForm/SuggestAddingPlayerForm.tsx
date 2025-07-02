@@ -17,7 +17,12 @@ import {
 } from "./suggestAddingPlayerFormSchema";
 import { YOU_MUST_BE_LOGGED_IN } from "@/constants/errorMessages";
 
-export function SuggestAddingPlayerForm() {
+interface SuggestAddingPlayerFormProps {
+  onClose?: () => void;
+}
+export function SuggestAddingPlayerForm({
+  onClose,
+}: SuggestAddingPlayerFormProps) {
   // TODO: Think about adding form ref
 
   const [isPending, setIsPending] = useState(false);
@@ -44,6 +49,8 @@ export function SuggestAddingPlayerForm() {
         }
         if (response.success) {
           toast.success(SUGGESTION_HAS_BEEN_SENT_TOAST);
+
+          if (onClose) onClose();
         } else {
           toast.error(response.error);
         }

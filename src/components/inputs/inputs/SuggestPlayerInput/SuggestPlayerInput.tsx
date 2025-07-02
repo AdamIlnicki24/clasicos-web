@@ -19,6 +19,7 @@ export function SuggestPlayerInput({}: TextInputProps) {
       color={touched.player && !errors.player ? "success" : "default"}
       isInvalid={touched.player && !!errors.player}
       errorMessage={touched.player && errors.player}
+      isRequired
       isClearable
       onClear={() => {
         setFieldValue("player", "");

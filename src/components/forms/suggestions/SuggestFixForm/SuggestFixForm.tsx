@@ -6,7 +6,11 @@ import { Spinner } from "@heroui/react";
 import { Formik } from "formik";
 import { useState } from "react";
 import { toast } from "react-toastify";
-import { initialValues, SuggestFixFormData, suggestFixFormSchema } from "./suggestFixFormSchema";
+import {
+  initialValues,
+  SuggestFixFormData,
+  suggestFixFormSchema,
+} from "./suggestFixFormSchema";
 
 export function SuggestFixForm() {
   // TODO: Think about adding form ref
@@ -42,7 +46,10 @@ export function SuggestFixForm() {
       validationSchema={suggestFixFormSchema}
     >
       <>
-        <MessageTextarea placeholder={SUGGEST_FIX_MESSAGE_PLACEHOLDER} />
+        <MessageTextarea
+          placeholder={SUGGEST_FIX_MESSAGE_PLACEHOLDER}
+          isRequired
+        />
         <SubmitButton
           title={isPending ? <Spinner size="md" /> : SUBMIT_FORM_BUTTON_LABEL}
         />
