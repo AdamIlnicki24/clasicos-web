@@ -155,7 +155,7 @@ export function ProfileContent() {
         <AboutMeCard
           favoriteClub={favoriteClub ?? NO_INFORMATION}
           favoriteFootballer={favoriteFootballer ?? NO_INFORMATION}
-          checkOutTeam={checkOutTeam}
+          checkOutTeam={() => checkOutTeam()}
         />
       </div>
       <UpdateProfileModal

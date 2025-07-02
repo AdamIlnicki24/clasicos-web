@@ -6,7 +6,7 @@ import { FavoriteFootballerInput } from "@/components/inputs/inputs/FavoriteFoot
 import { SUBMIT_FORM_BUTTON_LABEL } from "@/constants/buttonLabels";
 import { NO_INFORMATION } from "@/constants/texts";
 import { PROFILE_DATA_HAS_BEEN_UPDATED_TOAST } from "@/constants/toasts";
-import { useUpdateMyProfile } from "@/hooks/api/users/me/useUpdateProfile";
+import { useUpdateMyProfile } from "@/hooks/api/users/me/useUpdateMyProfile";
 import { ApiError } from "@/types/apiError";
 import { Visitor } from "@/types/visitor";
 import { Spinner } from "@heroui/react";
@@ -48,9 +48,6 @@ export function UpdateProfileForm({
 
     mutate(values, {
       onSuccess: async () => {
-        await queryClient.invalidateQueries({
-          queryKey: ["getMe"],
-        });
         await queryClient.invalidateQueries({
           queryKey: ["getUser", user?.uuid],
         });
