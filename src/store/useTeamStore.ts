@@ -9,7 +9,6 @@ interface TeamFormData {
 
 interface TeamStore extends TeamFormData {
   setTeam: (team: TeamFormData) => void;
-  clearTeam: () => void;
 }
 
 export const useTeamStore = create<TeamStore>((set) => ({
@@ -18,11 +17,4 @@ export const useTeamStore = create<TeamStore>((set) => ({
   midfielders: [],
   forwards: [],
   setTeam: (team) => set({ ...team }),
-  clearTeam: () =>
-    set({
-      goalkeepers: [],
-      defenders: [],
-      midfielders: [],
-      forwards: [],
-    }),
 }));

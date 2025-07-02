@@ -1,12 +1,15 @@
 import Loading from "@/app/loading";
+import { PitchBoard } from "@/components/boards/PitchBoard/PitchBoard";
 import { Button } from "@/components/buttons/Button/Button";
 import { Heading } from "@/components/headings/Heading/Heading";
 import { CreateTeamModal } from "@/components/modals/CreateTeamModal/CreateTeamModal";
 import { UpdateTeamModal } from "@/components/modals/UpdateTeamModal/UpdateTeamModal";
+import { PlayerTile } from "@/components/tiles/PlayerTile/PlayerTile";
 import {
   CREATE_TEAM_BUTTON_LABEL,
   UPDATE_TEAM_BUTTON_LABEL,
 } from "@/constants/buttonLabels";
+import { TEAM_CANNOT_BE_LOADED_ERROR_MESSAGE } from "@/constants/errorMessages";
 import {
   CREATE_TEAM_HEADING,
   UPDATE_TEAM_HEADING,
@@ -14,11 +17,13 @@ import {
 } from "@/constants/headings";
 import { useGetMyTeam } from "@/hooks/api/team/me/useGetMyTeam";
 import { useTeamStore } from "@/store/useTeamStore";
+import { Position } from "@/types/position";
+import { TeamPlayer } from "@/types/teamPlayer";
 import { useDisclosure } from "@heroui/react";
 import { useEffect } from "react";
 
 export function ManageTeam() {
-  const { data, isLoading } = useGetMyTeam();
+  const { data, isLoading, isError } = useGetMyTeam();
 
   const setTeam = useTeamStore((state) => state.setTeam);
 
@@ -46,7 +51,25 @@ export function ManageTeam() {
 
   const { onOpen, isOpen, onOpenChange } = useDisclosure();
 
+  const getPlayersByPosition = (position: Position) => {
+    return data?.teamPlayers
+      .filter(
+        (teamPlayer: TeamPlayer) => teamPlayer.player.position === position
+      )
+      .map((teamPlayer: TeamPlayer) => {
+        const { name, surname, uuid } = teamPlayer.player;
+        return <PlayerTile name={name} surname={surname} key={uuid} />;
+      });
+  };
+
+  const goalkeepers = getPlayersByPosition("Goalkeeper");
+  const defenders = getPlayersByPosition("Defender");
+  const midfielders = getPlayersByPosition("Midfielder");
+  const forwards = getPlayersByPosition("Forward");
+
   if (isLoading) return <Loading />;
+
+  if (isError) return <div>{TEAM_CANNOT_BE_LOADED_ERROR_MESSAGE}</div>;
 
   return (
     <div className="flex min-h-svh flex-col items-center">
@@ -72,7 +95,16 @@ export function ManageTeam() {
         )}
       </div>
       <div className="flex items-center justify-center pt-8">
-        {!data && <p>Po stworzeniu drużyny, pojawi się ona poniżej</p>}
+        {data ? (
+          <PitchBoard
+            goalkeepers={goalkeepers ?? []}
+            defenders={defenders ?? []}
+            midfielders={midfielders ?? []}
+            forwards={forwards ?? []}
+          />
+        ) : (
+          <p>Po stworzeniu drużyny, pojawi się ona poniżej</p>
+        )}
       </div>
       {data ? (
         <UpdateTeamModal
