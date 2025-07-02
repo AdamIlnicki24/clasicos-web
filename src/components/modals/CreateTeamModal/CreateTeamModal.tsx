@@ -15,7 +15,7 @@ export function CreateTeamModal({
       size="3xl"
       isOpen={isOpen}
       onOpenChange={onOpenChange}
-      classNames={{ body: "px-0 lg:px-6 py-8", closeButton: "z-50" }}
+      classNames={{ body: "px-4 lg:px-6 py-8", closeButton: "z-50" }}
       placement="bottom-center"
     >
       <ModalContent>

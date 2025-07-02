@@ -58,7 +58,11 @@ export function ManageTeam() {
       )
       .map((teamPlayer: TeamPlayer) => {
         const { name, surname, uuid } = teamPlayer.player;
-        return <PlayerTile name={name} surname={surname} key={uuid} />;
+        return (
+          <div className="">
+            <PlayerTile name={name} surname={surname} key={uuid} />
+          </div>
+        );
       });
   };
 
@@ -75,11 +79,11 @@ export function ManageTeam() {
     <div className="flex min-h-svh flex-col items-center">
       <div className="flex flex-col items-center justify-center gap-y-3">
         <Heading HeadingTag="h1" title={YOUR_TEAM_HEADING} />
-        <Heading
+        {/* <Heading
           HeadingTag="h2"
           title={data ? UPDATE_TEAM_HEADING : CREATE_TEAM_HEADING}
           size="md"
-        />
+        /> */}
         {data ? (
           <Button
             title={UPDATE_TEAM_BUTTON_LABEL}
@@ -94,7 +98,7 @@ export function ManageTeam() {
           />
         )}
       </div>
-      <div className="flex items-center justify-center pt-8">
+      <div className="flex items-center justify-center pt-8 w-full">
         {data ? (
           <PitchBoard
             goalkeepers={goalkeepers ?? []}

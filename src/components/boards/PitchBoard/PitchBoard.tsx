@@ -14,11 +14,17 @@ export function PitchBoard({
   forwards,
 }: PitchBoardProps) {
   return (
-    <div className="min-h-[70svh] bg-secondaryColor">
+    <div className="flex w-[90%] flex-col items-center bg-secondaryColor px-12 py-8 lg:w-auto">
       {goalkeepers.length > 0 && <div className="px-1 py-3">{goalkeepers}</div>}
-      {defenders.length > 0 && <div className="px-1 py-3">{defenders}</div>}
-      {midfielders.length > 0 && <div className="px-1 py-3">{midfielders}</div>}
-      {forwards.length > 0 && <div className="px-1 py-3">{forwards}</div>}
+      {defenders.length > 0 && (
+        <div className="flex gap-x-3 px-1 py-3 lg:gap-x-6">{defenders}</div>
+      )}
+      {midfielders.length > 0 && (
+        <div className="flex gap-x-3 px-1 py-3 lg:gap-x-6">{midfielders}</div>
+      )}
+      {forwards.length > 0 && (
+        <div className="flex gap-x-3 px-1 py-3 lg:gap-x-6">{forwards}</div>
+      )}
     </div>
   );
 }
