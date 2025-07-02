@@ -7,9 +7,12 @@ import { ManageTeam } from "../ManageTeam/ManageTeam";
 import { useParams } from "next/navigation";
 import { useGetUser } from "@/hooks/api/users/useGetUser";
 import { YOU_MUST_BE_LOGGED_IN } from "@/constants/errorMessages";
+import { Link, useDisclosure } from "@heroui/react";
 
 export function TeamContent() {
   const { userUuid } = useParams();
+
+  const { onOpen } = useDisclosure();
 
   const {
     data: user,
@@ -31,5 +34,21 @@ export function TeamContent() {
 
   const isMe = me.uuid === user.uuid;
 
-  return isMe ? <ManageTeam /> : <GetTeam />;
+  return (
+    <>
+      {isMe ? <ManageTeam /> : <GetTeam />}
+      <div className="pb-16 ps-6 text-[1.5rem] flex justify-center">
+        <p>
+          <Link
+            className="text-[1.5rem] text-linkColor"
+            as={"button"}
+            onPress={onOpen}
+          >
+            Kliknij tutaj
+          </Link>
+          , aby zasugerować dodanie piłkarza do bazy.
+        </p>
+      </div>
+    </>
+  );
 }

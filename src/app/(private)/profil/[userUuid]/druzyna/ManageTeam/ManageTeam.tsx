@@ -58,11 +58,7 @@ export function ManageTeam() {
       )
       .map((teamPlayer: TeamPlayer) => {
         const { name, surname, uuid } = teamPlayer.player;
-        return (
-          <div className="">
-            <PlayerTile name={name} surname={surname} key={uuid} />
-          </div>
-        );
+        return <PlayerTile name={name} surname={surname} key={uuid} />;
       });
   };
 
@@ -98,7 +94,7 @@ export function ManageTeam() {
           />
         )}
       </div>
-      <div className="flex items-center justify-center pt-8 w-full">
+      <div className="flex w-full items-center justify-center pt-8">
         {data ? (
           <PitchBoard
             goalkeepers={goalkeepers ?? []}
