@@ -3,10 +3,10 @@
 import { SubmitButton } from "@/components/buttons/SubmitButton/SubmitButton";
 import { FavoriteClubInput } from "@/components/inputs/inputs/FavoriteClubInput/FavoriteClubInput";
 import { FavoriteFootballerInput } from "@/components/inputs/inputs/FavoriteFootballerInput/FavoriteFootballerInput";
-import { NickInput } from "@/components/inputs/inputs/NickInput/NickInput";
 import { SUBMIT_FORM_BUTTON_LABEL } from "@/constants/buttonLabels";
+import { NO_INFORMATION } from "@/constants/texts";
 import { PROFILE_DATA_HAS_BEEN_UPDATED_TOAST } from "@/constants/toasts";
-import { useUpdateMe } from "@/hooks/api/users/me/useUpdateMe";
+import { useUpdateMyProfile } from "@/hooks/api/users/me/useUpdateProfile";
 import { ApiError } from "@/types/apiError";
 import { Visitor } from "@/types/visitor";
 import { Spinner } from "@heroui/react";
@@ -16,26 +16,32 @@ import { useRef } from "react";
 import { toast } from "react-toastify";
 import {
   initialValues,
-  UpdateMeFormData,
-  updateMeFormSchema,
-} from "./updateMeFormSchema";
+  UpdateProfileFormData,
+  updateProfileFormSchema,
+} from "./updateProfileFormSchema";
+import { useUser } from "@/hooks/context/useUser";
 
-interface UpdateMeFormProps {
+interface UpdateProfileFormProps {
   // TODO: Think about the name of the prop
   onClose?: () => void;
   visitor: Visitor;
 }
 
-export function UpdateMeForm({ onClose, visitor }: UpdateMeFormProps) {
+export function UpdateProfileForm({
+  onClose,
+  visitor,
+}: UpdateProfileFormProps) {
   const nameInputRef = useRef<HTMLInputElement>(null);
   const surnameInputRef = useRef<HTMLInputElement>(null);
   // TODO: Create refs
 
   const queryClient = useQueryClient();
 
-  const { mutate, isPending } = useUpdateMe();
+  const { user } = useUser();
 
-  const onSubmitHandler = (values: UpdateMeFormData) => {
+  const { mutate, isPending } = useUpdateMyProfile();
+
+  const onSubmitHandler = (values: UpdateProfileFormData) => {
     if (process.env.NODE_ENV === "development") {
       console.log("Submitted values:", values);
     }
@@ -44,6 +50,9 @@ export function UpdateMeForm({ onClose, visitor }: UpdateMeFormProps) {
       onSuccess: async () => {
         await queryClient.invalidateQueries({
           queryKey: ["getMe"],
+        });
+        await queryClient.invalidateQueries({
+          queryKey: ["getUser", user?.uuid],
         });
 
         toast.success(PROFILE_DATA_HAS_BEEN_UPDATED_TOAST);
@@ -60,23 +69,27 @@ export function UpdateMeForm({ onClose, visitor }: UpdateMeFormProps) {
   };
 
   // TODO: Override initial values also in other resources
-  initialValues.nick = visitor.nick ?? "";
-  initialValues.favoriteClub = visitor.favoriteClub ?? "";
-  initialValues.favoriteFootballer = visitor.favoriteFootballer ?? "";
+  // initialValues.nick = visitor.nick ?? "";
+  initialValues.favoriteClub = visitor.favoriteClub ?? NO_INFORMATION;
+  initialValues.favoriteFootballer =
+    visitor.favoriteFootballer ?? NO_INFORMATION;
 
   return (
     <Formik
       initialValues={initialValues}
       onSubmit={onSubmitHandler}
-      validationSchema={updateMeFormSchema}
+      validationSchema={updateProfileFormSchema}
     >
       <>
-        <NickInput />
+        {/* <NickInput /> */}
         <FavoriteClubInput />
         <FavoriteFootballerInput />
-        <SubmitButton
-          title={isPending ? <Spinner size="md" /> : SUBMIT_FORM_BUTTON_LABEL}
-        />
+        <div className="flex justify-center pt-4">
+          <SubmitButton
+            title={isPending ? <Spinner size="md" /> : SUBMIT_FORM_BUTTON_LABEL}
+            mode="secondary"
+          />
+        </div>
       </>
     </Formik>
   );

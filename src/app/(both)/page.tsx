@@ -35,7 +35,7 @@ export default function Page() {
   return (
     <main className="relative min-h-svh bg-[url('/images/stadion-w-pionie.jpg')] bg-cover bg-center lg:bg-[url('/images/stadion-w-poziomie.jpg')]">
       <div className="absolute inset-0 bg-defaultBlack opacity-80"></div>
-      <div className="relative z-10 mx-auto flex w-[60%] flex-col items-center gap-y-4 text-[1.4rem] leading-relaxed tracking-wide text-defaultWhite lg:pt-12">
+      <div className="relative z-10 mx-auto flex w-[90%] flex-col items-center gap-y-4 pt-12 text-[1.25rem] leading-relaxed tracking-wide text-defaultWhite lg:w-[60%] lg:text-[1.4rem]">
         <Ball width={48} />
         {/* TODO: Remove heading below */}
         <h1>Strona główna dla wszystkich</h1>
@@ -45,30 +45,32 @@ export default function Page() {
           fanatykami, a także stworzysz swoją jedenastkę najlepszych piłkarzy w
           historii Klasyków.
         </p>
-        {!user && <div className="flex items-center gap-x-4 py-6">
-          <Button
-            onPress={() => pushToPublicPage(LOG_IN_URL)}
-            title={LOG_IN_BUTTON_LABEL}
-          />
-          <span>{OR.toLowerCase()}</span>
-          <Button
-            onPress={() => pushToPublicPage(REGISTER_URL)}
-            title={REGISTER_BUTTON_LABEL}
-          />
-        </div>}
+        {!user && (
+          <div className="flex flex-col items-center gap-4 py-6 lg:flex-row">
+            <Button
+              onPress={() => pushToPublicPage(LOG_IN_URL)}
+              title={LOG_IN_BUTTON_LABEL}
+            />
+            <span>{OR.toLowerCase()}</span>
+            <Button
+              onPress={() => pushToPublicPage(REGISTER_URL)}
+              title={REGISTER_BUTTON_LABEL}
+            />
+          </div>
+        )}
         <div className="space-y-4">
           <p>
             Zapraszamy również do naszej{" "}
             <Link
               href={KNOWLEDGE_ZONE_URL}
-              className="text-linkColor px-1 text-[1.4rem]"
+              className="text-[1.25rem] text-linkColor lg:text-[1.4rem]"
             >
               strefy wiedzy
             </Link>{" "}
             <span>oraz na</span>{" "}
             <Link
               href={FORUM_URL}
-              className="text-linkColor ps-1 text-[1.4rem]"
+              className="text-[1.25rem] text-linkColor lg:text-[1.4rem]"
             >
               forum dyskusyjne
             </Link>

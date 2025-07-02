@@ -1,8 +1,8 @@
-import { UpdateMeForm } from "@/components/forms/me/profile/UpdateMeForm/UpdateMeForm";
+import { UpdateProfileForm } from "@/components/forms/me/profile/UpdateProfileForm/UpdateProfileForm";
 import { Visitor } from "@/types/visitor";
 import { Modal, ModalBody, ModalContent, ModalProps } from "@heroui/react";
 
-interface UpdateMeModalProps extends Omit<ModalProps, "children"> {
+interface UpdateProfileModalProps extends Omit<ModalProps, "children"> {
   visitor: Visitor;
   isOpen: boolean;
   onOpenChange: (open: boolean) => void;
@@ -10,7 +10,11 @@ interface UpdateMeModalProps extends Omit<ModalProps, "children"> {
 
 // TODO: Think about handling nick's change
 
-export function UpdateMeModal({ visitor, isOpen, onOpenChange }: UpdateMeModalProps) {
+export function UpdateProfileModal({
+  visitor,
+  isOpen,
+  onOpenChange,
+}: UpdateProfileModalProps) {
   return (
     <Modal
       size="3xl"
@@ -23,7 +27,7 @@ export function UpdateMeModal({ visitor, isOpen, onOpenChange }: UpdateMeModalPr
         {(onClose) => (
           <>
             <ModalBody>
-              <UpdateMeForm visitor={visitor} onClose={onClose} />
+              <UpdateProfileForm visitor={visitor} onClose={onClose} />
             </ModalBody>
           </>
         )}

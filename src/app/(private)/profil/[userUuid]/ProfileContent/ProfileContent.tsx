@@ -4,7 +4,7 @@ import Loading from "@/app/loading";
 import { Button } from "@/components/buttons/Button/Button";
 import { AboutMeCard } from "@/components/cards/AboutMeCard/AboutMeCard";
 import { UserDataCard } from "@/components/cards/NickCard/NickCard";
-import { UpdateMeModal } from "@/components/modals/UpdateMeModal/UpdateMeModal";
+import { UpdateProfileModal } from "@/components/modals/UpdateProfileModal/UpdateProfileModal";
 import {
   BAN_BUTTON_LABEL,
   UNBAN_BUTTON_LABEL,
@@ -67,7 +67,7 @@ export function ProfileContent() {
     return <div>{YOU_MUST_BE_LOGGED_IN}</div>;
   }
 
-  const { visitor, createdAt, team } = user;
+  const { visitor, createdAt } = user;
   const { nick, favoriteClub, favoriteFootballer } = visitor;
 
   const isAdmin = me.role === "Admin";
@@ -158,7 +158,7 @@ export function ProfileContent() {
           checkOutTeam={checkOutTeam}
         />
       </div>
-      <UpdateMeModal
+      <UpdateProfileModal
         visitor={visitor}
         isOpen={isOpen}
         onOpenChange={onOpenChange}

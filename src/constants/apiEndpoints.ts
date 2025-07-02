@@ -1,5 +1,7 @@
 export const USERS_API_ENDPOINT = "/users";
 export const ME_API_ENDPOINT = `${USERS_API_ENDPOINT}/me`;
+export const PROFILE_API_ENDPOINT = `${USERS_API_ENDPOINT}/me/profile`;
+export const NICK_API_ENDPOINT = `${USERS_API_ENDPOINT}/me/nick`;
 export const PLAYERS_API_ENDPOINT = "/players";
 export const TEAM_API_ENDPOINT = "/team";
 export const COMMENTS_API_ENDPOINT = "/comments";

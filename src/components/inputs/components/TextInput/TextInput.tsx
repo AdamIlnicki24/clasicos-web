@@ -44,7 +44,7 @@ export function TextInput({
         // }}
         classNames={{
           label:
-            "text-secondaryTextColor/60 group-data-[filled-within=true]:text-secondaryTextColor/60 font-medium text-[0.9rem]",
+            "text-defaultBlack text-[0.9rem]",
           inputWrapper: "border-0",
           input:
             "text-defaultBlack font-semibold leading-tight placeholder:font-medium placeholder:text-defaultBlack/30 placeholder:italic",
