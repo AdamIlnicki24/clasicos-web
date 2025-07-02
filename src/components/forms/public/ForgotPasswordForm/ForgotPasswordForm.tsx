@@ -55,14 +55,12 @@ export function ForgotPasswordForm() {
         <div className="grid grid-cols-1 gap-4">
           <EmailInput />
         </div>
-        <div className="flex justify-center pt-4">
-          <SubmitButton
-            title={
-              isPending ? <Spinner size="md" /> : RESET_PASSWORD_BUTTON_LABEL
-            }
-            mode="primary"
-          />
-        </div>
+        <SubmitButton
+          title={
+            isPending ? <Spinner size="md" /> : RESET_PASSWORD_BUTTON_LABEL
+          }
+          mode="primary"
+        />
       </div>
     </Formik>
   );

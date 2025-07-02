@@ -81,12 +81,10 @@ export function UpdateProfileForm({
         {/* <NickInput /> */}
         <FavoriteClubInput />
         <FavoriteFootballerInput />
-        <div className="flex justify-center pt-4">
           <SubmitButton
             title={isPending ? <Spinner size="md" /> : SUBMIT_FORM_BUTTON_LABEL}
             mode="secondary"
           />
-        </div>
       </>
     </Formik>
   );

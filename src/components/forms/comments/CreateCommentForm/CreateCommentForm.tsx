@@ -67,11 +67,9 @@ export function CreateCommentForm({ onClose }: CreateCommentFormProps) {
     >
       <div className="flex flex-col gap-y-8">
         <CommentContentTextarea />
-        <div className="flex justify-center">
           <SubmitButton
             title={isPending ? <Spinner size="md" /> : SUBMIT_FORM_BUTTON_LABEL}
           />
-        </div>
       </div>
     </Formik>
   );

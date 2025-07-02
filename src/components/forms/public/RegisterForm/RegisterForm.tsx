@@ -67,11 +67,9 @@ export function RegisterForm() {
 
           <PrivacyPolicyCheckbox />
         </div>
-        <div className="flex justify-center pt-4">
           <SubmitButton
             title={isPending ? <Spinner size="md" /> : REGISTER_BUTTON_LABEL}
           />
-        </div>
       </div>
     </Formik>
   );
