@@ -20,5 +20,7 @@ export const COMMENT_HAS_BEEN_DELETED_TOAST = "Poprawnie usunięto komentarz.";
 export const TEAM_HAS_BEEN_UPDATED_TOAST = "Poprawnie edytowano drużynę.";
 export const PROFILE_DATA_HAS_BEEN_UPDATED_TOAST =
   "Zaktualizowano dane profilowe.";
+export const NICK_HAS_BEEN_UPDATED_TOAST =
+  "Zaktualizowano nick.";
 export const USER_HAS_BEEN_BANNED_TOAST = "Użytkownik został zbanowany.";
 export const USER_HAS_BEEN_UNBANNED_TOAST = "Użytkownik został odbanowany.";

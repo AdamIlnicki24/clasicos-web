@@ -3,7 +3,8 @@
 import Loading from "@/app/loading";
 import { Button } from "@/components/buttons/Button/Button";
 import { AboutMeCard } from "@/components/cards/AboutMeCard/AboutMeCard";
-import { UserDataCard } from "@/components/cards/NickCard/NickCard";
+import { UserDataCard } from "@/components/cards/UserDataCard/UserDataCard";
+import { UpdateNickModal } from "@/components/modals/UpdateNickModal/UpdateNickModal";
 import { UpdateProfileModal } from "@/components/modals/UpdateProfileModal/UpdateProfileModal";
 import {
   BAN_BUTTON_LABEL,
@@ -36,7 +37,17 @@ export function ProfileContent() {
 
   const router = useRouter();
 
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const {
+    isOpen: isProfileModalOpen,
+    onOpen: onProfileModalOpen,
+    onOpenChange: onProfileModalOpenChange,
+  } = useDisclosure();
+
+  const {
+    isOpen: isNickModalOpen,
+    onOpen: onNickModalOpen,
+    onOpenChange: onNickModalOpenChange,
+  } = useDisclosure();
 
   const {
     data: user,
@@ -129,7 +140,7 @@ export function ProfileContent() {
         {isMe && (
           <Button
             title={UPDATE_ABOUT_ME_DATA_BUTTON_LABEL}
-            onPress={onOpen}
+            onPress={onProfileModalOpen}
             mode="secondary"
           />
         )}
@@ -150,8 +161,10 @@ export function ProfileContent() {
       <div className="grid grid-cols-1 lg:grid-cols-[9fr_11fr]">
         <UserDataCard
           nick={nick ?? ENIGMA}
+          onIconPress={onNickModalOpen}
           createdAt={formatDate(createdAt)}
           recommendationsCount={recommendationsCount ?? 0}
+          isMe={isMe}
         />
         <AboutMeCard
           favoriteClub={favoriteClub ?? NO_INFORMATION}
@@ -161,8 +174,13 @@ export function ProfileContent() {
       </div>
       <UpdateProfileModal
         visitor={visitor}
-        isOpen={isOpen}
-        onOpenChange={onOpenChange}
+        isOpen={isProfileModalOpen}
+        onOpenChange={onProfileModalOpenChange}
+      />
+      <UpdateNickModal
+        visitor={visitor}
+        isOpen={isNickModalOpen}
+        onOpenChange={onNickModalOpenChange}
       />
     </>
   );
