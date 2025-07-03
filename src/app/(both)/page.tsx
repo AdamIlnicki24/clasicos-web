@@ -7,15 +7,21 @@ import {
   REGISTER_BUTTON_LABEL,
 } from "@/constants/buttonLabels";
 import { OR } from "@/constants/texts";
-import { FORUM_URL, KNOWLEDGE_ZONE_URL, LOG_IN_URL, REGISTER_URL } from "@/constants/urls";
+import {
+  FORUM_URL,
+  KNOWLEDGE_ZONE_URL,
+  LOG_IN_URL,
+  REGISTER_URL,
+} from "@/constants/urls";
 import { useUser } from "@/hooks/context/useUser";
 import { Link } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import Ball from "@/assets/icons/ball.svg";
+import Loading from "../loading";
 
 export default function Page() {
-  const { logOut, user } = useUser();
+  const { logOut, user, isUserLoading } = useUser();
 
   const router = useRouter();
 
@@ -31,6 +37,8 @@ export default function Page() {
   const pushToPublicPage = (url: string) => {
     router.push(url);
   };
+
+  if (isUserLoading) return <Loading />;
 
   return (
     <main className="relative min-h-svh bg-[url('/images/stadion-w-pionie.jpg')] bg-cover bg-center lg:bg-[url('/images/stadion-w-poziomie.jpg')]">

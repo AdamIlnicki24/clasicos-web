@@ -9,6 +9,7 @@ import { useGetUser } from "@/hooks/api/users/useGetUser";
 import { YOU_MUST_BE_LOGGED_IN } from "@/constants/errorMessages";
 import { Link, useDisclosure } from "@heroui/react";
 import { SuggestAddingPlayerModal } from "@/components/modals/SuggestAddingPlayerModal/SuggestAddingPlayerModal";
+import { Button } from "@/components/buttons/Button/Button";
 
 export function TeamContent() {
   const { userUuid } = useParams();
@@ -42,7 +43,7 @@ export function TeamContent() {
         <p>
           <Link
             className="text-[1.5rem] text-linkColor"
-            as={"button"}
+            as={Button}
             onPress={onOpen}
           >
             Kliknij tutaj

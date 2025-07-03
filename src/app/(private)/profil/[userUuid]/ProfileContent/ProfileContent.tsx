@@ -74,6 +74,7 @@ export function ProfileContent() {
   const isMe = me.uuid === user.uuid;
   const isUserBanned = Boolean(visitor.bannedAt);
 
+  // TODO: Function not always works
   const checkOutTeam = () => {
     router.push(`${PROFILE_URL}/${userUuid}/${TEAM_URL}`);
   };

@@ -64,7 +64,6 @@ export function RegisterForm() {
         <div className="grid grid-cols-1 gap-4">
           <EmailInput />
           <PasswordInput />
-
           <PrivacyPolicyCheckbox />
         </div>
           <SubmitButton
