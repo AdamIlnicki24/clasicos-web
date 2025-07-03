@@ -1,3 +1,4 @@
+export const AUTH_API_ENDPOINT = "/auth";
 export const USERS_API_ENDPOINT = "/users";
 export const ME_API_ENDPOINT = `${USERS_API_ENDPOINT}/me`;
 export const PROFILE_API_ENDPOINT = `${USERS_API_ENDPOINT}/me/profile`;

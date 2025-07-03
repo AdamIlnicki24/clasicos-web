@@ -1,6 +1,7 @@
 "use client";
 
 import { SubmitButton } from "@/components/buttons/SubmitButton/SubmitButton";
+import { PrivacyPolicyCheckbox } from "@/components/inputs/checkboxes/PrivacyPolicyCheckbox/PrivacyPolicyCheckbox";
 import { EmailInput } from "@/components/inputs/inputs/EmailInput/EmailInput";
 import { PasswordInput } from "@/components/inputs/inputs/PasswordInput/PasswordInput";
 import { REGISTER_BUTTON_LABEL } from "@/constants/buttonLabels";
@@ -9,49 +10,42 @@ import {
   REGISTER_ERROR_TOAST,
   REGISTER_SUCCESS_TOAST,
 } from "@/constants/toasts";
+import { useRegister } from "@/hooks/api/auth/useRegister";
 import { Spinner } from "@heroui/react";
-import { FirebaseError } from "firebase/app";
-import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import { Formik } from "formik";
-import { useState } from "react";
 import { toast } from "react-toastify";
 import {
   initialValues,
   RegisterFormData,
   registerFormSchema,
 } from "./registerFormSchema";
-import { PrivacyPolicyCheckbox } from "@/components/inputs/checkboxes/PrivacyPolicyCheckbox/PrivacyPolicyCheckbox";
-
-// TODO: Currently user is created in firebase, but not in db
+import axios from "axios";
 
 export function RegisterForm() {
-  const [isPending, setIsPending] = useState(false);
+  const { mutate, isPending } = useRegister();
 
-  const onSubmitHandler = async (values: RegisterFormData) => {
-    setIsPending(true);
+  const onSubmitHandler = (values: RegisterFormData) => {
+    // const auth = getAuth();
+    // const credentials = await createUserWithEmailAndPassword(
+    //   auth,
+    //   values.email,
+    //   values.password
+    // );
 
-    // TODO: Think about line below
-    const auth = getAuth();
+    // const firebaseId = credentials.user.uid;
 
-    await createUserWithEmailAndPassword(auth, values.email, values.password)
-      .then(() => {
+    mutate(values, {
+      onSuccess: () => {
         toast.success(REGISTER_SUCCESS_TOAST);
-        setIsPending(false);
-      })
-      .catch((error: FirebaseError) => {
-        const errorCode = error.code;
-
-        let toastMessage: string;
-
-        if (errorCode == "auth/email-already-in-use") {
-          toastMessage = EXISTING_USER_ERROR_TOAST;
+      },
+      onError: (error) => {
+        if (axios.isAxiosError(error) && error.response?.status === 409) {
+          toast.error(EXISTING_USER_ERROR_TOAST);
         } else {
-          toastMessage = REGISTER_ERROR_TOAST;
+          toast.error(REGISTER_ERROR_TOAST);
         }
-
-        toast.error(toastMessage);
-        setIsPending(false);
-      });
+      },
+    });
   };
 
   return (
@@ -66,9 +60,9 @@ export function RegisterForm() {
           <PasswordInput />
           <PrivacyPolicyCheckbox />
         </div>
-          <SubmitButton
-            title={isPending ? <Spinner size="md" /> : REGISTER_BUTTON_LABEL}
-          />
+        <SubmitButton
+          title={isPending ? <Spinner size="md" /> : REGISTER_BUTTON_LABEL}
+        />
       </div>
     </Formik>
   );
