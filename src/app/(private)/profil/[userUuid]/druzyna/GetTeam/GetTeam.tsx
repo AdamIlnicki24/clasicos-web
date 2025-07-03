@@ -25,6 +25,7 @@ export function GetTeam() {
       )
       .map((teamPlayer: TeamPlayer) => {
         const { name, surname, uuid } = teamPlayer.player;
+        
         return <PlayerTile name={name} surname={surname} key={uuid} />;
       });
   };
