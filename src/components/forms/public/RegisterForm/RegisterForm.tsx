@@ -20,9 +20,13 @@ import {
   registerFormSchema,
 } from "./registerFormSchema";
 import axios from "axios";
+import { useRouter } from "next/navigation";
+import { HOME_URL } from "@/constants/urls";
 
 export function RegisterForm() {
   const { mutate, isPending } = useRegister();
+
+  const router = useRouter();
 
   const onSubmitHandler = (values: RegisterFormData) => {
     // const auth = getAuth();
@@ -36,6 +40,8 @@ export function RegisterForm() {
 
     mutate(values, {
       onSuccess: () => {
+        // TODO: Think about moving user to profile uuid
+        router.replace(HOME_URL);
         toast.success(REGISTER_SUCCESS_TOAST);
       },
       onError: (error) => {

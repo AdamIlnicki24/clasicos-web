@@ -1,15 +1,14 @@
 "use client";
 
 import Loading from "@/app/loading";
+import { SuggestAddingPlayerModal } from "@/components/modals/SuggestAddingPlayerModal/SuggestAddingPlayerModal";
+import { YOU_MUST_BE_LOGGED_IN } from "@/constants/errorMessages";
+import { useGetUser } from "@/hooks/api/users/useGetUser";
 import { useUser } from "@/hooks/context/useUser";
+import { Link, useDisclosure } from "@heroui/react";
+import { useParams } from "next/navigation";
 import { GetTeam } from "../GetTeam/GetTeam";
 import { ManageTeam } from "../ManageTeam/ManageTeam";
-import { useParams } from "next/navigation";
-import { useGetUser } from "@/hooks/api/users/useGetUser";
-import { YOU_MUST_BE_LOGGED_IN } from "@/constants/errorMessages";
-import { Link, useDisclosure } from "@heroui/react";
-import { SuggestAddingPlayerModal } from "@/components/modals/SuggestAddingPlayerModal/SuggestAddingPlayerModal";
-import { Button } from "@/components/buttons/Button/Button";
 
 export function TeamContent() {
   const { userUuid } = useParams();
@@ -43,7 +42,7 @@ export function TeamContent() {
         <p>
           <Link
             className="text-[1.5rem] text-linkColor"
-            as={Button}
+            as={"button"}
             onPress={onOpen}
           >
             Kliknij tutaj

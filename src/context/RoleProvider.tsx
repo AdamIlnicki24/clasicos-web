@@ -26,6 +26,7 @@ export function RoleProvider({ children, role }: RoleProviderProps) {
 
       const hasRequiredRole = user.role === role;
 
+      // TODO: Fix below
       if (!hasRequiredRole) {
         router.replace(user.role === "Admin" ? USERS_URL : PROFILE_URL);
       }

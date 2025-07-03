@@ -36,6 +36,7 @@ export function GetTeam() {
 
   if (isLoading) return <Loading />;
 
+  // TODO: Fix error below when user doesn;t have the team
   if (isError) return <div>{TEAM_CANNOT_BE_LOADED_ERROR_MESSAGE}</div>;
 
   return (

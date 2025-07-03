@@ -33,7 +33,7 @@ export function SuggestAddingPlayerForm({
     return <div>{YOU_MUST_BE_LOGGED_IN}</div>;
   }
 
-  const email = user.email;
+  const { nick } = user.visitor;
 
   const onSubmitHandler = async ({
     player,
@@ -42,20 +42,18 @@ export function SuggestAddingPlayerForm({
     setIsPending(true);
 
     // TODO: Finish below
-    await createPlayerSuggestion({ player, message, email }).then(
-      (response) => {
-        if (process.env.NODE_ENV === "development") {
-          console.log("Response:", response);
-        }
-        if (response.success) {
-          toast.success(SUGGESTION_HAS_BEEN_SENT_TOAST);
-
-          if (onClose) onClose();
-        } else {
-          toast.error(response.error);
-        }
+    await createPlayerSuggestion({ player, message, nick }).then((response) => {
+      if (process.env.NODE_ENV === "development") {
+        console.log("Response:", response);
       }
-    );
+      if (response.success) {
+        toast.success(SUGGESTION_HAS_BEEN_SENT_TOAST);
+
+        if (onClose) onClose();
+      } else {
+        toast.error(response.error);
+      }
+    });
 
     setIsPending(false);
   };
