@@ -8,6 +8,7 @@ import {
 } from "@/constants/labels";
 import { EditButton } from "@/components/buttons/EditButton/EditButton";
 import { colors } from "@/constants/colors";
+import { ENIGMA } from "@/constants/texts";
 
 interface UserDataCardProps {
   nick: string;
@@ -24,16 +25,20 @@ export function UserDataCard({
   createdAt,
   isMe,
 }: UserDataCardProps) {
+  const isNickKnown = nick !== ENIGMA;
+
   return (
     <Card className="bg-primaryColor text-defaultWhite">
       <CardBody className="flex flex-col items-center justify-center">
         <div className="flex flex-col items-center gap-y-1 pb-8">
           <Avatar width={48} />
           <div className="flex items-center gap-x-1">
-            <div className="text-[1.5rem]">{nick}</div>
-            {isMe && (
-              <EditButton onPress={onIconPress} color="warning" />
-            )}
+            <div
+              className={`text-[1.5rem] ${isNickKnown ? "font-bold" : "text-defaultGray"}`}
+            >
+              {nick}
+            </div>
+            {isMe && <EditButton onPress={onIconPress} color="warning" />}
           </div>
         </div>
         <div className="flex gap-x-3">

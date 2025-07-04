@@ -136,7 +136,7 @@ export function ProfileContent() {
 
   return (
     <>
-      <div className="flex justify-end pe-12 pt-8">
+      <div className="flex justify-end pb-6 pe-4 pt-8 lg:pb-0 lg:pe-12">
         {isMe && (
           <Button
             title={UPDATE_ABOUT_ME_DATA_BUTTON_LABEL}
@@ -159,16 +159,19 @@ export function ProfileContent() {
           ))}
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-[9fr_11fr]">
+        {/* TODO: NO_INFORMATION should be visible if user deletes whole the information */}
         <UserDataCard
-          nick={nick ?? ENIGMA}
+          nick={nick?.trim() ? nick : ENIGMA}
           onIconPress={onNickModalOpen}
           createdAt={formatDate(createdAt)}
           recommendationsCount={recommendationsCount ?? 0}
           isMe={isMe}
         />
         <AboutMeCard
-          favoriteClub={favoriteClub ?? NO_INFORMATION}
-          favoriteFootballer={favoriteFootballer ?? NO_INFORMATION}
+          favoriteClub={favoriteClub?.trim() ? favoriteClub : NO_INFORMATION}
+          favoriteFootballer={
+            favoriteFootballer?.trim() ? favoriteFootballer : NO_INFORMATION
+          }
           checkOutTeam={() => checkOutTeam()}
         />
       </div>

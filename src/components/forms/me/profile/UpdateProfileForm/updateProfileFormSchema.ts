@@ -6,21 +6,11 @@ import {
 import { object, string } from "yup";
 
 export interface UpdateProfileFormData {
-  // nick: string;
   favoriteClub: string;
   favoriteFootballer: string;
 }
 
 export const updateProfileFormSchema = object({
-  // nick: string()
-  //   .trim()
-  //   .max(
-  //     NICK_MAX_LENGTH,
-  //     `${MAX_LENGTH_ERROR_MESSAGE} ${NICK_MAX_LENGTH} znaki.`
-  //   )
-  //   .transform((value) => (value === "" ? undefined : value))
-  //   .nullable()
-  //   .notRequired(),
   favoriteClub: string()
     .trim()
     .max(
@@ -42,7 +32,6 @@ export const updateProfileFormSchema = object({
 });
 
 export const initialValues: UpdateProfileFormData = {
-  // nick: "",
   favoriteClub: "",
   favoriteFootballer: "",
 };
