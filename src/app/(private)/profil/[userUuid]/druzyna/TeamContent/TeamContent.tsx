@@ -23,7 +23,7 @@ export function TeamContent() {
 
   const { user: me, isUserLoading: isMeLoading } = useUser();
 
-  if (isUserLoading || isMeLoading) return <Loading />;
+  if (!userUuid || isUserLoading || isMeLoading) return <Loading />;
 
   if (!user || isUserError) {
     return <div>Zaloguj się, aby zobaczyć drużynę</div>;
@@ -37,11 +37,12 @@ export function TeamContent() {
 
   return (
     <>
+    {/* TODO: Think about connecting two components below into one */}
       {isMe ? <ManageTeam /> : <GetTeam />}
-      <div className="flex justify-center pb-16 ps-6 text-[1.5rem]">
+      <div className="flex justify-center px-3 pb-16 pt-6 text-[1.2rem] lg:px-0 lg:text-[1.5rem] text-center">
         <p>
           <Link
-            className="text-[1.5rem] text-linkColor"
+            className="text-[1.2rem] text-linkColor lg:text-[1.5rem]"
             as={"button"}
             onPress={onOpen}
           >

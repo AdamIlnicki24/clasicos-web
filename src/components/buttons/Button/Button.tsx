@@ -19,7 +19,7 @@ export function Button({ title, mode = "primary", ...properties }: ButtonProps) 
 
   return (
     <HeroUIButton
-      className={`rounded-xl px-10 py-7 text-[1.25rem] font-bold ${buttonStyle}`}
+      className={`rounded-xl lg:px-10 lg:py-7 lg:text-[1.25rem] font-bold ${buttonStyle}`}
       mode={mode}
       size="lg"
       {...properties}

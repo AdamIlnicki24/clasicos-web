@@ -68,7 +68,7 @@ export function ProfileContent() {
     user?.uuid ?? ""
   );
 
-  if (isUserLoading || isMeLoading) return <Loading />;
+  if (!userUuid || isUserLoading || isMeLoading) return <Loading />;
 
   if (!user || isUserError) {
     return <div>Zaloguj się, aby zobaczyć użytkownika</div>;

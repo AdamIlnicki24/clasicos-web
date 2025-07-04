@@ -4,13 +4,17 @@ import { Heading } from "@/components/headings/Heading/Heading";
 import { PlayerTile } from "@/components/tiles/PlayerTile/PlayerTile";
 import { TEAM_CANNOT_BE_LOADED_ERROR_MESSAGE } from "@/constants/errorMessages";
 import { TEAM_HEADING, YOUR_TEAM_HEADING } from "@/constants/headings";
+import { MobileContext } from "@/context/MobileContext";
 import { useGetTeam } from "@/hooks/api/team/useGetTeam";
 import { Position } from "@/types/position";
 import { TeamPlayer } from "@/types/teamPlayer";
 import { useParams } from "next/navigation";
+import { useContext } from "react";
 
 export function GetTeam() {
   const { userUuid } = useParams();
+
+  const isMobile = useContext(MobileContext);
 
   const { data: team, isLoading, isError } = useGetTeam(userUuid as string);
 
@@ -37,13 +41,14 @@ export function GetTeam() {
 
   if (isLoading) return <Loading />;
 
-  // TODO: Fix error below when user doesn;t have the team
-  if (isError) return <div>{TEAM_CANNOT_BE_LOADED_ERROR_MESSAGE}</div>;
-
   return (
     <div className="flex min-h-svh flex-col items-center">
-      <div className="flex flex-col items-center justify-center gap-y-3">
-        <Heading HeadingTag="h1" title={TEAM_HEADING} />
+      <div className="flex flex-col items-center justify-center gap-y-3 pt-6">
+        <Heading
+          HeadingTag="h1"
+          title={TEAM_HEADING}
+          size={isMobile ? "sm" : "md"}
+        />
         <PitchBoard
           goalkeepers={goalkeepers}
           defenders={defenders}
