@@ -2,6 +2,7 @@
 
 import { ContentContainer } from "@/components/containers/ContentContainer/ContentContainer";
 import { CookiesPopup } from "@/components/cookies/CookiesPopup/CookiesPopup";
+import { Footer } from "@/components/footer/Footer/Footer";
 import { AuthProvider } from "@/context/AuthProvider";
 import { useCookiesStore } from "@/store/useCookiesStore";
 import { ReactNode } from "react";
@@ -21,7 +22,7 @@ export default function BothLayout({
       <main>
         <ContentContainer>{children}</ContentContainer>
       </main>
-      <footer>{/* <Footer /> */}</footer>
+      <footer><Footer /></footer>
       {isCookiesPopup && (
         <CookiesPopup
           isOpen={!!isCookiesPopup}
