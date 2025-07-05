@@ -1,57 +1,137 @@
 "use client";
 
 import Loading from "@/app/loading";
+import { PitchBoard } from "@/components/boards/PitchBoard/PitchBoard";
+import { Button } from "@/components/buttons/Button/Button";
+import { Heading } from "@/components/headings/Heading/Heading";
+import { CreateTeamModal } from "@/components/modals/CreateTeamModal/CreateTeamModal";
 import { SuggestAddingPlayerModal } from "@/components/modals/SuggestAddingPlayerModal/SuggestAddingPlayerModal";
+import { UpdateTeamModal } from "@/components/modals/UpdateTeamModal/UpdateTeamModal";
+import { PlayerTile } from "@/components/tiles/PlayerTile/PlayerTile";
+import {
+  CREATE_TEAM_BUTTON_LABEL,
+  UPDATE_TEAM_BUTTON_LABEL,
+} from "@/constants/buttonLabels";
 import { YOU_MUST_BE_LOGGED_IN } from "@/constants/errorMessages";
-import { useGetUser } from "@/hooks/api/users/useGetUser";
+import { TEAM_HEADING, YOUR_TEAM_HEADING } from "@/constants/headings";
+import { MobileContext } from "@/context/MobileContext";
+import { useGetTeam } from "@/hooks/api/team/useGetTeam";
 import { useUser } from "@/hooks/context/useUser";
+import { Position } from "@/types/position";
+import { TeamPlayer } from "@/types/teamPlayer";
 import { Link, useDisclosure } from "@heroui/react";
 import { useParams } from "next/navigation";
-import { GetTeam } from "../GetTeam/GetTeam";
-import { ManageTeam } from "../ManageTeam/ManageTeam";
+import { useContext } from "react";
 
 export function TeamContent() {
   const { userUuid } = useParams();
+  const isMobile = useContext(MobileContext);
+  const { user, isUserLoading } = useUser();
 
-  const { onOpen, isOpen, onOpenChange } = useDisclosure();
+  const { data: team, isLoading: isTeamLoading } = useGetTeam(
+    userUuid as string
+  );
 
   const {
-    data: user,
-    isLoading: isUserLoading,
-    isError: isUserError,
-  } = useGetUser(userUuid as string);
+    onOpen: onTeamModalOpen,
+    isOpen: isTeamModalOpen,
+    onOpenChange: onTeamModalOpenChange,
+  } = useDisclosure();
 
-  const { user: me, isUserLoading: isMeLoading } = useUser();
+  const {
+    onOpen: onSuggestionModalOpen,
+    isOpen: isSuggestionModalOpen,
+    onOpenChange: onSuggestionModalOpenChange,
+  } = useDisclosure();
 
-  if (!userUuid || isUserLoading || isMeLoading) return <Loading />;
+  if (!userUuid || isUserLoading || isTeamLoading) return <Loading />;
 
-  if (!user || isUserError) {
-    return <div>Zaloguj się, aby zobaczyć drużynę</div>;
-  }
-
-  if (!me) {
+  if (!user) {
     return <div>{YOU_MUST_BE_LOGGED_IN}</div>;
   }
 
-  const isMe = me.uuid === user.uuid;
+  const isMe = user.uuid === userUuid;
+
+  const headingTitle = isMe ? YOUR_TEAM_HEADING : TEAM_HEADING;
+
+  const buttonLabel = team
+    ? UPDATE_TEAM_BUTTON_LABEL
+    : CREATE_TEAM_BUTTON_LABEL;
+
+  const getPlayersByPosition = (position: Position) => {
+    return (
+      team?.teamPlayers
+        .filter(
+          (teamPlayer: TeamPlayer) => teamPlayer.player.position === position
+        )
+        .map((teamPlayer: TeamPlayer) => {
+          const { name, surname, uuid } = teamPlayer.player;
+          return <PlayerTile name={name} surname={surname} key={uuid} />;
+        }) ?? []
+    );
+  };
+
+  const goalkeepers = getPlayersByPosition("Goalkeeper");
+  const defenders = getPlayersByPosition("Defender");
+  const midfielders = getPlayersByPosition("Midfielder");
+  const forwards = getPlayersByPosition("Forward");
 
   return (
     <>
-    {/* TODO: Think about connecting two components below into one */}
-      {isMe ? <ManageTeam /> : <GetTeam />}
-      <div className="flex justify-center px-3 pb-16 pt-6 text-[1.2rem] lg:px-0 lg:text-[1.5rem] text-center">
-        <p>
-          <Link
-            className="text-[1.2rem] text-linkColor lg:text-[1.5rem]"
-            as={"button"}
-            onPress={onOpen}
-          >
-            Kliknij tutaj
-          </Link>
-          , aby zasugerować dodanie piłkarza do bazy.
-        </p>
+      <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center justify-center gap-y-3 pt-6 text-[1.2rem] lg:text-[1.5rem]">
+          {team && <Heading
+            HeadingTag="h1"
+            title={headingTitle}
+            size={isMobile ? "md" : "lg"}
+          />}
+          {isMe && (
+            <Button
+              title={buttonLabel}
+              onPress={() => onTeamModalOpen()}
+              mode="secondary"
+            />
+          )}
+          <div className="flex w-full items-center justify-center lg:py-4">
+            {team ? (
+              <PitchBoard
+                goalkeepers={goalkeepers}
+                defenders={defenders}
+                midfielders={midfielders}
+                forwards={forwards}
+              />
+            ) : (
+              <p>Po stworzeniu drużyny, pojawi się ona poniżej.</p>
+            )}
+          </div>
+          <div className="px-2 pb-4 pt-2 text-center text-[1.2rem] lg:pb-8 lg:pt-0 lg:text-[1.5rem]">
+            <Link
+              className="text-[1.2rem] text-linkColor lg:text-[1.5rem]"
+              as="button"
+              onPress={onSuggestionModalOpen}
+            >
+              Kliknij tutaj
+            </Link>
+            , aby zasugerować dodanie piłkarza do bazy.
+          </div>
+        </div>
       </div>
-      <SuggestAddingPlayerModal isOpen={isOpen} onOpenChange={onOpenChange} />
+      {isMe && team ? (
+        <UpdateTeamModal
+          isOpen={isTeamModalOpen}
+          onOpenChange={onTeamModalOpenChange}
+          teamPlayers={team.teamPlayers}
+        />
+      ) : (
+        <CreateTeamModal
+          isOpen={isTeamModalOpen}
+          onOpenChange={onTeamModalOpenChange}
+        />
+      )}
+      <SuggestAddingPlayerModal
+        isOpen={isSuggestionModalOpen}
+        onOpenChange={onSuggestionModalOpenChange}
+      />
     </>
   );
 }

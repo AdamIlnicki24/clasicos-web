@@ -7,6 +7,7 @@ import { HOMEPAGE_META_DESCRIPTION } from "@/constants/metaDescriptions";
 import { Lato } from "next/font/google";
 import "./globals.css";
 import { ReactNode } from "react";
+import { Footer } from "@/components/footer/Footer/Footer";
 
 // TODO: Improve this component
 
@@ -61,6 +62,9 @@ export default function RootLayout({
             style={{ top: "4rem" }}
           />
           {children}
+          <footer>
+            <Footer />
+          </footer>
         </AppProviders>
       </body>
     </html>

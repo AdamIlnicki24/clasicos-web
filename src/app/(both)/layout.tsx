@@ -22,7 +22,6 @@ export default function BothLayout({
       <main>
         <ContentContainer>{children}</ContentContainer>
       </main>
-      <footer><Footer /></footer>
       {isCookiesPopup && (
         <CookiesPopup
           isOpen={!!isCookiesPopup}

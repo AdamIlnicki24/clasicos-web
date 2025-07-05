@@ -6,9 +6,9 @@ export const RESET_PASSWORD_HEADING = "Zresetuj hasło";
 export const LOG_IN_HEADING = "Zaloguj się";
 export const REGISTER_HEADING = "Zarejestruj się";
 export const KNOWLEDGE_ZONE_HEADING = "Strefa wiedzy";
-export const YOUR_TEAM_HEADING = "Twoja Drużyna";
+export const YOUR_TEAM_HEADING = "Twoja Drużyna:";
 export const CREATE_TEAM_HEADING =
   "Wybierz jedenastkę najlepszych piłkarzy Klasyków!";
 export const UPDATE_TEAM_HEADING = "Edytuj swoją drużynę";
-export const TEAM_HEADING = "Drużyna";
+export const TEAM_HEADING = "Drużyna:";
 export const USERS_TABLE_HEADING = "Tabela użytkowników";

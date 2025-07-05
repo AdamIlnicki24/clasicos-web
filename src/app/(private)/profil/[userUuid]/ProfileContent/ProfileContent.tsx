@@ -136,55 +136,58 @@ export function ProfileContent() {
 
   return (
     <>
-      <div className="flex justify-end pb-6 pe-4 pt-8 lg:pb-0 lg:pe-12">
-        {isMe && (
-          <Button
-            title={UPDATE_ABOUT_ME_DATA_BUTTON_LABEL}
-            onPress={onProfileModalOpen}
-            mode="secondary"
+    {/* TODO: Think about min-h */}
+      <main className="min-h-[70svh]">
+        <div className="flex justify-end pb-6 pe-4 pt-8 lg:pb-0 lg:pe-12">
+          {isMe && (
+            <Button
+              title={UPDATE_ABOUT_ME_DATA_BUTTON_LABEL}
+              onPress={onProfileModalOpen}
+              mode="secondary"
+            />
+          )}
+          {isAdmin &&
+            !isMe &&
+            (isUserBanned ? (
+              <Button
+                title={isUnbanning ? <Spinner size="md" /> : UNBAN_BUTTON_LABEL}
+                onPress={onUnbanHandler}
+              />
+            ) : (
+              <Button
+                title={isBanning ? <Spinner size="md" /> : BAN_BUTTON_LABEL}
+                onPress={onBanHandler}
+              />
+            ))}
+        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-[9fr_11fr]">
+          {/* TODO: NO_INFORMATION should be visible if user deletes whole the information */}
+          <UserDataCard
+            nick={nick?.trim() ? nick : ENIGMA}
+            onIconPress={onNickModalOpen}
+            createdAt={formatDate(createdAt)}
+            recommendationsCount={recommendationsCount ?? 0}
+            isMe={isMe}
           />
-        )}
-        {isAdmin &&
-          !isMe &&
-          (isUserBanned ? (
-            <Button
-              title={isUnbanning ? <Spinner size="md" /> : UNBAN_BUTTON_LABEL}
-              onPress={onUnbanHandler}
-            />
-          ) : (
-            <Button
-              title={isBanning ? <Spinner size="md" /> : BAN_BUTTON_LABEL}
-              onPress={onBanHandler}
-            />
-          ))}
-      </div>
-      <div className="grid grid-cols-1 lg:grid-cols-[9fr_11fr]">
-        {/* TODO: NO_INFORMATION should be visible if user deletes whole the information */}
-        <UserDataCard
-          nick={nick?.trim() ? nick : ENIGMA}
-          onIconPress={onNickModalOpen}
-          createdAt={formatDate(createdAt)}
-          recommendationsCount={recommendationsCount ?? 0}
-          isMe={isMe}
+          <AboutMeCard
+            favoriteClub={favoriteClub?.trim() ? favoriteClub : NO_INFORMATION}
+            favoriteFootballer={
+              favoriteFootballer?.trim() ? favoriteFootballer : NO_INFORMATION
+            }
+            checkOutTeam={() => checkOutTeam()}
+          />
+        </div>
+        <UpdateProfileModal
+          visitor={visitor}
+          isOpen={isProfileModalOpen}
+          onOpenChange={onProfileModalOpenChange}
         />
-        <AboutMeCard
-          favoriteClub={favoriteClub?.trim() ? favoriteClub : NO_INFORMATION}
-          favoriteFootballer={
-            favoriteFootballer?.trim() ? favoriteFootballer : NO_INFORMATION
-          }
-          checkOutTeam={() => checkOutTeam()}
+        <UpdateNickModal
+          visitor={visitor}
+          isOpen={isNickModalOpen}
+          onOpenChange={onNickModalOpenChange}
         />
-      </div>
-      <UpdateProfileModal
-        visitor={visitor}
-        isOpen={isProfileModalOpen}
-        onOpenChange={onProfileModalOpenChange}
-      />
-      <UpdateNickModal
-        visitor={visitor}
-        isOpen={isNickModalOpen}
-        onOpenChange={onNickModalOpenChange}
-      />
+      </main>
     </>
   );
 }

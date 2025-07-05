@@ -13,7 +13,6 @@ export default function PrivateLayout({
         <nav>{/* <Navbar /> */}</nav>
       </header>
       <ContentContainer>{children}</ContentContainer>
-      <footer>{/* <Footer /> */}</footer>
     </AuthProvider>
   );
 }

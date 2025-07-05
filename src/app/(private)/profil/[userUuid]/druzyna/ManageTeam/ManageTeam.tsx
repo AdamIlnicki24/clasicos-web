@@ -9,9 +9,7 @@ import {
   CREATE_TEAM_BUTTON_LABEL,
   UPDATE_TEAM_BUTTON_LABEL,
 } from "@/constants/buttonLabels";
-import {
-  YOUR_TEAM_HEADING
-} from "@/constants/headings";
+import { YOUR_TEAM_HEADING } from "@/constants/headings";
 import { MobileContext } from "@/context/MobileContext";
 import { useGetMyTeam } from "@/hooks/api/team/me/useGetMyTeam";
 import { useTeamStore } from "@/store/useTeamStore";
@@ -23,7 +21,7 @@ import { useContext, useEffect } from "react";
 export function ManageTeam() {
   const { data, isLoading, isError } = useGetMyTeam();
 
-   const isMobile = useContext(MobileContext);
+  const isMobile = useContext(MobileContext);
 
   const setTeam = useTeamStore((state) => state.setTeam);
 
@@ -74,7 +72,11 @@ export function ManageTeam() {
   return (
     <div className="flex flex-col items-center">
       <div className="flex flex-col items-center justify-center gap-y-3 pt-6">
-        <Heading HeadingTag="h1" title={YOUR_TEAM_HEADING} size={isMobile ? "md" : "lg"} />
+        <Heading
+          HeadingTag="h1"
+          title={YOUR_TEAM_HEADING}
+          size={isMobile ? "md" : "lg"}
+        />
         {/* <Heading
           HeadingTag="h2"
           title={data ? UPDATE_TEAM_HEADING : CREATE_TEAM_HEADING}
@@ -103,7 +105,7 @@ export function ManageTeam() {
             forwards={forwards ?? []}
           />
         ) : (
-          <p>Po stworzeniu drużyny, pojawi się ona poniżej</p>
+          <p>Po stworzeniu drużyny, pojawi się ona poniżej.</p>
         )}
       </div>
       {data ? (
