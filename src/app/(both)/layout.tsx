@@ -2,7 +2,7 @@
 
 import { ContentContainer } from "@/components/containers/ContentContainer/ContentContainer";
 import { CookiesPopup } from "@/components/cookies/CookiesPopup/CookiesPopup";
-import { Footer } from "@/components/footer/Footer/Footer";
+import { PublicNav } from "@/components/nav/PublicNav/PublicNav";
 import { AuthProvider } from "@/context/AuthProvider";
 import { useCookiesStore } from "@/store/useCookiesStore";
 import { ReactNode } from "react";
@@ -14,10 +14,14 @@ export default function BothLayout({
 }>) {
   const { isCookiesPopup, setIsCookiesPopup } = useCookiesStore();
 
+  // TODO: Think about padding to avoid content being covered by nav
+
   return (
     <AuthProvider type="both">
       <header>
-        <nav>{/* <Navbar /> */}</nav>
+        <nav>
+          <PublicNav />
+        </nav>
       </header>
       <main>
         <ContentContainer>{children}</ContentContainer>

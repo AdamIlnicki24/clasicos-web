@@ -1,6 +1,7 @@
 import { ActiveUserChip } from "@/components/chips/ActiveUserChip/ActiveUserChip";
 import { BannedUserChip } from "@/components/chips/BannedUserChip/BannedUserChip";
 import { Heading } from "@/components/headings/Heading/Heading";
+import { USERS_TABLE_ARIA_LABEL } from "@/constants/ariaLabels";
 import { USERS_TABLE_HEADING } from "@/constants/headings";
 import { ENIGMA, NO_INFORMATION } from "@/constants/texts";
 import { User } from "@/types/user";
@@ -49,7 +50,7 @@ export function UsersTable({ columns, items }: UsersTableProps) {
   return (
     <div className="flex flex-col items-center py-6 gap-y-6">
       <Heading HeadingTag="h1" title={USERS_TABLE_HEADING} />
-      <Table aria-label={USERS_TABLE_HEADING} className="text-defaultBlack">
+      <Table aria-label={USERS_TABLE_ARIA_LABEL} className="text-defaultBlack">
         <TableHeader columns={columns} className="">
           {(column) => (
             <TableColumn key={column.key}>{column.label}</TableColumn>
