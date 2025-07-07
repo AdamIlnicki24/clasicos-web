@@ -1,6 +1,6 @@
 export const logoBase64 = {
   src: "",
-  alt: "",
+  alt: "El Clasico - Barcelona vs Real Madryt",
 };
 
 // TODO: Convert photos
