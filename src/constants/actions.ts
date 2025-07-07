@@ -3,4 +3,3 @@ export const FROM = `Clasicos <${process.env.EMAIL}>`;
 export const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
 export const SUBJECT_FOR_ADMIN =
   "Nowa wiadomość z formularza na stronie clasicos.pl";
-export const SUBJECT_FOR_VISITOR = "Dziękujemy za kontakt";

@@ -5,13 +5,10 @@ import {
   ADMIN_EMAIL,
   EMAIL_HAS_BEEN_SENT,
   FROM,
-  SUBJECT_FOR_ADMIN,
-  SUBJECT_FOR_VISITOR,
+  SUBJECT_FOR_ADMIN
 } from "@/constants/actions";
-import { INVALID_EMAIL_ADDRESS_ERROR_CODE } from "@/constants/errorCodes";
 import {
-  EMAIL_HAS_NOT_BEEN_SENT_ERROR_MESSAGE,
-  INVALID_EMAIL_ADDRESS_ERROR_MESSAGE,
+  EMAIL_HAS_NOT_BEEN_SENT_ERROR_MESSAGE
 } from "@/constants/errorMessages";
 import { logoBase64 } from "@/constants/images";
 import { ENIGMA } from "@/constants/texts";
