@@ -2,7 +2,7 @@ import {
   CLOSE_MENU_ARIA_LABEL,
   OPEN_MENU_ARIA_LABEL,
 } from "@/constants/ariaLabels";
-import { publicNavItems } from "@/constants/menuItems";
+import { adminNavItems, publicNavItems } from "@/constants/menuItems";
 import {
   FORUM_TITLE,
   HOME_TITLE,
@@ -15,10 +15,12 @@ import {
   HOME_URL,
   KNOWLEDGE_ZONE_URL,
   LOG_IN_URL,
+  PROFILE_URL,
 } from "@/constants/urls";
 import { MobileContext } from "@/context/MobileContext";
 import {
-    Avatar,
+  Avatar,
+  Button,
   Link,
   Navbar,
   NavbarBrand,
@@ -27,6 +29,7 @@ import {
   NavbarMenu,
   NavbarMenuItem,
   NavbarMenuToggle,
+  Spinner,
 } from "@heroui/react";
 import { useContext, useState } from "react";
 import { NavLink } from "../NavLink/NavLink";
@@ -34,13 +37,14 @@ import { useUser } from "@/hooks/context/useUser";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { LOG_OUT_ERROR_TOAST, LOG_OUT_SUCCESS_TOAST } from "@/constants/toasts";
+import { YOU_MUST_BE_LOGGED_IN } from "@/constants/errorMessages";
 
 export function AdminNav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const isMobile = useContext(MobileContext);
 
-  const { user, logOut } = useUser();
+  const { user, logOut, isUserLoading } = useUser();
 
   const router = useRouter();
 
@@ -57,6 +61,10 @@ export function AdminNav() {
       toast.error(LOG_OUT_ERROR_TOAST);
     }
   };
+
+  if (!user) {
+    return <div>{YOU_MUST_BE_LOGGED_IN}</div>;
+  }
 
   return (
     <Navbar
@@ -81,6 +89,7 @@ export function AdminNav() {
           {/* <Image src={src} alt={alt} className="h-20 lg:h-20" /> */}
         </Link>
       </NavbarBrand>
+      {/* TODO: Think about components' order */}
       <NavbarContent justify="end">
         <NavbarMenuToggle
           aria-label={isMenuOpen ? CLOSE_MENU_ARIA_LABEL : OPEN_MENU_ARIA_LABEL}
@@ -88,15 +97,6 @@ export function AdminNav() {
         />
       </NavbarContent>
       <NavbarContent justify="end" className="hidden w-full lg:flex">
-        {/* <NavbarItem>
-          <NavLink
-            title={HOME_TITLE}
-            href={HOME_URL}
-            onClick={() => {
-              isMobile && setIsMenuOpen(false);
-            }}
-          />
-        </NavbarItem> */}
         <NavbarItem>
           <NavLink
             title={KNOWLEDGE_ZONE_TITLE}
@@ -117,7 +117,7 @@ export function AdminNav() {
         </NavbarItem>
         <NavbarItem>
           <NavLink
-            as="button"
+            href={HOME_URL}
             title={LOG_OUT_TITLE}
             onClick={() => {
               handleLogout();
@@ -125,10 +125,18 @@ export function AdminNav() {
             }}
           />
         </NavbarItem>
-        <NavbarItem><Avatar  /></NavbarItem>
+        {isUserLoading ? (
+          <Spinner size="sm" />
+        ) : (
+          <NavbarItem>
+            <Button onPress={() => router.push(`${PROFILE_URL}/${user.uuid}`)}>
+              <Avatar />
+            </Button>
+          </NavbarItem>
+        )}
       </NavbarContent>
       <NavbarMenu>
-        {publicNavItems.map((item) => (
+        {adminNavItems.map((item) => (
           <NavbarMenuItem key={item.href}>
             <NavLink
               title={item.title}

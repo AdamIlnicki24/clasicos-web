@@ -5,6 +5,7 @@ export const REGISTER_URL = "/zarejestruj-sie";
 export const KNOWLEDGE_ZONE_URL = "/strefa-wiedzy";
 export const FORUM_URL = "/forum";
 export const USERS_URL = "/uzytkownicy";
+export const PLAYERS_URL = "/pilkarze";
 export const PROFILE_URL = "/profil";
 export const TEAM_URL = "/druzyna";
 export const PRIVACY_POLICY_URL = "/polityka-prywatnosci";
