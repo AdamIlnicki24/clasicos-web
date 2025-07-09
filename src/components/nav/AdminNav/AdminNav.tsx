@@ -2,22 +2,22 @@ import {
   CLOSE_MENU_ARIA_LABEL,
   OPEN_MENU_ARIA_LABEL,
 } from "@/constants/ariaLabels";
-import { adminNavItems, publicNavItems } from "@/constants/menuItems";
+import { YOU_MUST_BE_LOGGED_IN } from "@/constants/errorMessages";
+import { adminNavItems } from "@/constants/menuItems";
 import {
   FORUM_TITLE,
-  HOME_TITLE,
   KNOWLEDGE_ZONE_TITLE,
-  LOG_IN_TITLE,
-  LOG_OUT_TITLE,
+  LOG_OUT_TITLE
 } from "@/constants/titles";
+import { LOG_OUT_ERROR_TOAST, LOG_OUT_SUCCESS_TOAST } from "@/constants/toasts";
 import {
   FORUM_URL,
   HOME_URL,
   KNOWLEDGE_ZONE_URL,
-  LOG_IN_URL,
-  PROFILE_URL,
+  PROFILE_URL
 } from "@/constants/urls";
 import { MobileContext } from "@/context/MobileContext";
+import { useUser } from "@/hooks/context/useUser";
 import {
   Avatar,
   Button,
@@ -31,13 +31,10 @@ import {
   NavbarMenuToggle,
   Spinner,
 } from "@heroui/react";
-import { useContext, useState } from "react";
-import { NavLink } from "../NavLink/NavLink";
-import { useUser } from "@/hooks/context/useUser";
-import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
-import { LOG_OUT_ERROR_TOAST, LOG_OUT_SUCCESS_TOAST } from "@/constants/toasts";
-import { YOU_MUST_BE_LOGGED_IN } from "@/constants/errorMessages";
+import { useContext, useState } from "react";
+import { toast } from "react-toastify";
+import { NavLink } from "../NavLink/NavLink";
 
 export function AdminNav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -136,17 +133,21 @@ export function AdminNav() {
         )}
       </NavbarContent>
       <NavbarMenu>
-        {adminNavItems.map((item) => (
-          <NavbarMenuItem key={item.href}>
-            <NavLink
-              title={item.title}
-              href={item.href}
-              onClick={() => {
-                isMobile && setIsMenuOpen(false);
-              }}
-            />
-          </NavbarMenuItem>
-        ))}
+        {adminNavItems.map((item) => {
+          console.log("Admin nav items:", adminNavItems);
+
+          return (
+            <NavbarMenuItem key={item.href}>
+              <NavLink
+                title={item.title}
+                href={item.href}
+                onClick={() => {
+                  isMobile && setIsMenuOpen(false);
+                }}
+              />
+            </NavbarMenuItem>
+          );
+        })}
       </NavbarMenu>
     </Navbar>
   );

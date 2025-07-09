@@ -16,11 +16,6 @@ export default function PublicLayout({
 
   return (
     <AuthProvider type="public">
-      <header>
-        <nav>
-          <PublicNav />
-        </nav>
-      </header>
       <main>
         <ContentContainer>{children}</ContentContainer>
       </main>

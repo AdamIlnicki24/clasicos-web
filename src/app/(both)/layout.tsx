@@ -18,11 +18,6 @@ export default function BothLayout({
 
   return (
     <AuthProvider type="both">
-      <header>
-        <nav>
-          <PublicNav />
-        </nav>
-      </header>
       <main>
         <ContentContainer>{children}</ContentContainer>
       </main>

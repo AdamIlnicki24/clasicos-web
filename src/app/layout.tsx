@@ -8,6 +8,7 @@ import { Lato } from "next/font/google";
 import "./globals.css";
 import { ReactNode } from "react";
 import { Footer } from "@/components/footer/Footer/Footer";
+import { Nav } from "@/components/nav/Nav/Nav";
 
 // TODO: Improve this component
 
@@ -61,6 +62,11 @@ export default function RootLayout({
             transition={Bounce}
             style={{ top: "4rem" }}
           />
+          <header>
+            <nav>
+              <Nav />
+            </nav>
+          </header>
           {children}
           <footer>
             <Footer />
