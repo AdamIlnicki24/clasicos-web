@@ -9,8 +9,11 @@ interface CreateCommentCardProps {
 
 export function CreateCommentCard({ nick }: CreateCommentCardProps) {
   return (
-    <Card className="w-[60%] bg-accentColor">
-      <CardHeader>{nick}</CardHeader>
+    <Card className="w-[95%] bg-accentColor lg:w-[60%]">
+      <CardHeader className="space-x-1">
+        <span className="text-defaultGray">Twój nick:</span>
+        <span className="text-defaultWhite">{nick}</span>
+      </CardHeader>
       <CardBody>
         <CreateCommentForm />
       </CardBody>

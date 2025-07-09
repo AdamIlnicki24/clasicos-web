@@ -31,7 +31,7 @@ export function Textarea({ isCounterShown, ...properties }: TextareaProps) {
       <HeroUITextarea
         classNames={{
           label:
-            "text-[1.1rem] text-defaultBlack ps-2 group-data-[filled-within=true]:text-defaultBlack",
+            "text-[1.1rem] text-defaultGray ps-2 group-data-[filled-within=true]:text-defaultGray",
           input:
             "text-[1.2rem] leading-none text-defaultBlack group-data-[has-value=true]:text-defaultBlack",
           errorMessage: "text-[1rem] font-bold",
@@ -44,7 +44,7 @@ export function Textarea({ isCounterShown, ...properties }: TextareaProps) {
         {...properties}
       />
       {isCounterShown && maxLength && (
-        <div className="absolute right-0 top-0 pe-3 text-end text-[0.8rem] text-defaultBlack/50">
+        <div className="absolute right-0 top-0 pe-3 text-end text-[0.8rem] text-defaultGray">
           {currentLength} / {maxLength}
         </div>
       )}
