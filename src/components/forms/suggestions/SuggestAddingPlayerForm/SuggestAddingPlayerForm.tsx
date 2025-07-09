@@ -20,6 +20,7 @@ import { YOU_MUST_BE_LOGGED_IN } from "@/constants/errorMessages";
 interface SuggestAddingPlayerFormProps {
   onClose?: () => void;
 }
+
 export function SuggestAddingPlayerForm({
   onClose,
 }: SuggestAddingPlayerFormProps) {

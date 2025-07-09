@@ -11,26 +11,40 @@ import {
   SuggestFixFormData,
   suggestFixFormSchema,
 } from "./suggestFixFormSchema";
+import { createFixSuggestion } from "@/actions/actions";
+import { SUGGESTION_HAS_BEEN_SENT_TOAST } from "@/constants/toasts";
+import { useUser } from "@/hooks/context/useUser";
+import { YOU_MUST_BE_LOGGED_IN } from "@/constants/errorMessages";
 
-export function SuggestFixForm() {
+interface SuggestFixFormProps {
+  onClose?: () => void;
+}
+
+export function SuggestFixForm({ onClose }: SuggestFixFormProps) {
   // TODO: Think about adding form ref
 
   const [isPending, setIsPending] = useState(false);
 
-  const onSubmitHandler = async (values: SuggestFixFormData) => {
+  const { user } = useUser();
+
+  if (!user) {
+    return <div>{YOU_MUST_BE_LOGGED_IN}</div>;
+  }
+
+  const { nick } = user.visitor;
+
+  const onSubmitHandler = async ({ message }: SuggestFixFormData) => {
     setIsPending(true);
 
-    if (process.env.NODE_ENV === "development") {
-      console.log("Values:", values);
-    }
-
-    // TODO: Finish below
-    await createFixSuggestion(values).then((response) => {
+    await createFixSuggestion({ message, nick }).then((response) => {
       if (process.env.NODE_ENV === "development") {
         console.log("Response:", response);
       }
+
       if (response.success) {
-        toast.success();
+        toast.success(SUGGESTION_HAS_BEEN_SENT_TOAST);
+
+        if (onClose) onClose();
       } else {
         toast.error(response.error);
       }
@@ -52,6 +66,7 @@ export function SuggestFixForm() {
         />
         <SubmitButton
           title={isPending ? <Spinner size="md" /> : SUBMIT_FORM_BUTTON_LABEL}
+          mode="secondary"
         />
       </>
     </Formik>
