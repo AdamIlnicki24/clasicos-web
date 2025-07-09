@@ -12,6 +12,8 @@ import { FIGO_HISTORY_URL } from "@/constants/urls";
 import parse from "html-react-parser";
 import { useRouter } from "next/navigation";
 
+// TODO: Add arrow leading user to comments
+
 export function KnowledgeZoneContent() {
   const router = useRouter();
 

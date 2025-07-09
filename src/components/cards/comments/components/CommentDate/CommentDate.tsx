@@ -9,8 +9,8 @@ interface CommentDateProps {
 export function CommentDate({ createdAt }: CommentDateProps) {
   return (
     <div className="flex gap-x-2 items-center">
-      <Calendar width={16} color={colors.secondaryColor} />
-      <span>{formatDate(createdAt)}</span>
+      <Calendar width={16} color={colors.defaultGray} />
+      <span className="text-defaultGray">{formatDate(createdAt)}</span>
     </div>
   );
 }

@@ -1,9 +1,8 @@
 // TODO: Add shadow in secondary color
 
-import { Card, CardBody, CardFooter, Link } from "@heroui/react";
-import Info from "@/assets/icons/info.svg";
 import { LOG_IN, OR, REGISTER } from "@/constants/texts";
-import { colors } from "@/constants/colors";
+import { LOG_IN_URL, REGISTER_URL } from "@/constants/urls";
+import { Card, CardBody, CardFooter, Link } from "@heroui/react";
 
 interface NoAccountCardProps {
   bodyText: string;
@@ -11,14 +10,18 @@ interface NoAccountCardProps {
 
 export function NoAccountCard({ bodyText }: NoAccountCardProps) {
   return (
-    <Card className="flex bg-accentColor">
-      <Info color={colors.defaultWhite} width={32} />
+    <Card className="flex w-[95%] bg-accentColor lg:w-[20%]">
+      {/* <Info color={colors.defaultWhite} width={20} /> */}
       <div>
-        <CardBody>{bodyText}</CardBody>
-        <CardFooter>
-          <Link>{LOG_IN}</Link>
+        <CardBody className="text-defaultWhite">{bodyText}</CardBody>
+        <CardFooter className="text-defaultWhite">
+          <Link className="font-bold text-linkColor" href={LOG_IN_URL}>
+            {LOG_IN}
+          </Link>
           <span className="px-1">{OR.toLowerCase()}</span>
-          <Link>{REGISTER.toLowerCase()}</Link>
+          <Link className="font-bold text-linkColor" href={REGISTER_URL}>
+            {REGISTER.toLowerCase()}
+          </Link>
           <span>.</span>
         </CardFooter>
       </div>

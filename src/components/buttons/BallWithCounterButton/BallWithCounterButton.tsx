@@ -5,13 +5,15 @@ interface BallWithCounterButtonProps extends ButtonProps {
   count: number;
 }
 
+// TODO: Refavtor
+
 export function BallWithCounterButton({
   count,
   ...properties
 }: BallWithCounterButtonProps) {
   return (
     <div className="flex gap-x-4">
-      <span className="text-[1.15rem]">Polecają:</span>
+      <span className="text-[1.15rem] text-defaultGray">Polecają:</span>
       <Button className="relative inline-block" isIconOnly size="sm" {...properties}>
         {/* TODO: Improve icon */}
         {/* <Ball /> */}

@@ -20,7 +20,7 @@ import { toast } from "react-toastify";
 import Ball from "@/assets/icons/ball.svg";
 import Loading from "../loading";
 
-export default function Page() {
+export default function BothPage() {
   const { logOut, user, isUserLoading } = useUser();
 
   const router = useRouter();

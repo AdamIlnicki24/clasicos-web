@@ -4,6 +4,8 @@ import { UserChip } from "@/components/chips/UserChip/UserChip";
 import { User } from "@/types/user";
 import { Card, CardBody, CardHeader, useDisclosure } from "@heroui/react";
 import { CommentDate } from "../components/CommentDate/CommentDate";
+import { useContext } from "react";
+import { MobileContext } from "@/context/MobileContext";
 
 interface CommentCardProps {
   nick: string;
@@ -22,8 +24,11 @@ export function CommentCard({
   user,
   onTrashPress,
 }: CommentCardProps) {
+
+  const isMobile = useContext(MobileContext);
+
   return (
-    <Card className="w-[60%] bg-accentColor">
+    <Card className="w-[95%] lg:w-[60%] bg-accentColor">
       <CardHeader className="flex justify-between">
         <UserChip nick={nick} />
         <div className="flex gap-x-6">
@@ -31,7 +36,7 @@ export function CommentCard({
             <TrashButton color="danger" onPress={onTrashPress} />
           )}
           <BallWithCounterButton count={recommendationsCount} />
-          <CommentDate createdAt={createdAt} />
+          {!isMobile && <CommentDate createdAt={createdAt} />}
         </div>
       </CardHeader>
       <CardBody className="text-defaultWhite">{content}</CardBody>

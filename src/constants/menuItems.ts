@@ -13,15 +13,9 @@ export const publicNavItems = [
   { title: FORUM_TITLE, href: FORUM_URL },
 ];
 
-// const adminNavItems = {
-//     {HOME_TITLE, HOME_URL},
-//     {APARTMENTS_TITLE, APARTMENTS_ID},
-//     {BOOK_APARTMENT_TITLE, BOOK_APARTMENT_ID},
-//     {LOCATION_TITLE, LOCATION_ID},
-//     {GALLERY_TITLE, GALLERY_ID},
-//     {SALE_OF_APARTMENTS_TITLE, SALE_OF_APARTMENTS_ID},
-//     {ABOUT_THE_INVESTOR_TITLE, ABOUT_THE_INVESTOR_ID},
-//   };
+const adminNavItems = {
+   
+  };
 
 // const visitorNavItems = {
 //     {HOME_TITLE, HOME_URL},
