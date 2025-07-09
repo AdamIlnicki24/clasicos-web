@@ -2,6 +2,7 @@
 
 import Ball from "@/assets/icons/ball.svg";
 import Envelope from "@/assets/icons/envelope.svg";
+import { SuggestFixModal } from "@/components/modals/SuggestFixModal/SuggestFixModal";
 import { colors } from "@/constants/colors";
 import {
   CONTACT_EMAIL_TITLE,
@@ -18,17 +19,16 @@ import {
 } from "@/constants/urls";
 import { MobileContext } from "@/context/MobileContext";
 import { useUser } from "@/hooks/context/useUser";
+import { Spinner, useDisclosure } from "@heroui/react";
 import Link from "next/link";
 import { useContext } from "react";
 import { FooterLink } from "../FooterLink/FooterLink";
 import { FooterLinksContainer } from "../FooterLinksContainer/FooterLinksContrainer";
-import { useDisclosure } from "@heroui/react";
-import { SuggestFixModal } from "@/components/modals/SuggestFixModal/SuggestFixModal";
 
 export function Footer() {
   const isMobile = useContext(MobileContext);
 
-  const { user } = useUser();
+  const { user, isUserLoading } = useUser();
 
   const { onOpen, isOpen, onOpenChange } = useDisclosure();
 
@@ -49,12 +49,16 @@ export function Footer() {
         <FooterLinksContainer>
           <FooterLink title={KNOWLEDGE_ZONE_TITLE} href={KNOWLEDGE_ZONE_URL} />
           <FooterLink title={FORUM_TITLE} href={FORUM_URL} />
-          {user && (
-            <FooterLink
-              as="button"
-              title={SUGGEST_FIX_TITLE}
-              onPress={onOpen}
-            />
+          {isUserLoading ? (
+            <Spinner size="sm" color="default" />
+          ) : (
+            user && (
+              <FooterLink
+                as="button"
+                title={SUGGEST_FIX_TITLE}
+                onPress={onOpen}
+              />
+            )
           )}
         </FooterLinksContainer>
         <FooterLinksContainer>
