@@ -8,7 +8,7 @@ interface ContentContainerProps {
 export function ContentContainer({ children }: ContentContainerProps) {
   return (
     <Suspense fallback={<Loading />}>
-      <div className="flex min-h-[80svh] flex-col">{children}</div>
+      <div className="flex min-h-[80svh] flex-col pt-24">{children}</div>
     </Suspense>
   );
 }

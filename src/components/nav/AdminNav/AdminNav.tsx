@@ -7,14 +7,14 @@ import { adminNavItems } from "@/constants/menuItems";
 import {
   FORUM_TITLE,
   KNOWLEDGE_ZONE_TITLE,
-  LOG_OUT_TITLE
+  LOG_OUT_TITLE,
 } from "@/constants/titles";
 import { LOG_OUT_ERROR_TOAST, LOG_OUT_SUCCESS_TOAST } from "@/constants/toasts";
 import {
   FORUM_URL,
   HOME_URL,
   KNOWLEDGE_ZONE_URL,
-  PROFILE_URL
+  PROFILE_URL,
 } from "@/constants/urls";
 import { MobileContext } from "@/context/MobileContext";
 import { useUser } from "@/hooks/context/useUser";
@@ -122,15 +122,20 @@ export function AdminNav() {
             }}
           />
         </NavbarItem>
-        {isUserLoading ? (
-          <Spinner size="sm" />
-        ) : (
-          <NavbarItem>
-            <Button onPress={() => router.push(`${PROFILE_URL}/${user.uuid}`)}>
-              <Avatar />
+        <NavbarItem>
+          {/* TODO: Sometimes function passed to button doesn't work in a first time */}
+          {isUserLoading ? (
+            <Spinner size="sm" />
+          ) : (
+            <Button
+              onPress={() => router.push(`${PROFILE_URL}/${user.uuid}`)}
+              size="sm"
+              className="rounded-3xl"
+            >
+              <Avatar size="sm" />
             </Button>
-          </NavbarItem>
-        )}
+          )}
+        </NavbarItem>
       </NavbarContent>
       <NavbarMenu>
         {adminNavItems.map((item) => {

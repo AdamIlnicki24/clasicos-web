@@ -19,7 +19,7 @@ export default function BothLayout({
   return (
     <AuthProvider type="both">
       <main>
-        <ContentContainer>{children}</ContentContainer>
+        {children}
       </main>
       {isCookiesPopup && (
         <CookiesPopup

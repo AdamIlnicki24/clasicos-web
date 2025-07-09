@@ -43,7 +43,7 @@ export default function BothPage() {
   return (
     <main className="relative min-h-svh bg-[url('/images/stadion-w-pionie.jpg')] bg-cover bg-center lg:bg-[url('/images/stadion-w-poziomie.jpg')]">
       <div className="absolute inset-0 bg-defaultBlack opacity-80"></div>
-      <div className="relative z-10 mx-auto flex w-[90%] flex-col items-center gap-y-4 pt-12 text-[1.25rem] leading-relaxed tracking-wide text-defaultWhite lg:w-[60%] lg:text-[1.4rem]">
+      <div className="relative z-10 mx-auto flex w-[90%] flex-col items-center gap-y-4 pt-28 text-[1.25rem] leading-relaxed tracking-wide text-defaultWhite lg:w-[60%] lg:text-[1.4rem]">
         <Ball width={48} />
         {/* TODO: Remove heading below */}
         <h1>Strona główna dla wszystkich</h1>
