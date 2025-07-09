@@ -37,7 +37,7 @@ export function Textarea({ isCounterShown, ...properties }: TextareaProps) {
           input:
             "text-[1.2rem] leading-none text-defaultBlack group-data-[has-value=true]:text-defaultBlack",
           errorMessage: "text-[1rem] font-bold",
-          inputWrapper: "text-defaultBlack border-2 border-primaryColor",
+          inputWrapper: "text-defaultBlack border-2",
         }}
         size="lg"
         labelPlacement="outside"
