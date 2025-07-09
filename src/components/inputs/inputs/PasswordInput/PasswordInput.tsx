@@ -14,7 +14,6 @@ export function PasswordInput({}: TextInputProps) {
   const { handleChange, handleBlur, values, errors, touched, setFieldValue } =
     useFormikContext<{ password: string }>();
 
-  // TODO: Check if function below works correctly
   const togglePasswordVisibility = () =>
     setIsPasswordVisible(!isPasswordVisible);
 

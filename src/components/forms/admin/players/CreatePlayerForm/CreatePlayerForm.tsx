@@ -1,27 +1,26 @@
 "use client";
 
 import { SubmitButton } from "@/components/buttons/SubmitButton/SubmitButton";
+import { PlayerNationalityAutocomplete } from "@/components/inputs/autocompletes/PlayerNationalityAutocomplete/PlayerNationalityAutocomplete";
+import { PlayerNameInput } from "@/components/inputs/inputs/PlayerNameInput/PlayerNameInput";
+import { PlayerSurnameInput } from "@/components/inputs/inputs/PlayerSurnameInput/PlayerSurnameInput";
+import { PlayerPositionSelect } from "@/components/inputs/selects/PlayerPositionSelect/PlayerPositionSelect";
 import { SUBMIT_FORM_BUTTON_LABEL } from "@/constants/buttonLabels";
+import { PLAYER_HAS_BEEN_CREATED_TOAST } from "@/constants/toasts";
 import { useCreatePlayer } from "@/hooks/api/players/useCreatePlayer";
+import { ApiError } from "@/types/apiError";
 import { Spinner } from "@heroui/react";
 import { useQueryClient } from "@tanstack/react-query";
 import { Formik } from "formik";
 import { useRef } from "react";
+import { toast } from "react-toastify";
 import {
   CreatePlayerFormData,
   createPlayerFormSchema,
   initialValues,
 } from "./createPlayerFormSchema";
-import { PlayerNationalityAutocomplete } from "@/components/inputs/autocompletes/PlayerNationalityAutocomplete/PlayerNationalityAutocomplete";
-import { PlayerNameInput } from "@/components/inputs/inputs/PlayerNameInput/PlayerNameInput";
-import { PlayerSurnameInput } from "@/components/inputs/inputs/PlayerSurnameInput/PlayerSurnameInput";
-import { PlayerPositionSelect } from "@/components/inputs/selects/PlayerPositionSelect/PlayerPositionSelect";
-import { toast } from "react-toastify";
-import { PLAYER_HAS_BEEN_CREATED_TOAST } from "@/constants/toasts";
-import { ApiError } from "@/types/apiError";
 
 interface CreatePlayerFormProps {
-  // TODO: Think about the name of the prop
   onClose?: () => void;
 }
 

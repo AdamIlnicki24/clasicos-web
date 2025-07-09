@@ -21,7 +21,6 @@ import {
 } from "./updateNickFormSchema";
 
 interface UpdateNickFormProps {
-  // TODO: Think about the name of the prop
   onClose?: () => void;
   visitor: Visitor;
 }
@@ -61,7 +60,6 @@ export function UpdateNickForm({ onClose, visitor }: UpdateNickFormProps) {
     });
   };
 
-  // TODO: Override initial values also in other resources
   initialValues.nick = visitor.nick ?? ENIGMA;
 
   return (

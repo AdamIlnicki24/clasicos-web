@@ -15,8 +15,6 @@ interface DeleteCommentModalProps extends Omit<ModalProps, "children"> {
   isPending: boolean;
 }
 
-// TODO: Think about handling nick's change
-
 export function DeleteCommentModal({
   isOpen,
   onOpenChange,

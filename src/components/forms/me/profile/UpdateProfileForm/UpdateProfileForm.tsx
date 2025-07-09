@@ -22,7 +22,6 @@ import {
 import { useUser } from "@/hooks/context/useUser";
 
 interface UpdateProfileFormProps {
-  // TODO: Think about the name of the prop
   onClose?: () => void;
   visitor: Visitor;
 }
@@ -65,8 +64,6 @@ export function UpdateProfileForm({
     });
   };
 
-  // TODO: Override initial values also in other resources
-  // initialValues.nick = visitor.nick ?? "";
   initialValues.favoriteClub = visitor.favoriteClub ?? NO_INFORMATION;
   initialValues.favoriteFootballer =
     visitor.favoriteFootballer ?? NO_INFORMATION;
@@ -78,13 +75,12 @@ export function UpdateProfileForm({
       validationSchema={updateProfileFormSchema}
     >
       <>
-        {/* <NickInput /> */}
         <FavoriteClubInput />
         <FavoriteFootballerInput />
-          <SubmitButton
-            title={isPending ? <Spinner size="md" /> : SUBMIT_FORM_BUTTON_LABEL}
-            mode="secondary"
-          />
+        <SubmitButton
+          title={isPending ? <Spinner size="md" /> : SUBMIT_FORM_BUTTON_LABEL}
+          mode="secondary"
+        />
       </>
     </Formik>
   );

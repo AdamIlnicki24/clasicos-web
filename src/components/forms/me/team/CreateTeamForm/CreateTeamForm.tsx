@@ -1,28 +1,26 @@
 "use client";
 
 import { SubmitButton } from "@/components/buttons/SubmitButton/SubmitButton";
+import { DefendersSelect } from "@/components/inputs/selects/DefendersSelect/DefendersSelect";
+import { ForwardsSelect } from "@/components/inputs/selects/ForwadsSelect/ForwadsSelect";
+import { GoalkeepersSelect } from "@/components/inputs/selects/GoalkeepersSelect/GoalkeepersSelect";
+import { MidfieldersSelect } from "@/components/inputs/selects/MidfieldersSelect/MidfieldersSelect";
 import { SUBMIT_FORM_BUTTON_LABEL } from "@/constants/buttonLabels";
+import { TEAM_HAS_BEEN_CREATED_TOAST } from "@/constants/toasts";
 import { useCreateMyTeam } from "@/hooks/api/team/me/useCreateMyTeam";
+import { useTeamStore } from "@/store/useTeamStore";
+import { ApiError } from "@/types/apiError";
 import { Spinner } from "@heroui/react";
 import { useQueryClient } from "@tanstack/react-query";
 import { Formik } from "formik";
-import { useRef } from "react";
+import { toast } from "react-toastify";
 import {
   CreateTeamFormData,
   createTeamFormSchema,
   initialValues,
 } from "./createTeamFormSchema";
-import { toast } from "react-toastify";
-import { TEAM_HAS_BEEN_CREATED_TOAST } from "@/constants/toasts";
-import { ApiError } from "@/types/apiError";
-import { DefendersSelect } from "@/components/inputs/selects/DefendersSelect/DefendersSelect";
-import { ForwardsSelect } from "@/components/inputs/selects/ForwadsSelect/ForwadsSelect";
-import { GoalkeepersSelect } from "@/components/inputs/selects/GoalkeepersSelect/GoalkeepersSelect";
-import { MidfieldersSelect } from "@/components/inputs/selects/MidfieldersSelect/MidfieldersSelect";
-import { useTeamStore } from "@/store/useTeamStore";
 
 interface CreateTeamFormProps {
-  // TODO: Think about the name of the prop
   onClose?: () => void;
 }
 
@@ -37,8 +35,6 @@ export function CreateTeamForm({ onClose }: CreateTeamFormProps) {
 
   const queryClient = useQueryClient();
 
-  // TODO: Think about proper usage of getPlayers hook
-
   const { mutate, isPending } = useCreateMyTeam();
 
   const onSubmitHandler = (values: CreateTeamFormData) => {
@@ -50,7 +46,6 @@ export function CreateTeamForm({ onClose }: CreateTeamFormProps) {
       onSuccess: async () => {
         setTeam(values);
         await queryClient.invalidateQueries({
-          // TODO: Think about key below
           queryKey: ["getMyTeam"],
         });
 
@@ -85,10 +80,10 @@ export function CreateTeamForm({ onClose }: CreateTeamFormProps) {
         <DefendersSelect />
         <MidfieldersSelect />
         <ForwardsSelect />
-          <SubmitButton
-            title={isPending ? <Spinner size="md" /> : SUBMIT_FORM_BUTTON_LABEL}
-            mode="secondary"
-          />
+        <SubmitButton
+          title={isPending ? <Spinner size="md" /> : SUBMIT_FORM_BUTTON_LABEL}
+          mode="secondary"
+        />
       </div>
     </Formik>
   );

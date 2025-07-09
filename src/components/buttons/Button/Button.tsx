@@ -4,8 +4,6 @@ import {
 } from "@heroui/react";
 import { ReactNode } from "react";
 
-// TODO: Finish this component
-
 export interface ButtonProps extends Omit<HeroUIButtonProps, "title"> {
   title: ReactNode;
   mode?: "primary" | "secondary";

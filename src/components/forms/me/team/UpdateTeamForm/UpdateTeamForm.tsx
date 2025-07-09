@@ -23,7 +23,6 @@ import {
 } from "./updateTeamFormSchema";
 
 interface UpdateTeamFormProps {
-  // TODO: Think about the name of the prop
   onClose?: () => void;
   teamPlayers: TeamPlayer[];
 }
@@ -64,8 +63,6 @@ export function UpdateTeamForm({ onClose, teamPlayers }: UpdateTeamFormProps) {
 
   const queryClient = useQueryClient();
 
-  // TODO: Think about proper usage of getPlayers hook
-
   const { mutate, isPending } = useUpdateMyTeam();
 
   const onSubmitHandler = (values: UpdateTeamFormData) => {
@@ -76,7 +73,6 @@ export function UpdateTeamForm({ onClose, teamPlayers }: UpdateTeamFormProps) {
     mutate(values, {
       onSuccess: async () => {
         await queryClient.invalidateQueries({
-          // TODO: Think about key below
           queryKey: ["getMyTeam"],
         });
 

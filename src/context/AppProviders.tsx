@@ -7,8 +7,6 @@ import { ReactNode, useState } from "react";
 import { MobileProvider } from "./MobileContext";
 import { UserProvider } from "./UserContext";
 
-// TODO: Improve this component
-
 export function AppProviders({ children }: { children: ReactNode }) {
   const router = useRouter();
 

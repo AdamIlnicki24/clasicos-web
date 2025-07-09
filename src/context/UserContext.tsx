@@ -7,8 +7,7 @@ import { User } from "@/types/user";
 import { signOut } from "firebase/auth";
 import { createContext, ReactNode, useEffect, useState } from "react";
 
-// TODO: Think if export below is necessary
-export interface UserContextProps {
+interface UserContextProps {
   user: User | null;
   logOut: () => void;
   isUserLoading: boolean;

@@ -1,6 +1,7 @@
 import { CreatePlayerForm } from "@/components/forms/admin/players/CreatePlayerForm/CreatePlayerForm";
 
 // TODO: Think abouth switch statement with 4 cases while getting any resource
+// TODO: Think about table with players
 
 export function PlayersContent() {
   return (

@@ -136,7 +136,7 @@ export function ProfileContent() {
 
   return (
     <>
-    {/* TODO: Think about min-h */}
+      {/* TODO: Think about min-h */}
       <main className="min-h-[70svh]">
         <div className="flex justify-end pb-6 pe-4 pt-8 lg:pb-0 lg:pe-12">
           {isMe && (
@@ -161,7 +161,6 @@ export function ProfileContent() {
             ))}
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-[9fr_11fr]">
-          {/* TODO: NO_INFORMATION should be visible if user deletes whole the information */}
           <UserDataCard
             nick={nick?.trim() ? nick : ENIGMA}
             onIconPress={onNickModalOpen}

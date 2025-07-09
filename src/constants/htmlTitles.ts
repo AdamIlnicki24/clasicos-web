@@ -4,3 +4,6 @@ export const REGISTER_PAGE_HTML_TITLE = "Zarejestruj się";
 export const FORGOT_PASSWORD_PAGE_HTML_TITLE = "Zapomniałem hasła";
 export const PLAYERS_PAGE_HTML_TITLE = "Piłkarze";
 export const KNOWLEDGE_ZONE_PAGE_HTML_TITLE = "Strefa wiedzy";
+export const USERS_PAGE_HTML_TITLE = "Użytkownicy";
+export const PROFILE_PAGE_HTML_TITLE = "Profil";
+export const TEAM_PAGE_HTML_TITLE = "Drużyna";

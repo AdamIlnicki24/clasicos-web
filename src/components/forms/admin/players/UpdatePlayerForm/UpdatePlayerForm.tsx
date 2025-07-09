@@ -23,7 +23,6 @@ import { useParams } from "next/navigation";
 import { Player } from "@/types/player";
 
 interface UpdatePlayerFormProps {
-  // TODO: Think about the name of the prop
   onClose?: () => void;
   player: Player;
 }
@@ -66,7 +65,6 @@ export function UpdatePlayerForm({ onClose, player }: UpdatePlayerFormProps) {
     });
   };
 
-  // TODO: Override initial values also in other resources
   initialValues.name = player.name ?? "";
   initialValues.surname = player.surname;
   initialValues.nationality = player.nationality;

@@ -8,7 +8,7 @@ export interface TextInputProps extends InputProps {
   isCounterShown?: boolean;
 }
 
-// TODO: Finish this component
+  // TODO: Improve input styling
 
 export function TextInput({
   isCounterShown = false,

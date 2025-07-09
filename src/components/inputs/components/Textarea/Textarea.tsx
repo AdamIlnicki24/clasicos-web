@@ -26,8 +26,6 @@ export function Textarea({ isCounterShown, ...properties }: TextareaProps) {
     }
   };
 
-  // TODO: Improve input abd textarea styling
-
   return (
     <div className="relative">
       <HeroUITextarea

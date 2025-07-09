@@ -6,11 +6,9 @@ import {
   ADMIN_EMAIL,
   EMAIL_HAS_BEEN_SENT,
   FROM,
-  SUBJECT_FOR_ADMIN
+  SUBJECT_FOR_ADMIN,
 } from "@/constants/actions";
-import {
-  EMAIL_HAS_NOT_BEEN_SENT_ERROR_MESSAGE
-} from "@/constants/errorMessages";
+import { EMAIL_HAS_NOT_BEEN_SENT_ERROR_MESSAGE } from "@/constants/errorMessages";
 import { logoBase64 } from "@/constants/images";
 import { ENIGMA } from "@/constants/texts";
 import { HOME_URL } from "@/constants/urls";
@@ -47,7 +45,7 @@ const sendMailPromise = (mailOptions: Mail.Options) =>
     });
   });
 
-const generateSuggestAddingPlayerEmailToAdminHTML = ({
+const generateSuggestAddingPlayerEmailHTML = ({
   nick,
   player,
   message,
@@ -87,7 +85,7 @@ export const createPlayerSuggestion = async ({
     from: FROM,
     to: ADMIN_EMAIL,
     subject: SUBJECT_FOR_ADMIN,
-    html: generateSuggestAddingPlayerEmailToAdminHTML({
+    html: generateSuggestAddingPlayerEmailHTML({
       nick,
       player,
       message,
@@ -153,6 +151,7 @@ export const createFixSuggestion = async ({
 
     return { success: true };
   } catch (error) {
+    console.error(error);
     return { error: EMAIL_HAS_NOT_BEEN_SENT_ERROR_MESSAGE };
   }
 };

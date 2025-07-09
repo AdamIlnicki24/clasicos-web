@@ -8,8 +8,6 @@ interface UpdateProfileModalProps extends Omit<ModalProps, "children"> {
   onOpenChange: (open: boolean) => void;
 }
 
-// TODO: Think about handling nick's change
-
 export function UpdateProfileModal({
   visitor,
   isOpen,

@@ -1,25 +1,24 @@
 "use client";
 
 import { SubmitButton } from "@/components/buttons/SubmitButton/SubmitButton";
+import { CommentContentTextarea } from "@/components/inputs/textareas/CommentContentTextarea/CommentContentTextarea";
 import { SUBMIT_FORM_BUTTON_LABEL } from "@/constants/buttonLabels";
+import { COMMENT_HAS_BEEN_CREATED_TOAST } from "@/constants/toasts";
 import { useCreateComment } from "@/hooks/api/comments/useCreateComment";
+import { ApiError } from "@/types/apiError";
 import { Spinner } from "@heroui/react";
 import { useQueryClient } from "@tanstack/react-query";
 import { Formik } from "formik";
+import { useParams } from "next/navigation";
 import { useRef } from "react";
+import { toast } from "react-toastify";
 import {
   CreateCommentFormData,
   createCommentFormSchema,
   initialValues,
 } from "./createCommentFormSchema";
-import { toast } from "react-toastify";
-import { COMMENT_HAS_BEEN_CREATED_TOAST } from "@/constants/toasts";
-import { ApiError } from "@/types/apiError";
-import { useParams } from "next/navigation";
-import { CommentContentTextarea } from "@/components/inputs/textareas/CommentContentTextarea/CommentContentTextarea";
 
 interface CreateCommentFormProps {
-  // TODO: Think about the name of the prop
   onClose?: () => void;
 }
 
@@ -67,9 +66,9 @@ export function CreateCommentForm({ onClose }: CreateCommentFormProps) {
     >
       <div className="flex flex-col gap-y-8">
         <CommentContentTextarea />
-          <SubmitButton
-            title={isPending ? <Spinner size="md" /> : SUBMIT_FORM_BUTTON_LABEL}
-          />
+        <SubmitButton
+          title={isPending ? <Spinner size="md" /> : SUBMIT_FORM_BUTTON_LABEL}
+        />
       </div>
     </Formik>
   );

@@ -7,8 +7,6 @@ export function MessageTextarea({ ...properties }: TextareaProps) {
   const { handleChange, handleBlur, values, errors, touched, setFieldValue } =
     useFormikContext<{ message: string }>();
 
-  // TODO: Use separate textarea component in fix form
-
   return (
     <Textarea
       onChange={handleChange("message")}

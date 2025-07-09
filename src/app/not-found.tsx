@@ -14,14 +14,12 @@ export default function NotFound() {
   const backToHomepageHandler = () => push(HOME_URL);
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="mt-[20px] flex min-h-svh flex-col items-center gap-y-4">
       <h1>{PAGE_DOES_NOT_EXIST}</h1>
-      <div className="mt-[20px]">
-        <Button
-          onPress={backToHomepageHandler}
-          title={BACK_TO_HOMEPAGE_BUTTON_LABEL}
-        />
-      </div>
+      <Button
+        onPress={backToHomepageHandler}
+        title={BACK_TO_HOMEPAGE_BUTTON_LABEL}
+      />
     </div>
   );
 }

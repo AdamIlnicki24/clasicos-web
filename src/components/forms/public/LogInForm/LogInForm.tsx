@@ -35,7 +35,6 @@ export function LogInForm() {
         toast.success(LOG_IN_SUCCESS_TOAST);
         setIsPending(false);
 
-        // TODO: Think about adding custom log function in utils
         if (process.env.NODE_ENV === "development") {
           const token = await user.getIdToken();
           console.log("Token:", token);

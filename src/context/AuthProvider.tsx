@@ -7,8 +7,6 @@ import { useRouter } from "next/navigation";
 import { ReactNode, useEffect } from "react";
 import { UserProvider } from "./UserContext";
 
-// TODO: Add (visitor) folder in (private)
-
 interface AuthProviderProps {
   children: ReactNode;
   type: "public" | "private" | "both";
@@ -23,7 +21,6 @@ export function AuthProvider({ children, type }: AuthProviderProps) {
     if (type === "public" && isLoggedIn) router.replace(HOME_URL);
   }, [type, isLoggedIn, router]);
 
-  // TODO: useEffect
   useEffect(() => {
     if (type === "private" && !isPending && !isLoggedIn)
       router.replace(`${LOG_IN_URL}?redirect=${window.location.pathname}`);

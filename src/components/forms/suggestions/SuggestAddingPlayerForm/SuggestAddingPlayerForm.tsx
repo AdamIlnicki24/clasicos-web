@@ -42,7 +42,6 @@ export function SuggestAddingPlayerForm({
   }: SuggestAddingPlayerFormData) => {
     setIsPending(true);
 
-    // TODO: Finish below
     await createPlayerSuggestion({ player, message, nick }).then((response) => {
       if (process.env.NODE_ENV === "development") {
         console.log("Response:", response);

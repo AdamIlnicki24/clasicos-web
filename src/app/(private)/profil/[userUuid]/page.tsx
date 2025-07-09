@@ -1,9 +1,11 @@
+import { PROFILE_PAGE_HTML_TITLE } from "@/constants/htmlTitles";
+import { Metadata } from "next";
 import { ProfileContent } from "./ProfileContent/ProfileContent";
 
-// TODO: Add metadata
+export const metadata: Metadata = {
+  title: PROFILE_PAGE_HTML_TITLE,
+};
 
 export default function ProfilePage() {
   return <ProfileContent />;
-
-  // TODO: Think about removing "profil" folder
 }

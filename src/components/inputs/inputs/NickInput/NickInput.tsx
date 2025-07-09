@@ -11,8 +11,6 @@ export function NickInput({}: TextInputProps) {
   const { handleChange, handleBlur, values, errors, touched, setFieldValue } =
     useFormikContext<{ nick: string }>();
 
-  // TODO: Handle nick being unique
-
   return (
     <TextInput
       onChange={handleChange("nick")}

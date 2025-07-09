@@ -8,8 +8,6 @@ interface PlayerTileProps {
   surname: string;
 }
 
-// TODO: Think about styling player tile and pitch board
-
 export function PlayerTile({ name, surname }: PlayerTileProps) {
   const isMobile = useContext(MobileContext);
 
