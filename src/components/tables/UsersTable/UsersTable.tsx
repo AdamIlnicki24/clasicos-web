@@ -35,13 +35,13 @@ export function UsersTable({ columns, items }: UsersTableProps) {
         return formatDate(item.createdAt);
 
       case "nick":
-        return item.visitor?.nick ?? ENIGMA;
+        return item.visitor?.nick || ENIGMA;
 
       case "favoriteClub":
-        return item.visitor?.favoriteClub ?? NO_INFORMATION;
+        return item.visitor?.favoriteClub || NO_INFORMATION;
 
       case "favoriteFootballer":
-        return item.visitor?.favoriteFootballer ?? NO_INFORMATION;
+        return item.visitor?.favoriteFootballer || NO_INFORMATION;
 
       case "banned":
         return item.visitor?.bannedAt ? <BannedUserChip /> : <ActiveUserChip />;
@@ -60,6 +60,7 @@ export function UsersTable({ columns, items }: UsersTableProps) {
             <TableColumn key={column.key}>{column.label}</TableColumn>
           )}
         </TableHeader>
+        {/* TODO: Think about ?? vs || */}
         <TableBody items={items}>
           {(item) => (
             <TableRow
