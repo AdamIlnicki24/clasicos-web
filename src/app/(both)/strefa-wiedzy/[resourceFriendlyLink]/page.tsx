@@ -6,7 +6,10 @@ const componentsMap = {
   "jak-luis-figo-przeszedl-z-barcelony-do-realu-i-odmienil-el-clasico": dynamic(
     () => import("../components/articles/FigoArticle")
   ),
-  // TODO: Add next articles here
+  "messi-kontra-ronaldo-ikoniczne-pojedynki-w-el-clasico": dynamic(
+    () => import("../components/articles/MessiVersusRonaldoArticle")
+  ),
+  // TODO: Add next article here
 } as const;
 
 export async function generateStaticParams() {
@@ -15,6 +18,7 @@ export async function generateStaticParams() {
   }));
 }
 
+// TODO: Refactor
 export default async function Page({
   params,
 }: {

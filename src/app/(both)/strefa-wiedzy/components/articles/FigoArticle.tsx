@@ -7,6 +7,9 @@ import { FIGO_HISTORY_ARTICLE_HEADING } from "@/constants/headings";
 import Image from "next/image";
 import { luisFigo } from "@/constants/images";
 
+// TODO: Inner linking between articles
+// TODO: Move strings to constants
+
 export default function FigoArticle() {
   return (
     <article className="mx-auto flex w-[80%] flex-col pb-10 text-[22px] lg:w-[60%]">
