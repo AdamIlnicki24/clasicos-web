@@ -8,13 +8,17 @@ import {
   FORUM_TITLE,
   KNOWLEDGE_ZONE_TITLE,
   LOG_OUT_TITLE,
+  PLAYERS_TITLE,
+  USERS_TITLE,
 } from "@/constants/titles";
 import { LOG_OUT_ERROR_TOAST, LOG_OUT_SUCCESS_TOAST } from "@/constants/toasts";
 import {
   FORUM_URL,
   HOME_URL,
   KNOWLEDGE_ZONE_URL,
+  PLAYERS_URL,
   PROFILE_URL,
+  USERS_URL,
 } from "@/constants/urls";
 import { MobileContext } from "@/context/MobileContext";
 import { useUser } from "@/hooks/context/useUser";
@@ -30,11 +34,13 @@ import {
   NavbarMenuItem,
   NavbarMenuToggle,
   Spinner,
+  Tooltip,
 } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import { useContext, useState } from "react";
 import { toast } from "react-toastify";
 import { NavLink } from "../NavLink/NavLink";
+import { MY_PROFILE_TOOLTIP } from "@/constants/tooltips";
 
 export function AdminNav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -95,6 +101,22 @@ export function AdminNav() {
       </NavbarContent>
       <NavbarContent justify="end" className="hidden w-full lg:flex">
         <NavbarItem>
+          {/* TODO: Sometimes function passed to button doesn't work in a first time */}
+          {isUserLoading ? (
+            <Spinner size="sm" />
+          ) : (
+            <Tooltip content={MY_PROFILE_TOOLTIP} showArrow color="default" className="text-defaultBlack">
+              <Button
+                onPress={() => router.push(`${PROFILE_URL}/${user.uuid}`)}
+                size="sm"
+                className="rounded-3xl"
+              >
+                <Avatar size="sm" />
+              </Button>
+            </Tooltip>
+          )}
+        </NavbarItem>
+        <NavbarItem>
           <NavLink
             title={KNOWLEDGE_ZONE_TITLE}
             href={KNOWLEDGE_ZONE_URL}
@@ -114,6 +136,26 @@ export function AdminNav() {
         </NavbarItem>
         <NavbarItem>
           <NavLink
+            title={USERS_TITLE}
+            href={USERS_URL}
+            onClick={() => {
+              isMobile && setIsMenuOpen(false);
+            }}
+          />
+        </NavbarItem>
+        <NavbarItem>
+          <NavLink
+            title={PLAYERS_TITLE}
+            // TODO: Create players table
+            href={PLAYERS_URL}
+            onClick={() => {
+              isMobile && setIsMenuOpen(false);
+            }}
+          />
+        </NavbarItem>
+
+        <NavbarItem>
+          <NavLink
             href={HOME_URL}
             title={LOG_OUT_TITLE}
             onClick={() => {
@@ -121,20 +163,6 @@ export function AdminNav() {
               isMobile && setIsMenuOpen(false);
             }}
           />
-        </NavbarItem>
-        <NavbarItem>
-          {/* TODO: Sometimes function passed to button doesn't work in a first time */}
-          {isUserLoading ? (
-            <Spinner size="sm" />
-          ) : (
-            <Button
-              onPress={() => router.push(`${PROFILE_URL}/${user.uuid}`)}
-              size="sm"
-              className="rounded-3xl"
-            >
-              <Avatar size="sm" />
-            </Button>
-          )}
         </NavbarItem>
       </NavbarContent>
       <NavbarMenu>

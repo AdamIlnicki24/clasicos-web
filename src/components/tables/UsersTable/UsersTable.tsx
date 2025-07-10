@@ -4,6 +4,7 @@ import { Heading } from "@/components/headings/Heading/Heading";
 import { USERS_TABLE_ARIA_LABEL } from "@/constants/ariaLabels";
 import { USERS_TABLE_HEADING } from "@/constants/headings";
 import { ENIGMA, NO_INFORMATION } from "@/constants/texts";
+import { PROFILE_URL } from "@/constants/urls";
 import { User } from "@/types/user";
 import { UsersTableColumns } from "@/types/usersTableColumns";
 import { formatDate } from "@/utils/date";
@@ -15,6 +16,7 @@ import {
   TableHeader,
   TableRow,
 } from "@heroui/react";
+import { useRouter } from "next/navigation";
 
 interface UsersTableProps {
   columns: UsersTableColumns[];
@@ -22,6 +24,8 @@ interface UsersTableProps {
 }
 
 export function UsersTable({ columns, items }: UsersTableProps) {
+  const router = useRouter();
+
   const renderCell = (item: User, columnKey: string) => {
     switch (columnKey) {
       case "email":
@@ -48,7 +52,7 @@ export function UsersTable({ columns, items }: UsersTableProps) {
   };
 
   return (
-    <div className="flex flex-col items-center py-6 gap-y-6">
+    <div className="flex flex-col items-center gap-y-6 py-6">
       <Heading HeadingTag="h1" title={USERS_TABLE_HEADING} />
       <Table aria-label={USERS_TABLE_ARIA_LABEL} className="text-defaultBlack">
         <TableHeader columns={columns} className="">
@@ -58,7 +62,11 @@ export function UsersTable({ columns, items }: UsersTableProps) {
         </TableHeader>
         <TableBody items={items}>
           {(item) => (
-            <TableRow key={item.uuid}>
+            <TableRow
+              onClick={() => router.push(`${PROFILE_URL}/${item.uuid}`)}
+              className="cursor-pointer transition hover:bg-defaultGray/50"
+              key={item.uuid}
+            >
               {(columnKey) => (
                 <TableCell>{renderCell(item, columnKey.toString())}</TableCell>
               )}
