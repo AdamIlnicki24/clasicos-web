@@ -17,6 +17,7 @@ import {
   TableRow,
   useDisclosure,
 } from "@heroui/react";
+import { useState } from "react";
 
 interface PlayersTableProps {
   columns: TableColumns[];
@@ -24,6 +25,8 @@ interface PlayersTableProps {
 }
 
 export function PlayersTable({ columns, items }: PlayersTableProps) {
+  const [selectedPlayer, setSelectedPlayer] = useState<Player | null>(null);
+
   const {
     onOpen: onCreateModalOpen,
     isOpen: isCreateModalOpen,
@@ -35,10 +38,15 @@ export function PlayersTable({ columns, items }: PlayersTableProps) {
     onOpenChange: onUpdateModalOpenChange,
   } = useDisclosure();
 
+  const handleUpdatingPlayer = (player: Player) => {
+    setSelectedPlayer(player);
+    onUpdateModalOpen();
+  };
+
   const renderCell = (item: Player, columnKey: string) => {
     switch (columnKey) {
       case "name":
-        return item?.name ?? "";
+        return item.name ?? "";
 
       case "surname":
         return item.surname;
@@ -51,7 +59,7 @@ export function PlayersTable({ columns, items }: PlayersTableProps) {
         return item.position;
 
       case "edit":
-        return <EditButton onPress={onUpdateModalOpen} />;
+        return <EditButton onPress={() => handleUpdatingPlayer(item)} />;
 
       default:
         return null;
@@ -60,13 +68,13 @@ export function PlayersTable({ columns, items }: PlayersTableProps) {
 
   return (
     <>
-      <div className="flex flex-col items-center gap-y-6 py-6">
-        <div className="flex justify-end pb-6 pe-4 pt-8 lg:pb-0 lg:pe-12">
-          <Button
-            title={CREATE_PLAYER_BUTTON_LABEL}
-            onPress={onCreateModalOpen}
-          />
-        </div>
+      <div className="flex justify-end pb-6 pe-4 pt-8 lg:pb-0 lg:pe-12">
+        <Button
+          title={CREATE_PLAYER_BUTTON_LABEL}
+          onPress={onCreateModalOpen}
+        />
+      </div>
+      <div className="flex flex-col items-center gap-y-6">
         <Heading HeadingTag="h1" title={PLAYERS_TABLE_HEADING} />
         <Table
           aria-label={PLAYERS_TABLE_ARIA_LABEL}
@@ -94,15 +102,17 @@ export function PlayersTable({ columns, items }: PlayersTableProps) {
           </TableBody>
         </Table>
       </div>
-      {/* <CreatePlayerModal
-                  isOpen={isCreateModalOpen}
-                  onOpenChange={onCreateModalOpenChange}
-                />
-                <UpdatePlayerModal
-                  isOpen={isUpdateModalOpen}
-                  onOpenChange={onUpdateModalOpenChange}
-                  player={item}
-                /> */}
+      <CreatePlayerModal
+        isOpen={isCreateModalOpen}
+        onOpenChange={onCreateModalOpenChange}
+      />
+      {selectedPlayer && (
+        <UpdatePlayerModal
+          isOpen={isUpdateModalOpen}
+          onOpenChange={onUpdateModalOpenChange}
+          player={selectedPlayer}
+        />
+      )}
     </>
   );
 }

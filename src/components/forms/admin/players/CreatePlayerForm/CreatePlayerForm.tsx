@@ -70,6 +70,7 @@ export function CreatePlayerForm({ onClose }: CreatePlayerFormProps) {
         <PlayerPositionSelect />
         <SubmitButton
           title={isPending ? <Spinner size="md" /> : SUBMIT_FORM_BUTTON_LABEL}
+          mode="secondary"
         />
       </>
     </Formik>

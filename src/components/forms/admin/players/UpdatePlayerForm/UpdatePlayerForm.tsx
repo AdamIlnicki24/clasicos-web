@@ -68,7 +68,6 @@ export function UpdatePlayerForm({ onClose, player }: UpdatePlayerFormProps) {
   initialValues.name = player.name ?? "";
   initialValues.surname = player.surname;
   initialValues.nationality = player.nationality;
-  initialValues.position = player.position;
 
   return (
     <Formik
@@ -80,9 +79,8 @@ export function UpdatePlayerForm({ onClose, player }: UpdatePlayerFormProps) {
         <PlayerNameInput ref={nameInputRef} onKeyDown={() => {}} />
         <PlayerSurnameInput ref={surnameInputRef} onKeyDown={() => {}} />
         <PlayerNationalityAutocomplete />
-        <PlayerPositionSelect />
         <SubmitButton
-          title={isPending ? <Spinner size="md" /> : SUBMIT_FORM_BUTTON_LABEL}
+          title={isPending ? <Spinner size="md" /> : SUBMIT_FORM_BUTTON_LABEL} mode="secondary"
         />
       </>
     </Formik>
