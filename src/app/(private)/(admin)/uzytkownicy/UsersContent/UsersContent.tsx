@@ -1,20 +1,17 @@
 "use client";
 
-import Loading from "@/app/loading";
 import { UsersTable } from "@/components/tables/UsersTable/UsersTable";
-import { usersTableColumns } from "@/constants/usersTableColumns";
+import { usersTableColumns } from "@/constants/tables/usersTableColumns";
 import { useGetUsers } from "@/hooks/api/users/useGetUsers";
 
 export function UsersContent() {
-  const { data: items, isLoading, isError } = useGetUsers();
+  const { data: items } = useGetUsers();
 
-  if (isLoading) return <Loading />;
-  if (isError) return <div>Coś poszło nie tak</div>;
-
+  // TODO: Move line below to JSX
   if (!items) return <div>Nie ma jeszcze żadnych użytkowników</div>;
 
   return (
-    <div className="w-[90%] mx-auto">
+    <div className="mx-auto w-[90%]">
       <UsersTable columns={usersTableColumns} items={items} />
     </div>
   );

@@ -6,7 +6,7 @@ import { USERS_TABLE_HEADING } from "@/constants/headings";
 import { ENIGMA, NO_INFORMATION } from "@/constants/texts";
 import { PROFILE_URL } from "@/constants/urls";
 import { User } from "@/types/user";
-import { UsersTableColumns } from "@/types/usersTableColumns";
+import { TableColumns } from "@/types/tableColumns";
 import { formatDate } from "@/utils/date";
 import {
   Table,
@@ -19,7 +19,7 @@ import {
 import { useRouter } from "next/navigation";
 
 interface UsersTableProps {
-  columns: UsersTableColumns[];
+  columns: TableColumns[];
   items: User[];
 }
 

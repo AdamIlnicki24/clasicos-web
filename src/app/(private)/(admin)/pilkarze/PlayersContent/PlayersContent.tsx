@@ -1,12 +1,19 @@
-import { CreatePlayerForm } from "@/components/forms/admin/players/CreatePlayerForm/CreatePlayerForm";
+"use client";
 
-// TODO: Think abouth switch statement with 4 cases while getting any resource
-// TODO: Think about table with players
+import { PlayersTable } from "@/components/tables/PlayersTable/PlayersTable";
+import { playersTableColumns } from "@/constants/tables/playersTableColumns";
+import { useGetPlayers } from "@/hooks/api/players/useGetPlayers";
 
 export function PlayersContent() {
+  const { data: items } = useGetPlayers();
+
   return (
-    <div className="grid min-h-svh place-items-center">
-      <CreatePlayerForm />
+    <div className="mx-auto w-[90%]">
+      {items ? (
+        <PlayersTable columns={playersTableColumns} items={items} />
+      ) : (
+        <div>Nie ma jeszcze żadnych piłkarzy</div>
+      )}
     </div>
   );
 }

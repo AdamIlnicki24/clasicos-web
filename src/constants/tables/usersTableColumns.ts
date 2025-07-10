@@ -1,6 +1,6 @@
-import { UsersTableColumns } from "@/types/usersTableColumns";
+import { TableColumns } from "@/types/tableColumns";
 
-export const usersTableColumns: UsersTableColumns[] = [
+export const usersTableColumns: TableColumns[] = [
   { key: "email", label: "Email" },
   { key: "createdAt", label: "Data dołączenia" },
   { key: "nick", label: "Nick" },
