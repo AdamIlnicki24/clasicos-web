@@ -12,7 +12,6 @@ import { ApiError } from "@/types/apiError";
 import { Spinner } from "@heroui/react";
 import { useQueryClient } from "@tanstack/react-query";
 import { Formik } from "formik";
-import { useRef } from "react";
 import { toast } from "react-toastify";
 import {
   CreatePlayerFormData,
@@ -25,10 +24,6 @@ interface CreatePlayerFormProps {
 }
 
 export function CreatePlayerForm({ onClose }: CreatePlayerFormProps) {
-  const nameInputRef = useRef<HTMLInputElement>(null);
-  const surnameInputRef = useRef<HTMLInputElement>(null);
-  // TODO: Create refs
-
   const queryClient = useQueryClient();
 
   const { mutate, isPending } = useCreatePlayer();
@@ -64,8 +59,8 @@ export function CreatePlayerForm({ onClose }: CreatePlayerFormProps) {
       validationSchema={createPlayerFormSchema}
     >
       <>
-        <PlayerNameInput ref={nameInputRef} onKeyDown={() => {}} />
-        <PlayerSurnameInput ref={surnameInputRef} onKeyDown={() => {}} />
+        <PlayerNameInput />
+        <PlayerSurnameInput />
         <PlayerNationalityAutocomplete />
         <PlayerPositionSelect />
         <SubmitButton

@@ -13,12 +13,14 @@ import * as nationalities from "i18n-iso-countries";
 import pl from "i18n-iso-countries/langs/pl.json";
 
 interface PlayerNationalityAutocompleteProps
-  extends Omit<AutocompleteProps, "children"> {}
+  extends Omit<AutocompleteProps<Nationality>, "children"> {}
 
 // TODO: Think about extracting line below
 nationalities.registerLocale(pl);
 
-export function PlayerNationalityAutocomplete({}: PlayerNationalityAutocompleteProps) {
+export function PlayerNationalityAutocomplete({
+  ...properties
+}: PlayerNationalityAutocompleteProps) {
   const { handleChange, handleBlur, values, errors, touched } =
     useFormikContext<{ nationality: string }>();
 
@@ -31,10 +33,18 @@ export function PlayerNationalityAutocomplete({}: PlayerNationalityAutocompleteP
 
   return (
     <Autocomplete
+      classNames={{
+        base: "text-defaultBlack",
+        clearButton: "",
+        endContentWrapper: "",
+        listbox: "text-defaultBlack",
+        listboxWrapper: "",
+        popoverContent: "text-defaultBlack",
+        selectorButton: "",
+      }}
       value={values.nationality}
       onBlur={handleBlur("nationality")}
       isInvalid={touched.nationality && !!errors.nationality}
-      color={touched.nationality && !errors.nationality ? "success" : "default"}
       errorMessage={touched.nationality && errors.nationality}
       label={PLAYER_NATIONALITY_LABEL}
       placeholder={PLAYER_NATIONALITY_PLACEHOLDER}
@@ -52,12 +62,15 @@ export function PlayerNationalityAutocomplete({}: PlayerNationalityAutocompleteP
         }
       }}
       startContent={
-        <Image
-          alt={values.nationality}
-          src={values.nationality ? getFlagUrl(values.nationality) : ""}
-          className="w-10 rounded-md"
-        />
+        values.nationality ? (
+          <Image
+            alt={values.nationality}
+            src={getFlagUrl(values.nationality)}
+            className="w-7 rounded-md"
+          />
+        ) : null
       }
+      {...properties}
     >
       {(item: Nationality) => (
         <AutocompleteItem
@@ -67,7 +80,7 @@ export function PlayerNationalityAutocomplete({}: PlayerNationalityAutocompleteP
             <Image
               alt={item.name}
               src={getFlagUrl(item.code)}
-              className="w-8 rounded-md"
+              className="w-7 rounded-md"
             />
           }
         >

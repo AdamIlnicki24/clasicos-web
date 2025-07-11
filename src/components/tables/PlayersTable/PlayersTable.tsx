@@ -1,10 +1,7 @@
-import { Button } from "@/components/buttons/Button/Button";
 import { EditButton } from "@/components/buttons/EditButton/EditButton";
 import { Heading } from "@/components/headings/Heading/Heading";
-import { CreatePlayerModal } from "@/components/modals/CreatePlayerModal/CreatePlayerModal";
 import { UpdatePlayerModal } from "@/components/modals/UpdatePlayerModal/UpdatePlayerModal";
 import { PLAYERS_TABLE_ARIA_LABEL } from "@/constants/ariaLabels";
-import { CREATE_PLAYER_BUTTON_LABEL } from "@/constants/buttonLabels";
 import { PLAYERS_TABLE_HEADING } from "@/constants/headings";
 import { Player } from "@/types/player";
 import { TableColumns } from "@/types/tableColumns";
@@ -27,11 +24,6 @@ interface PlayersTableProps {
 export function PlayersTable({ columns, items }: PlayersTableProps) {
   const [selectedPlayer, setSelectedPlayer] = useState<Player | null>(null);
 
-  const {
-    onOpen: onCreateModalOpen,
-    isOpen: isCreateModalOpen,
-    onOpenChange: onCreateModalOpenChange,
-  } = useDisclosure();
   const {
     onOpen: onUpdateModalOpen,
     isOpen: isUpdateModalOpen,
@@ -68,13 +60,7 @@ export function PlayersTable({ columns, items }: PlayersTableProps) {
 
   return (
     <>
-      <div className="flex justify-end pb-6 pe-4 pt-8 lg:pb-0 lg:pe-12">
-        <Button
-          title={CREATE_PLAYER_BUTTON_LABEL}
-          onPress={onCreateModalOpen}
-        />
-      </div>
-      <div className="flex flex-col items-center gap-y-6">
+      <div className="flex flex-col items-center gap-y-6 pb-6">
         <Heading HeadingTag="h1" title={PLAYERS_TABLE_HEADING} />
         <Table
           aria-label={PLAYERS_TABLE_ARIA_LABEL}
@@ -102,10 +88,6 @@ export function PlayersTable({ columns, items }: PlayersTableProps) {
           </TableBody>
         </Table>
       </div>
-      <CreatePlayerModal
-        isOpen={isCreateModalOpen}
-        onOpenChange={onCreateModalOpenChange}
-      />
       {selectedPlayer && (
         <UpdatePlayerModal
           isOpen={isUpdateModalOpen}

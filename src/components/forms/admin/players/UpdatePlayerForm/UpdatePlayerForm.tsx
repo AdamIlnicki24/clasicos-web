@@ -1,26 +1,23 @@
 "use client";
 
 import { SubmitButton } from "@/components/buttons/SubmitButton/SubmitButton";
-import { SUBMIT_FORM_BUTTON_LABEL } from "@/constants/buttonLabels";
-import { useUpdatePlayer } from "@/hooks/api/players/useUpdatePlayer";
-import { Spinner } from "@heroui/react";
-import { useQueryClient } from "@tanstack/react-query";
-import { Formik } from "formik";
-import { useRef } from "react";
-import {
-  UpdatePlayerFormData,
-  updatePlayerFormSchema,
-  initialValues,
-} from "./updatePlayerFormSchema";
 import { PlayerNationalityAutocomplete } from "@/components/inputs/autocompletes/PlayerNationalityAutocomplete/PlayerNationalityAutocomplete";
 import { PlayerNameInput } from "@/components/inputs/inputs/PlayerNameInput/PlayerNameInput";
 import { PlayerSurnameInput } from "@/components/inputs/inputs/PlayerSurnameInput/PlayerSurnameInput";
-import { PlayerPositionSelect } from "@/components/inputs/selects/PlayerPositionSelect/PlayerPositionSelect";
-import { toast } from "react-toastify";
+import { SUBMIT_FORM_BUTTON_LABEL } from "@/constants/buttonLabels";
 import { PLAYER_HAS_BEEN_UPDATED_TOAST } from "@/constants/toasts";
+import { useUpdatePlayer } from "@/hooks/api/players/useUpdatePlayer";
 import { ApiError } from "@/types/apiError";
-import { useParams } from "next/navigation";
 import { Player } from "@/types/player";
+import { Spinner } from "@heroui/react";
+import { useQueryClient } from "@tanstack/react-query";
+import { Formik } from "formik";
+import { toast } from "react-toastify";
+import {
+  initialValues,
+  UpdatePlayerFormData,
+  updatePlayerFormSchema,
+} from "./updatePlayerFormSchema";
 
 interface UpdatePlayerFormProps {
   onClose?: () => void;
@@ -28,16 +25,9 @@ interface UpdatePlayerFormProps {
 }
 
 export function UpdatePlayerForm({ onClose, player }: UpdatePlayerFormProps) {
-  const nameInputRef = useRef<HTMLInputElement>(null);
-  const surnameInputRef = useRef<HTMLInputElement>(null);
-  // TODO: Create refs
-
   const queryClient = useQueryClient();
 
-  // TODO: Create dynamic folder
-  const { uuid } = useParams();
-
-  const { mutate, isPending } = useUpdatePlayer(uuid as string);
+  const { mutate, isPending } = useUpdatePlayer(player.uuid);
 
   const onSubmitHandler = (values: UpdatePlayerFormData) => {
     if (process.env.NODE_ENV === "development") {
@@ -50,7 +40,7 @@ export function UpdatePlayerForm({ onClose, player }: UpdatePlayerFormProps) {
           queryKey: ["getPlayers"],
         });
 
-        await queryClient.invalidateQueries({ queryKey: ["getPlayer", uuid] });
+        await queryClient.invalidateQueries({ queryKey: ["getPlayer", player.uuid] });
 
         toast.success(PLAYER_HAS_BEEN_UPDATED_TOAST);
 
@@ -76,11 +66,12 @@ export function UpdatePlayerForm({ onClose, player }: UpdatePlayerFormProps) {
       validationSchema={updatePlayerFormSchema}
     >
       <>
-        <PlayerNameInput ref={nameInputRef} onKeyDown={() => {}} />
-        <PlayerSurnameInput ref={surnameInputRef} onKeyDown={() => {}} />
+        <PlayerNameInput />
+        <PlayerSurnameInput />
         <PlayerNationalityAutocomplete />
         <SubmitButton
-          title={isPending ? <Spinner size="md" /> : SUBMIT_FORM_BUTTON_LABEL} mode="secondary"
+          title={isPending ? <Spinner size="md" /> : SUBMIT_FORM_BUTTON_LABEL}
+          mode="secondary"
         />
       </>
     </Formik>

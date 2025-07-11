@@ -20,7 +20,7 @@ export function Select({ ...properties }: SelectProps) {
         spinner: "",
         errorMessage: "text-[1rem]",
         label: "text-[1.1rem]",
-        trigger: "border-2 border-primaryColor",
+        trigger: "border-1",
         listbox: "text-defaultBlack",
         value: "text-defaultBlack text-[1.2rem]",
       }}

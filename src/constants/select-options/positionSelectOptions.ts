@@ -3,18 +3,18 @@ import { SelectOption } from "@/types/selectOption";
 export const playerPositionSelectOptions: SelectOption[] = [
   {
     label: "Bramkarz",
-    value: "goalkeeper",
+    value: "Goalkeeper",
   },
   {
     label: "Obrońca",
-    value: "defender",
+    value: "Defender",
   },
   {
     label: "Pomocnik",
-    value: "midfielder",
+    value: "Midfielder",
   },
   {
     label: "Napastnik",
-    value: "forward",
+    value: "Forward",
   },
 ];

@@ -18,6 +18,9 @@ export const lato = Lato({
   display: "swap",
 });
 
+// TODO: Fix problem with invalidateQueries on create and update team
+// TODO: Fix error while removing data from autocomplete
+
 export const metadata: Metadata = {
   title: {
     template: `%s | ${HOMEPAGE_HTML_TITLE}`,
