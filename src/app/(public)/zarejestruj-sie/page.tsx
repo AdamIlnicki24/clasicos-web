@@ -15,8 +15,8 @@ export const metadata: Metadata = {
 
 export default function RegisterPage() {
   return (
-    <ContentContainer>
+    // <ContentContainer>
       <RegisterContent />
-    </ContentContainer>
+    // </ContentContainer>
   );
 }

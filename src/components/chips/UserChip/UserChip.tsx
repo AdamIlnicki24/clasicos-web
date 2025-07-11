@@ -16,6 +16,7 @@ export function UserChip({ nick }: UserChipProps) {
           />
         }
         variant="flat"
+        className="text-defaultBlack"
       >
         {nick}
       </Chip>

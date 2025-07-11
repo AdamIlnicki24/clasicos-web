@@ -15,3 +15,4 @@ export const UPDATE_TEAM_HEADING = "Edytuj swoją drużynę";
 export const TEAM_HEADING = "Drużyna:";
 export const USERS_TABLE_HEADING = "Tabela użytkowników";
 export const PLAYERS_TABLE_HEADING = "Tabela piłkarzy";
+export const FORUM_HEADING = "Forum";

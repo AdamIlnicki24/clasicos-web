@@ -12,13 +12,13 @@ import {
 
 export function LogInContent() {
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center pt-6">
       <div className="flex gap-x-4 pb-3">
         <Ball width={48} />
         <Heading HeadingTag="h1" title="Clasicos" />
       </div>
       <LogInCard />
-      <div className="space-y-3 pt-6">
+      <div className="space-y-3 py-6">
         <div className="space-x-2">
           <span>{FORGOT_PASSWORD}</span>
           <Link

@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import dynamic from "next/dynamic";
 import { ArticleContent } from "./ArticleContent/ArticleContent";
+import { ContentContainer } from "@/components/containers/ContentContainer/ContentContainer";
 
 const componentsMap = {
   "jak-luis-figo-przeszedl-z-barcelony-do-realu-i-odmienil-el-clasico": dynamic(
@@ -19,7 +20,7 @@ export async function generateStaticParams() {
 }
 
 // TODO: Refactor
-export default async function Page({
+export default async function ArticlePage({
   params,
 }: {
   params: {
@@ -34,5 +35,9 @@ export default async function Page({
     notFound();
   }
 
-  return <ArticleContent ArticleComponent={<ArticleComponent />} />;
+  return (
+    <ContentContainer>
+      <ArticleContent ArticleComponent={<ArticleComponent />} />
+    </ContentContainer>
+  );
 }

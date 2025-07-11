@@ -15,8 +15,8 @@ export const metadata: Metadata = {
 
 export default function LogInPage() {
   return (
-    <ContentContainer>
+    // <ContentContainer>
       <LogInContent />
-    </ContentContainer>
+    // </ContentContainer>
   );
 }

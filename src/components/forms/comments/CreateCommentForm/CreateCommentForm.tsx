@@ -64,7 +64,7 @@ export function CreateCommentForm({ onClose }: CreateCommentFormProps) {
       onSubmit={onSubmitHandler}
       validationSchema={createCommentFormSchema}
     >
-      <div className="flex flex-col gap-y-8">
+      <div className="flex flex-col">
         <CommentContentTextarea />
         <SubmitButton
           title={isPending ? <Spinner size="md" /> : SUBMIT_FORM_BUTTON_LABEL}

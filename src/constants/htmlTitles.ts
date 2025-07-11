@@ -7,3 +7,4 @@ export const KNOWLEDGE_ZONE_PAGE_HTML_TITLE = "Strefa wiedzy";
 export const USERS_PAGE_HTML_TITLE = "Użytkownicy";
 export const PROFILE_PAGE_HTML_TITLE = "Profil";
 export const TEAM_PAGE_HTML_TITLE = "Drużyna";
+export const FORUM_PAGE_HTML_TITLE = "Forum";

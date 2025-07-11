@@ -6,7 +6,7 @@ import { CreateCommentCard } from "@/components/cards/comments/CreateCommentCard
 import { NoAccountCard } from "@/components/cards/NoAccountCard/NoAccountCard";
 import { Heading } from "@/components/headings/Heading/Heading";
 import { DeleteCommentModal } from "@/components/modals/DeleteCommentModal/DeleteCommentModal";
-import { COMMENTS_HEADING } from "@/constants/headings";
+import { FORUM_HEADING } from "@/constants/headings";
 import {
   ENIGMA,
   NO_COMMENTS_YET,
@@ -19,16 +19,11 @@ import { useUser } from "@/hooks/context/useUser";
 import { ApiError } from "@/types/apiError";
 import { CommentWithCount } from "@/types/comment";
 import { useQueryClient } from "@tanstack/react-query";
-import { useParams } from "next/navigation";
-import { ReactNode, useState } from "react";
+import { useState } from "react";
 import { toast } from "react-toastify";
 
-export function ArticleContent({
-  ArticleComponent,
-}: {
-  ArticleComponent: ReactNode;
-}) {
-  const { resourceFriendlyLink } = useParams();
+export function ForumContent() {
+  const resourceFriendlyLink = "forum";
 
   const [selectedComment, setSelectedComment] =
     useState<CommentWithCount | null>(null);
@@ -37,15 +32,13 @@ export function ArticleContent({
 
   const { user, isUserLoading } = useUser();
 
-  const { data, isLoading, isError, error } = useGetComments(
-    resourceFriendlyLink as string
-  );
+  const { data, isLoading, isError, error } =
+    useGetComments(resourceFriendlyLink);
 
-  const { mutate, isPending } = useDeleteComment(
-    resourceFriendlyLink as string
-  );
+  const { mutate, isPending } = useDeleteComment(resourceFriendlyLink);
 
-  const onTrashPress = (comment: CommentWithCount) => setSelectedComment(comment);
+  const onTrashPress = (comment: CommentWithCount) =>
+    setSelectedComment(comment);
 
   const onDeleteHandler = () => {
     if (!selectedComment) return null;
@@ -69,9 +62,7 @@ export function ArticleContent({
     });
   };
 
-  // TODO: Add chips with info about Enigma player
-
-  if (!resourceFriendlyLink || isUserLoading || isLoading) return <Loading />;
+  if (isUserLoading || isLoading) return <Loading />;
 
   if (isError) {
     if (process.env.NODE_ENV === "development") {
@@ -82,11 +73,12 @@ export function ArticleContent({
 
   return (
     <>
-      <section className="grid min-h-svh place-items-center">
-        <div>{ArticleComponent}</div>
-        <div className="my-6 rounded-br-3xl rounded-tr-3xl bg-primaryColor pe-12 ps-4">
-          <Heading HeadingTag="h2" title={COMMENTS_HEADING} />
-        </div>
+      <section className="flex flex-col items-center min-h-[80svh]">
+        <Heading HeadingTag="h1" title={FORUM_HEADING} />
+        <p className="text-[1.4rem] py-8 lg:px-0 px-3 lg:text-start text-center">
+          Zapraszamy na nasze forum, na którym podyskutujesz z innymi fanami
+          Klasyków!
+        </p>
         {user ? (
           <CreateCommentCard nick={user.visitor.nick ?? ENIGMA} />
         ) : (
@@ -107,7 +99,7 @@ export function ArticleContent({
             ))}
           </div>
         ) : (
-          <p className="py-8 text-[1.3rem] font-bold">{NO_COMMENTS_YET}</p>
+          <p>{NO_COMMENTS_YET}</p>
         )}
       </section>
       <DeleteCommentModal

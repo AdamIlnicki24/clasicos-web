@@ -84,6 +84,7 @@ export default function MessiVersusRonaldoArticle() {
         Oto niektóre z najważniejszych:
       </Paragraph>
       <ul>
+        {/* TODO: Add markers */}
         <li>
           <span className="font-bold">Listopad 2010 (La Liga)</span> -{" "}
           <em>La Manita</em> Barcelony 5:0. To pierwsze El Clasico Jose Mourinho
