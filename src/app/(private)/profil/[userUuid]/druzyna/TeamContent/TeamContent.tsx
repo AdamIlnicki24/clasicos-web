@@ -107,7 +107,7 @@ export function TeamContent() {
           queryKey: ["getMyTeam"],
         });
 
-        // TODO: Ivalidate team players
+        // TODO: Invalidate team players
 
         toast.success(TEAM_HAS_BEEN_DELETED_TOAST);
 
