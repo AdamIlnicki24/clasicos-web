@@ -68,6 +68,7 @@ export function UpdateTeamForm({ onClose, teamPlayers }: UpdateTeamFormProps) {
     mutate(values, {
       onSuccess: async () => {
         await queryClient.invalidateQueries({
+          // TODO: Think about using getTeam with uuid instead
           queryKey: ["getMyTeam"],
         });
 

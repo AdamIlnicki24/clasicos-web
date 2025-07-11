@@ -1,11 +1,10 @@
-import Ball from "@/assets/icons/ball.svg";
 import { Button, ButtonProps } from "@heroui/react";
 
 interface BallWithCounterButtonProps extends ButtonProps {
   count: number;
 }
 
-// TODO: Refavtor
+// TODO: Refactor
 
 export function BallWithCounterButton({
   count,

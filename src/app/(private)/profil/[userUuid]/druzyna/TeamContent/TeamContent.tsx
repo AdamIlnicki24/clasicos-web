@@ -3,27 +3,36 @@
 import Loading from "@/app/loading";
 import { PitchBoard } from "@/components/boards/PitchBoard/PitchBoard";
 import { Button } from "@/components/buttons/Button/Button";
+import { DeleteButton } from "@/components/buttons/DeleteButton/DeleteButton";
 import { Heading } from "@/components/headings/Heading/Heading";
 import { CreateTeamModal } from "@/components/modals/CreateTeamModal/CreateTeamModal";
+import { DeleteTeamModal } from "@/components/modals/DeleteTeamModal/DeleteTeamModal";
 import { SuggestAddingPlayerModal } from "@/components/modals/SuggestAddingPlayerModal/SuggestAddingPlayerModal";
 import { UpdateTeamModal } from "@/components/modals/UpdateTeamModal/UpdateTeamModal";
 import { PlayerTile } from "@/components/tiles/PlayerTile/PlayerTile";
 import {
   CREATE_TEAM_BUTTON_LABEL,
+  DELETE_TEAM_BUTTON_LABEL,
   UPDATE_TEAM_BUTTON_LABEL,
 } from "@/constants/buttonLabels";
 import { YOU_MUST_BE_LOGGED_IN } from "@/constants/errorMessages";
 import { TEAM_HEADING, YOUR_TEAM_HEADING } from "@/constants/headings";
+import { TEAM_HAS_BEEN_DELETED_TOAST } from "@/constants/toasts";
 import { MobileContext } from "@/context/MobileContext";
+import { useDeleteMyTeam } from "@/hooks/api/team/me/useDeleteMyTeam";
 import { useGetTeam } from "@/hooks/api/team/useGetTeam";
 import { useUser } from "@/hooks/context/useUser";
+import { ApiError } from "@/types/apiError";
 import { Position } from "@/types/position";
 import { TeamPlayer } from "@/types/teamPlayer";
 import { Link, useDisclosure } from "@heroui/react";
+import { useQueryClient } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
 import { useContext } from "react";
+import { toast } from "react-toastify";
 
 export function TeamContent() {
+  const queryClient = useQueryClient();
   const { userUuid } = useParams();
   const isMobile = useContext(MobileContext);
   const { user, isUserLoading } = useUser();
@@ -32,10 +41,25 @@ export function TeamContent() {
     userUuid as string
   );
 
+  const { mutate, isPending } = useDeleteMyTeam();
+
   const {
-    onOpen: onTeamModalOpen,
-    isOpen: isTeamModalOpen,
-    onOpenChange: onTeamModalOpenChange,
+    onOpen: onCreateTeamModalOpen,
+    isOpen: isCreateTeamModalOpen,
+    onOpenChange: onCreateTeamModalOpenChange,
+  } = useDisclosure();
+
+  const {
+    onOpen: onUpdateTeamModalOpen,
+    isOpen: isUpdateTeamModalOpen,
+    onOpenChange: onUpdateTeamModalOpenChange,
+  } = useDisclosure();
+
+  const {
+    onOpen: onDeleteTeamModalOpen,
+    isOpen: isDeleteTeamModalOpen,
+    onOpenChange: onDeleteTeamModalOpenChange,
+    onClose
   } = useDisclosure();
 
   const {
@@ -53,10 +77,6 @@ export function TeamContent() {
   const isMe = user.uuid === userUuid;
 
   const headingTitle = isMe ? YOUR_TEAM_HEADING : TEAM_HEADING;
-
-  const buttonLabel = team
-    ? UPDATE_TEAM_BUTTON_LABEL
-    : CREATE_TEAM_BUTTON_LABEL;
 
   const getPlayersByPosition = (position: Position) => {
     return (
@@ -76,19 +96,56 @@ export function TeamContent() {
   const midfielders = getPlayersByPosition("Midfielder");
   const forwards = getPlayersByPosition("Forward");
 
+  const onDeleteHandler = () => {
+    mutate(undefined, {
+      onSuccess: async () => {
+        await queryClient.invalidateQueries({
+          queryKey: ["getTeam", team?.uuid],
+        });
+
+        await queryClient.invalidateQueries({
+          queryKey: ["getMyTeam"],
+        });
+
+        // TODO: Ivalidate team players
+
+        toast.success(TEAM_HAS_BEEN_DELETED_TOAST);
+
+        onClose();
+      },
+      onError: (error) => {
+        if (process.env.NODE_ENV === "development") {
+          console.error("Error:", error);
+        }
+        toast.error((error as ApiError).response.data.message);
+      },
+    });
+  };
+
   return (
     <>
       <div className="flex flex-col items-center">
         <div className="flex flex-col items-center justify-center gap-y-3 pt-6 text-[1.2rem] lg:text-[1.5rem]">
-          {team && <Heading
-            HeadingTag="h1"
-            title={headingTitle}
-            size={isMobile ? "md" : "lg"}
-          />}
-          {isMe && (
+          {team && (
+            <Heading
+              HeadingTag="h1"
+              title={headingTitle}
+              size={isMobile ? "md" : "lg"}
+            />
+          )}
+          {isMe && team ? (
+            <div className="flex justify-center gap-x-4">
+              <Button
+                title={UPDATE_TEAM_BUTTON_LABEL}
+                onPress={onUpdateTeamModalOpen}
+                mode="secondary"
+              />
+              <DeleteButton title={DELETE_TEAM_BUTTON_LABEL} onPress={onDeleteTeamModalOpen} />
+            </div>
+          ) : (
             <Button
-              title={buttonLabel}
-              onPress={() => onTeamModalOpen()}
+              title={CREATE_TEAM_BUTTON_LABEL}
+              onPress={onCreateTeamModalOpen}
               mode="secondary"
             />
           )}
@@ -116,18 +173,25 @@ export function TeamContent() {
           </div>
         </div>
       </div>
-      {isMe && team ? (
-        <UpdateTeamModal
-          isOpen={isTeamModalOpen}
-          onOpenChange={onTeamModalOpenChange}
-          teamPlayers={team.teamPlayers}
-        />
-      ) : (
-        <CreateTeamModal
-          isOpen={isTeamModalOpen}
-          onOpenChange={onTeamModalOpenChange}
-        />
-      )}
+
+      <CreateTeamModal
+        isOpen={isCreateTeamModalOpen}
+        onOpenChange={onCreateTeamModalOpenChange}
+      />
+
+      <UpdateTeamModal
+        isOpen={isUpdateTeamModalOpen}
+        onOpenChange={onUpdateTeamModalOpenChange}
+        teamPlayers={team?.teamPlayers ?? []}
+      />
+
+      <DeleteTeamModal
+        isOpen={isDeleteTeamModalOpen}
+        onOpenChange={onDeleteTeamModalOpenChange}
+        isPending={isPending}
+        onDeleteHandler={onDeleteHandler}
+      />
+
       <SuggestAddingPlayerModal
         isOpen={isSuggestionModalOpen}
         onOpenChange={onSuggestionModalOpenChange}

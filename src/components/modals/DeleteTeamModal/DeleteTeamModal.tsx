@@ -1,5 +1,5 @@
 import { YES_BUTTON_LABEL, NO_BUTTON_LABEL } from "@/constants/buttonLabels";
-import { DELETE_COMMENT_WARNING } from "@/constants/modalWarnings";
+import { DELETE_TEAM_WARNING } from "@/constants/modalWarnings";
 import {
   Button,
   Modal,
@@ -8,19 +8,19 @@ import {
   ModalProps,
 } from "@heroui/react";
 
-interface DeleteCommentModalProps extends Omit<ModalProps, "children"> {
+interface DeleteTeamModalProps extends Omit<ModalProps, "children"> {
   isOpen: boolean;
   onOpenChange: (open: boolean) => void;
   onDeleteHandler: () => void;
   isPending: boolean;
 }
 
-export function DeleteCommentModal({
+export function DeleteTeamModal({
   isOpen,
   onOpenChange,
   onDeleteHandler,
   isPending,
-}: DeleteCommentModalProps) {
+}: DeleteTeamModalProps) {
   return (
     <Modal
       size="xl"
@@ -34,7 +34,7 @@ export function DeleteCommentModal({
           <>
             <ModalBody>
               <p className="py-3 text-center text-defaultBlack">
-                {DELETE_COMMENT_WARNING}
+                {DELETE_TEAM_WARNING}
               </p>
               <div className="flex justify-center gap-x-4">
                 <Button
