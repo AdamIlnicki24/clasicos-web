@@ -101,6 +101,7 @@ export function ArticleContent({
                 createdAt={comment.createdAt}
                 recommendationsCount={comment._count.recommendations}
                 nick={comment.user.visitor.nick ?? ENIGMA}
+                // TODO: Think about user
                 user={user ?? undefined}
                 onTrashPress={() => onTrashPress(comment)}
               />

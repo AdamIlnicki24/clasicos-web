@@ -1,11 +1,15 @@
-import { Chip, Avatar } from "@heroui/react";
+import { PROFILE_URL } from "@/constants/urls";
+import { User } from "@/types/user";
+import { Chip, Avatar, Tooltip } from "@heroui/react";
+import Link from "next/link";
 
 interface UserChipProps {
   nick: string;
+  user?: User;
 }
 
-export function UserChip({ nick }: UserChipProps) {
-  return (
+export function UserChip({ nick, user }: UserChipProps) {
+  const chip = (
     <div className="flex gap-4">
       <Chip
         avatar={
@@ -21,5 +25,13 @@ export function UserChip({ nick }: UserChipProps) {
         {nick}
       </Chip>
     </div>
+  );
+
+  return user ? (
+    <Link href={`${PROFILE_URL}/${user.uuid}`}>{chip}</Link>
+  ) : (
+    <Tooltip content="Zaloguj się, aby zobaczyć profil" color="warning" showArrow>
+      <div className="cursor-default">{chip}</div>
+    </Tooltip>
   );
 }

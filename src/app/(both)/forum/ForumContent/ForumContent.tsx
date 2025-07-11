@@ -99,7 +99,7 @@ export function ForumContent() {
             ))}
           </div>
         ) : (
-          <p>{NO_COMMENTS_YET}</p>
+          <p className="py-8 text-[1.3rem] font-bold">{NO_COMMENTS_YET}</p>
         )}
       </section>
       <DeleteCommentModal
