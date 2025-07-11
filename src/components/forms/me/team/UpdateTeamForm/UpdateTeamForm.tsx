@@ -28,11 +28,6 @@ interface UpdateTeamFormProps {
 }
 
 export function UpdateTeamForm({ onClose, teamPlayers }: UpdateTeamFormProps) {
-  //   const goalkeepersRef = useRef<HTMLSelectElement>(null);
-  //   const defendersRef = useRef<HTMLSelectElement>(null);
-  //   const midfieldersRef = useRef<HTMLSelectElement>(null);
-  //   const forwardsRef = useRef<HTMLSelectElement>(null);
-
   const { goalkeepers, defenders, midfielders, forwards, setTeam } =
     useTeamStore();
 
