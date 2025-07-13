@@ -1,7 +1,6 @@
 "use client";
 
 import { SubmitButton } from "@/components/buttons/SubmitButton/SubmitButton";
-import { PrivacyPolicyCheckbox } from "@/components/inputs/checkboxes/PrivacyPolicyCheckbox/PrivacyPolicyCheckbox";
 import { EmailInput } from "@/components/inputs/inputs/EmailInput/EmailInput";
 import { PasswordInput } from "@/components/inputs/inputs/PasswordInput/PasswordInput";
 import { REGISTER_BUTTON_LABEL } from "@/constants/buttonLabels";
@@ -10,18 +9,18 @@ import {
   REGISTER_ERROR_TOAST,
   REGISTER_SUCCESS_TOAST,
 } from "@/constants/toasts";
+import { HOME_URL } from "@/constants/urls";
 import { useRegister } from "@/hooks/api/auth/useRegister";
 import { Spinner } from "@heroui/react";
+import axios from "axios";
 import { Formik } from "formik";
+import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import {
   initialValues,
   RegisterFormData,
   registerFormSchema,
 } from "./registerFormSchema";
-import axios from "axios";
-import { useRouter } from "next/navigation";
-import { HOME_URL } from "@/constants/urls";
 
 export function RegisterForm() {
   const { mutate, isPending } = useRegister();
@@ -64,7 +63,6 @@ export function RegisterForm() {
         <div className="grid grid-cols-1 gap-4">
           <EmailInput />
           <PasswordInput />
-          <PrivacyPolicyCheckbox />
         </div>
         <SubmitButton
           title={isPending ? <Spinner size="md" /> : REGISTER_BUTTON_LABEL}

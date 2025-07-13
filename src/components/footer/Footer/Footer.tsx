@@ -8,14 +8,12 @@ import {
   CONTACT_EMAIL_TITLE,
   FORUM_TITLE,
   KNOWLEDGE_ZONE_TITLE,
-  PRIVACY_POLICY_TITLE,
-  SUGGEST_FIX_TITLE,
+  SUGGEST_FIX_TITLE
 } from "@/constants/footer";
 import {
   FORUM_URL,
   HOME_URL,
-  KNOWLEDGE_ZONE_URL,
-  PRIVACY_POLICY_URL,
+  KNOWLEDGE_ZONE_URL
 } from "@/constants/urls";
 import { MobileContext } from "@/context/MobileContext";
 import { useUser } from "@/hooks/context/useUser";
@@ -68,7 +66,6 @@ export function Footer() {
               kontakt@clasicos.pl
             </span>
           </Link>
-          <FooterLink title={PRIVACY_POLICY_TITLE} href={PRIVACY_POLICY_URL} />
         </FooterLinksContainer>
       </div>
       <SuggestFixModal isOpen={isOpen} onOpenChange={onOpenChange} />

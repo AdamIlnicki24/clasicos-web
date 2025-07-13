@@ -10,7 +10,6 @@ export interface User {
   email: string;
   role: Role;
   createdAt: string;
-  acceptedPrivacyPolicyAt?: string;
   updatedAt: string;
   visitor: Visitor;
   comments?: CommentWithCount[];
