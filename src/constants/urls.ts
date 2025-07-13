@@ -1,3 +1,5 @@
+export const GITHUB_URL = "https://github.com/AdamIlnicki24";
+
 export const HOME_URL = "/";
 export const LOG_IN_URL = "/zaloguj-sie";
 export const FORGOT_PASSWORD_URL = "/zapomnialem-hasla";

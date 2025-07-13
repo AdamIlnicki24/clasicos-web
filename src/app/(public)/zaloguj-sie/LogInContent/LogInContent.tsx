@@ -1,6 +1,10 @@
 import { LogInCard } from "@/components/cards/public/LogInCard/LogInCard";
 import { Heading } from "@/components/headings/Heading/Heading";
-import { FORGOT_PASSWORD_URL, REGISTER_URL } from "@/constants/urls";
+import {
+  FORGOT_PASSWORD_URL,
+  GITHUB_URL,
+  REGISTER_URL,
+} from "@/constants/urls";
 import { Link } from "@heroui/react";
 import Ball from "@/assets/icons/ball.svg";
 import {
@@ -18,7 +22,19 @@ export function LogInContent() {
         <Heading HeadingTag="h1" title="Clasicos" />
       </div>
       <LogInCard />
-      <div className="space-y-3 py-6">
+      <div className="space-y-3 py-6 ps-3 lg:ps-0 lg:text-center">
+        <div>
+          Dane logowania to testowego konta znajdziesz{" "}
+          <Link
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-bold text-defaultWhite"
+            href={GITHUB_URL}
+          >
+            na moim Githubie
+          </Link>
+          .
+        </div>
         <div className="space-x-2">
           <span>{FORGOT_PASSWORD}</span>
           <Link
