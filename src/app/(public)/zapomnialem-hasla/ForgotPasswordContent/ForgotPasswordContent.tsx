@@ -7,7 +7,7 @@ import { Link } from "@heroui/react";
 
 export function ForgotPasswordContent() {
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center pt-6">
       <div className="flex gap-x-4 pb-3">
         <Ball width={48} />
         <Heading HeadingTag="h1" title="Clasicos" />

@@ -2,7 +2,7 @@
 
 import Loading from "@/app/loading";
 import { USER_CANNOT_BE_LOADED_ERROR_MESSAGE } from "@/constants/errorMessages";
-import { PROFILE_URL, USERS_URL } from "@/constants/urls";
+import { HOME_URL } from "@/constants/urls";
 import { useUser } from "@/hooks/context/useUser";
 import { Role } from "@/types/role";
 import { useRouter } from "next/navigation";
@@ -26,9 +26,8 @@ export function RoleProvider({ children, role }: RoleProviderProps) {
 
       const hasRequiredRole = user.role === role;
 
-      // TODO: Fix below
       if (!hasRequiredRole) {
-        router.replace(user.role === "Admin" ? USERS_URL : PROFILE_URL);
+        router.replace(HOME_URL);
       }
     }
   }, [user, isUserLoading, isError, role, router]);
