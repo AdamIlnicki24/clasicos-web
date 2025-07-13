@@ -1,0 +1,17 @@
+export const BACK_TO_HOMEPAGE_BUTTON_LABEL = "Wróć do strony głównej";
+export const LOG_IN_BUTTON_LABEL = "Zaloguj się";
+export const REGISTER_BUTTON_LABEL = "Zarejestruj się";
+export const TRY_AGAIN_BUTTON_LABEL = "Spróbuj ponownie";
+export const SUBMIT_FORM_BUTTON_LABEL = "Prześlij";
+export const RESET_PASSWORD_BUTTON_LABEL = "Zresetuj hasło";
+export const UPDATE_ABOUT_ME_DATA_BUTTON_LABEL = "Wprowadź zmiany";
+export const LOG_OUT_BUTTON_LABEL = "Wyloguj się";
+export const YES_BUTTON_LABEL = "Tak";
+export const NO_BUTTON_LABEL = "Nie";
+export const BAN_BUTTON_LABEL = "Zbanuj";
+export const UNBAN_BUTTON_LABEL = "Odbanuj";
+export const CREATE_TEAM_BUTTON_LABEL = "Stwórz drużynę";
+export const UPDATE_TEAM_BUTTON_LABEL = "Edytuj drużynę";
+export const DELETE_TEAM_BUTTON_LABEL = "Usuń drużynę";
+export const CHECK_OUT_TEAM_BUTTON_LABEL = "Zobacz drużynę";
+export const CREATE_PLAYER_BUTTON_LABEL = "Dodaj piłkarza";
