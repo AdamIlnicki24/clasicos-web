@@ -31,6 +31,7 @@ export function LogInForm() {
     await signInWithEmailAndPassword(auth, values.email, values.password)
       .then(async ({ user }) => {
         toast.success(LOG_IN_SUCCESS_TOAST);
+        // TODO: Think about moving user to profile uuid
         setIsPending(false);
 
         if (process.env.NODE_ENV === "development") {

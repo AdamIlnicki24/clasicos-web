@@ -9,10 +9,11 @@ import {
   REGISTER_ERROR_TOAST,
   REGISTER_SUCCESS_TOAST,
 } from "@/constants/toasts";
-import { HOME_URL } from "@/constants/urls";
+import { HOME_URL, PROFILE_URL } from "@/constants/urls";
 import { useRegister } from "@/hooks/api/auth/useRegister";
 import { Spinner } from "@heroui/react";
 import axios from "axios";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { Formik } from "formik";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
@@ -28,20 +29,13 @@ export function RegisterForm() {
   const router = useRouter();
 
   const onSubmitHandler = (values: RegisterFormData) => {
-    // const auth = getAuth();
-    // const credentials = await createUserWithEmailAndPassword(
-    //   auth,
-    //   values.email,
-    //   values.password
-    // );
-
-    // const firebaseId = credentials.user.uid;
+    const auth = getAuth();
 
     mutate(values, {
-      onSuccess: () => {
-        // TODO: Think about moving user to profile uuid
-        router.replace(HOME_URL);
+      onSuccess: async () => {
+        await signInWithEmailAndPassword(auth, values.email, values.password);
         toast.success(REGISTER_SUCCESS_TOAST);
+        router.replace(HOME_URL);
       },
       onError: (error) => {
         if (axios.isAxiosError(error) && error.response?.status === 409) {
