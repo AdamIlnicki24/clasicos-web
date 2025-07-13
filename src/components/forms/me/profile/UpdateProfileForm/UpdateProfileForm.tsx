@@ -7,19 +7,18 @@ import { SUBMIT_FORM_BUTTON_LABEL } from "@/constants/buttonLabels";
 import { NO_INFORMATION } from "@/constants/texts";
 import { PROFILE_DATA_HAS_BEEN_UPDATED_TOAST } from "@/constants/toasts";
 import { useUpdateMyProfile } from "@/hooks/api/users/me/useUpdateMyProfile";
+import { useUser } from "@/hooks/context/useUser";
 import { ApiError } from "@/types/apiError";
 import { Visitor } from "@/types/visitor";
 import { Spinner } from "@heroui/react";
 import { useQueryClient } from "@tanstack/react-query";
 import { Formik } from "formik";
-import { useRef } from "react";
 import { toast } from "react-toastify";
 import {
   initialValues,
   UpdateProfileFormData,
   updateProfileFormSchema,
 } from "./updateProfileFormSchema";
-import { useUser } from "@/hooks/context/useUser";
 
 interface UpdateProfileFormProps {
   onClose?: () => void;
@@ -30,10 +29,6 @@ export function UpdateProfileForm({
   onClose,
   visitor,
 }: UpdateProfileFormProps) {
-  const nameInputRef = useRef<HTMLInputElement>(null);
-  const surnameInputRef = useRef<HTMLInputElement>(null);
-  // TODO: Create refs
-
   const queryClient = useQueryClient();
 
   const { user } = useUser();

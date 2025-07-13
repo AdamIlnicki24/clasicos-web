@@ -83,8 +83,7 @@ export default function MessiVersusRonaldoArticle() {
         spektakularnych spotkań, które stały się częścią piłkarskiej historii.
         Oto niektóre z najważniejszych:
       </Paragraph>
-      <ul>
-        {/* TODO: Add markers */}
+      <ul className="list-disc space-y-3 ps-4 lg:ps-8">
         <li>
           <span className="font-bold">Listopad 2010 (La Liga)</span> -{" "}
           <em>La Manita</em> Barcelony 5:0. To pierwsze El Clasico Jose Mourinho

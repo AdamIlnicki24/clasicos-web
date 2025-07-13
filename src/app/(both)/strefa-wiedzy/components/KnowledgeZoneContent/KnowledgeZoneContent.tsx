@@ -30,7 +30,7 @@ export function KnowledgeZoneContent() {
         <Heading title={KNOWLEDGE_ZONE_HEADING} HeadingTag="h1" />
       </div>
       {/* TODO: Think about refactor */}
-      {/* TODO: Unify the dashesr */}
+      {/* TODO: Unify the dashes */}
       <div className="space-y-6">
         <KnowledgeZoneCard
           src={luisFigo.src}

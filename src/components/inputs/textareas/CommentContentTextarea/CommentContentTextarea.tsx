@@ -13,7 +13,6 @@ export function CommentContentTextarea({}: TextareaProps) {
       onChange={handleChange("content")}
       onBlur={handleBlur("content")}
       value={values.content}
-      color={touched.content && !errors.content ? "success" : "default"}
       isInvalid={touched.content && !!errors.content}
       errorMessage={touched.content && errors.content}
       isRequired

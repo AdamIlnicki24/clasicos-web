@@ -16,7 +16,6 @@ export function NickInput({}: TextInputProps) {
       onChange={handleChange("nick")}
       onBlur={handleBlur("nick")}
       value={values.nick}
-      color={touched.nick && !errors.nick ? "success" : "default"}
       isInvalid={touched.nick && !!errors.nick}
       errorMessage={touched.nick && errors.nick}
       isClearable

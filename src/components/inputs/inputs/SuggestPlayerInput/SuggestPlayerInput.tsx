@@ -16,7 +16,6 @@ export function SuggestPlayerInput({}: TextInputProps) {
       onChange={handleChange("player")}
       onBlur={handleBlur("player")}
       value={values.player}
-      color={touched.player && !errors.player ? "success" : "default"}
       isInvalid={touched.player && !!errors.player}
       errorMessage={touched.player && errors.player}
       isRequired

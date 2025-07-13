@@ -146,7 +146,6 @@ export function AdminNav() {
         <NavbarItem>
           <NavLink
             title={PLAYERS_TITLE}
-            // TODO: Create players table
             href={PLAYERS_URL}
             onClick={() => {
               isMobile && setIsMenuOpen(false);

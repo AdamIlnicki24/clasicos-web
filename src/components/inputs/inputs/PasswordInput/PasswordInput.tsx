@@ -23,8 +23,6 @@ export function PasswordInput({}: TextInputProps) {
       onChange={handleChange("password")}
       onBlur={handleBlur("password")}
       value={values.password}
-      // TODO: Think about property below
-      color={touched.password && !errors.password ? "success" : "default"}
       isInvalid={touched.password && !!errors.password}
       errorMessage={touched.password && errors.password}
       isRequired

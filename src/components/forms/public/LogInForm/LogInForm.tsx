@@ -23,8 +23,6 @@ import {
 } from "./logInFormSchema";
 
 export function LogInForm() {
-  // TODO: Create refs
-
   const [isPending, setIsPending] = useState(false);
 
   const onSubmitHandler = async (values: LogInFormData) => {

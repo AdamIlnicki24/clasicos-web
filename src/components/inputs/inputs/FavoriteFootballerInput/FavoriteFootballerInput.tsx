@@ -13,7 +13,6 @@ export function FavoriteFootballerInput({}: TextInputProps) {
       onChange={handleChange("favoriteFootballer")}
       onBlur={handleBlur("favoriteFootballer")}
       value={values.favoriteFootballer}
-      color={touched.favoriteFootballer && !errors.favoriteFootballer ? "success" : "default"}
       isInvalid={touched.favoriteFootballer && !!errors.favoriteFootballer}
       errorMessage={touched.favoriteFootballer && errors.favoriteFootballer}
       isClearable

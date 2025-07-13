@@ -13,7 +13,6 @@ export function FavoriteClubInput({}: TextInputProps) {
       onChange={handleChange("favoriteClub")}
       onBlur={handleBlur("favoriteClub")}
       value={values.favoriteClub}
-      color={touched.favoriteClub && !errors.favoriteClub ? "success" : "default"}
       isInvalid={touched.favoriteClub && !!errors.favoriteClub}
       errorMessage={touched.favoriteClub && errors.favoriteClub}
       isClearable

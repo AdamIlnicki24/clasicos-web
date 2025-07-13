@@ -16,7 +16,6 @@ export function EmailInput() {
       onChange={handleChange("email")}
       onBlur={handleBlur("email")}
       value={values.email}
-      color={touched.email && !errors.email ? "success" : "default"}
       isInvalid={touched.email && !!errors.email}
       errorMessage={touched.email && errors.email}
       isRequired

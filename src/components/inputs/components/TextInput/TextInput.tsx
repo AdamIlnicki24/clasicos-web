@@ -1,21 +1,18 @@
 "use client";
 
-import { MobileContext } from "@/context/MobileContext";
 import { Input, InputProps } from "@heroui/react";
-import { ChangeEvent, useContext, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 
 export interface TextInputProps extends InputProps {
   isCounterShown?: boolean;
 }
 
-  // TODO: Improve input styling
+// TODO: Improve input styling
 
 export function TextInput({
   isCounterShown = false,
   ...properties
 }: TextInputProps) {
-  const isMobile = useContext(MobileContext);
-
   const [currentLength, setCurrentLength] = useState(
     properties.value?.toString().length || 0
   );
@@ -36,19 +33,12 @@ export function TextInput({
   return (
     <div className="relative w-full">
       <Input
-        // classNames={{
-        //   inputWrapper: "border-2 border-defaultGreen",
-        //   input: "text-[1.1rem]",
-        //   label: "text-defaultBlack pb-1",
-        //   errorMessage: "text-[1.1rem]",
-        // }}
         classNames={{
-          label:
-            "text-defaultBlack text-[0.9rem]",
-          inputWrapper: "border-0",
+          label: "text-defaultBlack text-[0.9rem]",
+          inputWrapper: "border-1 border-defaultGray",
           input:
-            "text-defaultBlack font-semibold leading-tight placeholder:font-medium placeholder:text-defaultBlack/30 placeholder:italic",
-          errorMessage: "font-semibold ",
+            "text-defaultBlack font-semibold leading-tight placeholder:font-medium placeholder:text-defaultBlack/30",
+          errorMessage: "font-bold text-[1rem]",
           clearButton: "text-defaultBlack/80",
         }}
         size="lg"

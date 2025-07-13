@@ -24,8 +24,6 @@ interface SuggestAddingPlayerFormProps {
 export function SuggestAddingPlayerForm({
   onClose,
 }: SuggestAddingPlayerFormProps) {
-  // TODO: Think about adding form ref
-
   const [isPending, setIsPending] = useState(false);
 
   const { user } = useUser();
@@ -70,7 +68,8 @@ export function SuggestAddingPlayerForm({
           placeholder={SUGGEST_ADDING_PLAYER_MESSAGE_PLACEHOLDER}
         />
         <SubmitButton
-          title={isPending ? <Spinner size="md" /> : SUBMIT_FORM_BUTTON_LABEL} mode="secondary"
+          title={isPending ? <Spinner size="md" /> : SUBMIT_FORM_BUTTON_LABEL}
+          mode="secondary"
         />
       </>
     </Formik>

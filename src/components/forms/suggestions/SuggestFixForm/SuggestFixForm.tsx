@@ -21,8 +21,6 @@ interface SuggestFixFormProps {
 }
 
 export function SuggestFixForm({ onClose }: SuggestFixFormProps) {
-  // TODO: Think about adding form ref
-
   const [isPending, setIsPending] = useState(false);
 
   const { user } = useUser();

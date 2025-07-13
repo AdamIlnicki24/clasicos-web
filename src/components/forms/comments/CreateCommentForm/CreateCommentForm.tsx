@@ -23,9 +23,6 @@ interface CreateCommentFormProps {
 }
 
 export function CreateCommentForm({ onClose }: CreateCommentFormProps) {
-  const contentTextareaRef = useRef<HTMLTextAreaElement>(null);
-  // TODO: Create ref
-
   const queryClient = useQueryClient();
 
   const { resourceFriendlyLink } = useParams();

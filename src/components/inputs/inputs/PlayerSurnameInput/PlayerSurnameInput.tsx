@@ -13,7 +13,6 @@ export function PlayerSurnameInput({}: TextInputProps) {
       onChange={handleChange("surname")}
       onBlur={handleBlur("surname")}
       value={values.surname}
-      color={touched.surname && !errors.surname ? "success" : "default"}
       isInvalid={touched.surname && !!errors.surname}
       errorMessage={touched.surname && errors.surname}
       isRequired

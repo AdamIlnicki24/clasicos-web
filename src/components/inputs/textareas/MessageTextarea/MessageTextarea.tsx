@@ -12,7 +12,6 @@ export function MessageTextarea({ ...properties }: TextareaProps) {
       onChange={handleChange("message")}
       onBlur={handleBlur("message")}
       value={values.message}
-      color={touched.message && !errors.message ? "success" : "default"}
       isInvalid={touched.message && !!errors.message}
       errorMessage={touched.message && errors.message}
       isClearable
