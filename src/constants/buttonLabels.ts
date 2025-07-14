@@ -15,3 +15,4 @@ export const UPDATE_TEAM_BUTTON_LABEL = "Edytuj drużynę";
 export const DELETE_TEAM_BUTTON_LABEL = "Usuń drużynę";
 export const CHECK_OUT_TEAM_BUTTON_LABEL = "Zobacz drużynę";
 export const CREATE_PLAYER_BUTTON_LABEL = "Dodaj piłkarza";
+export const CLICK_HERE_BUTTON_LABEL = "Kliknij tutaj";
