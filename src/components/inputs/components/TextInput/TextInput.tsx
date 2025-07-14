@@ -35,9 +35,7 @@ export function TextInput({
       <Input
         classNames={{
           label: "text-defaultBlack text-[0.9rem]",
-          inputWrapper: "border-1 border-defaultGray",
-          input:
-            "text-defaultBlack font-semibold leading-tight placeholder:font-medium placeholder:text-defaultBlack/30",
+          input: "text-defaultBlack",
           errorMessage: "font-bold text-[1rem]",
           clearButton: "text-defaultBlack/80",
         }}
@@ -49,7 +47,7 @@ export function TextInput({
         {...properties}
       />
       {isCounterShown && maxLength && (
-        <div className="absolute right-0 top-0 pe-3 text-end text-[0.8rem] text-defaultWhite/50">
+        <div className="absolute right-0 top-0 pe-3 text-end text-[0.8rem] text-defaultGraydsa">
           {currentLength} / {maxLength}
         </div>
       )}

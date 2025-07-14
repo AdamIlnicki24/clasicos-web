@@ -1,6 +1,6 @@
 import {
-  TextAreaProps as HeroUITextareaProps,
   Textarea as HeroUITextarea,
+  TextAreaProps as HeroUITextareaProps,
 } from "@heroui/react";
 import { ChangeEvent, useEffect, useState } from "react";
 
@@ -27,7 +27,7 @@ export function Textarea({ isCounterShown, ...properties }: TextareaProps) {
   };
 
   return (
-    <div className="relative">
+    <div className="relative w-full">
       <HeroUITextarea
         classNames={{
           label:
@@ -35,7 +35,8 @@ export function Textarea({ isCounterShown, ...properties }: TextareaProps) {
           input:
             "text-[1.2rem] leading-none text-defaultBlack group-data-[has-value=true]:text-defaultBlack",
           errorMessage: "text-[1rem] font-bold",
-          inputWrapper: "text-defaultBlack border-1",
+          inputWrapper: "text-defaultBlack",
+          clearButton: "text-defaultBlack/80",
         }}
         size="lg"
         labelPlacement="outside"
