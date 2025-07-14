@@ -1,13 +1,12 @@
 import { BallWithCounterButton } from "@/components/buttons/BallWithCounterButton/BallWithCounterButton";
 import { TrashButton } from "@/components/buttons/TrashButton/TrashButton";
 import { UserChip } from "@/components/chips/UserChip/UserChip";
+import { ENIGMA } from "@/constants/texts";
 import { MobileContext } from "@/context/MobileContext";
 import { User } from "@/types/user";
 import { Card, CardBody, CardHeader } from "@heroui/react";
 import { useContext } from "react";
 import { CommentDate } from "../components/CommentDate/CommentDate";
-import { Visitor } from "@/types/visitor";
-import { ENIGMA } from "@/constants/texts";
 
 interface CommentCardProps {
   author: User;

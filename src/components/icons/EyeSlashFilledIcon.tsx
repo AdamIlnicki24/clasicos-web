@@ -1,3 +1,4 @@
+// TODO: Think about refactor
 export const EyeSlashFilledIcon = ({ ...properties }) => (
   <svg
     aria-hidden="true"

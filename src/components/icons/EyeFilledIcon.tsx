@@ -1,3 +1,4 @@
+// TODO: Think about refactor
 export const EyeFilledIcon = ({ ...properties }) => (
   <svg
     aria-hidden="true"
