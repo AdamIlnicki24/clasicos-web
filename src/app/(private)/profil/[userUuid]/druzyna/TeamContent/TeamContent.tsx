@@ -85,8 +85,8 @@ export function TeamContent() {
           (teamPlayer: TeamPlayer) => teamPlayer.player.position === position
         )
         .map((teamPlayer: TeamPlayer) => {
-          const { name, surname, uuid } = teamPlayer.player;
-          return <PlayerTile name={name} surname={surname} key={uuid} />;
+          const { name, surname, nationality, uuid } = teamPlayer.player;
+          return <PlayerTile name={name} surname={surname} key={uuid} nationality={nationality} />;
         }) ?? []
     );
   };

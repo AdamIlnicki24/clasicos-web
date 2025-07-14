@@ -1,22 +1,21 @@
-import Player from "@/assets/icons/player.svg";
-import { colors } from "@/constants/colors";
-import { MobileContext } from "@/context/MobileContext";
-import { useContext } from "react";
+import { getFlagUrl } from "@/utils/nationalities";
+import { Image } from "@heroui/react";
 
 interface PlayerTileProps {
   name?: string;
   surname: string;
+  nationality: string;
 }
 
-export function PlayerTile({ name, surname }: PlayerTileProps) {
-  const isMobile = useContext(MobileContext);
-
-  // TODO: Think about replacing icons with flags
-
+export function PlayerTile({ name, surname, nationality }: PlayerTileProps) {
   return (
-    <div className="flex h-[95px] w-[70px] flex-col items-center justify-center gap-y-2 rounded-xl border-1 border-defaultWhite bg-transparent text-center lg:h-[140px] lg:w-[120px] px-1 lg:px-4">
-      <Player color={colors.defaultWhite} width={isMobile ? 16 : 24} />
-      <p className="flex font-normal lg:font-bold items-center text-[0.7rem] lg:text-[1rem] lg:min-h-[48px] min-h-[36px]">{`${name ? name + " " : ""}${surname}`}</p>
+    <div className="flex h-[95px] w-[70px] flex-col items-center justify-center gap-y-2 rounded-xl border-1 border-defaultWhite bg-transparent px-1 text-center lg:h-[140px] lg:w-[120px] lg:px-4">
+      <Image
+        src={getFlagUrl(nationality)}
+        alt={`Flaga ${nationality}`}
+        className="w-7 rounded-none"
+      />
+      <p className="flex min-h-[36px] items-center text-[0.7rem] font-normal lg:min-h-[48px] lg:text-[1rem] lg:font-bold">{`${name ? name + " " : ""}${surname}`}</p>
     </div>
   );
 }
