@@ -1,29 +1,29 @@
 import { BallWithCounterButton } from "@/components/buttons/BallWithCounterButton/BallWithCounterButton";
 import { TrashButton } from "@/components/buttons/TrashButton/TrashButton";
 import { UserChip } from "@/components/chips/UserChip/UserChip";
-import { PROFILE_URL } from "@/constants/urls";
 import { MobileContext } from "@/context/MobileContext";
 import { User } from "@/types/user";
-import { Card, CardBody, CardHeader, Tooltip } from "@heroui/react";
-import Link from "next/link";
+import { Card, CardBody, CardHeader } from "@heroui/react";
 import { useContext } from "react";
 import { CommentDate } from "../components/CommentDate/CommentDate";
+import { Visitor } from "@/types/visitor";
+import { ENIGMA } from "@/constants/texts";
 
 interface CommentCardProps {
-  nick: string;
+  author: User;
+  currentUser?: User;
   recommendationsCount: number;
   createdAt: string;
   content: string;
-  user?: User;
   onTrashPress?: () => void;
 }
 
 export function CommentCard({
-  nick,
+  author,
+  currentUser,
   recommendationsCount,
   createdAt,
   content,
-  user,
   onTrashPress,
 }: CommentCardProps) {
   const isMobile = useContext(MobileContext);
@@ -31,9 +31,9 @@ export function CommentCard({
   return (
     <Card className="w-[95%] bg-accentColor lg:w-[60%]">
       <CardHeader className="flex justify-between">
-        <UserChip nick={nick} user={user} />
+        <UserChip nick={author.visitor.nick ?? ENIGMA} user={author} />
         <div className="flex gap-x-6">
-          {user?.role === "Admin" && onTrashPress && (
+          {currentUser?.role === "Admin" && onTrashPress && (
             <TrashButton color="danger" onPress={onTrashPress} />
           )}
           <BallWithCounterButton count={recommendationsCount} />

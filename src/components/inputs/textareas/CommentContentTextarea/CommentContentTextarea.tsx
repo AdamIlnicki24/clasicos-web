@@ -4,7 +4,7 @@ import { COMMENT_CONTENT_PLACEHOLDER } from "@/constants/placeholders";
 import { useFormikContext } from "formik";
 import { Textarea, TextareaProps } from "../../components/Textarea/Textarea";
 
-export function CommentContentTextarea({}: TextareaProps) {
+export function CommentContentTextarea({...properties}: TextareaProps) {
   const { handleChange, handleBlur, values, errors, touched, setFieldValue } =
     useFormikContext<{ content: string }>();
 
@@ -24,6 +24,7 @@ export function CommentContentTextarea({}: TextareaProps) {
       placeholder={COMMENT_CONTENT_PLACEHOLDER}
       maxLength={COMMENT_CONTENT_MAX_LENGTH}
       isCounterShown
+      {...properties}
     />
   );
 }
