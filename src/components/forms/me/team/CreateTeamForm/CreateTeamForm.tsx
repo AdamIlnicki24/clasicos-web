@@ -25,11 +25,6 @@ interface CreateTeamFormProps {
 }
 
 export function CreateTeamForm({ onClose }: CreateTeamFormProps) {
-  //   const goalkeepersRef = useRef<HTMLSelectElement>(null);
-  //   const defendersRef = useRef<HTMLSelectElement>(null);
-  //   const midfieldersRef = useRef<HTMLSelectElement>(null);
-  //   const forwardsRef = useRef<HTMLSelectElement>(null);
-
   const { setTeam, goalkeepers, defenders, midfielders, forwards } =
     useTeamStore();
 

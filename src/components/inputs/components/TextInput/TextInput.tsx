@@ -47,7 +47,7 @@ export function TextInput({
         {...properties}
       />
       {isCounterShown && maxLength && (
-        <div className="absolute right-0 top-0 pe-3 text-end text-[0.8rem] text-defaultGraydsa">
+        <div className="absolute right-0 top-0 pe-3 text-end text-[0.8rem] text-defaultGray">
           {currentLength} / {maxLength}
         </div>
       )}
