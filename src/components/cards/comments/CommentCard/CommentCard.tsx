@@ -7,39 +7,47 @@ import { User } from "@/types/user";
 import { Card, CardBody, CardHeader } from "@heroui/react";
 import { useContext } from "react";
 import { CommentDate } from "../components/CommentDate/CommentDate";
+import { CommentWithCount } from "@/types/comment";
 
 interface CommentCardProps {
-  author: User;
+  comment: CommentWithCount;
   currentUser?: User;
-  recommendationsCount: number;
-  createdAt: string;
-  content: string;
   onTrashPress?: () => void;
+  hasRecommended: boolean;
+  recommendationsCount: number;
+  onToggleRecommendation: () => void;
 }
 
 export function CommentCard({
-  author,
+  comment,
   currentUser,
-  recommendationsCount,
-  createdAt,
-  content,
   onTrashPress,
+  hasRecommended,
+  recommendationsCount,
+  onToggleRecommendation,
 }: CommentCardProps) {
   const isMobile = useContext(MobileContext);
 
   return (
     <Card className="w-[95%] bg-accentColor lg:w-[60%]">
       <CardHeader className="flex justify-between">
-        <UserChip nick={author.visitor.nick ?? ENIGMA} user={author} />
+        <UserChip
+          nick={comment.user.visitor.nick ?? ENIGMA}
+          user={comment.user}
+        />
         <div className="flex gap-x-6">
-          {currentUser?.role === "Admin" && onTrashPress && (
+          {currentUser?.role === "Admin" && (
             <TrashButton color="danger" onPress={onTrashPress} />
           )}
-          <BallWithCounterButton count={recommendationsCount} />
-          {!isMobile && <CommentDate createdAt={createdAt} />}
+          <BallWithCounterButton
+            count={recommendationsCount}
+            hasRecommended={hasRecommended}
+            onPress={onToggleRecommendation}
+          />
+          {!isMobile && <CommentDate createdAt={comment.createdAt} />}
         </div>
       </CardHeader>
-      <CardBody className="text-defaultWhite">{content}</CardBody>
+      <CardBody className="text-defaultWhite">{comment.content}</CardBody>
     </Card>
   );
 }

@@ -26,3 +26,4 @@ export const PROFILE_DATA_HAS_BEEN_UPDATED_TOAST =
 export const NICK_HAS_BEEN_UPDATED_TOAST = "Zaktualizowano nick.";
 export const USER_HAS_BEEN_BANNED_TOAST = "Użytkownik został zbanowany.";
 export const USER_HAS_BEEN_UNBANNED_TOAST = "Użytkownik został odbanowany.";
+ 

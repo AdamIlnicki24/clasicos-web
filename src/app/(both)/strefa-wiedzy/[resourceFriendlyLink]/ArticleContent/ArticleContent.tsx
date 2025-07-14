@@ -1,9 +1,9 @@
 "use client";
 
 import Loading from "@/app/loading";
-import { CommentCard } from "@/components/cards/comments/CommentCard/CommentCard";
 import { CreateCommentCard } from "@/components/cards/comments/CreateCommentCard/CreateCommentCard";
 import { NoAccountCard } from "@/components/cards/NoAccountCard/NoAccountCard";
+import { CommentCardContainer } from "@/components/containers/CommentCardContainer/CommentCardContainer";
 import { Heading } from "@/components/headings/Heading/Heading";
 import { DeleteCommentModal } from "@/components/modals/DeleteCommentModal/DeleteCommentModal";
 import { COMMENTS_HEADING } from "@/constants/headings";
@@ -37,20 +37,24 @@ export function ArticleContent({
 
   const { user, isUserLoading } = useUser();
 
-  const { data, isLoading, isError, error } = useGetComments(
+  const {
+    data: comments,
+    isLoading,
+    isError,
+    error,
+  } = useGetComments(resourceFriendlyLink as string);
+
+  const { mutate: deleteComment, isPending } = useDeleteComment(
     resourceFriendlyLink as string
   );
 
-  const { mutate, isPending } = useDeleteComment(
-    resourceFriendlyLink as string
-  );
+  const onTrashPress = (comment: CommentWithCount) =>
+    setSelectedComment(comment);
 
-  const onTrashPress = (comment: CommentWithCount) => setSelectedComment(comment);
-
-  const onDeleteHandler = () => {
+  const onDeleteCommentHandler = () => {
     if (!selectedComment) return null;
 
-    mutate(selectedComment.uuid, {
+    deleteComment(selectedComment.uuid, {
       onSuccess: async () => {
         await queryClient.invalidateQueries({
           queryKey: ["getComments", resourceFriendlyLink],
@@ -92,15 +96,12 @@ export function ArticleContent({
         ) : (
           <NoAccountCard bodyText={YOU_NEED_TO_HAVE_AN_ACCOUNT} />
         )}
-        {data && data.length > 0 ? (
+        {comments && comments.length > 0 ? (
           <div className="flex w-full flex-col items-center gap-y-4 py-8">
-            {data.map((comment: CommentWithCount) => (
-              <CommentCard
+            {comments.map((comment) => (
+              <CommentCardContainer
                 key={comment.uuid}
-                content={comment.content}
-                createdAt={comment.createdAt}
-                recommendationsCount={comment._count.recommendations}
-                author={comment.user}
+                comment={comment}
                 currentUser={user ?? undefined}
                 onTrashPress={() => onTrashPress(comment)}
               />
@@ -117,7 +118,7 @@ export function ArticleContent({
             setSelectedComment(null);
           }
         }}
-        onDeleteHandler={onDeleteHandler}
+        onDeleteHandler={onDeleteCommentHandler}
         isPending={isPending}
       />
     </>
