@@ -33,7 +33,7 @@ export function CommentCard({
       <CardHeader className="flex justify-between">
         <UserChip
           nick={comment.user.visitor.nick ?? ENIGMA}
-          user={currentUser}
+          user={comment.user}
         />
         <div className="flex gap-x-6">
           {currentUser?.role === "Admin" && (
