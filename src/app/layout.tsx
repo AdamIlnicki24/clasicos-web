@@ -20,6 +20,8 @@ export const lato = Lato({
 
 // TODO: Fix error while removing data from autocomplete
 // TODO: Always move user to homepage after logging out
+// TODO: Add favicon
+// TODO: Add OG tags
 
 export const metadata: Metadata = {
   title: {
