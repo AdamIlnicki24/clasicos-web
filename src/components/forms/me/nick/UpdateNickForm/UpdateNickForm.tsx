@@ -26,10 +26,6 @@ interface UpdateNickFormProps {
 }
 
 export function UpdateNickForm({ onClose, visitor }: UpdateNickFormProps) {
-  const nameInputRef = useRef<HTMLInputElement>(null);
-  const surnameInputRef = useRef<HTMLInputElement>(null);
-  // TODO: Create refs
-
   const queryClient = useQueryClient();
 
   const { user } = useUser();

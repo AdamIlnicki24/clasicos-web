@@ -18,7 +18,6 @@ export const lato = Lato({
   display: "swap",
 });
 
-// TODO: Fix problem with invalidateQueries on create and update team
 // TODO: Fix error while removing data from autocomplete
 // TODO: Always move user to homepage after logging out
 
