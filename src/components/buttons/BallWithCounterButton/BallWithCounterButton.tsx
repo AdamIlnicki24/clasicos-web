@@ -1,24 +1,28 @@
 import { BallIcon } from "@/components/icons/BallIcon";
 import { RECOMMENDED_BY } from "@/constants/texts";
-import { Button, ButtonProps } from "@heroui/react";
+import { User } from "@/types/user";
+import { Button, ButtonProps, Tooltip } from "@heroui/react";
 
 interface BallWithCounterButtonProps extends ButtonProps {
   count: number;
   hasRecommended: boolean;
+  user?: User;
 }
 
 export function BallWithCounterButton({
   count,
   hasRecommended,
+  user,
   ...properties
 }: BallWithCounterButtonProps) {
-  return (
+  const button = (
     <div className="flex gap-x-3">
       <span className="text-[1.15rem] text-defaultGray">{RECOMMENDED_BY}</span>
       <Button
         variant="light"
         size="sm"
         isIconOnly
+        isDisabled={!user}
         className="pointer-events-auto relative"
         {...properties}
       >
@@ -31,5 +35,17 @@ export function BallWithCounterButton({
         </span>
       </Button>
     </div>
+  );
+
+  return user ? (
+    button
+  ) : (
+    <Tooltip
+      content="Zaloguj się, aby zarekomendować komentarz"
+      color="warning"
+      showArrow
+    >
+      {button}
+    </Tooltip>
   );
 }

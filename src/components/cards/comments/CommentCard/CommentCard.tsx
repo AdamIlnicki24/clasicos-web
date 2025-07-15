@@ -33,7 +33,7 @@ export function CommentCard({
       <CardHeader className="flex justify-between">
         <UserChip
           nick={comment.user.visitor.nick ?? ENIGMA}
-          user={comment.user}
+          user={currentUser}
         />
         <div className="flex gap-x-6">
           {currentUser?.role === "Admin" && (
@@ -43,6 +43,7 @@ export function CommentCard({
             count={recommendationsCount}
             hasRecommended={hasRecommended}
             onPress={onToggleRecommendation}
+            user={currentUser}
           />
           {!isMobile && <CommentDate createdAt={comment.createdAt} />}
         </div>
