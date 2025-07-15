@@ -1,3 +1,4 @@
+import { LOG_IN_TO_CHECK_OUT_PROFILE_TOOLTIP } from "@/constants/tooltips";
 import { PROFILE_URL } from "@/constants/urls";
 import { User } from "@/types/user";
 import { Chip, Avatar, Tooltip } from "@heroui/react";
@@ -32,7 +33,7 @@ export function AuthorChip({ nick, author, me }: AuthorChipProps) {
     <Link href={`${PROFILE_URL}/${author.uuid}`}>{chip}</Link>
   ) : (
     <Tooltip
-      content="Zaloguj się, aby zobaczyć profil"
+      content={LOG_IN_TO_CHECK_OUT_PROFILE_TOOLTIP}
       color="warning"
       showArrow
     >

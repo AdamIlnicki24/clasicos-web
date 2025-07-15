@@ -1,5 +1,6 @@
 import { BallIcon } from "@/components/icons/BallIcon";
 import { RECOMMENDED_BY } from "@/constants/texts";
+import { LOG_IN_TO_RECOMMEND_COMMENT_TOOLTIP } from "@/constants/tooltips";
 import { User } from "@/types/user";
 import { Button, ButtonProps, Tooltip } from "@heroui/react";
 
@@ -42,7 +43,7 @@ export function BallWithCounterButton({
     button
   ) : (
     <Tooltip
-      content="Zaloguj się, aby zarekomendować komentarz"
+      content={LOG_IN_TO_RECOMMEND_COMMENT_TOOLTIP}
       color="warning"
       showArrow
     >

@@ -8,8 +8,6 @@ interface EyeButtonProps extends ButtonProps {
   isPasswordVisible: boolean;
 }
 
-// TODO: Improve this component
-
 export function EyeButton({
   isPasswordVisible,
   ...properties
