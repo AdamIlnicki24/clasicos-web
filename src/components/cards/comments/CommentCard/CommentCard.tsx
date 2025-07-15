@@ -1,13 +1,13 @@
 import { BallWithCounterButton } from "@/components/buttons/BallWithCounterButton/BallWithCounterButton";
 import { TrashButton } from "@/components/buttons/TrashButton/TrashButton";
-import { UserChip } from "@/components/chips/UserChip/UserChip";
+import { AuthorChip } from "@/components/chips/AuthorChip/AuthorChip";
 import { ENIGMA } from "@/constants/texts";
 import { MobileContext } from "@/context/MobileContext";
+import { CommentWithCount } from "@/types/comment";
 import { User } from "@/types/user";
 import { Card, CardBody, CardHeader } from "@heroui/react";
 import { useContext } from "react";
 import { CommentDate } from "../components/CommentDate/CommentDate";
-import { CommentWithCount } from "@/types/comment";
 
 interface CommentCardProps {
   comment: CommentWithCount;
@@ -31,9 +31,10 @@ export function CommentCard({
   return (
     <Card className="w-[95%] bg-accentColor lg:w-[60%]">
       <CardHeader className="flex justify-between">
-        <UserChip
+        <AuthorChip
           nick={comment.user.visitor.nick ?? ENIGMA}
-          user={comment.user}
+          author={comment.user}
+          me={currentUser}
         />
         <div className="flex gap-x-6">
           {currentUser?.role === "Admin" && (

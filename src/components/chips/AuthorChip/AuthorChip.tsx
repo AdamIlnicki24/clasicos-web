@@ -3,12 +3,13 @@ import { User } from "@/types/user";
 import { Chip, Avatar, Tooltip } from "@heroui/react";
 import Link from "next/link";
 
-interface UserChipProps {
+interface AuthorChipProps {
   nick: string;
-  user?: User;
+  author: User;
+  me?: User;
 }
 
-export function UserChip({ nick, user }: UserChipProps) {
+export function AuthorChip({ nick, author, me }: AuthorChipProps) {
   const chip = (
     <div className="flex gap-4">
       <Chip
@@ -27,10 +28,14 @@ export function UserChip({ nick, user }: UserChipProps) {
     </div>
   );
 
-  return user ? (
-    <Link href={`${PROFILE_URL}/${user.uuid}`}>{chip}</Link>
+  return me ? (
+    <Link href={`${PROFILE_URL}/${author.uuid}`}>{chip}</Link>
   ) : (
-    <Tooltip content="Zaloguj się, aby zobaczyć profil" color="warning" showArrow>
+    <Tooltip
+      content="Zaloguj się, aby zobaczyć profil"
+      color="warning"
+      showArrow
+    >
       <div className="cursor-default">{chip}</div>
     </Tooltip>
   );

@@ -27,6 +27,7 @@ export function BallWithCounterButton({
         {...properties}
       >
         {/* TODO: Improve styles depending on hasRecommended prop */}
+        {/* TODO: Think about adding isPending */}
         <BallIcon
           className={`pointer-events-none ${hasRecommended ? "opacity-85" : "opacity-25"}`}
         />
