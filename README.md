@@ -1,36 +1,21 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Clasicos Web
 
-## Getting Started
+## Overview  
+I built the Clasicos Web with Next.js and TypeScript.
 
-First, run the development server:
+## UI Components  
+I used **HeroUI** to leverage and customize the accessible components provided by the library.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Styling & Responsiveness  
+I styled the application with **Tailwind CSS**, ensuring a fully responsive design.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Forms & Validation  
+- **Formik** for building and managing forms  
+- **Yup** for schema‑based form validation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Data Fetching  
+- **TanStack Query** for caching and synchronizing server state  
+- **Axios** for making HTTP requests to the backend API
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deployment  
+The app is deployed on **Vercel**, the platform maintained by the Next.js creators and optimized specifically for Next.js projects.
