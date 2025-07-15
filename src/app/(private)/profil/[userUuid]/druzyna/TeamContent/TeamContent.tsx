@@ -26,6 +26,7 @@ import { useGetTeam } from "@/hooks/api/team/useGetTeam";
 import { useUser } from "@/hooks/context/useUser";
 import { ApiError } from "@/types/apiError";
 import { Position } from "@/types/position";
+import { Team } from "@/types/team";
 import { TeamPlayer } from "@/types/teamPlayer";
 import { useDisclosure } from "@heroui/react";
 import { useQueryClient } from "@tanstack/react-query";
@@ -107,11 +108,9 @@ export function TeamContent() {
 
   const onDeleteHandler = () => {
     mutate(undefined, {
-      onSuccess: async () => {
-        // TODO: Invalidating doesn't work
-        await queryClient.invalidateQueries({
-          queryKey: ["getTeam", team?.user?.uuid],
-        });
+      onSuccess: () => {
+        queryClient.setQueryData<Team | undefined>(["getMyTeam"], undefined);
+        queryClient.removeQueries({ queryKey: ["getTeam", userUuid] });
 
         toast.success(TEAM_HAS_BEEN_DELETED_TOAST);
 

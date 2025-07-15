@@ -21,6 +21,8 @@ import {
   UpdateTeamFormData,
   updateTeamFormSchema,
 } from "./updateTeamFormSchema";
+import { Team } from "@/types/team";
+import { useParams } from "next/navigation";
 
 interface UpdateTeamFormProps {
   onClose?: () => void;
@@ -30,6 +32,8 @@ interface UpdateTeamFormProps {
 export function UpdateTeamForm({ onClose, teamPlayers }: UpdateTeamFormProps) {
   const { goalkeepers, defenders, midfielders, forwards, setTeam } =
     useTeamStore();
+
+  const { userUuid } = useParams();
 
   useEffect(() => {
     if (
@@ -66,11 +70,9 @@ export function UpdateTeamForm({ onClose, teamPlayers }: UpdateTeamFormProps) {
     }
 
     mutate(values, {
-      onSuccess: async () => {
-        await queryClient.invalidateQueries({
-          // TODO: Think about using getTeam with uuid instead
-          queryKey: ["getMyTeam"],
-        });
+      onSuccess: (updatedTeam) => {
+        queryClient.setQueryData<Team | undefined>(["getMyTeam"], updatedTeam);
+        queryClient.removeQueries({ queryKey: ["getTeam", userUuid] });
 
         toast.success(TEAM_HAS_BEEN_UPDATED_TOAST);
 
