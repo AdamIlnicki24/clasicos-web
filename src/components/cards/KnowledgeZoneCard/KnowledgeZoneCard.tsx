@@ -19,6 +19,7 @@ export function KnowledgeZoneCard({
   lead,
   ...properties
 }: KnowledgeZoneCardProps) {
+  // TODO: Correct styling
   return (
     <Card
       className={`mx-auto w-[85%] bg-accentColor text-defaultWhite sm:w-[60%] lg:w-[65%] ${styles.card}`}

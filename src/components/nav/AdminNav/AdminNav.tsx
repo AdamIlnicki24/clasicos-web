@@ -25,6 +25,7 @@ import { useUser } from "@/hooks/context/useUser";
 import {
   Avatar,
   Button,
+  Image,
   Link,
   Navbar,
   NavbarBrand,
@@ -41,6 +42,7 @@ import { useContext, useState } from "react";
 import { toast } from "react-toastify";
 import { NavLink } from "../NavLink/NavLink";
 import { MY_PROFILE_TOOLTIP } from "@/constants/tooltips";
+import { logo } from "@/constants/images";
 
 export function AdminNav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -50,8 +52,6 @@ export function AdminNav() {
   const { user, logOut, isUserLoading } = useUser();
 
   const router = useRouter();
-
-  //   const { src, alt } = LOGO_ICON;
 
   const handleLogout = () => {
     try {
@@ -72,9 +72,8 @@ export function AdminNav() {
   return (
     <Navbar
       classNames={{
-        base: "fixed top-0 bg-primaryColor py-2 lg:py-4 px-2",
-        menu: "bg-primaryColor pt-10 w-screen overflow-hidden z-50",
-        item: "",
+        base: "fixed top-0 bg-defaultNavy py-2 lg:py-4 px-2",
+        menu: "bg-defaultNavy pt-10 w-screen overflow-hidden z-50",
       }}
       maxWidth="full"
       onMenuOpenChange={setIsMenuOpen}
@@ -89,7 +88,7 @@ export function AdminNav() {
             isMobile && isMenuOpen && setIsMenuOpen(false);
           }}
         >
-          {/* <Image src={src} alt={alt} className="h-20 lg:h-20" /> */}
+          <Image src={logo.src} alt={logo.alt} className="h-16" />
         </Link>
       </NavbarBrand>
       {/* TODO: Think about components' order */}

@@ -7,24 +7,22 @@ import { visitorNavItems } from "@/constants/menuItems";
 import {
   FORUM_TITLE,
   KNOWLEDGE_ZONE_TITLE,
-  LOG_OUT_TITLE,
-  PLAYERS_TITLE,
-  USERS_TITLE,
+  LOG_OUT_TITLE
 } from "@/constants/titles";
 import { LOG_OUT_ERROR_TOAST, LOG_OUT_SUCCESS_TOAST } from "@/constants/toasts";
+import { MY_PROFILE_TOOLTIP } from "@/constants/tooltips";
 import {
   FORUM_URL,
   HOME_URL,
   KNOWLEDGE_ZONE_URL,
-  PLAYERS_URL,
-  PROFILE_URL,
-  USERS_URL,
+  PROFILE_URL
 } from "@/constants/urls";
 import { MobileContext } from "@/context/MobileContext";
 import { useUser } from "@/hooks/context/useUser";
 import {
   Avatar,
   Button,
+  Image,
   Link,
   Navbar,
   NavbarBrand,
@@ -40,7 +38,7 @@ import { useRouter } from "next/navigation";
 import { useContext, useState } from "react";
 import { toast } from "react-toastify";
 import { NavLink } from "../NavLink/NavLink";
-import { MY_PROFILE_TOOLTIP } from "@/constants/tooltips";
+import { logo } from "@/constants/images";
 
 export function VisitorNav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -72,9 +70,8 @@ export function VisitorNav() {
   return (
     <Navbar
       classNames={{
-        base: "fixed top-0 bg-primaryColor py-2 lg:py-4 px-2",
-        menu: "bg-primaryColor pt-10 w-screen overflow-hidden z-50",
-        item: "",
+        base: "fixed top-0 bg-defaultNavy py-2 lg:py-4 px-2",
+        menu: "bg-defaultNavy pt-10 w-screen overflow-hidden z-50",
       }}
       maxWidth="full"
       onMenuOpenChange={setIsMenuOpen}
@@ -89,7 +86,7 @@ export function VisitorNav() {
             isMobile && isMenuOpen && setIsMenuOpen(false);
           }}
         >
-          {/* <Image src={src} alt={alt} className="h-20 lg:h-20" /> */}
+          <Image src={logo.src} alt={logo.alt} className="h-16" />
         </Link>
       </NavbarBrand>
       {/* TODO: Think about components' order */}

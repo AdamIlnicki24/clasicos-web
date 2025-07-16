@@ -1,3 +1,8 @@
+export const logo = {
+  src: "/images/logo.svg",
+  alt: "El Clasico - Barcelona vs Real Madryt",
+};
+
 export const logoBase64 = {
   src: "",
   alt: "El Clasico - Barcelona vs Real Madryt",
