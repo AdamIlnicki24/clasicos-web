@@ -11,7 +11,6 @@ interface NoAccountCardProps {
 export function NoAccountCard({ bodyText }: NoAccountCardProps) {
   return (
     <Card className="flex w-[95%] bg-accentColor lg:w-auto">
-      {/* <Info color={colors.defaultWhite} width={20} /> */}
       <div>
         <CardBody className="text-defaultWhite">{bodyText}</CardBody>
         <CardFooter className="text-defaultWhite">

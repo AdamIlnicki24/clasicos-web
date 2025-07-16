@@ -1,6 +1,7 @@
 "use client";
 
 import Loading from "@/app/loading";
+import { BannedUserCard } from "@/components/cards/BannedUserCard/BannedUserCard";
 import { CreateCommentCard } from "@/components/cards/comments/CreateCommentCard/CreateCommentCard";
 import { NoAccountCard } from "@/components/cards/NoAccountCard/NoAccountCard";
 import { CommentCardContainer } from "@/components/containers/CommentCardContainer/CommentCardContainer";
@@ -8,6 +9,7 @@ import { Heading } from "@/components/headings/Heading/Heading";
 import { DeleteCommentModal } from "@/components/modals/DeleteCommentModal/DeleteCommentModal";
 import { COMMENTS_HEADING } from "@/constants/headings";
 import {
+  COMMENT_CANNOT_BE_CREATED,
   ENIGMA,
   NO_COMMENTS_YET,
   YOU_NEED_TO_HAVE_AN_ACCOUNT,
@@ -73,8 +75,6 @@ export function ArticleContent({
     });
   };
 
-  // TODO: Add chips with info about Enigma player
-
   if (!resourceFriendlyLink || isUserLoading || isLoading) return <Loading />;
 
   if (isError) {
@@ -91,10 +91,12 @@ export function ArticleContent({
         <div className="my-6 rounded-br-3xl rounded-tr-3xl bg-primaryColor pe-12 ps-4">
           <Heading HeadingTag="h2" title={COMMENTS_HEADING} />
         </div>
-        {user ? (
-          <CreateCommentCard nick={user.visitor.nick ?? ENIGMA} />
-        ) : (
+        {!user ? (
           <NoAccountCard bodyText={YOU_NEED_TO_HAVE_AN_ACCOUNT} />
+        ) : user.visitor.bannedAt ? (
+          <BannedUserCard bodyText={COMMENT_CANNOT_BE_CREATED} />
+        ) : (
+          <CreateCommentCard nick={user.visitor.nick ?? ENIGMA} />
         )}
         {comments && comments.length > 0 ? (
           <div className="flex w-full flex-col items-center gap-y-4 py-8">

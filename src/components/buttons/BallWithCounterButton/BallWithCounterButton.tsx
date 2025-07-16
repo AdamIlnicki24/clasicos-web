@@ -1,6 +1,6 @@
 import { BallIcon } from "@/components/icons/BallIcon";
 import { RECOMMENDED_BY } from "@/constants/texts";
-import { LOG_IN_TO_RECOMMEND_COMMENT_TOOLTIP } from "@/constants/tooltips";
+import { LOG_IN_TO_RECOMMEND_COMMENT_TOOLTIP, RECOMMENDATION_CANNOT_BE_CREATED_TOOLTIP } from "@/constants/tooltips";
 import { User } from "@/types/user";
 import { Button, ButtonProps, Tooltip } from "@heroui/react";
 
@@ -16,38 +16,43 @@ export function BallWithCounterButton({
   user,
   ...properties
 }: BallWithCounterButtonProps) {
+  const isBanned = Boolean(user?.visitor.bannedAt);
+  const isDisabled = !user || isBanned;
+
   const button = (
-    <div className="flex gap-x-3">
+    <div className="flex items-center gap-x-3">
       <span className="text-[1.15rem] text-defaultGray">{RECOMMENDED_BY}</span>
       <Button
         variant="light"
         size="sm"
         isIconOnly
-        isDisabled={!user}
-        className="pointer-events-auto relative"
+        isDisabled={isDisabled}
+        className={`${hasRecommended ? "border-2 border-primaryColor" : ""} ${isDisabled ? "cursor-not-allowed" : ""} rounded-2xl`}
         {...properties}
       >
-        {/* TODO: Improve styles depending on hasRecommended prop */}
-        {/* TODO: Think about adding isPending */}
-        <BallIcon
-          className={`pointer-events-none ${hasRecommended ? "opacity-85" : "opacity-25"}`}
-        />
-        <span className="pointer-events-none absolute inset-0 flex items-center justify-center text-[1.25rem] font-bold text-defaultWhite">
+        <BallIcon className="pointer-events-none opacity-25" />
+        <span
+          className="pointer-events-none absolute inset-0 flex items-center justify-center text-[1.25rem] font-extrabold text-defaultWhite"
+        >
           {count}
         </span>
       </Button>
     </div>
   );
 
-  return user ? (
-    button
-  ) : (
+  return isDisabled ? (
     <Tooltip
-      content={LOG_IN_TO_RECOMMEND_COMMENT_TOOLTIP}
-      color="warning"
+      content={
+        !user
+          ? LOG_IN_TO_RECOMMEND_COMMENT_TOOLTIP
+          : RECOMMENDATION_CANNOT_BE_CREATED_TOOLTIP
+      }
+      color={!user ? "warning" : "danger"}
       showArrow
     >
       {button}
     </Tooltip>
+  ) : (
+    button
   );
 }

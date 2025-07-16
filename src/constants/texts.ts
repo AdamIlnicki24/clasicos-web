@@ -18,3 +18,5 @@ export const SUGGEST_ADDING_PLAYER =
 export const RECOMMENDED_BY = "Polecają:";
 export const ENIGMA_DESCRIPTION =
   "Enigma był zamaskowanym graczem występującym w King's League Gerarda Pique. Jego obecność jeszcze bardziej zwiększyła zainteresowanie ligą, które w swoim czasie urosło do ogromnych rozmiarów.";
+export const COMMENT_CANNOT_BE_CREATED =
+  "Nie możesz dodać komentarza, bo zostałeś zbanowany.";
