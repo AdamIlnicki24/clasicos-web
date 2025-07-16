@@ -4,6 +4,7 @@ import Loading from "@/app/loading";
 import { Button } from "@/components/buttons/Button/Button";
 import { AboutMeCard } from "@/components/cards/AboutMeCard/AboutMeCard";
 import { UserDataCard } from "@/components/cards/UserDataCard/UserDataCard";
+import { EnigmaModal } from "@/components/modals/EnigmaModal/EnigmaModal";
 import { UpdateNickModal } from "@/components/modals/UpdateNickModal/UpdateNickModal";
 import { UpdateProfileModal } from "@/components/modals/UpdateProfileModal/UpdateProfileModal";
 import {
@@ -50,10 +51,17 @@ export function ProfileContent() {
   } = useDisclosure();
 
   const {
+    isOpen: isEnigmaModalOpen,
+    onOpen: onEnigmaModalOpen,
+    onOpenChange: onEnigmaModalOpenChange,
+  } = useDisclosure();
+
+  const {
     data: user,
     isLoading: isUserLoading,
     isError: isUserError,
   } = useGetUser(userUuid as string);
+  
   const { user: me, isUserLoading: isMeLoading } = useUser();
 
   const { data: recommendationsCount } = useGetUserRecommendationsCount(
@@ -163,10 +171,11 @@ export function ProfileContent() {
         <div className="grid grid-cols-1 lg:grid-cols-[9fr_11fr]">
           <UserDataCard
             nick={nick?.trim() ? nick : ENIGMA}
-            onIconPress={onNickModalOpen}
+            onEditButtonPress={onNickModalOpen}
             createdAt={formatDate(createdAt)}
             recommendationsCount={recommendationsCount ?? 0}
             isMe={isMe}
+            onOpen={onEnigmaModalOpen}
           />
           <AboutMeCard
             favoriteClub={favoriteClub?.trim() ? favoriteClub : NO_INFORMATION}
@@ -186,6 +195,7 @@ export function ProfileContent() {
           isOpen={isNickModalOpen}
           onOpenChange={onNickModalOpenChange}
         />
+        <EnigmaModal isOpen={isEnigmaModalOpen} onOpenChange={onEnigmaModalOpenChange} />
       </main>
     </>
   );
