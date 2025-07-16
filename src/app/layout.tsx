@@ -20,6 +20,7 @@ export const lato = Lato({
 // TODO: Always move user to homepage after logging out
 // TODO: Add favicon
 // TODO: Semantics
+// TODO: Create robots file
 
 export const metadata: Metadata = {
   title: {
