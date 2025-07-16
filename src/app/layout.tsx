@@ -10,8 +10,6 @@ import { ReactNode } from "react";
 import { Footer } from "@/components/footer/Footer/Footer";
 import { Nav } from "@/components/nav/Nav/Nav";
 
-// TODO: Improve this component
-
 export const lato = Lato({
   subsets: ["latin"],
   weight: ["100", "300", "400", "700", "900"],
@@ -21,9 +19,7 @@ export const lato = Lato({
 // TODO: Fix error while removing data from autocomplete
 // TODO: Always move user to homepage after logging out
 // TODO: Add favicon
-// TODO: Add OG tags
 // TODO: Semantics
-// TODO: Handle banning
 
 export const metadata: Metadata = {
   title: {
