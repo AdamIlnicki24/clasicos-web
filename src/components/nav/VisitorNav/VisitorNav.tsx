@@ -85,7 +85,6 @@ export function VisitorNav() {
           <Image src={logo.src} alt={logo.alt} className="h-16" />
         </Link>
       </NavbarBrand>
-      {/* TODO: Think about components' order */}
       <NavbarContent justify="end">
         <NavbarMenuToggle
           aria-label={isMenuOpen ? CLOSE_MENU_ARIA_LABEL : OPEN_MENU_ARIA_LABEL}
