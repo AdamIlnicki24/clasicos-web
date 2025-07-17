@@ -17,9 +17,9 @@ api.interceptors.request.use(async (config) => {
     token: string | null;
   };
 
-  if (process.env.NODE_ENV === "development") {
+  
     console.log("User:", user);
-  }
+  
 
   if (user && user.token) {
     config.headers["Authorization"] = `Bearer ${user.token}`;
