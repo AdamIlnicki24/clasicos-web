@@ -7,7 +7,7 @@ import { visitorNavItems } from "@/constants/menuItems";
 import {
   FORUM_TITLE,
   KNOWLEDGE_ZONE_TITLE,
-  LOG_OUT_TITLE
+  LOG_OUT_TITLE,
 } from "@/constants/titles";
 import { LOG_OUT_ERROR_TOAST, LOG_OUT_SUCCESS_TOAST } from "@/constants/toasts";
 import { MY_PROFILE_TOOLTIP } from "@/constants/tooltips";
@@ -15,7 +15,7 @@ import {
   FORUM_URL,
   HOME_URL,
   KNOWLEDGE_ZONE_URL,
-  PROFILE_URL
+  PROFILE_URL,
 } from "@/constants/urls";
 import { MobileContext } from "@/context/MobileContext";
 import { useUser } from "@/hooks/context/useUser";
@@ -82,9 +82,7 @@ export function VisitorNav() {
         <Link
           href={HOME_URL}
           className="block w-[10rem] lg:w-[15rem]"
-          onClick={() => {
-            isMobile && isMenuOpen && setIsMenuOpen(false);
-          }}
+          onClick={() => isMobile && isMenuOpen && setIsMenuOpen(false)}
         >
           <Image src={logo.src} alt={logo.alt} className="h-16" />
         </Link>
@@ -122,18 +120,14 @@ export function VisitorNav() {
           <NavLink
             title={KNOWLEDGE_ZONE_TITLE}
             href={KNOWLEDGE_ZONE_URL}
-            onClick={() => {
-              isMobile && setIsMenuOpen(false);
-            }}
+            onClick={() => isMobile && isMenuOpen && setIsMenuOpen(false)}
           />
         </NavbarItem>
         <NavbarItem>
           <NavLink
             title={FORUM_TITLE}
             href={FORUM_URL}
-            onClick={() => {
-              isMobile && setIsMenuOpen(false);
-            }}
+            onClick={() => isMobile && isMenuOpen && setIsMenuOpen(false)}
           />
         </NavbarItem>
         <NavbarItem>
@@ -142,7 +136,7 @@ export function VisitorNav() {
             title={LOG_OUT_TITLE}
             onClick={() => {
               handleLogout();
-              isMobile && setIsMenuOpen(false);
+              return isMobile && setIsMenuOpen(false);
             }}
           />
         </NavbarItem>
@@ -155,9 +149,7 @@ export function VisitorNav() {
               <NavLink
                 title={item.title}
                 href={item.href}
-                onClick={() => {
-                  isMobile && setIsMenuOpen(false);
-                }}
+                onClick={() => isMobile && setIsMenuOpen(false)}
               />
             </NavbarMenuItem>
           );

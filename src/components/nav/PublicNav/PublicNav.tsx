@@ -7,7 +7,7 @@ import { publicNavItems } from "@/constants/menuItems";
 import {
   FORUM_TITLE,
   KNOWLEDGE_ZONE_TITLE,
-  LOG_IN_TITLE
+  LOG_IN_TITLE,
 } from "@/constants/titles";
 import {
   FORUM_URL,
@@ -50,9 +50,7 @@ export function PublicNav() {
         <Link
           href={HOME_URL}
           className="block w-[10rem] lg:w-[15rem]"
-          onClick={() => {
-            isMobile && isMenuOpen && setIsMenuOpen(false);
-          }}
+          onClick={() => isMobile && isMenuOpen && setIsMenuOpen(false)}
         >
           <Image src={logo.src} alt={logo.alt} className="h-16" />
         </Link>
@@ -68,27 +66,21 @@ export function PublicNav() {
           <NavLink
             title={KNOWLEDGE_ZONE_TITLE}
             href={KNOWLEDGE_ZONE_URL}
-            onClick={() => {
-              isMobile && setIsMenuOpen(false);
-            }}
+            onClick={() => isMobile && isMenuOpen && setIsMenuOpen(false)}
           />
         </NavbarItem>
         <NavbarItem>
           <NavLink
             title={FORUM_TITLE}
             href={FORUM_URL}
-            onClick={() => {
-              isMobile && setIsMenuOpen(false);
-            }}
+            onClick={() => isMobile && isMenuOpen && setIsMenuOpen(false)}
           />
         </NavbarItem>
         <NavbarItem>
           <NavLink
             title={LOG_IN_TITLE}
             href={LOG_IN_URL}
-            onClick={() => {
-              isMobile && setIsMenuOpen(false);
-            }}
+            onClick={() => isMobile && isMenuOpen && setIsMenuOpen(false)}
           />
         </NavbarItem>
       </NavbarContent>
@@ -98,9 +90,7 @@ export function PublicNav() {
             <NavLink
               title={item.title}
               href={item.href}
-              onClick={() => {
-                isMobile && setIsMenuOpen(false);
-              }}
+              onClick={() => isMobile && isMenuOpen && setIsMenuOpen(false)}
             />
           </NavbarMenuItem>
         ))}

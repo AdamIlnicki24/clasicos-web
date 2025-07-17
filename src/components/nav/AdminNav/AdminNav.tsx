@@ -84,9 +84,7 @@ export function AdminNav() {
         <Link
           href={HOME_URL}
           className="block w-[10rem] lg:w-[15rem]"
-          onClick={() => {
-            isMobile && isMenuOpen && setIsMenuOpen(false);
-          }}
+          onClick={() => isMobile && isMenuOpen && setIsMenuOpen(false)}
         >
           <Image src={logo.src} alt={logo.alt} className="h-16" />
         </Link>
@@ -104,7 +102,12 @@ export function AdminNav() {
           {isUserLoading ? (
             <Spinner size="sm" />
           ) : (
-            <Tooltip content={MY_PROFILE_TOOLTIP} showArrow color="default" className="text-defaultBlack">
+            <Tooltip
+              content={MY_PROFILE_TOOLTIP}
+              showArrow
+              color="default"
+              className="text-defaultBlack"
+            >
               <Button
                 onPress={() => router.push(`${PROFILE_URL}/${user.uuid}`)}
                 size="sm"
@@ -119,36 +122,28 @@ export function AdminNav() {
           <NavLink
             title={KNOWLEDGE_ZONE_TITLE}
             href={KNOWLEDGE_ZONE_URL}
-            onClick={() => {
-              isMobile && setIsMenuOpen(false);
-            }}
+            onClick={() => isMobile && isMenuOpen && setIsMenuOpen(false)}
           />
         </NavbarItem>
         <NavbarItem>
           <NavLink
             title={FORUM_TITLE}
             href={FORUM_URL}
-            onClick={() => {
-              isMobile && setIsMenuOpen(false);
-            }}
+            onClick={() => isMobile && isMenuOpen && setIsMenuOpen(false)}
           />
         </NavbarItem>
         <NavbarItem>
           <NavLink
             title={USERS_TITLE}
             href={USERS_URL}
-            onClick={() => {
-              isMobile && setIsMenuOpen(false);
-            }}
+            onClick={() => isMobile && isMenuOpen && setIsMenuOpen(false)}
           />
         </NavbarItem>
         <NavbarItem>
           <NavLink
             title={PLAYERS_TITLE}
             href={PLAYERS_URL}
-            onClick={() => {
-              isMobile && setIsMenuOpen(false);
-            }}
+            onClick={() => isMobile && isMenuOpen && setIsMenuOpen(false)}
           />
         </NavbarItem>
 
@@ -158,7 +153,7 @@ export function AdminNav() {
             title={LOG_OUT_TITLE}
             onClick={() => {
               handleLogout();
-              isMobile && setIsMenuOpen(false);
+              return isMobile && setIsMenuOpen(false);
             }}
           />
         </NavbarItem>
@@ -172,9 +167,7 @@ export function AdminNav() {
               <NavLink
                 title={item.title}
                 href={item.href}
-                onClick={() => {
-                  isMobile && setIsMenuOpen(false);
-                }}
+                onClick={() => isMobile && setIsMenuOpen(false)}
               />
             </NavbarMenuItem>
           );
