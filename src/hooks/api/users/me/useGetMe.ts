@@ -7,8 +7,6 @@ interface GetMeResponse {
   data: User;
 }
 
-// TODO: App tries to get user while he's unlogged
-
 export const getMe = async (): Promise<User> => {
   const { data } = await api.get<undefined, GetMeResponse>(ME_API_ENDPOINT);
 
