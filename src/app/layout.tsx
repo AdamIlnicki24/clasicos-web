@@ -16,7 +16,6 @@ export const lato = Lato({
   display: "swap",
 });
 
-// TODO: Fix error while removing data from autocomplete
 // TODO: Add favicon
 
 export const metadata: Metadata = {

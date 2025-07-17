@@ -8,7 +8,7 @@ import { RedirectParagraph } from "../components/RedirectParagraph/RedirectParag
 
 export function HomeContent() {
   return (
-    <main className="relative min-h-svh bg-[url('/images/stadion-w-pionie.jpg')] bg-cover bg-center lg:bg-[url('/images/stadion-w-poziomie.jpg')]">
+    <main className="relative min-h-svh bg-[url('/images/stadion-w-pionie.webp')] bg-cover bg-center lg:bg-[url('/images/stadion-w-poziomie.webp')]">
       <div className="absolute inset-0 bg-defaultBlack opacity-80"></div>
       <div className="relative z-10 mx-auto flex w-[90%] flex-col items-center gap-y-4 pt-32 text-[1.25rem] leading-relaxed pb-6 tracking-wide text-defaultWhite lg:w-[60%] lg:gap-y-8 lg:text-[1.6rem]">
         <div className="flex gap-x-3 py-2">
