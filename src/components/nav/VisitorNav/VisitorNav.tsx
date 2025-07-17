@@ -49,8 +49,6 @@ export function VisitorNav() {
 
   const router = useRouter();
 
-  //   const { src, alt } = LOGO_ICON;
-
   const handleLogout = () => {
     try {
       logOut();
@@ -145,10 +143,14 @@ export function VisitorNav() {
         {visitorNavItems.map((item) => {
           console.log("Visitor nav items:", visitorNavItems);
           return (
-            <NavbarMenuItem key={item.href}>
+            <NavbarMenuItem key={item.title}>
               <NavLink
                 title={item.title}
-                href={item.href}
+                href={
+                  item.href === PROFILE_URL
+                    ? `${PROFILE_URL}/${user.uuid}`
+                    : item.href
+                }
                 onClick={() => isMobile && setIsMenuOpen(false)}
               />
             </NavbarMenuItem>

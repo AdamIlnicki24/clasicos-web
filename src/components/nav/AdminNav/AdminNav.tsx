@@ -166,7 +166,11 @@ export function AdminNav() {
             <NavbarMenuItem key={item.href}>
               <NavLink
                 title={item.title}
-                href={item.href}
+                href={
+                  item.href === PROFILE_URL
+                    ? `${PROFILE_URL}/${user.uuid}`
+                    : item.href
+                }
                 onClick={() => isMobile && setIsMenuOpen(false)}
               />
             </NavbarMenuItem>
