@@ -13,4 +13,10 @@ export const TEAM_URL = "/druzyna";
 export const FIGO_HISTORY_URL = `${KNOWLEDGE_ZONE_URL}/jak-luis-figo-przeszedl-z-barcelony-do-realu-i-odmienil-el-clasico`;
 export const MESSI_VERSUS_RONALDO_URL = `${KNOWLEDGE_ZONE_URL}/messi-kontra-ronaldo-ikoniczne-pojedynki-w-el-clasico`;
 
-// TODO: Add urls to sitemap
+// URLs for the needs of the sitemap:
+export const HOME_SITEMAP_URL = "https://clasicos.pl";
+export const KNOWLEDGE_ZONE_SITEMAP_URL = `${HOME_SITEMAP_URL}${KNOWLEDGE_ZONE_URL}`;
+export const FORUM_SITEMAP_URL = `${HOME_SITEMAP_URL}${FORUM_URL}`;
+
+export const FIGO_HISTORY_SITEMAP_URL = `${HOME_SITEMAP_URL}${FIGO_HISTORY_URL}`;
+export const MESSI_VERSUS_RONALDO_SITEMAP_URL = `${HOME_SITEMAP_URL}${MESSI_VERSUS_RONALDO_URL}`;
