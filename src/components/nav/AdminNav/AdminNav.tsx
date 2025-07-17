@@ -3,6 +3,7 @@ import {
   OPEN_MENU_ARIA_LABEL,
 } from "@/constants/ariaLabels";
 import { YOU_MUST_BE_LOGGED_IN } from "@/constants/errorMessages";
+import { logo } from "@/constants/images";
 import { adminNavItems } from "@/constants/menuItems";
 import {
   FORUM_TITLE,
@@ -12,6 +13,7 @@ import {
   USERS_TITLE,
 } from "@/constants/titles";
 import { LOG_OUT_ERROR_TOAST, LOG_OUT_SUCCESS_TOAST } from "@/constants/toasts";
+import { MY_PROFILE_TOOLTIP } from "@/constants/tooltips";
 import {
   FORUM_URL,
   HOME_URL,
@@ -41,8 +43,6 @@ import { useRouter } from "next/navigation";
 import { useContext, useState } from "react";
 import { toast } from "react-toastify";
 import { NavLink } from "../NavLink/NavLink";
-import { MY_PROFILE_TOOLTIP } from "@/constants/tooltips";
-import { logo } from "@/constants/images";
 
 export function AdminNav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -57,9 +57,9 @@ export function AdminNav() {
     try {
       logOut();
 
-      toast.success(LOG_OUT_SUCCESS_TOAST);
-
       router.replace(HOME_URL);
+
+      toast.success(LOG_OUT_SUCCESS_TOAST);
     } catch {
       toast.error(LOG_OUT_ERROR_TOAST);
     }
@@ -144,10 +144,8 @@ export function AdminNav() {
             onClick={() => isMobile && isMenuOpen && setIsMenuOpen(false)}
           />
         </NavbarItem>
-
         <NavbarItem>
           <NavLink
-            href={HOME_URL}
             title={LOG_OUT_TITLE}
             onClick={() => {
               handleLogout();
@@ -157,23 +155,23 @@ export function AdminNav() {
         </NavbarItem>
       </NavbarContent>
       <NavbarMenu>
-        {adminNavItems.map((item) => {
-          console.log("Admin nav items:", adminNavItems);
-
-          return (
-            <NavbarMenuItem key={item.href}>
-              <NavLink
-                title={item.title}
-                href={
-                  item.href === PROFILE_URL
-                    ? `${PROFILE_URL}/${user.uuid}`
-                    : item.href
-                }
-                onClick={() => isMobile && setIsMenuOpen(false)}
-              />
-            </NavbarMenuItem>
-          );
-        })}
+        {/* TODO: Logo's down part is cutting down while opening menu on mobiles */}
+        {adminNavItems.map((item) => (
+          <NavbarMenuItem key={item.title}>
+            <NavLink
+              title={item.title}
+              href={
+                item.href === PROFILE_URL
+                  ? `${PROFILE_URL}/${user.uuid}`
+                  : item.href
+              }
+              onClick={() => {
+                if (item.title === LOG_OUT_TITLE) handleLogout();
+                return isMobile && setIsMenuOpen(false);
+              }}
+            />
+          </NavbarMenuItem>
+        ))}
       </NavbarMenu>
     </Navbar>
   );
