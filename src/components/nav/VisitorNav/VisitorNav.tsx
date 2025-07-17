@@ -82,7 +82,7 @@ export function VisitorNav() {
           className="block w-[10rem] lg:w-[15rem]"
           onClick={() => isMobile && isMenuOpen && setIsMenuOpen(false)}
         >
-          <Image src={logo.src} alt={logo.alt} className="h-16" />
+          <Image src={logo.src} alt={logo.alt} className="h-12 lg:h-16" />
         </Link>
       </NavbarBrand>
       <NavbarContent justify="end">
@@ -137,7 +137,6 @@ export function VisitorNav() {
         </NavbarItem>
       </NavbarContent>
       <NavbarMenu>
-        {/* TODO: Logo's down part is cutting down while opening menu on mobiles */}
         {visitorNavItems.map((item) => (
           <NavbarMenuItem key={item.title}>
             <NavLink

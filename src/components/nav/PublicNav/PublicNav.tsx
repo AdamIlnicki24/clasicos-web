@@ -62,7 +62,6 @@ export function PublicNav() {
         />
       </NavbarContent>
       <NavbarContent justify="end" className="hidden w-full lg:flex">
-        {/* TODO: One of items is constantly underlined */}
         <NavbarItem>
           <NavLink
             title={KNOWLEDGE_ZONE_TITLE}
