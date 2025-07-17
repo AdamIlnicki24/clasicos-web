@@ -60,7 +60,6 @@ export function UsersTable({ columns, items }: UsersTableProps) {
             <TableColumn key={column.key}>{column.label}</TableColumn>
           )}
         </TableHeader>
-        {/* TODO: Think about ?? vs || */}
         <TableBody items={items}>
           {(item) => (
             <TableRow
