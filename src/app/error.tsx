@@ -17,7 +17,7 @@ export default function Error({
   }, [error]);
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex min-h-svh flex-col items-center justify-center">
       <h2>{SOMETHING_WENT_WRONG}</h2>
       <div className="mt-[20px]">
         <Button onPress={() => reset()} title={TRY_AGAIN_BUTTON_LABEL} />
