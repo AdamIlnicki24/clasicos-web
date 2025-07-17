@@ -25,7 +25,7 @@ export function KnowledgeZoneContent() {
   };
 
   return (
-    <div className="flex min-h-svh flex-col items-center">
+    <main className="flex min-h-svh flex-col items-center pb-6">
       <div className="py-6">
         <Heading title={KNOWLEDGE_ZONE_HEADING} HeadingTag="h1" />
       </div>
@@ -47,6 +47,6 @@ export function KnowledgeZoneContent() {
           onPress={() => pushToArticle(MESSI_VERSUS_RONALDO_URL)}
         />
       </div>
-    </div>
+    </main>
   );
 }

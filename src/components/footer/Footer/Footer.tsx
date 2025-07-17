@@ -32,7 +32,7 @@ export function Footer() {
 
   return (
     <>
-      <div className="bg-defaultNavy flex flex-col items-start mt-6 gap-y-8 pb-8 ps-6 pt-8 lg:flex-row lg:items-stretch lg:justify-between lg:gap-y-0 lg:px-24 lg:py-16">
+      <div className="bg-defaultNavy flex flex-col items-start gap-y-8 pb-8 ps-6 pt-8 lg:flex-row lg:items-stretch lg:justify-between lg:gap-y-0 lg:px-24 lg:py-16">
         <FooterLinksContainer>
           <div className="flex flex-col items-center justify-center">
             <Link
