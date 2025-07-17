@@ -30,7 +30,7 @@ export function useAuth() {
     });
 
     return () => unregisterAuthObserver();
-  }, []);
+  }, [queryClient]);
 
   return { ...authState };
 }

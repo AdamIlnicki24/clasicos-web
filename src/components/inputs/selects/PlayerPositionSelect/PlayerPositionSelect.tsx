@@ -1,12 +1,12 @@
+import { PLAYER_POSITION_LABEL } from "@/constants/labels";
+import { playerPositionSelectOptions } from "@/constants/select-options/positionSelectOptions";
 import { SelectItem, SelectProps } from "@heroui/react";
 import { useFormikContext } from "formik";
 import { Select } from "../../components/Select/Select";
-import { playerPositionSelectOptions } from "@/constants/select-options/positionSelectOptions";
-import { PLAYER_POSITION_LABEL } from "@/constants/labels";
 
-interface PlayerPositionSelectProps extends Omit<SelectProps, "children"> {}
-
-export function PlayerPositionSelect({}: PlayerPositionSelectProps) {
+export function PlayerPositionSelect({
+  ...properties
+}: Omit<SelectProps, "children">) {
   const { handleChange, values, errors, touched } = useFormikContext<{
     position: string | null;
   }>();
@@ -21,6 +21,7 @@ export function PlayerPositionSelect({}: PlayerPositionSelectProps) {
       isRequired
       onChange={handleChange}
       selectedKeys={values.position ? [values.position] : []}
+      {...properties}
     >
       {playerPositionSelectOptions.map((position) => (
         <SelectItem key={position.value}>{position.label}</SelectItem>

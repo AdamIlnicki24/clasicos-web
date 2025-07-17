@@ -58,7 +58,7 @@ export function UpdateTeamForm({ onClose, teamPlayers }: UpdateTeamFormProps) {
       };
       setTeam(team);
     }
-  }, [teamPlayers, goalkeepers, defenders, midfielders, forwards]);
+  }, [teamPlayers, goalkeepers, defenders, midfielders, forwards, setTeam]);
 
   const queryClient = useQueryClient();
 

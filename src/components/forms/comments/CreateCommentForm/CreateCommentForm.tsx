@@ -10,7 +10,6 @@ import { Spinner } from "@heroui/react";
 import { useQueryClient } from "@tanstack/react-query";
 import { Formik } from "formik";
 import { useParams } from "next/navigation";
-import { useRef } from "react";
 import { toast } from "react-toastify";
 import {
   CreateCommentFormData,

@@ -12,15 +12,12 @@ import { useFormikContext } from "formik";
 import * as nationalities from "i18n-iso-countries";
 import pl from "i18n-iso-countries/langs/pl.json";
 
-interface PlayerNationalityAutocompleteProps
-  extends Omit<AutocompleteProps<Nationality>, "children"> {}
-
 // TODO: Think about extracting line below
 nationalities.registerLocale(pl);
 
 export function PlayerNationalityAutocomplete({
   ...properties
-}: PlayerNationalityAutocompleteProps) {
+}: Omit<AutocompleteProps<Nationality>, "children">) {
   const { handleChange, handleBlur, values, errors, touched } =
     useFormikContext<{ nationality: string }>();
 

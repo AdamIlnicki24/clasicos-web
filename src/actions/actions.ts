@@ -98,7 +98,7 @@ export const createPlayerSuggestion = async ({
     revalidatePath(HOME_URL);
 
     return { success: true };
-  } catch (error) {
+  } catch {
     return { error: EMAIL_HAS_NOT_BEEN_SENT_ERROR_MESSAGE };
   }
 };

@@ -9,7 +9,7 @@ import {
   REGISTER_ERROR_TOAST,
   REGISTER_SUCCESS_TOAST,
 } from "@/constants/toasts";
-import { HOME_URL, PROFILE_URL } from "@/constants/urls";
+import { HOME_URL } from "@/constants/urls";
 import { useRegister } from "@/hooks/api/auth/useRegister";
 import { Spinner } from "@heroui/react";
 import axios from "axios";
