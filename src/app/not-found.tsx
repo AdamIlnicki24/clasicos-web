@@ -6,15 +6,13 @@ import { PAGE_DOES_NOT_EXIST } from "@/constants/errorMessages";
 import { HOME_URL } from "@/constants/urls";
 import { useRouter } from "next/navigation";
 
-// TODO: Improve this file
-
 export default function NotFound() {
-  const { push } = useRouter();
+  const router = useRouter();
 
-  const backToHomepageHandler = () => push(HOME_URL);
+  const backToHomepageHandler = () => router.push(HOME_URL);
 
   return (
-    <div className="mt-[20px] flex min-h-svh flex-col items-center gap-y-4">
+    <div className="mt-[20px] flex min-h-svh flex-col items-center justify-center gap-y-4">
       <h1>{PAGE_DOES_NOT_EXIST}</h1>
       <Button
         onPress={backToHomepageHandler}

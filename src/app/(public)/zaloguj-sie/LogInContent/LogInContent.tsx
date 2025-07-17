@@ -16,7 +16,7 @@ import {
 
 export function LogInContent() {
   return (
-    <div className="flex flex-col items-center pt-6">
+    <main className="flex flex-col items-center pt-6">
       <div className="flex gap-x-4 pb-3">
         <Ball width={48} />
         <Heading HeadingTag="h1" title="Clasicos" />
@@ -51,6 +51,6 @@ export function LogInContent() {
           </Link>
         </div>
       </div>
-    </div>
+    </main>
   );
 }

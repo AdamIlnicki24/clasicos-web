@@ -32,7 +32,7 @@ export const adminNavItems = [
   { title: FORUM_TITLE, href: FORUM_URL },
   { title: USERS_TITLE, href: USERS_URL },
   { title: PLAYERS_TITLE, href: PLAYERS_URL },
-  { title: LOG_OUT_TITLE, href: HOME_URL },
+  { title: LOG_OUT_TITLE },
 ];
 
 export const visitorNavItems = [
@@ -40,5 +40,5 @@ export const visitorNavItems = [
   { title: PROFILE_TITLE, href: PROFILE_URL },
   { title: KNOWLEDGE_ZONE_TITLE, href: KNOWLEDGE_ZONE_URL },
   { title: FORUM_TITLE, href: FORUM_URL },
-  { title: LOG_OUT_TITLE, href: HOME_URL },
+  { title: LOG_OUT_TITLE },
 ];

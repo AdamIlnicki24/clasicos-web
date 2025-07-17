@@ -33,7 +33,7 @@ export const createPlayerFormSchema = object({
   nationality: string()
     .max(
       PLAYER_NATIONALITY_MAX_LENGTH,
-      `${MAX_LENGTH_ERROR_MESSAGE} ${PLAYER_NATIONALITY_MAX_LENGTH} znaków.`
+      `${MAX_LENGTH_ERROR_MESSAGE} ${PLAYER_NATIONALITY_MAX_LENGTH} znaki.`
     )
     .required(REQUIRED),
   position: string()

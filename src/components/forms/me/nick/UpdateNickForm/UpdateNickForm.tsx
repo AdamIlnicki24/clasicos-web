@@ -12,7 +12,6 @@ import { Visitor } from "@/types/visitor";
 import { Spinner } from "@heroui/react";
 import { useQueryClient } from "@tanstack/react-query";
 import { Formik } from "formik";
-import { useRef } from "react";
 import { toast } from "react-toastify";
 import {
   initialValues,
@@ -26,10 +25,6 @@ interface UpdateNickFormProps {
 }
 
 export function UpdateNickForm({ onClose, visitor }: UpdateNickFormProps) {
-  const nameInputRef = useRef<HTMLInputElement>(null);
-  const surnameInputRef = useRef<HTMLInputElement>(null);
-  // TODO: Create refs
-
   const queryClient = useQueryClient();
 
   const { user } = useUser();

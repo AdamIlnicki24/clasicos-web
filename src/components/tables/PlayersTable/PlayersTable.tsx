@@ -43,7 +43,6 @@ export function PlayersTable({ columns, items }: PlayersTableProps) {
       case "surname":
         return item.surname;
 
-      // TODO: Think about flags
       case "nationality":
         return item.nationality;
 
@@ -71,7 +70,6 @@ export function PlayersTable({ columns, items }: PlayersTableProps) {
               <TableColumn key={column.key}>{column.label}</TableColumn>
             )}
           </TableHeader>
-          {/* TODO: Think about ?? vs || */}
           <TableBody items={items}>
             {(item) => (
               <TableRow

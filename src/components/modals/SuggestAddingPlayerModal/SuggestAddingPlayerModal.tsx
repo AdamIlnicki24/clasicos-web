@@ -1,4 +1,3 @@
-import { CreateTeamForm } from "@/components/forms/me/team/CreateTeamForm/CreateTeamForm";
 import { SuggestAddingPlayerForm } from "@/components/forms/suggestions/SuggestAddingPlayerForm/SuggestAddingPlayerForm";
 import { Modal, ModalBody, ModalContent, ModalProps } from "@heroui/react";
 

@@ -1,29 +1,31 @@
 import Avatar from "@/assets/icons/avatar.svg";
-import Calendar from "@/assets/icons/calendar.svg";
 import Ball from "@/assets/icons/ball.svg";
-import { Card, CardBody } from "@heroui/react";
+import Calendar from "@/assets/icons/calendar.svg";
+import { EditButton } from "@/components/buttons/EditButton/EditButton";
+import { EnigmaInfoButton } from "@/components/buttons/EnigmaInfoButton/EnigmaInfoButton";
 import {
   CREATED_AT_LABEL,
   OBTAINED_RECOMMENDATIONS_LABEL,
 } from "@/constants/labels";
-import { EditButton } from "@/components/buttons/EditButton/EditButton";
-import { colors } from "@/constants/colors";
 import { ENIGMA } from "@/constants/texts";
+import { Card, CardBody } from "@heroui/react";
 
 interface UserDataCardProps {
   nick: string;
-  onIconPress: () => void;
+  onEditButtonPress: () => void;
   recommendationsCount: number;
   createdAt: string;
   isMe: boolean;
+  onOpen: () => void;
 }
 
 export function UserDataCard({
   nick,
-  onIconPress,
+  onEditButtonPress,
   recommendationsCount,
   createdAt,
   isMe,
+  onOpen,
 }: UserDataCardProps) {
   const isNickKnown = nick !== ENIGMA;
 
@@ -33,12 +35,15 @@ export function UserDataCard({
         <div className="flex flex-col items-center gap-y-1 pb-8">
           <Avatar width={48} />
           <div className="flex items-center gap-x-1">
-            <div
-              className={`text-[1.5rem] ${isNickKnown ? "font-bold" : "text-defaultGray"}`}
-            >
-              {nick}
-            </div>
-            {isMe && <EditButton onPress={onIconPress} color="warning" />}
+            {isNickKnown ? (
+              <div className="text-[1.5rem] font-bold">{nick}</div>
+            ) : (
+              <div className="flex items-center gap-x-1">
+                <EnigmaInfoButton onPress={onOpen} />
+                <div className="text-[1.5rem] text-defaultGray">{nick}</div>
+              </div>
+            )}
+            {isMe && <EditButton onPress={onEditButtonPress} color="warning" />}
           </div>
         </div>
         <div className="flex gap-x-3">

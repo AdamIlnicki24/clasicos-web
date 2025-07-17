@@ -1,46 +1,55 @@
 import { BallWithCounterButton } from "@/components/buttons/BallWithCounterButton/BallWithCounterButton";
 import { TrashButton } from "@/components/buttons/TrashButton/TrashButton";
-import { UserChip } from "@/components/chips/UserChip/UserChip";
-import { PROFILE_URL } from "@/constants/urls";
+import { AuthorChip } from "@/components/chips/AuthorChip/AuthorChip";
+import { ENIGMA } from "@/constants/texts";
 import { MobileContext } from "@/context/MobileContext";
+import { CommentWithCount } from "@/types/comment";
 import { User } from "@/types/user";
-import { Card, CardBody, CardHeader, Tooltip } from "@heroui/react";
-import Link from "next/link";
+import { Card, CardBody, CardHeader } from "@heroui/react";
 import { useContext } from "react";
 import { CommentDate } from "../components/CommentDate/CommentDate";
 
 interface CommentCardProps {
-  nick: string;
-  recommendationsCount: number;
-  createdAt: string;
-  content: string;
-  user?: User;
+  comment: CommentWithCount;
+  currentUser?: User;
   onTrashPress?: () => void;
+  hasRecommended: boolean;
+  recommendationsCount: number;
+  onToggleRecommendation: () => void;
 }
 
 export function CommentCard({
-  nick,
-  recommendationsCount,
-  createdAt,
-  content,
-  user,
+  comment,
+  currentUser,
   onTrashPress,
+  hasRecommended,
+  recommendationsCount,
+  onToggleRecommendation,
 }: CommentCardProps) {
   const isMobile = useContext(MobileContext);
 
   return (
     <Card className="w-[95%] bg-accentColor lg:w-[60%]">
       <CardHeader className="flex justify-between">
-        <UserChip nick={nick} user={user} />
+        <AuthorChip
+          nick={comment.user.visitor.nick ?? ENIGMA}
+          author={comment.user}
+          me={currentUser}
+        />
         <div className="flex gap-x-6">
-          {user?.role === "Admin" && onTrashPress && (
+          {currentUser?.role === "Admin" && (
             <TrashButton color="danger" onPress={onTrashPress} />
           )}
-          <BallWithCounterButton count={recommendationsCount} />
-          {!isMobile && <CommentDate createdAt={createdAt} />}
+          <BallWithCounterButton
+            count={recommendationsCount}
+            hasRecommended={hasRecommended}
+            onPress={onToggleRecommendation}
+            user={currentUser}
+          />
+          {!isMobile && <CommentDate createdAt={comment.createdAt} />}
         </div>
       </CardHeader>
-      <CardBody className="text-defaultWhite">{content}</CardBody>
+      <CardBody className="text-defaultWhite">{comment.content}</CardBody>
     </Card>
   );
 }

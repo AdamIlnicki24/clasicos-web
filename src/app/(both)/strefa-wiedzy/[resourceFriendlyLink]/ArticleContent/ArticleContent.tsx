@@ -1,13 +1,15 @@
 "use client";
 
 import Loading from "@/app/loading";
-import { CommentCard } from "@/components/cards/comments/CommentCard/CommentCard";
+import { BannedUserCard } from "@/components/cards/BannedUserCard/BannedUserCard";
 import { CreateCommentCard } from "@/components/cards/comments/CreateCommentCard/CreateCommentCard";
 import { NoAccountCard } from "@/components/cards/NoAccountCard/NoAccountCard";
+import { CommentCardContainer } from "@/components/containers/CommentCardContainer/CommentCardContainer";
 import { Heading } from "@/components/headings/Heading/Heading";
 import { DeleteCommentModal } from "@/components/modals/DeleteCommentModal/DeleteCommentModal";
 import { COMMENTS_HEADING } from "@/constants/headings";
 import {
+  COMMENT_CANNOT_BE_CREATED,
   ENIGMA,
   NO_COMMENTS_YET,
   YOU_NEED_TO_HAVE_AN_ACCOUNT,
@@ -37,20 +39,24 @@ export function ArticleContent({
 
   const { user, isUserLoading } = useUser();
 
-  const { data, isLoading, isError, error } = useGetComments(
+  const {
+    data: comments,
+    isLoading,
+    isError,
+    error,
+  } = useGetComments(resourceFriendlyLink as string);
+
+  const { mutate: deleteComment, isPending } = useDeleteComment(
     resourceFriendlyLink as string
   );
 
-  const { mutate, isPending } = useDeleteComment(
-    resourceFriendlyLink as string
-  );
+  const onTrashPress = (comment: CommentWithCount) =>
+    setSelectedComment(comment);
 
-  const onTrashPress = (comment: CommentWithCount) => setSelectedComment(comment);
-
-  const onDeleteHandler = () => {
+  const onDeleteCommentHandler = () => {
     if (!selectedComment) return null;
 
-    mutate(selectedComment.uuid, {
+    deleteComment(selectedComment.uuid, {
       onSuccess: async () => {
         await queryClient.invalidateQueries({
           queryKey: ["getComments", resourceFriendlyLink],
@@ -69,8 +75,6 @@ export function ArticleContent({
     });
   };
 
-  // TODO: Add chips with info about Enigma player
-
   if (!resourceFriendlyLink || isUserLoading || isLoading) return <Loading />;
 
   if (isError) {
@@ -82,27 +86,25 @@ export function ArticleContent({
 
   return (
     <>
-      <section className="grid min-h-svh place-items-center">
-        <div>{ArticleComponent}</div>
+      <div className="grid min-h-svh place-items-center">
+        <main>{ArticleComponent}</main>
         <div className="my-6 rounded-br-3xl rounded-tr-3xl bg-primaryColor pe-12 ps-4">
           <Heading HeadingTag="h2" title={COMMENTS_HEADING} />
         </div>
-        {user ? (
-          <CreateCommentCard nick={user.visitor.nick ?? ENIGMA} />
-        ) : (
+        {!user ? (
           <NoAccountCard bodyText={YOU_NEED_TO_HAVE_AN_ACCOUNT} />
+        ) : user.visitor.bannedAt ? (
+          <BannedUserCard bodyText={COMMENT_CANNOT_BE_CREATED} />
+        ) : (
+          <CreateCommentCard nick={user.visitor.nick ?? ENIGMA} />
         )}
-        {data && data.length > 0 ? (
+        {comments && comments.length > 0 ? (
           <div className="flex w-full flex-col items-center gap-y-4 py-8">
-            {data.map((comment: CommentWithCount) => (
-              <CommentCard
+            {comments.map((comment) => (
+              <CommentCardContainer
                 key={comment.uuid}
-                content={comment.content}
-                createdAt={comment.createdAt}
-                recommendationsCount={comment._count.recommendations}
-                nick={comment.user.visitor.nick ?? ENIGMA}
-                // TODO: Think about user
-                user={user ?? undefined}
+                comment={comment}
+                currentUser={user ?? undefined}
                 onTrashPress={() => onTrashPress(comment)}
               />
             ))}
@@ -110,7 +112,7 @@ export function ArticleContent({
         ) : (
           <p className="py-8 text-[1.3rem] font-bold">{NO_COMMENTS_YET}</p>
         )}
-      </section>
+      </div>
       <DeleteCommentModal
         isOpen={!!selectedComment}
         onOpenChange={(open) => {
@@ -118,7 +120,7 @@ export function ArticleContent({
             setSelectedComment(null);
           }
         }}
-        onDeleteHandler={onDeleteHandler}
+        onDeleteHandler={onDeleteCommentHandler}
         isPending={isPending}
       />
     </>

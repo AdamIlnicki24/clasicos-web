@@ -1,6 +1,6 @@
 "use client";
 
-import Ball from "@/assets/icons/ball.svg";
+import Logo from "@/assets/icons/logo.svg";
 import Envelope from "@/assets/icons/envelope.svg";
 import { SuggestFixModal } from "@/components/modals/SuggestFixModal/SuggestFixModal";
 import { colors } from "@/constants/colors";
@@ -32,15 +32,17 @@ export function Footer() {
 
   return (
     <>
-      <div className="flex flex-col items-start gap-y-8 bg-primaryColor pb-8 ps-6 pt-8 lg:flex-row lg:items-stretch lg:justify-between lg:gap-y-0 lg:px-24 lg:py-16">
+      <div className="bg-defaultNavy flex flex-col items-start gap-y-8 pb-8 ps-6 pt-8 lg:flex-row lg:items-stretch lg:justify-between lg:gap-y-0 lg:px-24 lg:py-16">
         <FooterLinksContainer>
           <div className="flex flex-col items-center justify-center">
             <Link
               className="flex items-center gap-x-1 text-defaultWhite lg:gap-x-3 lg:text-[1.5rem]"
               href={HOME_URL}
             >
-              <Ball width={isMobile ? 24 : 50} />
-              <div className="font-bold">Clasicos</div>
+              <Logo width={isMobile ? 44 : 60} />
+              <div className="text-[1.3rem] font-bold lg:text-[2rem]">
+                Clasicos
+              </div>
             </Link>
           </div>
         </FooterLinksContainer>

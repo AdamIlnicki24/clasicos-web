@@ -4,6 +4,7 @@ import Loading from "@/app/loading";
 import { PitchBoard } from "@/components/boards/PitchBoard/PitchBoard";
 import { Button } from "@/components/buttons/Button/Button";
 import { DeleteButton } from "@/components/buttons/DeleteButton/DeleteButton";
+import { SuggestAddingPlayerButton } from "@/components/buttons/SuggestAddingPlayerButton/SuggestAddingPlayerButton";
 import { Heading } from "@/components/headings/Heading/Heading";
 import { CreateTeamModal } from "@/components/modals/CreateTeamModal/CreateTeamModal";
 import { DeleteTeamModal } from "@/components/modals/DeleteTeamModal/DeleteTeamModal";
@@ -17,6 +18,7 @@ import {
 } from "@/constants/buttonLabels";
 import { YOU_MUST_BE_LOGGED_IN } from "@/constants/errorMessages";
 import { TEAM_HEADING, YOUR_TEAM_HEADING } from "@/constants/headings";
+import { TEAM_WILL_APPEAR_BELOW } from "@/constants/texts";
 import { TEAM_HAS_BEEN_DELETED_TOAST } from "@/constants/toasts";
 import { MobileContext } from "@/context/MobileContext";
 import { useDeleteMyTeam } from "@/hooks/api/team/me/useDeleteMyTeam";
@@ -24,8 +26,9 @@ import { useGetTeam } from "@/hooks/api/team/useGetTeam";
 import { useUser } from "@/hooks/context/useUser";
 import { ApiError } from "@/types/apiError";
 import { Position } from "@/types/position";
+import { Team } from "@/types/team";
 import { TeamPlayer } from "@/types/teamPlayer";
-import { Link, useDisclosure } from "@heroui/react";
+import { useDisclosure } from "@heroui/react";
 import { useQueryClient } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
 import { useContext } from "react";
@@ -59,7 +62,7 @@ export function TeamContent() {
     onOpen: onDeleteTeamModalOpen,
     isOpen: isDeleteTeamModalOpen,
     onOpenChange: onDeleteTeamModalOpenChange,
-    onClose
+    onClose,
   } = useDisclosure();
 
   const {
@@ -85,8 +88,15 @@ export function TeamContent() {
           (teamPlayer: TeamPlayer) => teamPlayer.player.position === position
         )
         .map((teamPlayer: TeamPlayer) => {
-          const { name, surname, uuid } = teamPlayer.player;
-          return <PlayerTile name={name} surname={surname} key={uuid} />;
+          const { name, surname, nationality, uuid } = teamPlayer.player;
+          return (
+            <PlayerTile
+              name={name}
+              surname={surname}
+              key={uuid}
+              nationality={nationality}
+            />
+          );
         }) ?? []
     );
   };
@@ -98,16 +108,9 @@ export function TeamContent() {
 
   const onDeleteHandler = () => {
     mutate(undefined, {
-      onSuccess: async () => {
-        await queryClient.invalidateQueries({
-          queryKey: ["getTeam", team?.uuid],
-        });
-
-        await queryClient.invalidateQueries({
-          queryKey: ["getMyTeam"],
-        });
-
-        // TODO: Invalidate team players
+      onSuccess: () => {
+        queryClient.setQueryData<Team | undefined>(["getMyTeam"], undefined);
+        queryClient.removeQueries({ queryKey: ["getTeam", userUuid] });
 
         toast.success(TEAM_HAS_BEEN_DELETED_TOAST);
 
@@ -124,7 +127,7 @@ export function TeamContent() {
 
   return (
     <>
-      <div className="flex flex-col items-center">
+      <main className="flex flex-col items-center">
         <div className="flex flex-col items-center justify-center gap-y-3 pt-6 text-[1.2rem] lg:text-[1.5rem]">
           {team && (
             <Heading
@@ -140,7 +143,10 @@ export function TeamContent() {
                 onPress={onUpdateTeamModalOpen}
                 mode="secondary"
               />
-              <DeleteButton title={DELETE_TEAM_BUTTON_LABEL} onPress={onDeleteTeamModalOpen} />
+              <DeleteButton
+                title={DELETE_TEAM_BUTTON_LABEL}
+                onPress={onDeleteTeamModalOpen}
+              />
             </div>
           ) : (
             <Button
@@ -158,21 +164,12 @@ export function TeamContent() {
                 forwards={forwards}
               />
             ) : (
-              <p>Po stworzeniu drużyny, pojawi się ona poniżej.</p>
+              <p>{TEAM_WILL_APPEAR_BELOW}</p>
             )}
           </div>
-          <div className="px-2 pb-4 pt-2 text-center text-[1.2rem] lg:pb-8 lg:pt-0 lg:text-[1.5rem]">
-            <Link
-              className="text-[1.2rem] text-linkColor lg:text-[1.5rem]"
-              as="button"
-              onPress={onSuggestionModalOpen}
-            >
-              Kliknij tutaj
-            </Link>
-            , aby zasugerować dodanie piłkarza do bazy.
-          </div>
+          <SuggestAddingPlayerButton onPress={onSuggestionModalOpen} />
         </div>
-      </div>
+      </main>
 
       <CreateTeamModal
         isOpen={isCreateTeamModalOpen}

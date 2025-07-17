@@ -2,10 +2,10 @@ import {
   CLOSE_MENU_ARIA_LABEL,
   OPEN_MENU_ARIA_LABEL,
 } from "@/constants/ariaLabels";
+import { logo } from "@/constants/images";
 import { publicNavItems } from "@/constants/menuItems";
 import {
   FORUM_TITLE,
-  HOME_TITLE,
   KNOWLEDGE_ZONE_TITLE,
   LOG_IN_TITLE,
 } from "@/constants/titles";
@@ -17,6 +17,7 @@ import {
 } from "@/constants/urls";
 import { MobileContext } from "@/context/MobileContext";
 import {
+  Image,
   Link,
   Navbar,
   NavbarBrand,
@@ -34,14 +35,11 @@ export function PublicNav() {
 
   const isMobile = useContext(MobileContext);
 
-  //   const { src, alt } = LOGO_ICON;
-
   return (
     <Navbar
       classNames={{
-        base: "fixed top-0 bg-primaryColor py-2 lg:py-4 px-2",
-        menu: "bg-primaryColor pt-10 w-screen overflow-hidden z-50",
-        item: "",
+        base: "fixed top-0 bg-defaultNavy py-2 lg:py-4 px-2",
+        menu: "bg-defaultNavy pt-10 w-screen overflow-hidden z-50",
       }}
       maxWidth="full"
       onMenuOpenChange={setIsMenuOpen}
@@ -52,11 +50,9 @@ export function PublicNav() {
         <Link
           href={HOME_URL}
           className="block w-[10rem] lg:w-[15rem]"
-          onClick={() => {
-            isMobile && isMenuOpen && setIsMenuOpen(false);
-          }}
+          onClick={() => isMobile && isMenuOpen && setIsMenuOpen(false)}
         >
-          {/* <Image src={src} alt={alt} className="h-20 lg:h-20" /> */}
+          <Image src={logo.src} alt={logo.alt} className="h-16" />
         </Link>
       </NavbarBrand>
       <NavbarContent justify="end">
@@ -66,40 +62,25 @@ export function PublicNav() {
         />
       </NavbarContent>
       <NavbarContent justify="end" className="hidden w-full lg:flex">
-        {/* <NavbarItem>
-          <NavLink
-            title={HOME_TITLE}
-            href={HOME_URL}
-            onClick={() => {
-              isMobile && setIsMenuOpen(false);
-            }}
-          />
-        </NavbarItem> */}
         <NavbarItem>
           <NavLink
             title={KNOWLEDGE_ZONE_TITLE}
             href={KNOWLEDGE_ZONE_URL}
-            onClick={() => {
-              isMobile && setIsMenuOpen(false);
-            }}
+            onClick={() => isMobile && isMenuOpen && setIsMenuOpen(false)}
           />
         </NavbarItem>
         <NavbarItem>
           <NavLink
             title={FORUM_TITLE}
             href={FORUM_URL}
-            onClick={() => {
-              isMobile && setIsMenuOpen(false);
-            }}
+            onClick={() => isMobile && isMenuOpen && setIsMenuOpen(false)}
           />
         </NavbarItem>
         <NavbarItem>
           <NavLink
             title={LOG_IN_TITLE}
             href={LOG_IN_URL}
-            onClick={() => {
-              isMobile && setIsMenuOpen(false);
-            }}
+            onClick={() => isMobile && isMenuOpen && setIsMenuOpen(false)}
           />
         </NavbarItem>
       </NavbarContent>
@@ -109,9 +90,7 @@ export function PublicNav() {
             <NavLink
               title={item.title}
               href={item.href}
-              onClick={() => {
-                isMobile && setIsMenuOpen(false);
-              }}
+              onClick={() => isMobile && isMenuOpen && setIsMenuOpen(false)}
             />
           </NavbarMenuItem>
         ))}

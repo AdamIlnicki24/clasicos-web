@@ -7,17 +7,17 @@ interface GetTeamResponse {
   data: Team;
 }
 
-const getTeam = async (uuid: string): Promise<Team> => {
+const getTeam = async (userUuid: string): Promise<Team> => {
   const { data } = await api.get<undefined, GetTeamResponse>(
-    `${TEAM_API_ENDPOINT}/${uuid}`
+    `${TEAM_API_ENDPOINT}/${userUuid}`
   );
 
   return data;
 };
 
-export function useGetTeam(uuid: string) {
+export function useGetTeam(userUuid: string) {
   return useQuery({
-    queryKey: ["getTeam", uuid],
-    queryFn: () => getTeam(uuid),
+    queryKey: ["getTeam", userUuid],
+    queryFn: () => getTeam(userUuid),
   });
 }

@@ -1,3 +1,4 @@
+export const CLASICOS_HEADING = "Clasicos";
 export const FIGO_HISTORY_ARTICLE_HEADING =
   "Jak Luis Figo przeszedł z Barcelony do Realu i odmienił Clasicos";
 export const MESSI_VERSUS_RONALDO_ARTICLE_HEADING =

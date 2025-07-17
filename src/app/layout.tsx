@@ -10,16 +10,13 @@ import { ReactNode } from "react";
 import { Footer } from "@/components/footer/Footer/Footer";
 import { Nav } from "@/components/nav/Nav/Nav";
 
-// TODO: Improve this component
-
 export const lato = Lato({
   subsets: ["latin"],
   weight: ["100", "300", "400", "700", "900"],
   display: "swap",
 });
 
-// TODO: Fix problem with invalidateQueries on create and update team
-// TODO: Fix error while removing data from autocomplete
+// TODO: Add favicon
 
 export const metadata: Metadata = {
   title: {

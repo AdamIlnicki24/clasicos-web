@@ -1,15 +1,18 @@
 "use client";
 
 import Loading from "@/app/loading";
-import { CommentCard } from "@/components/cards/comments/CommentCard/CommentCard";
+import { BannedUserCard } from "@/components/cards/BannedUserCard/BannedUserCard";
 import { CreateCommentCard } from "@/components/cards/comments/CreateCommentCard/CreateCommentCard";
 import { NoAccountCard } from "@/components/cards/NoAccountCard/NoAccountCard";
+import { CommentCardContainer } from "@/components/containers/CommentCardContainer/CommentCardContainer";
 import { Heading } from "@/components/headings/Heading/Heading";
 import { DeleteCommentModal } from "@/components/modals/DeleteCommentModal/DeleteCommentModal";
 import { FORUM_HEADING } from "@/constants/headings";
 import {
+  COMMENT_CANNOT_BE_CREATED,
   ENIGMA,
   NO_COMMENTS_YET,
+  WELCOME_TO_FORUM,
   YOU_NEED_TO_HAVE_AN_ACCOUNT,
 } from "@/constants/texts";
 import { COMMENT_HAS_BEEN_DELETED_TOAST } from "@/constants/toasts";
@@ -32,18 +35,23 @@ export function ForumContent() {
 
   const { user, isUserLoading } = useUser();
 
-  const { data, isLoading, isError, error } =
-    useGetComments(resourceFriendlyLink);
+  const {
+    data: comments,
+    isLoading,
+    isError,
+    error,
+  } = useGetComments(resourceFriendlyLink);
 
-  const { mutate, isPending } = useDeleteComment(resourceFriendlyLink);
+  const { mutate: deleteComment, isPending } =
+    useDeleteComment(resourceFriendlyLink);
 
   const onTrashPress = (comment: CommentWithCount) =>
     setSelectedComment(comment);
 
-  const onDeleteHandler = () => {
+  const onDeleteCommentHandler = () => {
     if (!selectedComment) return null;
 
-    mutate(selectedComment.uuid, {
+    deleteComment(selectedComment.uuid, {
       onSuccess: async () => {
         await queryClient.invalidateQueries({
           queryKey: ["getComments", resourceFriendlyLink],
@@ -73,27 +81,25 @@ export function ForumContent() {
 
   return (
     <>
-      <section className="flex flex-col items-center min-h-[80svh]">
+      <main className="flex min-h-[80svh] flex-col items-center">
         <Heading HeadingTag="h1" title={FORUM_HEADING} />
-        <p className="text-[1.4rem] py-8 lg:px-0 px-3 lg:text-start text-center">
-          Zapraszamy na nasze forum, na którym podyskutujesz z innymi fanami
-          Klasyków!
+        <p className="px-3 py-8 text-center text-[1.4rem] lg:px-0 lg:text-start">
+          {WELCOME_TO_FORUM}
         </p>
-        {user ? (
-          <CreateCommentCard nick={user.visitor.nick ?? ENIGMA} />
-        ) : (
+        {!user ? (
           <NoAccountCard bodyText={YOU_NEED_TO_HAVE_AN_ACCOUNT} />
+        ) : user.visitor.bannedAt ? (
+          <BannedUserCard bodyText={COMMENT_CANNOT_BE_CREATED} />
+        ) : (
+          <CreateCommentCard nick={user.visitor.nick ?? ENIGMA} />
         )}
-        {data && data.length > 0 ? (
+        {comments && comments.length > 0 ? (
           <div className="flex w-full flex-col items-center gap-y-4 py-8">
-            {data.map((comment: CommentWithCount) => (
-              <CommentCard
+            {comments.map((comment) => (
+              <CommentCardContainer
                 key={comment.uuid}
-                content={comment.content}
-                createdAt={comment.createdAt}
-                recommendationsCount={comment._count.recommendations}
-                nick={comment.user.visitor.nick ?? ENIGMA}
-                user={user ?? undefined}
+                comment={comment}
+                currentUser={user ?? undefined}
                 onTrashPress={() => onTrashPress(comment)}
               />
             ))}
@@ -101,7 +107,7 @@ export function ForumContent() {
         ) : (
           <p className="py-8 text-[1.3rem] font-bold">{NO_COMMENTS_YET}</p>
         )}
-      </section>
+      </main>
       <DeleteCommentModal
         isOpen={!!selectedComment}
         onOpenChange={(open) => {
@@ -109,7 +115,7 @@ export function ForumContent() {
             setSelectedComment(null);
           }
         }}
-        onDeleteHandler={onDeleteHandler}
+        onDeleteHandler={onDeleteCommentHandler}
         isPending={isPending}
       />
     </>

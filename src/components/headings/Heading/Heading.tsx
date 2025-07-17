@@ -28,6 +28,8 @@ export function Heading({
       textSize = "text-[2.5rem]";
       break;
     case "xl":
+      textSize = "text-[3.5rem]";
+      break;
     default:
       textSize = "text-[1rem]";
   }

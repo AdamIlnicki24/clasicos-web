@@ -51,7 +51,6 @@ const generateSuggestAddingPlayerEmailHTML = ({
   message,
 }: SuggestAddingPlayerEmailFormData): string => {
   const { src, alt } = logoBase64;
-  // TODO: Check whether I need double double quotes in src and alt
   return `<body style="padding: 1rem">
     <img src="${src}" alt="${alt}">
     <h1>Cześć,</h1>
@@ -98,7 +97,7 @@ export const createPlayerSuggestion = async ({
     revalidatePath(HOME_URL);
 
     return { success: true };
-  } catch (error) {
+  } catch {
     return { error: EMAIL_HAS_NOT_BEEN_SENT_ERROR_MESSAGE };
   }
 };
@@ -108,7 +107,6 @@ const generateFixSuggestionEmailHTML = ({
   message,
 }: SuggestFixEmailFormData): string => {
   const { src, alt } = logoBase64;
-  // TODO: Check whether I need double double quotes in src and alt
   return `<body style="padding: 1rem">
     <img src="${src}" alt="${alt}">
     <h1>Cześć,</h1>

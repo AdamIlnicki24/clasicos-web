@@ -27,5 +27,3 @@ const nextConfig = {
 };
 
 export default nextConfig;
-
-// TODO: Think about this file

@@ -6,6 +6,7 @@ import { CreatePlayerModal } from "@/components/modals/CreatePlayerModal/CreateP
 import { PlayersTable } from "@/components/tables/PlayersTable/PlayersTable";
 import { CREATE_PLAYER_BUTTON_LABEL } from "@/constants/buttonLabels";
 import { playersTableColumns } from "@/constants/tables/playersTableColumns";
+import { NO_PLAYERS_YET } from "@/constants/texts";
 import { useGetPlayers } from "@/hooks/api/players/useGetPlayers";
 import { useDisclosure } from "@heroui/react";
 
@@ -24,18 +25,18 @@ export function PlayersContent() {
 
   return (
     <>
-      <div className="flex justify-end pb-6 pe-4 pt-8 lg:pb-0 lg:pe-12">
+      <main className="flex justify-end pb-6 pe-4 pt-8 lg:pb-0 lg:pe-12">
         <Button
           title={CREATE_PLAYER_BUTTON_LABEL}
           onPress={onCreateModalOpen}
         />
-      </div>
+      </main>
       <div className="mx-auto w-[90%]">
         {items?.length ? (
           <PlayersTable columns={playersTableColumns} items={items} />
         ) : (
           <div className="flex min-h-[80svh] items-center justify-center">
-            Nie ma jeszcze żadnych piłkarzy
+            {NO_PLAYERS_YET}
           </div>
         )}
       </div>

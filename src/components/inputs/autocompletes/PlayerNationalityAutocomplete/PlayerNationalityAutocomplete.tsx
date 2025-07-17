@@ -12,16 +12,12 @@ import { useFormikContext } from "formik";
 import * as nationalities from "i18n-iso-countries";
 import pl from "i18n-iso-countries/langs/pl.json";
 
-interface PlayerNationalityAutocompleteProps
-  extends Omit<AutocompleteProps<Nationality>, "children"> {}
-
-// TODO: Think about extracting line below
 nationalities.registerLocale(pl);
 
 export function PlayerNationalityAutocomplete({
   ...properties
-}: PlayerNationalityAutocompleteProps) {
-  const { handleChange, handleBlur, values, errors, touched } =
+}: Omit<AutocompleteProps<Nationality>, "children">) {
+  const { setFieldValue, handleBlur, values, errors, touched } =
     useFormikContext<{ nationality: string }>();
 
   const nationalitiesInPolish: Nationality[] = nationalitiesList
@@ -35,12 +31,8 @@ export function PlayerNationalityAutocomplete({
     <Autocomplete
       classNames={{
         base: "text-defaultBlack",
-        clearButton: "",
-        endContentWrapper: "",
         listbox: "text-defaultBlack",
-        listboxWrapper: "",
         popoverContent: "text-defaultBlack",
-        selectorButton: "",
       }}
       value={values.nationality}
       onBlur={handleBlur("nationality")}
@@ -50,15 +42,13 @@ export function PlayerNationalityAutocomplete({
       placeholder={PLAYER_NATIONALITY_PLACEHOLDER}
       isRequired
       isClearable
-      allowsCustomValue
       defaultItems={nationalitiesInPolish}
       onSelectionChange={(key) => {
-        const selectedCode = key as string;
-        handleChange("nationality")(selectedCode);
+        setFieldValue("nationality", key as string);
       }}
       onInputChange={(value) => {
         if (value === "") {
-          handleChange("nationality")("");
+          setFieldValue("nationality", "");
         }
       }}
       startContent={

@@ -19,19 +19,18 @@ import {
   createTeamFormSchema,
   initialValues,
 } from "./createTeamFormSchema";
+import { Team } from "@/types/team";
+import { useParams } from "next/navigation";
 
 interface CreateTeamFormProps {
   onClose?: () => void;
 }
 
 export function CreateTeamForm({ onClose }: CreateTeamFormProps) {
-  //   const goalkeepersRef = useRef<HTMLSelectElement>(null);
-  //   const defendersRef = useRef<HTMLSelectElement>(null);
-  //   const midfieldersRef = useRef<HTMLSelectElement>(null);
-  //   const forwardsRef = useRef<HTMLSelectElement>(null);
-
   const { setTeam, goalkeepers, defenders, midfielders, forwards } =
     useTeamStore();
+
+  const { userUuid } = useParams();
 
   const queryClient = useQueryClient();
 
@@ -43,11 +42,15 @@ export function CreateTeamForm({ onClose }: CreateTeamFormProps) {
     }
 
     mutate(values, {
-      onSuccess: async () => {
+      onSuccess: (createdTeam) => {
         setTeam(values);
-        await queryClient.invalidateQueries({
-          queryKey: ["getMyTeam"],
-        });
+
+        // 1) Wrzucamy bezpośrednio nową drużynę do cache "getMyTeam"
+        queryClient.setQueryData<Team>(["getMyTeam"], createdTeam);
+
+        // 2) Inwalidujemy query, które używa TeamContent
+        //    (getTeam dla tego userUuid)
+        queryClient.removeQueries({ queryKey: ["getTeam", userUuid] });
 
         toast.success(TEAM_HAS_BEEN_CREATED_TOAST);
 

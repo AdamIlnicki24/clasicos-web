@@ -3,6 +3,7 @@ import {
   OPEN_MENU_ARIA_LABEL,
 } from "@/constants/ariaLabels";
 import { YOU_MUST_BE_LOGGED_IN } from "@/constants/errorMessages";
+import { logo } from "@/constants/images";
 import { adminNavItems } from "@/constants/menuItems";
 import {
   FORUM_TITLE,
@@ -12,6 +13,7 @@ import {
   USERS_TITLE,
 } from "@/constants/titles";
 import { LOG_OUT_ERROR_TOAST, LOG_OUT_SUCCESS_TOAST } from "@/constants/toasts";
+import { MY_PROFILE_TOOLTIP } from "@/constants/tooltips";
 import {
   FORUM_URL,
   HOME_URL,
@@ -25,6 +27,7 @@ import { useUser } from "@/hooks/context/useUser";
 import {
   Avatar,
   Button,
+  Image,
   Link,
   Navbar,
   NavbarBrand,
@@ -40,7 +43,6 @@ import { useRouter } from "next/navigation";
 import { useContext, useState } from "react";
 import { toast } from "react-toastify";
 import { NavLink } from "../NavLink/NavLink";
-import { MY_PROFILE_TOOLTIP } from "@/constants/tooltips";
 
 export function AdminNav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -51,15 +53,13 @@ export function AdminNav() {
 
   const router = useRouter();
 
-  //   const { src, alt } = LOGO_ICON;
-
   const handleLogout = () => {
     try {
       logOut();
 
-      toast.success(LOG_OUT_SUCCESS_TOAST);
-
       router.replace(HOME_URL);
+
+      toast.success(LOG_OUT_SUCCESS_TOAST);
     } catch {
       toast.error(LOG_OUT_ERROR_TOAST);
     }
@@ -72,9 +72,8 @@ export function AdminNav() {
   return (
     <Navbar
       classNames={{
-        base: "fixed top-0 bg-primaryColor py-2 lg:py-4 px-2",
-        menu: "bg-primaryColor pt-10 w-screen overflow-hidden z-50",
-        item: "",
+        base: "fixed top-0 bg-defaultNavy py-2 lg:py-4 px-2",
+        menu: "bg-defaultNavy pt-10 w-screen overflow-hidden z-50",
       }}
       maxWidth="full"
       onMenuOpenChange={setIsMenuOpen}
@@ -85,14 +84,11 @@ export function AdminNav() {
         <Link
           href={HOME_URL}
           className="block w-[10rem] lg:w-[15rem]"
-          onClick={() => {
-            isMobile && isMenuOpen && setIsMenuOpen(false);
-          }}
+          onClick={() => isMobile && isMenuOpen && setIsMenuOpen(false)}
         >
-          {/* <Image src={src} alt={alt} className="h-20 lg:h-20" /> */}
+          <Image src={logo.src} alt={logo.alt} className="h-12 lg:h-16" />
         </Link>
       </NavbarBrand>
-      {/* TODO: Think about components' order */}
       <NavbarContent justify="end">
         <NavbarMenuToggle
           aria-label={isMenuOpen ? CLOSE_MENU_ARIA_LABEL : OPEN_MENU_ARIA_LABEL}
@@ -101,11 +97,15 @@ export function AdminNav() {
       </NavbarContent>
       <NavbarContent justify="end" className="hidden w-full lg:flex">
         <NavbarItem>
-          {/* TODO: Sometimes function passed to button doesn't work in a first time */}
           {isUserLoading ? (
             <Spinner size="sm" />
           ) : (
-            <Tooltip content={MY_PROFILE_TOOLTIP} showArrow color="default" className="text-defaultBlack">
+            <Tooltip
+              content={MY_PROFILE_TOOLTIP}
+              showArrow
+              color="default"
+              className="text-defaultBlack"
+            >
               <Button
                 onPress={() => router.push(`${PROFILE_URL}/${user.uuid}`)}
                 size="sm"
@@ -120,66 +120,57 @@ export function AdminNav() {
           <NavLink
             title={KNOWLEDGE_ZONE_TITLE}
             href={KNOWLEDGE_ZONE_URL}
-            onClick={() => {
-              isMobile && setIsMenuOpen(false);
-            }}
+            onClick={() => isMobile && isMenuOpen && setIsMenuOpen(false)}
           />
         </NavbarItem>
         <NavbarItem>
           <NavLink
             title={FORUM_TITLE}
             href={FORUM_URL}
-            onClick={() => {
-              isMobile && setIsMenuOpen(false);
-            }}
+            onClick={() => isMobile && isMenuOpen && setIsMenuOpen(false)}
           />
         </NavbarItem>
         <NavbarItem>
           <NavLink
             title={USERS_TITLE}
             href={USERS_URL}
-            onClick={() => {
-              isMobile && setIsMenuOpen(false);
-            }}
+            onClick={() => isMobile && isMenuOpen && setIsMenuOpen(false)}
           />
         </NavbarItem>
         <NavbarItem>
           <NavLink
             title={PLAYERS_TITLE}
             href={PLAYERS_URL}
-            onClick={() => {
-              isMobile && setIsMenuOpen(false);
-            }}
+            onClick={() => isMobile && isMenuOpen && setIsMenuOpen(false)}
           />
         </NavbarItem>
-
         <NavbarItem>
           <NavLink
-            href={HOME_URL}
             title={LOG_OUT_TITLE}
             onClick={() => {
               handleLogout();
-              isMobile && setIsMenuOpen(false);
+              return isMobile && setIsMenuOpen(false);
             }}
           />
         </NavbarItem>
       </NavbarContent>
       <NavbarMenu>
-        {adminNavItems.map((item) => {
-          console.log("Admin nav items:", adminNavItems);
-
-          return (
-            <NavbarMenuItem key={item.href}>
-              <NavLink
-                title={item.title}
-                href={item.href}
-                onClick={() => {
-                  isMobile && setIsMenuOpen(false);
-                }}
-              />
-            </NavbarMenuItem>
-          );
-        })}
+        {adminNavItems.map((item) => (
+          <NavbarMenuItem key={item.title}>
+            <NavLink
+              title={item.title}
+              href={
+                item.href === PROFILE_URL
+                  ? `${PROFILE_URL}/${user.uuid}`
+                  : item.href
+              }
+              onClick={() => {
+                if (item.title === LOG_OUT_TITLE) handleLogout();
+                return isMobile && setIsMenuOpen(false);
+              }}
+            />
+          </NavbarMenuItem>
+        ))}
       </NavbarMenu>
     </Navbar>
   );

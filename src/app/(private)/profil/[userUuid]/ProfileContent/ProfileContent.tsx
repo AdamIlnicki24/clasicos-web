@@ -4,6 +4,7 @@ import Loading from "@/app/loading";
 import { Button } from "@/components/buttons/Button/Button";
 import { AboutMeCard } from "@/components/cards/AboutMeCard/AboutMeCard";
 import { UserDataCard } from "@/components/cards/UserDataCard/UserDataCard";
+import { EnigmaModal } from "@/components/modals/EnigmaModal/EnigmaModal";
 import { UpdateNickModal } from "@/components/modals/UpdateNickModal/UpdateNickModal";
 import { UpdateProfileModal } from "@/components/modals/UpdateProfileModal/UpdateProfileModal";
 import {
@@ -50,10 +51,17 @@ export function ProfileContent() {
   } = useDisclosure();
 
   const {
+    isOpen: isEnigmaModalOpen,
+    onOpen: onEnigmaModalOpen,
+    onOpenChange: onEnigmaModalOpenChange,
+  } = useDisclosure();
+
+  const {
     data: user,
     isLoading: isUserLoading,
     isError: isUserError,
   } = useGetUser(userUuid as string);
+  
   const { user: me, isUserLoading: isMeLoading } = useUser();
 
   const { data: recommendationsCount } = useGetUserRecommendationsCount(
@@ -85,7 +93,6 @@ export function ProfileContent() {
   const isMe = me.uuid === user.uuid;
   const isUserBanned = Boolean(visitor.bannedAt);
 
-  // TODO: Function not always works
   const checkOutTeam = () => {
     router.push(`${PROFILE_URL}/${userUuid}/${TEAM_URL}`);
   };
@@ -136,7 +143,6 @@ export function ProfileContent() {
 
   return (
     <>
-      {/* TODO: Think about min-h */}
       <main className="min-h-[70svh]">
         <div className="flex justify-end pb-6 pe-4 pt-8 lg:pb-0 lg:pe-12">
           {isMe && (
@@ -163,10 +169,11 @@ export function ProfileContent() {
         <div className="grid grid-cols-1 lg:grid-cols-[9fr_11fr]">
           <UserDataCard
             nick={nick?.trim() ? nick : ENIGMA}
-            onIconPress={onNickModalOpen}
+            onEditButtonPress={onNickModalOpen}
             createdAt={formatDate(createdAt)}
             recommendationsCount={recommendationsCount ?? 0}
             isMe={isMe}
+            onOpen={onEnigmaModalOpen}
           />
           <AboutMeCard
             favoriteClub={favoriteClub?.trim() ? favoriteClub : NO_INFORMATION}
@@ -186,6 +193,7 @@ export function ProfileContent() {
           isOpen={isNickModalOpen}
           onOpenChange={onNickModalOpenChange}
         />
+        <EnigmaModal isOpen={isEnigmaModalOpen} onOpenChange={onEnigmaModalOpenChange} />
       </main>
     </>
   );
