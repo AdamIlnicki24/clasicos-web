@@ -29,7 +29,6 @@ export function KnowledgeZoneContent() {
       <div className="py-6">
         <Heading title={KNOWLEDGE_ZONE_HEADING} HeadingTag="h1" />
       </div>
-      {/* TODO: Think about refactor */}
       {/* TODO: Unify the dashes */}
       <div className="space-y-6">
         <KnowledgeZoneCard

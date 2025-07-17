@@ -5,6 +5,8 @@ export const OR = "Lub";
 export const YOU_NEED_TO_HAVE_AN_ACCOUNT =
   "Aby uczestniczyć w dyskusji, musisz posiadać konto.";
 export const NO_COMMENTS_YET = "Nie ma jeszcze komentarzy.";
+export const NO_PLAYERS_YET = "Nie ma jeszcze żadnych piłkarzy.";
+export const NO_USERS_YET = "Nie ma jeszcze żadnych użytkowników.";
 export const NO_INFORMATION = "Brak informacji";
 export const FORGOT_PASSWORD = "Zapomniałeś hasła?";
 export const REMIND_PASSWORD = "Przypomnij hasło";
