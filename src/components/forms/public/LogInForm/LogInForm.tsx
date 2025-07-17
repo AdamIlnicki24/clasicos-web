@@ -33,10 +33,8 @@ export function LogInForm() {
         toast.success(LOG_IN_SUCCESS_TOAST);
         setIsPending(false);
 
-        if (process.env.NODE_ENV === "development") {
-          const token = await user.getIdToken();
-          console.log("Token:", token);
-        }
+        const token = await user.getIdToken();
+        console.log("Token:", token);
       })
       .catch((error: FirebaseError) => {
         const errorCode = error.code;
@@ -64,10 +62,10 @@ export function LogInForm() {
           <EmailInput />
           <PasswordInput />
         </div>
-          <SubmitButton
-            title={isPending ? <Spinner size="md" /> : LOG_IN_BUTTON_LABEL}
-            mode="primary"
-          />
+        <SubmitButton
+          title={isPending ? <Spinner size="md" /> : LOG_IN_BUTTON_LABEL}
+          mode="primary"
+        />
       </div>
     </Formik>
   );
