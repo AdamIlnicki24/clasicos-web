@@ -22,3 +22,7 @@ export const COMMENT_CANNOT_BE_CREATED =
   "Nie możesz dodać komentarza, bo zostałeś zbanowany.";
 export const WELCOME_TO_FORUM =
   "Zapraszamy na nasze forum, na którym podyskutujesz z innymi fanami Klasyków!";
+export const CLASICOS_DESCRIPTION =
+  "Clasicos to portal o rywalizacji między Barceloną a Realem Madryt. Znajdziesz tu ciekawe artykuły o tej batalii, podyskutujesz z innymi fanatykami, a także stworzysz swoją jedenastkę najlepszych piłkarzy w historii Klasyków.";
+export const CLASICOS_DETAILS =
+  "Nie musisz być zalogowany, aby czytać artykuły czy dyskusje, ale już tak, jeśli chcesz wziąć udział w rozmowie, zarekomendować komentarz, czy też stworzyć swoją jedenastkę.";

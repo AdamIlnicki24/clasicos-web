@@ -8,7 +8,6 @@ import Image from "next/image";
 import { luisFigo } from "@/constants/images";
 
 // TODO: Inner linking between articles
-// TODO: Move strings to constants
 
 export default function FigoArticle() {
   return (

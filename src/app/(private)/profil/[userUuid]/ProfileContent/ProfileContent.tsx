@@ -93,7 +93,6 @@ export function ProfileContent() {
   const isMe = me.uuid === user.uuid;
   const isUserBanned = Boolean(visitor.bannedAt);
 
-  // TODO: Function not always works
   const checkOutTeam = () => {
     router.push(`${PROFILE_URL}/${userUuid}/${TEAM_URL}`);
   };
@@ -144,7 +143,6 @@ export function ProfileContent() {
 
   return (
     <>
-      {/* TODO: Think about min-h */}
       <main className="min-h-[70svh]">
         <div className="flex justify-end pb-6 pe-4 pt-8 lg:pb-0 lg:pe-12">
           {isMe && (

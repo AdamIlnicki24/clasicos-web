@@ -6,7 +6,7 @@ import {
   LOG_OUT_BUTTON_LABEL,
   REGISTER_BUTTON_LABEL,
 } from "@/constants/buttonLabels";
-import { OR } from "@/constants/texts";
+import { CLASICOS_DESCRIPTION, CLASICOS_DETAILS, OR } from "@/constants/texts";
 import {
   FORUM_URL,
   KNOWLEDGE_ZONE_URL,
@@ -17,8 +17,10 @@ import { useUser } from "@/hooks/context/useUser";
 import { Link } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
-import Ball from "@/assets/icons/ball.svg";
+import Logo from "@/assets/icons/logo.svg";
 import Loading from "../loading";
+import { Heading } from "@/components/headings/Heading/Heading";
+import { CLASICOS_HEADING } from "@/constants/headings";
 
 export default function BothPage() {
   const { logOut, user, isUserLoading } = useUser();
@@ -44,15 +46,11 @@ export default function BothPage() {
     <main className="relative min-h-svh bg-[url('/images/stadion-w-pionie.jpg')] bg-cover bg-center lg:bg-[url('/images/stadion-w-poziomie.jpg')]">
       <div className="absolute inset-0 bg-defaultBlack opacity-80"></div>
       <div className="relative z-10 mx-auto flex w-[90%] flex-col items-center gap-y-4 pt-28 text-[1.25rem] leading-relaxed tracking-wide text-defaultWhite lg:w-[60%] lg:text-[1.4rem]">
-        <Ball width={48} />
-        {/* TODO: Remove heading below */}
-        <h1>Strona główna dla wszystkich</h1>
-        <p className="py-4">
-          Clasicos to portal o rywalizacji między Barceloną a Realem Madryt.
-          Znajdziesz tu ciekawe artykuły o tej batalii, podyskutujesz z innymi
-          fanatykami, a także stworzysz swoją jedenastkę najlepszych piłkarzy w
-          historii Klasyków.
-        </p>
+        <div className="flex gap-x-3">
+          <Logo width={48} />
+          <Heading HeadingTag="h1" title={CLASICOS_HEADING} />
+        </div>
+        <p className="py-4">{CLASICOS_DESCRIPTION}</p>
         {!user && (
           <div className="flex flex-col items-center gap-4 py-6 lg:flex-row">
             <Button
@@ -84,14 +82,8 @@ export default function BothPage() {
             </Link>
             <span>.</span>
           </p>
-          <p>
-            Nie musisz się logować, aby czytać artykuły czy dyskusje, ale już
-            tak, jeśli chcesz wziąć udział w rozmowie, zarekomendować komentarz,
-            czy też stworzyć swoją jedenastkę.
-          </p>
+          <p>{CLASICOS_DETAILS}</p>
         </div>
-        {/* TODO: Remove button below */}
-        <Button onPress={handleLogout} title={LOG_OUT_BUTTON_LABEL} />
       </div>
     </main>
   );
