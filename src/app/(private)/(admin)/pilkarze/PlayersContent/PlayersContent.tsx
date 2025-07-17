@@ -24,12 +24,12 @@ export function PlayersContent() {
 
   return (
     <>
-      <div className="flex justify-end pb-6 pe-4 pt-8 lg:pb-0 lg:pe-12">
+      <main className="flex justify-end pb-6 pe-4 pt-8 lg:pb-0 lg:pe-12">
         <Button
           title={CREATE_PLAYER_BUTTON_LABEL}
           onPress={onCreateModalOpen}
         />
-      </div>
+      </main>
       <div className="mx-auto w-[90%]">
         {items?.length ? (
           <PlayersTable columns={playersTableColumns} items={items} />

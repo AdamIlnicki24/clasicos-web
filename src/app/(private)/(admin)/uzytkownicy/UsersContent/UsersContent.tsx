@@ -11,7 +11,7 @@ export function UsersContent() {
   if (isLoading) return <Loading />;
 
   return (
-    <div className="mx-auto w-[90%]">
+    <main className="mx-auto w-[90%]">
       {items?.length ? (
         <UsersTable columns={usersTableColumns} items={items} />
       ) : (
@@ -19,6 +19,6 @@ export function UsersContent() {
           Nie ma jeszcze żadnych piłkarzy
         </div>
       )}
-    </div>
+    </main>
   );
 }

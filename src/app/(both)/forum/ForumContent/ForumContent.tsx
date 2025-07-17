@@ -81,7 +81,7 @@ export function ForumContent() {
 
   return (
     <>
-      <section className="flex min-h-[80svh] flex-col items-center">
+      <main className="flex min-h-[80svh] flex-col items-center">
         <Heading HeadingTag="h1" title={FORUM_HEADING} />
         <p className="px-3 py-8 text-center text-[1.4rem] lg:px-0 lg:text-start">
           {WELCOME_TO_FORUM}
@@ -107,7 +107,7 @@ export function ForumContent() {
         ) : (
           <p className="py-8 text-[1.3rem] font-bold">{NO_COMMENTS_YET}</p>
         )}
-      </section>
+      </main>
       <DeleteCommentModal
         isOpen={!!selectedComment}
         onOpenChange={(open) => {

@@ -94,7 +94,6 @@ export function VisitorNav() {
       </NavbarContent>
       <NavbarContent justify="end" className="hidden w-full lg:flex">
         <NavbarItem>
-          {/* TODO: Sometimes function passed to button doesn't work in a first time */}
           {isUserLoading ? (
             <Spinner size="sm" />
           ) : (

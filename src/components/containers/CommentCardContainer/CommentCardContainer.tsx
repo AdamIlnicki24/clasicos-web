@@ -2,7 +2,7 @@
 
 import { CommentCard } from "@/components/cards/comments/CommentCard/CommentCard";
 import { useGetCommentRecommendationsCount } from "@/hooks/api/recommendations/useGetCommentRecommendationsCount";
-import { useHasUserRecommendedComment } from "@/hooks/api/recommendations/useHasUserRecommendedComment";
+import { useHasUserRecommendedComment } from "@/hooks/api/recommendations/me/useHasUserRecommendedComment";
 import { useToggleRecommendation } from "@/hooks/api/recommendations/useToggleRecommendation";
 import { ApiError } from "@/types/apiError";
 import { CommentWithCount } from "@/types/comment";

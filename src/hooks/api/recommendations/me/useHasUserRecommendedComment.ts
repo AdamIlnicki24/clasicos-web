@@ -5,8 +5,6 @@ import {
 import { api } from "@/services/API";
 import { useQuery } from "@tanstack/react-query";
 
-// TODO: Think about moving file to me folder
-
 interface HasUserRecommendedCommentResponse {
   hasRecommended: boolean;
 }

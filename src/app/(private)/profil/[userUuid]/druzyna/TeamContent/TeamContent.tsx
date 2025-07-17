@@ -127,7 +127,7 @@ export function TeamContent() {
 
   return (
     <>
-      <div className="flex flex-col items-center">
+      <main className="flex flex-col items-center">
         <div className="flex flex-col items-center justify-center gap-y-3 pt-6 text-[1.2rem] lg:text-[1.5rem]">
           {team && (
             <Heading
@@ -169,7 +169,7 @@ export function TeamContent() {
           </div>
           <SuggestAddingPlayerButton onPress={onSuggestionModalOpen} />
         </div>
-      </div>
+      </main>
 
       <CreateTeamModal
         isOpen={isCreateTeamModalOpen}

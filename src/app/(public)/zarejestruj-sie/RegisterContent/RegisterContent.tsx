@@ -7,7 +7,7 @@ import { DO_YOU_HAVE_AN_ACCOUNT, LOG_IN } from "@/constants/texts";
 
 export function RegisterContent() {
   return (
-    <div className="flex flex-col items-center pt-6">
+    <main className="flex flex-col items-center pt-6">
       <div className="flex gap-x-4 pb-3">
         <Ball width={48} />
         <Heading HeadingTag="h1" title="Clasicos" />
@@ -21,6 +21,6 @@ export function RegisterContent() {
           </Link>
         </div>
       </div>
-    </div>
+    </main>
   );
 }

@@ -7,8 +7,6 @@ export interface TextInputProps extends InputProps {
   isCounterShown?: boolean;
 }
 
-// TODO: Improve input styling
-
 export function TextInput({
   isCounterShown = false,
   ...properties
@@ -41,7 +39,6 @@ export function TextInput({
         }}
         size="lg"
         onChange={handleInputChange}
-        // TODO: Think about using labelPlacement as prop
         labelPlacement="inside"
         variant="faded"
         {...properties}

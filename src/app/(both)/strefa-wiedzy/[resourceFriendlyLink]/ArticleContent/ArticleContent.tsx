@@ -86,8 +86,8 @@ export function ArticleContent({
 
   return (
     <>
-      <section className="grid min-h-svh place-items-center">
-        <div>{ArticleComponent}</div>
+      <div className="grid min-h-svh place-items-center">
+        <main>{ArticleComponent}</main>
         <div className="my-6 rounded-br-3xl rounded-tr-3xl bg-primaryColor pe-12 ps-4">
           <Heading HeadingTag="h2" title={COMMENTS_HEADING} />
         </div>
@@ -112,7 +112,7 @@ export function ArticleContent({
         ) : (
           <p className="py-8 text-[1.3rem] font-bold">{NO_COMMENTS_YET}</p>
         )}
-      </section>
+      </div>
       <DeleteCommentModal
         isOpen={!!selectedComment}
         onOpenChange={(open) => {

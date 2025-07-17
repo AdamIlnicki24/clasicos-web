@@ -23,6 +23,8 @@ import { useRouter } from "next/navigation";
 export function ForgotPasswordForm() {
   const [isPending, setIsPending] = useState(false);
 
+  // TODO: Customize e-mail
+
   const router = useRouter();
 
   const onSubmitHandler = async (values: ForgotPasswordFormData) => {
@@ -32,7 +34,6 @@ export function ForgotPasswordForm() {
 
     try {
       await sendPasswordResetEmail(auth, values.email);
-      // TODO: Think about order of two lines below
       router.replace(LOG_IN_URL);
       toast.success(RESET_PASSWORD_EMAIL_SENT_TOAST);
     } catch (error) {
