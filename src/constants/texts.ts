@@ -28,3 +28,4 @@ export const CLASICOS_DESCRIPTION =
   "Clasicos to portal o rywalizacji między Barceloną a Realem Madryt. Znajdziesz tu ciekawe artykuły o tej batalii, podyskutujesz z innymi fanatykami, a także stworzysz swoją jedenastkę najlepszych piłkarzy w historii Klasyków.";
 export const CLASICOS_DETAILS =
   "Nie musisz być zalogowany, aby czytać artykuły czy dyskusje, ale już tak, jeśli chcesz wziąć udział w rozmowie, zarekomendować komentarz, czy też stworzyć swoją jedenastkę.";
+export const YOUR_NICK = "Twój nick:";
