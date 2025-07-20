@@ -20,9 +20,7 @@ export function RoleProvider({ children, role }: RoleProviderProps) {
 
   useEffect(() => {
     if (!isUserLoading && !isError && user) {
-      
-        console.log("User:", user);
-      
+      console.log("User:", user);
 
       const hasRequiredRole = user.role === role;
 
