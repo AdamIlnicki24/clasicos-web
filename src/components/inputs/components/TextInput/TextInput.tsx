@@ -32,8 +32,8 @@ export function TextInput({
     <div className="relative w-full">
       <Input
         classNames={{
-          label: "text-defaultBlack text-[0.9rem]",
-          input: "text-defaultBlack",
+          label: "text-defaultBlack text-[0.9rem] pb-1",
+          input: "text-defaultBlack text-[1.1rem]",
           errorMessage: "font-bold text-[1rem]",
           clearButton: "text-defaultBlack/80",
         }}

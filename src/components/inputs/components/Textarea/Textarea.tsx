@@ -33,7 +33,7 @@ export function Textarea({ isCounterShown, ...properties }: TextareaProps) {
           label:
             "text-[1.1rem] text-defaultGray ps-2 group-data-[filled-within=true]:text-defaultGray",
           input:
-            "text-[1.2rem] leading-none text-defaultBlack group-data-[has-value=true]:text-defaultBlack",
+            "text-[1.1rem] leading-none text-defaultBlack group-data-[has-value=true]:text-defaultBlack",
           errorMessage: "text-[1rem] font-bold",
           inputWrapper: "text-defaultBlack",
           clearButton: "text-defaultBlack/80",
