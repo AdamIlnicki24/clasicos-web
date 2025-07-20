@@ -136,24 +136,28 @@ export function TeamContent() {
               size={isMobile ? "md" : "lg"}
             />
           )}
-          {isMe && team ? (
+          {isMe && (
             <div className="flex justify-center gap-x-4">
-              <Button
-                title={UPDATE_TEAM_BUTTON_LABEL}
-                onPress={onUpdateTeamModalOpen}
-                mode="secondary"
-              />
-              <DeleteButton
-                title={DELETE_TEAM_BUTTON_LABEL}
-                onPress={onDeleteTeamModalOpen}
-              />
+              {team ? (
+                <>
+                  <Button
+                    title={UPDATE_TEAM_BUTTON_LABEL}
+                    onPress={onUpdateTeamModalOpen}
+                    mode="secondary"
+                  />
+                  <DeleteButton
+                    title={DELETE_TEAM_BUTTON_LABEL}
+                    onPress={onDeleteTeamModalOpen}
+                  />
+                </>
+              ) : (
+                <Button
+                  title={CREATE_TEAM_BUTTON_LABEL}
+                  onPress={onCreateTeamModalOpen}
+                  mode="secondary"
+                />
+              )}
             </div>
-          ) : (
-            <Button
-              title={CREATE_TEAM_BUTTON_LABEL}
-              onPress={onCreateTeamModalOpen}
-              mode="secondary"
-            />
           )}
           <div className="flex w-full items-center justify-center lg:py-4">
             {team ? (
