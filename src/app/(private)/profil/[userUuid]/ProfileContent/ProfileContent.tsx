@@ -79,7 +79,7 @@ export function ProfileContent() {
   if (!userUuid || isUserLoading || isMeLoading) return <Loading />;
 
   if (!user || isUserError) {
-    return <div>Zaloguj się, aby zobaczyć użytkownika</div>;
+    return <div className="text-center">Zaloguj się, aby zobaczyć użytkownika</div>;
   }
 
   if (!me) {

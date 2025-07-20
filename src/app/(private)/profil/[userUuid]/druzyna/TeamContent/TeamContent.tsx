@@ -168,7 +168,7 @@ export function TeamContent() {
                 forwards={forwards}
               />
             ) : (
-              <p>{TEAM_WILL_APPEAR_BELOW}</p>
+              <p className="text-center">{TEAM_WILL_APPEAR_BELOW}</p>
             )}
           </div>
           <SuggestAddingPlayerButton onPress={onSuggestionModalOpen} />
