@@ -84,7 +84,7 @@ export function TeamContent() {
   const getPlayersByPosition = (position: Position) => {
     return (
       team?.teamPlayers
-        .filter(
+        ?.filter(
           (teamPlayer: TeamPlayer) => teamPlayer.player.position === position
         )
         .map((teamPlayer: TeamPlayer) => {
