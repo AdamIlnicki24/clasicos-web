@@ -1,14 +1,18 @@
-import { SelectItem } from "@heroui/react";
-import { Select } from "../../components/Select/Select";
-import { Player } from "@/types/player";
-import { useGetPlayers } from "@/hooks/api/players/useGetPlayers";
-import { useFormikContext } from "formik";
 import { MIDFIELDERS_LABEL } from "@/constants/labels";
 import { MIDFIELDERS_LENGTH } from "@/constants/lengths";
+import { Player } from "@/types/player";
+import { SelectItem, SelectProps } from "@heroui/react";
+import { useFormikContext } from "formik";
+import { Select } from "../../components/Select/Select";
 
-export function MidfieldersSelect() {
-  const { data: midfielders = [] } = useGetPlayers("Midfielder");
+interface MidfieldersSelectProps extends Omit<SelectProps, "children"> {
+  players: Player[];
+}
 
+export function MidfieldersSelect({
+  players,
+  ...properties
+}: MidfieldersSelectProps) {
   const { values, errors, touched, setFieldValue } = useFormikContext<{
     midfielders: string[];
   }>();
@@ -28,8 +32,9 @@ export function MidfieldersSelect() {
       }}
       selectedKeys={new Set(values.midfielders)}
       selectionMode="multiple"
+      {...properties}
     >
-      {midfielders.map((midfielder: Player) => (
+      {players.map((midfielder: Player) => (
         <SelectItem
           key={midfielder.uuid}
         >{`${midfielder.name ? midfielder.name + " " : ""}${midfielder.surname}`}</SelectItem>

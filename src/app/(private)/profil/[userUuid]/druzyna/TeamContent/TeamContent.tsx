@@ -111,7 +111,7 @@ export function TeamContent() {
       onSuccess: () => {
         queryClient.setQueryData<Team | undefined>(["getMyTeam"], undefined);
         queryClient.removeQueries({ queryKey: ["getTeam", userUuid] });
-
+        // TODO: After deleting team, players are still visible after pressing "Pick team", until full reload
         toast.success(TEAM_HAS_BEEN_DELETED_TOAST);
 
         onClose();

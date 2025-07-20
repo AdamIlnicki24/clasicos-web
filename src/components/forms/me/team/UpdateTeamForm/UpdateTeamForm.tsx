@@ -23,6 +23,7 @@ import {
 } from "./updateTeamFormSchema";
 import { Team } from "@/types/team";
 import { useParams } from "next/navigation";
+import { useGetPlayers } from "@/hooks/api/players/useGetPlayers";
 
 interface UpdateTeamFormProps {
   onClose?: () => void;
@@ -42,25 +43,42 @@ export function UpdateTeamForm({ onClose, teamPlayers }: UpdateTeamFormProps) {
       midfielders.length === 0 &&
       forwards.length === 0
     ) {
-      const team = {
-        goalkeepers: teamPlayers
-          .filter((teamPlayer) => teamPlayer.player.position === "Goalkeeper")
-          .map((teamPlayer) => teamPlayer.player.uuid),
-        defenders: teamPlayers
-          .filter((teamPlayer) => teamPlayer.player.position === "Defender")
-          .map((teamPlayer) => teamPlayer.player.uuid),
-        midfielders: teamPlayers
-          .filter((teamPlayer) => teamPlayer.player.position === "Midfielder")
-          .map((teamPlayer) => teamPlayer.player.uuid),
-        forwards: teamPlayers
-          .filter((teamPlayer) => teamPlayer.player.position === "Forward")
-          .map((teamPlayer) => teamPlayer.player.uuid),
-      };
+      const team = teamPlayers.reduce(
+        (accumulator, current) => {
+          const position = current.player.position;
+          const uuid = current.player.uuid;
+          return {
+            ...accumulator,
+            [position === "Goalkeeper"
+              ? "goalkeepers"
+              : position === "Defender"
+                ? "defenders"
+                : position === "Midfielder"
+                  ? "midfielders"
+                  : "forwards"]: [
+              ...accumulator[
+                position === "Goalkeeper"
+                  ? "goalkeepers"
+                  : position === "Defender"
+                    ? "defenders"
+                    : position === "Midfielder"
+                      ? "midfielders"
+                      : "forwards"
+              ],
+              uuid,
+            ],
+          };
+        },
+        { goalkeepers: [], defenders: [], midfielders: [], forwards: [] }
+      );
+
       setTeam(team);
     }
   }, [teamPlayers, goalkeepers, defenders, midfielders, forwards, setTeam]);
 
   const queryClient = useQueryClient();
+
+  const { data = [], isLoading: arePlayersLoading } = useGetPlayers();
 
   const { mutate, isPending } = useUpdateMyTeam();
 
@@ -87,6 +105,19 @@ export function UpdateTeamForm({ onClose, teamPlayers }: UpdateTeamFormProps) {
     });
   };
 
+  const filteredGoalkeepers = data.filter(
+    (player) => player.position === "Goalkeeper"
+  );
+  const filteredDefenders = data.filter(
+    (player) => player.position === "Defender"
+  );
+  const filteredMidfielders = data.filter(
+    (player) => player.position === "Midfielder"
+  );
+  const filteredForwards = data.filter(
+    (player) => player.position === "Forward"
+  );
+
   return (
     <Formik
       initialValues={{
@@ -100,16 +131,20 @@ export function UpdateTeamForm({ onClose, teamPlayers }: UpdateTeamFormProps) {
       validationSchema={updateTeamFormSchema}
       enableReinitialize
     >
-      <>
-        <GoalkeepersSelect />
-        <DefendersSelect />
-        <MidfieldersSelect />
-        <ForwardsSelect />
-        <SubmitButton
-          title={isPending ? <Spinner size="md" /> : SUBMIT_FORM_BUTTON_LABEL}
-          mode="secondary"
-        />
-      </>
+      {arePlayersLoading ? (
+        <Spinner size="md" />
+      ) : (
+        <>
+          <GoalkeepersSelect players={filteredGoalkeepers} />
+          <DefendersSelect players={filteredDefenders} />
+          <MidfieldersSelect players={filteredMidfielders} />
+          <ForwardsSelect players={filteredForwards} />
+          <SubmitButton
+            title={isPending ? <Spinner size="md" /> : SUBMIT_FORM_BUTTON_LABEL}
+            mode="secondary"
+          />
+        </>
+      )}
     </Formik>
   );
 }

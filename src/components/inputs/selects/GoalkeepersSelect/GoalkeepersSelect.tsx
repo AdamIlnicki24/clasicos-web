@@ -1,14 +1,18 @@
-import { SelectItem } from "@heroui/react";
-import { Select } from "../../components/Select/Select";
-import { Player } from "@/types/player";
-import { useGetPlayers } from "@/hooks/api/players/useGetPlayers";
-import { useFormikContext } from "formik";
 import { GOALKEEPERS_LABEL } from "@/constants/labels";
 import { GOALKEEPERS_LENGTH } from "@/constants/lengths";
+import { Player } from "@/types/player";
+import { SelectItem, SelectProps } from "@heroui/react";
+import { useFormikContext } from "formik";
+import { Select } from "../../components/Select/Select";
 
-export function GoalkeepersSelect() {
-  const { data: goalkeepers = [] } = useGetPlayers("Goalkeeper");
+interface GoalkeepersSelectProps extends Omit<SelectProps, "children"> {
+  players: Player[];
+}
 
+export function GoalkeepersSelect({
+  players,
+  ...properties
+}: GoalkeepersSelectProps) {
   const { values, errors, touched, setFieldValue } = useFormikContext<{
     goalkeepers: string[];
   }>();
@@ -27,11 +31,12 @@ export function GoalkeepersSelect() {
           setFieldValue("goalkeepers", goalkeepersArray);
       }}
       selectedKeys={new Set(values.goalkeepers)}
+      {...properties}
     >
-      {goalkeepers.map((defender: Player) => (
+      {players.map((goalkeeper: Player) => (
         <SelectItem
-          key={defender.uuid}
-        >{`${defender.name ? defender.name + " " : ""}${defender.surname}`}</SelectItem>
+          key={goalkeeper.uuid}
+        >{`${goalkeeper.name ? goalkeeper.name + " " : ""}${goalkeeper.surname}`}</SelectItem>
       ))}
     </Select>
   );
