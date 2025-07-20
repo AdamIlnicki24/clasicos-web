@@ -80,7 +80,7 @@ export function NavContent({
     );
 
   if ((showProfile || showLogout) && !isUserLoading && !user) {
-    return <div>{YOU_MUST_BE_LOGGED_IN}</div>;
+    return <div className="text-center">{YOU_MUST_BE_LOGGED_IN}</div>;
   }
 
   return (

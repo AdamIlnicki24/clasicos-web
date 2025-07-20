@@ -83,7 +83,7 @@ export function ProfileContent() {
   }
 
   if (!me) {
-    return <div>{YOU_MUST_BE_LOGGED_IN}</div>;
+    return <div className="text-center">{YOU_MUST_BE_LOGGED_IN}</div>;
   }
 
   const { visitor, createdAt } = user;

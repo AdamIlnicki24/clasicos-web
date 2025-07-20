@@ -29,7 +29,7 @@ export function SuggestAddingPlayerForm({
   const { user } = useUser();
 
   if (!user) {
-    return <div>{YOU_MUST_BE_LOGGED_IN}</div>;
+    return <div className="text-center">{YOU_MUST_BE_LOGGED_IN}</div>;
   }
 
   const { nick } = user.visitor;
