@@ -1,5 +1,3 @@
-// TODO: Add shadow in secondary color
-
 import { Card, CardBody } from "@heroui/react";
 
 interface BannedUserCardProps {
@@ -8,7 +6,7 @@ interface BannedUserCardProps {
 
 export function BannedUserCard({ bodyText }: BannedUserCardProps) {
   return (
-    <Card className="flex w-[95%] bg-accentColor lg:w-auto">
+    <Card className="flex w-[95%] bg-accentColor shadow-sm shadow-defaultWhite lg:w-auto">
       <CardBody className="text-defaultWhite">{bodyText}</CardBody>
     </Card>
   );

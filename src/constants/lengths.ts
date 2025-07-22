@@ -1,5 +1,3 @@
-// TODO: Sort constants
-
 export const EMAIL_MAX_LENGTH = 127;
 
 // TODO: Improve password validation in firebase console

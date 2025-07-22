@@ -58,7 +58,7 @@ export function LogInForm() {
       validationSchema={logInFormSchema}
     >
       <div className="flex flex-col gap-4">
-        <div className="grid grid-cols-1 gap-4">
+        <div className="grid grid-cols-1 gap-4 shadow-none">
           <EmailInput />
           <PasswordInput />
         </div>

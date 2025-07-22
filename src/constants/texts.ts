@@ -30,3 +30,4 @@ export const CLASICOS_DETAILS =
   "Nie musisz być zalogowany, aby czytać artykuły czy dyskusje, ale już tak, jeśli chcesz wziąć udział w rozmowie, zarekomendować komentarz, czy też stworzyć swoją jedenastkę.";
 export const YOUR_NICK = "Twój nick:";
 export const INSPIRED_BY = `Artykuły były częściowo inspirowane wydarzeniami opisanymi przez Alfredo Relano w jego publikacji pt. <span style="font-style: italic">Barca vs Real: Wrogowie, którzy nie mogą bez siebie żyć</span> Jeśli chcesz bardziej zgłębić historię El Clasico, to warto sięgnąć po tę książkę.`;
+export const LOG_IN_TO_CHECK_OUT_PROFILE = "Zaloguj się, aby zobaczyć użytkownika";

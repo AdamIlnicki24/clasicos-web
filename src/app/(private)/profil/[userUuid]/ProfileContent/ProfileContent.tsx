@@ -13,7 +13,7 @@ import {
   UPDATE_ABOUT_ME_DATA_BUTTON_LABEL,
 } from "@/constants/buttonLabels";
 import { YOU_MUST_BE_LOGGED_IN } from "@/constants/errorMessages";
-import { ENIGMA, NO_INFORMATION } from "@/constants/texts";
+import { ENIGMA, LOG_IN_TO_CHECK_OUT_PROFILE, NO_INFORMATION } from "@/constants/texts";
 import {
   USER_HAS_BEEN_BANNED_TOAST,
   USER_HAS_BEEN_UNBANNED_TOAST,
@@ -79,7 +79,7 @@ export function ProfileContent() {
   if (!userUuid || isUserLoading || isMeLoading) return <Loading />;
 
   if (!user || isUserError) {
-    return <div className="text-center">Zaloguj się, aby zobaczyć użytkownika</div>;
+    return <div className="text-center">{LOG_IN_TO_CHECK_OUT_PROFILE}</div>;
   }
 
   if (!me) {

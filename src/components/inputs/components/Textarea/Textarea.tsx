@@ -40,7 +40,6 @@ export function Textarea({ isCounterShown, ...properties }: TextareaProps) {
         }}
         size="lg"
         labelPlacement="outside"
-        variant="faded"
         onChange={handleInputChange}
         {...properties}
       />

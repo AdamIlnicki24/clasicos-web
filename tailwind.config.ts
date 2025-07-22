@@ -13,12 +13,7 @@ const config: Config = {
     extend: {
       colors: colors,
       boxShadow: {
-        custom: "0px 0px 7.2px 0.5px rgba(255, 255, 255, 0.5)",
-      },
-      textShadow: {
-        sm: "0 1px 2px var(--tw-shadow-color)",
-        DEFAULT: "0 2px 4px var(--tw-shadow-color)",
-        lg: "0 8px 16px var(--tw-shadow-color)",
+        sm: "0 0px 7.2px 0.5px var(--tw-shadow-color)",
       },
     },
   },
