@@ -6,19 +6,19 @@ import {
   REGISTER_URL,
 } from "@/constants/urls";
 import { Link } from "@heroui/react";
-import Ball from "@/assets/icons/ball.svg";
 import {
   NO_ACCOUNT_YET,
   FORGOT_PASSWORD,
   REGISTER,
   REMIND_PASSWORD,
 } from "@/constants/texts";
+import Logo from "@/assets/icons/logo.svg";
 
 export function LogInContent() {
   return (
     <main className="flex flex-col items-center pt-6">
       <div className="flex gap-x-4 pb-3">
-        <Ball width={48} />
+        <Logo width={48} />
         <Heading HeadingTag="h1" title="Clasicos" />
       </div>
       <LogInCard />
