@@ -31,3 +31,4 @@ export const CLASICOS_DETAILS =
 export const YOUR_NICK = "Twój nick:";
 export const INSPIRED_BY = `Artykuły były częściowo inspirowane wydarzeniami opisanymi przez Alfredo Relano w jego publikacji pt. <span style="font-style: italic">Barca vs Real: Wrogowie, którzy nie mogą bez siebie żyć</span> Jeśli chcesz bardziej zgłębić historię El Clasico, to warto sięgnąć po tę książkę.`;
 export const LOG_IN_TO_CHECK_OUT_PROFILE = "Zaloguj się, aby zobaczyć użytkownika";
+export const READ_MORE = "Kliknij, aby czytać dalej";

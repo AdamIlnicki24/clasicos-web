@@ -4,6 +4,7 @@ import { Card, CardBody, CardProps } from "@heroui/react";
 import Image from "next/image";
 import styles from "./KnowledgeZoneCard.module.css";
 import { ReactNode } from "react";
+import { READ_MORE } from "@/constants/texts";
 
 interface KnowledgeZoneCardProps extends CardProps {
   src: string;
@@ -39,6 +40,7 @@ export function KnowledgeZoneCard({
           <div className="flex w-full flex-col ps-4 text-[1.3rem] leading-normal tracking-normal sm:text-[1.4rem] xl:text-[1.3rem]">
             <Heading HeadingTag="h2" title={title} size="md" />
             <Paragraph>{lead}</Paragraph>
+            <p className="font-bold text-defaultGray">{READ_MORE}</p>
           </div>
         </div>
       </CardBody>
