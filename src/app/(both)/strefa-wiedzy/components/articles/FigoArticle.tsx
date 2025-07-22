@@ -29,12 +29,12 @@ export default function FigoArticle() {
       <Lead text={parse(FIGO_HISTORY_ARTICLE_LEAD)} />
       <Heading title="Wpływ Figo na Barcelonę" HeadingTag="h2" size="md" />
       <Paragraph>
-        "Kiedy w 1995 roku Luís Figo trafił do Barcelony, zrobił to niemal bez
+        Kiedy w 1995 roku Luís Figo trafił do Barcelony, zrobił to niemal bez
         rozgłosu - klub zapłacił Sportingowi zaledwie 2.2 mln funtów, a
         Portugalczyk dołączył do zespołu. W ostatnim sezonie Johana Cruyffa
         Portugalczyk otrzymał czas na aklimatyzację. Już jednak w pierwszym{" "}
         <strong>El Clásico</strong> zaimponował skutecznością: po remisie na
-        Bernabéu, w rewanżu na Camp Nou zdobył drugą bramkę w zwycięstwie 3:0."
+        Bernabéu, w rewanżu na Camp Nou zdobył drugą bramkę w zwycięstwie 3:0.
       </Paragraph>
       <Paragraph>
         W latach 1996–1998 Barça przeszła pod wodzą trenera Bobby’ego Robsona
