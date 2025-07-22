@@ -9,7 +9,7 @@ interface PlayerTileProps {
 
 export function PlayerTile({ name, surname, nationality }: PlayerTileProps) {
   return (
-    <div className="flex h-[95px] w-[70px] flex-col items-center justify-center gap-y-2 rounded-xl border-1 border-defaultWhite bg-transparent px-1 text-center lg:h-[140px] lg:w-[120px] lg:px-4">
+    <div className="flex h-[95px] w-[75px] flex-col items-center justify-center gap-y-2 rounded-xl border-1 border-defaultWhite bg-transparent px-1 text-center lg:h-[140px] lg:w-[120px] lg:px-4">
       <Image
         src={getFlagUrl(nationality)}
         alt={`Flaga ${nationality}`}

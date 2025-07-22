@@ -13,7 +13,7 @@ export function ForgotPasswordContent() {
         <Heading HeadingTag="h1" title="Clasicos" />
       </div>
       <ForgotPasswordCard />
-      <div className="space-y-3 pt-6">
+      <div className="space-y-3 py-6">
         <div className="space-x-1">
           <span>{NO_ACCOUNT_YET}</span>
           <Link href={REGISTER_URL} className="font-bold text-defaultWhite">
