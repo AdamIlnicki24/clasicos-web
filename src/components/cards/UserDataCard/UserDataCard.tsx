@@ -2,7 +2,7 @@ import Avatar from "@/assets/icons/avatar.svg";
 import Ball from "@/assets/icons/ball.svg";
 import Calendar from "@/assets/icons/calendar.svg";
 import { EditButton } from "@/components/buttons/EditButton/EditButton";
-import { EnigmaInfoButton } from "@/components/buttons/EnigmaInfoButton/EnigmaInfoButton";
+import { InfoButton } from "@/components/buttons/InfoButton/InfoButton";
 import {
   CREATED_AT_LABEL,
   OBTAINED_RECOMMENDATIONS_LABEL,
@@ -39,7 +39,7 @@ export function UserDataCard({
               <div className="text-[1.5rem] font-bold">{nick}</div>
             ) : (
               <div className="flex items-center gap-x-1">
-                <EnigmaInfoButton onPress={onOpen} />
+                <InfoButton onPress={onOpen} />
                 <div className="text-[1.5rem] text-defaultGray">{nick}</div>
               </div>
             )}

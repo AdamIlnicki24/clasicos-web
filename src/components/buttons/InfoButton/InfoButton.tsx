@@ -1,7 +1,7 @@
 import { InfoIcon } from "@/components/icons/InfoIcon";
 import { Button, ButtonProps } from "@heroui/react";
 
-export function EnigmaInfoButton({ ...properties }: ButtonProps) {
+export function InfoButton({ ...properties }: ButtonProps) {
   return (
     <Button
       variant="light"
