@@ -16,6 +16,7 @@ interface CommentCardProps {
   hasRecommended: boolean;
   recommendationsCount: number;
   onToggleRecommendation: () => void;
+  isRecommendationToggled: boolean;
 }
 
 export function CommentCard({
@@ -25,6 +26,7 @@ export function CommentCard({
   hasRecommended,
   recommendationsCount,
   onToggleRecommendation,
+  isRecommendationToggled,
 }: CommentCardProps) {
   const isMobile = useContext(MobileContext);
 
@@ -45,6 +47,7 @@ export function CommentCard({
             hasRecommended={hasRecommended}
             onPress={onToggleRecommendation}
             user={currentUser}
+            isRecommendationToggled={isRecommendationToggled}
           />
           {!isMobile && <CommentDate createdAt={comment.createdAt} />}
         </div>

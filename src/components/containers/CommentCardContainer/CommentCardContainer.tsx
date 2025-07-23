@@ -30,7 +30,7 @@ export function CommentCardContainer({
   const { data: recommendationsCount = comment._count.recommendations } =
     useGetCommentRecommendationsCount(comment.uuid);
 
-  const { mutate } = useToggleRecommendation(comment.uuid);
+  const { mutate, isPending: isRecommendationToggled } = useToggleRecommendation(comment.uuid);
 
  const handleToggle = () => {
    mutate(undefined, {
@@ -61,6 +61,7 @@ export function CommentCardContainer({
       recommendationsCount={recommendationsCount}
       onToggleRecommendation={handleToggle}
       onTrashPress={onTrashPress}
+      isRecommendationToggled={isRecommendationToggled}
     />
   );
 }
