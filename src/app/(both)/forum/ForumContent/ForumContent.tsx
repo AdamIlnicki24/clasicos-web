@@ -81,7 +81,7 @@ export function ForumContent() {
 
   return (
     <>
-      <main className="flex min-h-[80svh] flex-col items-center">
+      <main className="flex min-h-svh flex-col items-center">
         <Heading HeadingTag="h1" title={FORUM_HEADING} />
         <p className="px-3 py-8 text-center text-[1.4rem] lg:px-0 lg:text-start">
           {WELCOME_TO_FORUM}

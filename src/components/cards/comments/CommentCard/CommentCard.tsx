@@ -34,7 +34,7 @@ export function CommentCard({
     <Card className="w-[95%] bg-accentColor lg:w-[60%]">
       <CardHeader className="flex justify-between">
         <AuthorChip
-          nick={comment.user.visitor.nick ?? ENIGMA}
+          nick={comment.user.visitor.nick || ENIGMA}
           author={comment.user}
           me={currentUser}
         />

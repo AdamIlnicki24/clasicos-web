@@ -55,7 +55,7 @@ export function UpdateNickForm({ onClose, visitor }: UpdateNickFormProps) {
     });
   };
 
-  initialValues.nick = visitor.nick ?? ENIGMA;
+  initialValues.nick = visitor.nick || ENIGMA;
 
   return (
     <Formik

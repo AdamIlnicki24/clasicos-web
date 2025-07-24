@@ -16,8 +16,6 @@ export const lato = Lato({
   display: "swap",
 });
 
-// TODO: Add favicon
-
 export const metadata: Metadata = {
   title: {
     template: `%s | ${HOMEPAGE_HTML_TITLE}`,

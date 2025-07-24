@@ -35,7 +35,7 @@ export function PlayersContent() {
         {items?.length ? (
           <PlayersTable columns={playersTableColumns} items={items} />
         ) : (
-          <div className="flex min-h-[80svh] items-center justify-center">
+          <div className="flex min-h-svh items-center justify-center">
             {NO_PLAYERS_YET}
           </div>
         )}

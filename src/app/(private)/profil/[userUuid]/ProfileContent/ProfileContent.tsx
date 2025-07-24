@@ -143,7 +143,7 @@ export function ProfileContent() {
 
   return (
     <>
-      <main className="min-h-[70svh]">
+      <main>
         <div className="flex justify-end pb-6 pe-4 pt-8 lg:pb-0 lg:pe-12">
           {isMe && (
             <Button
@@ -183,18 +183,21 @@ export function ProfileContent() {
             checkOutTeam={() => checkOutTeam()}
           />
         </div>
-        <UpdateProfileModal
-          visitor={visitor}
-          isOpen={isProfileModalOpen}
-          onOpenChange={onProfileModalOpenChange}
-        />
-        <UpdateNickModal
-          visitor={visitor}
-          isOpen={isNickModalOpen}
-          onOpenChange={onNickModalOpenChange}
-        />
-        <EnigmaModal isOpen={isEnigmaModalOpen} onOpenChange={onEnigmaModalOpenChange} />
       </main>
+      <UpdateProfileModal
+        visitor={visitor}
+        isOpen={isProfileModalOpen}
+        onOpenChange={onProfileModalOpenChange}
+      />
+      <UpdateNickModal
+        visitor={visitor}
+        isOpen={isNickModalOpen}
+        onOpenChange={onNickModalOpenChange}
+      />
+      <EnigmaModal
+        isOpen={isEnigmaModalOpen}
+        onOpenChange={onEnigmaModalOpenChange}
+      />
     </>
   );
 }

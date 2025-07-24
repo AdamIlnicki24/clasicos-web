@@ -16,7 +16,7 @@ export function UsersContent() {
       {items?.length ? (
         <UsersTable columns={usersTableColumns} items={items} />
       ) : (
-        <div className="flex min-h-[80svh] items-center justify-center">
+        <div className="flex min-h-svh items-center justify-center">
           {NO_USERS_YET}
         </div>
       )}

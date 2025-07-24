@@ -9,7 +9,6 @@ import {
   SUBJECT_FOR_ADMIN,
 } from "@/constants/actions";
 import { EMAIL_HAS_NOT_BEEN_SENT_ERROR_MESSAGE } from "@/constants/errorMessages";
-import { logoBase64 } from "@/constants/images";
 import { ENIGMA } from "@/constants/texts";
 import { HOME_URL } from "@/constants/urls";
 import { revalidatePath } from "next/cache";
@@ -49,17 +48,15 @@ const generateSuggestAddingPlayerEmailHTML = ({
   nick,
   player,
   message,
-}: SuggestAddingPlayerEmailFormData): string => {
-  const { src, alt } = logoBase64;
-  return `<body style="padding: 1rem">
-    <img src="${src}" alt="${alt}">
+}: SuggestAddingPlayerEmailFormData): string =>
+  `<body style="padding: 1rem">
     <h1>Cześć,</h1>
     <h2>
       ktoś zasugerował dodanie piłkarza do bazy na clasicos.pl.
     </h2>
     <h3>Dane użytkownika:</h3>
     <ul style="border: 1px solid #000; border-radius: 2.5rem">
-      <li style="padding: 0.5rem 1rem">Nick: ${nick ?? ENIGMA}</li>
+      <li style="padding: 0.5rem 1rem">Nick: ${nick || ENIGMA}</li>
     </ul>
     <h3 style="padding-top: 8px">Wiadomość:</h3>
     <p style="border: 1px solid #000; border-radius: 2.5rem; padding: 1rem">
@@ -73,7 +70,6 @@ const generateSuggestAddingPlayerEmailHTML = ({
       odpowiadać.
     </h6>
   </body>`;
-};
 
 export const createPlayerSuggestion = async ({
   nick,
@@ -105,17 +101,15 @@ export const createPlayerSuggestion = async ({
 const generateFixSuggestionEmailHTML = ({
   nick,
   message,
-}: SuggestFixEmailFormData): string => {
-  const { src, alt } = logoBase64;
-  return `<body style="padding: 1rem">
-    <img src="${src}" alt="${alt}">
+}: SuggestFixEmailFormData): string =>
+  `<body style="padding: 1rem">
     <h1>Cześć,</h1>
     <h2>
       ktoś zasugerował poprawkę na clasicos.pl.
     </h2>
     <h3>Dane użytkownika:</h3>
     <ul style="border: 1px solid #000; border-radius: 2.5rem">
-      <li style="padding: 0.5rem 1rem">Nick: ${nick ?? ENIGMA}</li>
+      <li style="padding: 0.5rem 1rem">Nick: ${nick || ENIGMA}</li>
     </ul>
     <h3 style="padding-top: 8px">Wiadomość:</h3>
     <p style="border: 1px solid #000; border-radius: 2.5rem; padding: 1rem">
@@ -126,7 +120,6 @@ const generateFixSuggestionEmailHTML = ({
       odpowiadać.
     </h6>
   </body>`;
-};
 
 export const createFixSuggestion = async ({
   nick,
