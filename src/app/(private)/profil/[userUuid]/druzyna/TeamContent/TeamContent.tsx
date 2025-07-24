@@ -24,6 +24,7 @@ import { MobileContext } from "@/context/MobileContext";
 import { useDeleteMyTeam } from "@/hooks/api/team/me/useDeleteMyTeam";
 import { useGetTeam } from "@/hooks/api/team/useGetTeam";
 import { useUser } from "@/hooks/context/useUser";
+import { useTeamStore } from "@/store/useTeamStore";
 import { ApiError } from "@/types/apiError";
 import { Position } from "@/types/position";
 import { Team } from "@/types/team";
@@ -71,6 +72,8 @@ export function TeamContent() {
     onOpenChange: onSuggestionModalOpenChange,
   } = useDisclosure();
 
+  const { resetTeam } = useTeamStore();
+
   if (!userUuid || isUserLoading || isTeamLoading) return <Loading />;
 
   if (!user) {
@@ -111,7 +114,9 @@ export function TeamContent() {
       onSuccess: () => {
         queryClient.setQueryData<Team | undefined>(["getMyTeam"], undefined);
         queryClient.removeQueries({ queryKey: ["getTeam", userUuid] });
-        // TODO: After deleting team, players are still visible after pressing "Pick team", until full reload
+
+        resetTeam();
+
         toast.success(TEAM_HAS_BEEN_DELETED_TOAST);
 
         onClose();
