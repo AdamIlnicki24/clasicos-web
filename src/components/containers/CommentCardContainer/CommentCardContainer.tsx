@@ -30,28 +30,34 @@ export function CommentCardContainer({
   const { data: recommendationsCount = comment._count.recommendations } =
     useGetCommentRecommendationsCount(comment.uuid);
 
-  const { mutate, isPending: isRecommendationToggled } = useToggleRecommendation(comment.uuid);
+  const { mutate, isPending: isRecommendationToggled } =
+    useToggleRecommendation(comment.uuid);
 
- const handleToggle = () => {
-   mutate(undefined, {
-     onSuccess: (data) => {
-       queryClient.setQueryData(
-         ["hasUserRecommendedComment", comment.uuid],
-         data.hasRecommended
-       );
-       queryClient.setQueryData(
-         ["getCommentRecommendationsCount", comment.uuid],
-         data.count
-       );
-     },
-     onError: (error) => {
-       if (process.env.NODE_ENV === "development") {
-         console.error("Error:", error);
-       }
-       toast.error((error as ApiError).response.data.message);
-     },
-   });
- };
+  const handleToggle = () => {
+    mutate(undefined, {
+      onSuccess: async (data) => {
+        queryClient.setQueryData(
+          ["hasUserRecommendedComment", comment.uuid],
+          data.hasRecommended
+        );
+
+        queryClient.setQueryData(
+          ["getCommentRecommendationsCount", comment.uuid],
+          data.count
+        );
+
+        await queryClient.invalidateQueries({
+          queryKey: ["getUserRecommendationsCount", comment.user.uuid],
+        });
+      },
+      onError: (error) => {
+        if (process.env.NODE_ENV === "development") {
+          console.error("Error:", error);
+        }
+        toast.error((error as ApiError).response.data.message);
+      },
+    });
+  };
 
   return (
     <CommentCard
