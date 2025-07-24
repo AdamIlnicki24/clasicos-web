@@ -9,7 +9,6 @@ import { ApiError } from "@/types/apiError";
 import { Spinner } from "@heroui/react";
 import { useQueryClient } from "@tanstack/react-query";
 import { Formik } from "formik";
-import { useParams } from "next/navigation";
 import { toast } from "react-toastify";
 import {
   CreateCommentFormData,
@@ -19,16 +18,16 @@ import {
 
 interface CreateCommentFormProps {
   onClose?: () => void;
+  resourceFriendlyLink: string;
 }
 
-export function CreateCommentForm({ onClose }: CreateCommentFormProps) {
+export function CreateCommentForm({
+  onClose,
+  resourceFriendlyLink,
+}: CreateCommentFormProps) {
   const queryClient = useQueryClient();
 
-  const { resourceFriendlyLink } = useParams();
-
-  const { mutate, isPending } = useCreateComment(
-    resourceFriendlyLink as string
-  );
+  const { mutate, isPending } = useCreateComment(resourceFriendlyLink);
 
   const onSubmitHandler = (values: CreateCommentFormData) => {
     if (process.env.NODE_ENV === "development") {

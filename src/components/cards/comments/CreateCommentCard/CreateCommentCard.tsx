@@ -4,9 +4,13 @@ import { Card, CardBody, CardHeader } from "@heroui/react";
 
 interface CreateCommentCardProps {
   nick: string;
+  resourceFriendlyLink: string;
 }
 
-export function CreateCommentCard({ nick }: CreateCommentCardProps) {
+export function CreateCommentCard({
+  nick,
+  resourceFriendlyLink,
+}: CreateCommentCardProps) {
   return (
     <Card className="w-[95%] bg-accentColor shadow-sm shadow-defaultWhite lg:w-[60%]">
       <CardHeader className="space-x-1">
@@ -14,7 +18,7 @@ export function CreateCommentCard({ nick }: CreateCommentCardProps) {
         <span className="text-defaultWhite">{nick}</span>
       </CardHeader>
       <CardBody>
-        <CreateCommentForm />
+        <CreateCommentForm resourceFriendlyLink={resourceFriendlyLink} />
       </CardBody>
     </Card>
   );

@@ -96,7 +96,10 @@ export function ArticleContent({
         ) : user.visitor.bannedAt ? (
           <BannedUserCard bodyText={COMMENT_CANNOT_BE_CREATED} />
         ) : (
-          <CreateCommentCard nick={user.visitor.nick || ENIGMA} />
+          <CreateCommentCard
+            nick={user.visitor.nick || ENIGMA}
+            resourceFriendlyLink={resourceFriendlyLink as string}
+          />
         )}
         {comments && comments.length > 0 ? (
           <div className="flex w-full flex-col items-center gap-y-4 py-8">
