@@ -22,6 +22,7 @@ import Link from "next/link";
 import { useContext } from "react";
 import { FooterLink } from "../FooterLink/FooterLink";
 import { FooterLinksContainer } from "../FooterLinksContainer/FooterLinksContrainer";
+import { CLASICOS_HEADING } from "@/constants/headings";
 
 export function Footer() {
   const isMobile = useContext(MobileContext);
@@ -32,7 +33,7 @@ export function Footer() {
 
   return (
     <>
-      <div className="bg-defaultNavy flex flex-col items-start gap-y-8 pb-8 ps-6 pt-8 lg:flex-row lg:items-stretch lg:justify-between lg:gap-y-0 lg:px-24 lg:py-16">
+      <div className="flex flex-col items-start gap-y-8 bg-defaultNavy pb-8 ps-6 pt-8 lg:flex-row lg:items-stretch lg:justify-between lg:gap-y-0 lg:px-24 lg:py-16">
         <FooterLinksContainer>
           <div className="flex flex-col items-center justify-center">
             <Link
@@ -41,7 +42,7 @@ export function Footer() {
             >
               <Logo width={isMobile ? 44 : 60} />
               <div className="text-[1.3rem] font-bold lg:text-[2rem]">
-                Clasicos
+                {CLASICOS_HEADING}
               </div>
             </Link>
           </div>
@@ -65,7 +66,7 @@ export function Footer() {
           <Link className="flex gap-x-1" href={`mailto:${CONTACT_EMAIL_TITLE}`}>
             <Envelope color={colors.defaultWhite} width={16} />
             <span className="text-[0.9rem] font-bold lg:text-[1.2rem]">
-              kontakt@clasicos.pl
+              {CONTACT_EMAIL_TITLE}
             </span>
           </Link>
         </FooterLinksContainer>

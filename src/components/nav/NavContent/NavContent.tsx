@@ -38,7 +38,7 @@ import { toast } from "react-toastify";
 import { NavLink } from "../NavLink/NavLink";
 
 interface NavContentProps {
-  navItems: NavItems[];
+  navItems?: NavItems[];
   showProfile?: boolean;
   showLogout?: boolean;
   user?: User;
@@ -128,7 +128,7 @@ export function NavContent({
               </Tooltip>
           </NavbarItem>
         )}
-        {navItems.filter(({title})=>title !== PROFILE_TITLE).map(({ title, href }) => (
+        {navItems?.filter(({title})=>title !== PROFILE_TITLE).map(({ title, href }) => (
           <NavbarItem key={title}>
             <NavLink
               title={title}
@@ -150,7 +150,7 @@ export function NavContent({
         )}
       </NavbarContent>
       <NavbarMenu>
-        {navItems.map(({ title, href }) => (
+        {navItems?.map(({ title, href }) => (
           <NavbarMenuItem key={title}>
             <NavLink
               title={title}
