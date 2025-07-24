@@ -8,13 +8,14 @@ import { useCreateComment } from "@/hooks/api/comments/useCreateComment";
 import { ApiError } from "@/types/apiError";
 import { Spinner } from "@heroui/react";
 import { useQueryClient } from "@tanstack/react-query";
-import { Formik } from "formik";
+import { Form, Formik } from "formik";
 import { toast } from "react-toastify";
 import {
   CreateCommentFormData,
   createCommentFormSchema,
   initialValues,
 } from "./createCommentFormSchema";
+import { useRef } from "react";
 
 interface CreateCommentFormProps {
   onClose?: () => void;
@@ -25,6 +26,8 @@ export function CreateCommentForm({
   onClose,
   resourceFriendlyLink,
 }: CreateCommentFormProps) {
+  const formRef = useRef<HTMLFormElement>(null);
+
   const queryClient = useQueryClient();
 
   const { mutate, isPending } = useCreateComment(resourceFriendlyLink);
@@ -39,6 +42,8 @@ export function CreateCommentForm({
         await queryClient.invalidateQueries({
           queryKey: ["getComments", resourceFriendlyLink],
         });
+
+        formRef.current?.reset();
 
         toast.success(COMMENT_HAS_BEEN_CREATED_TOAST);
 
@@ -59,12 +64,12 @@ export function CreateCommentForm({
       onSubmit={onSubmitHandler}
       validationSchema={createCommentFormSchema}
     >
-      <div className="flex flex-col">
+      <Form ref={formRef} className="flex flex-col">
         <CommentContentTextarea />
         <SubmitButton
           title={isPending ? <Spinner size="md" /> : SUBMIT_FORM_BUTTON_LABEL}
         />
-      </div>
+      </Form>
     </Formik>
   );
 }
