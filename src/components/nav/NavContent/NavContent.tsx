@@ -4,16 +4,10 @@ import {
 } from "@/constants/ariaLabels";
 import { YOU_MUST_BE_LOGGED_IN } from "@/constants/errorMessages";
 import { logo } from "@/constants/images";
-import {
-  LOG_OUT_TITLE,
-  PROFILE_TITLE
-} from "@/constants/titles";
+import { LOG_OUT_TITLE, PROFILE_TITLE } from "@/constants/titles";
 import { LOG_OUT_ERROR_TOAST, LOG_OUT_SUCCESS_TOAST } from "@/constants/toasts";
 import { MY_PROFILE_TOOLTIP } from "@/constants/tooltips";
-import {
-  HOME_URL,
-  PROFILE_URL
-} from "@/constants/urls";
+import { HOME_URL, PROFILE_URL } from "@/constants/urls";
 import { MobileContext } from "@/context/MobileContext";
 import { NavItems } from "@/types/navItems";
 import { User } from "@/types/user";
@@ -29,7 +23,6 @@ import {
   NavbarMenu,
   NavbarMenuItem,
   NavbarMenuToggle,
-  Spinner,
   Tooltip,
 } from "@heroui/react";
 import { useRouter } from "next/navigation";
@@ -38,11 +31,10 @@ import { toast } from "react-toastify";
 import { NavLink } from "../NavLink/NavLink";
 
 interface NavContentProps {
-  navItems?: NavItems[];
+  navItems: NavItems[];
   showProfile?: boolean;
   showLogout?: boolean;
   user?: User;
-  isUserLoading?: boolean;
   logOut?: () => void;
 }
 
@@ -51,7 +43,6 @@ export function NavContent({
   showProfile,
   showLogout,
   user,
-  isUserLoading,
   logOut,
 }: NavContentProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -72,14 +63,7 @@ export function NavContent({
     }
   };
 
-  if (isUserLoading)
-    return (
-      <div className="flex items-center justify-center">
-        <Spinner size="lg" />
-      </div>
-    );
-
-  if ((showProfile || showLogout) && !isUserLoading && !user) {
+  if ((showProfile || showLogout) && !user) {
     return <div className="text-center">{YOU_MUST_BE_LOGGED_IN}</div>;
   }
 
@@ -112,31 +96,33 @@ export function NavContent({
       <NavbarContent justify="end" className="hidden w-full lg:flex">
         {showProfile && (
           <NavbarItem>
-              <Tooltip
-                content={MY_PROFILE_TOOLTIP}
-                showArrow
-                color="default"
-                className="text-defaultBlack"
+            <Tooltip
+              content={MY_PROFILE_TOOLTIP}
+              showArrow
+              color="default"
+              className="text-defaultBlack"
+            >
+              <Button
+                onPress={() => router.push(`${PROFILE_URL}/${user?.uuid}`)}
+                size="sm"
+                className="rounded-3xl"
               >
-                <Button
-                  onPress={() => router.push(`${PROFILE_URL}/${user?.uuid}`)}
-                  size="sm"
-                  className="rounded-3xl"
-                >
-                  <Avatar size="sm" />
-                </Button>
-              </Tooltip>
+                <Avatar size="sm" />
+              </Button>
+            </Tooltip>
           </NavbarItem>
         )}
-        {navItems?.filter(({title})=>title !== PROFILE_TITLE).map(({ title, href }) => (
-          <NavbarItem key={title}>
-            <NavLink
-              title={title}
-              href={href}
-              onClick={() => isMobile && isMenuOpen && setIsMenuOpen(false)}
-            />
-          </NavbarItem>
-        ))}
+        {navItems
+          ?.filter(({ title }) => title !== PROFILE_TITLE)
+          .map(({ title, href }) => (
+            <NavbarItem key={title}>
+              <NavLink
+                title={title}
+                href={href}
+                onClick={() => isMobile && isMenuOpen && setIsMenuOpen(false)}
+              />
+            </NavbarItem>
+          ))}
         {showLogout && (
           <NavbarItem>
             <NavLink

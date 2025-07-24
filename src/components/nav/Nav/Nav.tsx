@@ -6,27 +6,21 @@ import {
   visitorNavItems,
 } from "@/constants/menuItems";
 import { useUser } from "@/hooks/context/useUser";
-import { NavContent } from "../NavContent/NavContent";
 import { Spinner } from "@heroui/react";
+import { NavContent } from "../NavContent/NavContent";
 
 export function Nav() {
   const { user, isUserLoading, logOut } = useUser();
 
   return isUserLoading ? (
-    <Spinner size="sm" color="default" />
+    <div className="flex justify-end">
+      <Spinner size="sm" color="default" />
+    </div>
   ) : !user ? (
     <NavContent navItems={publicNavItems} />
-  ) : user.role === "Visitor" ? (
-    <NavContent
-      navItems={visitorNavItems}
-      showProfile
-      showLogout
-      user={user}
-      logOut={logOut}
-    />
   ) : (
     <NavContent
-      navItems={adminNavItems}
+      navItems={user.role === "Visitor" ? visitorNavItems : adminNavItems}
       showProfile
       showLogout
       user={user}
