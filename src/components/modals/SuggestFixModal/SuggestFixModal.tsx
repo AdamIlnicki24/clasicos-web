@@ -16,7 +16,7 @@ export function SuggestFixModal({
       isOpen={isOpen}
       onOpenChange={onOpenChange}
       classNames={{ body: "px-4 lg:px-6 py-8", closeButton: "z-50" }}
-      placement="bottom-center"
+      placement="center"
     >
       <ModalContent>
         {(onClose) => (
