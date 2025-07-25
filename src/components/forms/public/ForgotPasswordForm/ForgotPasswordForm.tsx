@@ -23,8 +23,6 @@ import { useRouter } from "next/navigation";
 export function ForgotPasswordForm() {
   const [isPending, setIsPending] = useState(false);
 
-  // TODO: Customize e-mail
-
   const router = useRouter();
 
   const onSubmitHandler = async (values: ForgotPasswordFormData) => {

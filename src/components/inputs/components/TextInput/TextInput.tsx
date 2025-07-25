@@ -29,11 +29,9 @@ export function TextInput({
   };
 
   return (
-    <div className="relative w-full shadow-none">
+    <div className="relative w-full">
       <Input
         classNames={{
-          base: "shadow-none",
-          mainWrapper: "shadow-none",
           label: "text-defaultBlack text-[0.9rem] pb-1",
           input: "text-defaultBlack text-[1.1rem]",
           errorMessage: "font-bold text-[1rem]",
