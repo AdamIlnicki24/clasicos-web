@@ -9,7 +9,7 @@ export function LogInCard() {
       <CardHeader className="flex justify-center text-center text-defaultWhite">
         <Heading HeadingTag="h2" title={LOG_IN_HEADING} />
       </CardHeader>
-      <CardFooter className="flex flex-col">
+      <CardFooter className="flex flex-col w-full">
         <LogInForm />
       </CardFooter>
     </Card>

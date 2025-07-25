@@ -50,7 +50,7 @@ export function ForgotPasswordForm() {
       onSubmit={onSubmitHandler}
       validationSchema={forgotPasswordFormSchema}
     >
-      <div className="flex flex-col gap-4">
+      <div className="flex w-full flex-col gap-4 lg:w-[60%]">
         <div className="grid grid-cols-1 gap-4">
           <EmailInput />
         </div>

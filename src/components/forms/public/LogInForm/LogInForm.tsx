@@ -57,8 +57,8 @@ export function LogInForm() {
       onSubmit={onSubmitHandler}
       validationSchema={logInFormSchema}
     >
-      <div className="flex flex-col gap-4">
-        <div className="grid grid-cols-1 gap-4 shadow-none">
+      <div className="flex w-full lg:w-[60%] flex-col gap-4">
+        <div className="grid grid-cols-1 gap-4">
           <EmailInput />
           <PasswordInput />
         </div>
