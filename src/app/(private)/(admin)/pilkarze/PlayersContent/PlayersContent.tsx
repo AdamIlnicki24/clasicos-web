@@ -21,8 +21,6 @@ export function PlayersContent() {
 
   if (isLoading) return <Loading />;
 
-  // TODO: Create no content card
-
   return (
     <>
       <main className="flex justify-end pb-6 pe-4 pt-8 lg:pb-0 lg:pe-12">

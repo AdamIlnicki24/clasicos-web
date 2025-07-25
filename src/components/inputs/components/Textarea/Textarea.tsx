@@ -35,7 +35,7 @@ export function Textarea({ isCounterShown, ...properties }: TextareaProps) {
           input:
             "text-[1.1rem] leading-none text-defaultBlack group-data-[has-value=true]:text-defaultBlack",
           errorMessage: "text-[1rem] font-bold",
-          inputWrapper: "text-defaultBlack",
+          inputWrapper: "text-defaultBlack shadow-none",
           clearButton: "text-defaultBlack/80",
         }}
         size="lg"

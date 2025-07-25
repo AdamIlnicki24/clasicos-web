@@ -34,6 +34,7 @@ export function TextInput({
         classNames={{
           label: "text-defaultBlack text-[0.9rem] pb-1",
           input: "text-defaultBlack text-[1.1rem]",
+          inputWrapper: "shadow-none",
           errorMessage: "font-bold text-[1rem]",
           clearButton: "text-defaultBlack/80",
         }}
