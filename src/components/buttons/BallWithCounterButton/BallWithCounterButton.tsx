@@ -51,7 +51,6 @@ export function BallWithCounterButton({
           : RECOMMENDATION_CANNOT_BE_CREATED_TOOLTIP
       }
       color={!user ? "warning" : "danger"}
-      showArrow
     >
       {button}
     </Tooltip>
