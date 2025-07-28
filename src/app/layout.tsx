@@ -33,8 +33,8 @@ export const metadata: Metadata = {
       "pl-PL": "/pl-PL",
     },
   },
-  openGraph: { images: "https://clasicos-web.vercel.app/opengraph-image.jpg" },
-  twitter: { images: "https://clasicos-web.vercel.app/twitter-image.jpg" },
+  openGraph: { images: "/opengraph-image.jpg" },
+  twitter: { images: "/twitter-image.jpg" },
 };
 
 export default function RootLayout({
