@@ -142,7 +142,7 @@ export const createFixSuggestion = async ({
 
     return { success: true };
   } catch (error) {
-    if (process.env.NODE_ENV === "production") {
+    if (process.env.NODE_ENV !== "production") {
       console.error(error);
     }
     return { error: EMAIL_HAS_NOT_BEEN_SENT_ERROR_MESSAGE };
