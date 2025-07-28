@@ -32,7 +32,7 @@ export function LogInForm({ initialValues }: LogInFormProps) {
     setIsPending(true);
 
     await signInWithEmailAndPassword(auth, values.email, values.password)
-      .then(async ({ user }) => {
+      .then(async () => {
         toast.success(LOG_IN_SUCCESS_TOAST);
         setIsPending(false);
       })
