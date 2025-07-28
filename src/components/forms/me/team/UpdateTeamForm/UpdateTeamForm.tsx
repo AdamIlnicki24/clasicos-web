@@ -83,10 +83,6 @@ export function UpdateTeamForm({ onClose, teamPlayers }: UpdateTeamFormProps) {
   const { mutate, isPending } = useUpdateMyTeam();
 
   const onSubmitHandler = (values: UpdateTeamFormData) => {
-    if (process.env.NODE_ENV === "development") {
-      console.log("Submitted values:", values);
-    }
-
     mutate(values, {
       onSuccess: (updatedTeam) => {
         queryClient.setQueryData<Team | undefined>(["getMyTeam"], updatedTeam);
@@ -97,9 +93,6 @@ export function UpdateTeamForm({ onClose, teamPlayers }: UpdateTeamFormProps) {
         if (onClose) onClose();
       },
       onError: (error) => {
-        if (process.env.NODE_ENV === "development") {
-          console.error("Error:", error);
-        }
         toast.error((error as ApiError).response.data.message);
       },
     });

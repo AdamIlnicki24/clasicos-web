@@ -35,9 +35,6 @@ export function LogInForm({ initialValues }: LogInFormProps) {
       .then(async ({ user }) => {
         toast.success(LOG_IN_SUCCESS_TOAST);
         setIsPending(false);
-
-        const token = await user.getIdToken();
-        console.log("Token:", token);
       })
       .catch((error: FirebaseError) => {
         const errorCode = error.code;

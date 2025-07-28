@@ -35,9 +35,6 @@ export function ForgotPasswordForm() {
       router.replace(LOG_IN_URL);
       toast.success(RESET_PASSWORD_EMAIL_SENT_TOAST);
     } catch (error) {
-      if (process.env.NODE_ENV === "development") {
-        console.error(error);
-      }
       toast.error(EMAIL_HAS_NOT_BEEN_SENT_ERROR_TOAST);
     } finally {
       setIsPending(false);

@@ -33,10 +33,6 @@ export function CreateCommentForm({
   const { mutate, isPending } = useCreateComment(resourceFriendlyLink);
 
   const onSubmitHandler = (values: CreateCommentFormData) => {
-    if (process.env.NODE_ENV === "development") {
-      console.log("Submitted values:", values);
-    }
-
     mutate(values, {
       onSuccess: async () => {
         await queryClient.invalidateQueries({
@@ -50,9 +46,6 @@ export function CreateCommentForm({
         if (onClose) onClose();
       },
       onError: (error) => {
-        if (process.env.NODE_ENV === "development") {
-          console.error("Error:", error);
-        }
         toast.error((error as ApiError).response.data.message);
       },
     });

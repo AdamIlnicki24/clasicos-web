@@ -35,10 +35,6 @@ export function SuggestFixForm({ onClose }: SuggestFixFormProps) {
     setIsPending(true);
 
     await createFixSuggestion({ message, nick }).then((response) => {
-      if (process.env.NODE_ENV === "development") {
-        console.log("Response:", response);
-      }
-
       if (response.success) {
         toast.success(SUGGESTION_HAS_BEEN_SENT_TOAST);
 
