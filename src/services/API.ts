@@ -17,10 +17,6 @@ api.interceptors.request.use(async (config) => {
     token: string | null;
   };
 
-  
-    console.log("User:", user);
-  
-
   if (user && user.token) {
     config.headers["Authorization"] = `Bearer ${user.token}`;
   }

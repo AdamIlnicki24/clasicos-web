@@ -8,3 +8,4 @@ export const TEAM_API_ENDPOINT = "/team";
 export const COMMENTS_API_ENDPOINT = "/comments";
 export const RECOMMENDATIONS_API_ENDPOINT = "/recommendations";
 export const RECOMMENDATIONS_COUNT_API_ENDPOINT = `${RECOMMENDATIONS_API_ENDPOINT}/count`;
+export const TEST_ACCOUNTS_API_ENDPOINT = "/test-accounts";

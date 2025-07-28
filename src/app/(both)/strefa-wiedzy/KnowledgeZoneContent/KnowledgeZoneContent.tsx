@@ -28,7 +28,6 @@ export function KnowledgeZoneContent() {
   const { onOpen, isOpen, onOpenChange } = useDisclosure();
 
   const pushToArticle = (article: string) => {
-    console.log("Pushing to article:", article);
     router.push(article);
   };
 

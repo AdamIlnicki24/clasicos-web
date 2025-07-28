@@ -111,9 +111,6 @@ export function ProfileContent() {
         toast.success(USER_HAS_BEEN_BANNED_TOAST);
       },
       onError: (error) => {
-        if (process.env.NODE_ENV === "development") {
-          console.error("Error:", error);
-        }
         toast.error((error as ApiError).response.data.message);
       },
     });
@@ -133,9 +130,6 @@ export function ProfileContent() {
         toast.success(USER_HAS_BEEN_UNBANNED_TOAST);
       },
       onError: (error) => {
-        if (process.env.NODE_ENV === "development") {
-          console.error("Error:", error);
-        }
         toast.error((error as ApiError).response.data.message);
       },
     });

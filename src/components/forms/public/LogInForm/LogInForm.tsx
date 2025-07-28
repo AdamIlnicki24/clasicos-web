@@ -17,24 +17,24 @@ import { Formik } from "formik";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import {
-  initialValues,
   LogInFormData,
   logInFormSchema,
 } from "./logInFormSchema";
 
-export function LogInForm() {
+interface LogInFormProps {
+  initialValues: LogInFormData;
+}
+
+export function LogInForm({ initialValues }: LogInFormProps) {
   const [isPending, setIsPending] = useState(false);
 
   const onSubmitHandler = async (values: LogInFormData) => {
     setIsPending(true);
 
     await signInWithEmailAndPassword(auth, values.email, values.password)
-      .then(async ({ user }) => {
+      .then(async () => {
         toast.success(LOG_IN_SUCCESS_TOAST);
         setIsPending(false);
-
-        const token = await user.getIdToken();
-        console.log("Token:", token);
       })
       .catch((error: FirebaseError) => {
         const errorCode = error.code;
@@ -56,6 +56,7 @@ export function LogInForm() {
       initialValues={initialValues}
       onSubmit={onSubmitHandler}
       validationSchema={logInFormSchema}
+      enableReinitialize
     >
       {({ values }) => (
         <div className="flex w-full flex-col gap-4 lg:w-[60%]">

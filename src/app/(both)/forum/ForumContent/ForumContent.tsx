@@ -66,9 +66,6 @@ export function ForumContent() {
         setSelectedComment(null);
       },
       onError: (error) => {
-        if (process.env.NODE_ENV === "development") {
-          console.error("Error:", error);
-        }
         toast.error((error as ApiError).response.data.message);
       },
     });
@@ -77,9 +74,6 @@ export function ForumContent() {
   if (isUserLoading || isLoading) return <Loading />;
 
   if (isError) {
-    if (process.env.NODE_ENV === "development") {
-      console.error("Error:", error);
-    }
     return <div>{(error as ApiError).response.data.message}</div>;
   }
 

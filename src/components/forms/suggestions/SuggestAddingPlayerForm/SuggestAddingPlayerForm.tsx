@@ -41,9 +41,6 @@ export function SuggestAddingPlayerForm({
     setIsPending(true);
 
     await createPlayerSuggestion({ player, message, nick }).then((response) => {
-      if (process.env.NODE_ENV === "development") {
-        console.log("Response:", response);
-      }
       if (response.success) {
         toast.success(SUGGESTION_HAS_BEEN_SENT_TOAST);
 
