@@ -57,16 +57,18 @@ export function LogInForm() {
       onSubmit={onSubmitHandler}
       validationSchema={logInFormSchema}
     >
-      <div className="flex w-full lg:w-[60%] flex-col gap-4">
-        <div className="grid grid-cols-1 gap-4">
-          <EmailInput />
-          <PasswordInput />
+      {({ values }) => (
+        <div className="flex w-full flex-col gap-4 lg:w-[60%]">
+          <div className="grid grid-cols-1 gap-4">
+            <EmailInput value={values.email} />
+            <PasswordInput value={values.password} />
+          </div>
+          <SubmitButton
+            title={isPending ? <Spinner size="md" /> : LOG_IN_BUTTON_LABEL}
+            mode="primary"
+          />
         </div>
-        <SubmitButton
-          title={isPending ? <Spinner size="md" /> : LOG_IN_BUTTON_LABEL}
-          mode="primary"
-        />
-      </div>
+      )}
     </Formik>
   );
 }

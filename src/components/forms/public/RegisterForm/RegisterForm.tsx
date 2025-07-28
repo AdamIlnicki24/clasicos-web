@@ -53,15 +53,17 @@ export function RegisterForm() {
       onSubmit={onSubmitHandler}
       validationSchema={registerFormSchema}
     >
-      <div className="flex w-full flex-col gap-4 lg:w-[60%]">
-        <div className="grid grid-cols-1 gap-4">
-          <EmailInput />
-          <PasswordInput />
+      {({ values }) => (
+        <div className="flex w-full flex-col gap-4 lg:w-[60%]">
+          <div className="grid grid-cols-1 gap-4">
+            <EmailInput value={values.email} />
+            <PasswordInput value={values.password} />
+          </div>
+          <SubmitButton
+            title={isPending ? <Spinner size="md" /> : REGISTER_BUTTON_LABEL}
+          />
         </div>
-        <SubmitButton
-          title={isPending ? <Spinner size="md" /> : REGISTER_BUTTON_LABEL}
-        />
-      </div>
+      )}
     </Formik>
   );
 }

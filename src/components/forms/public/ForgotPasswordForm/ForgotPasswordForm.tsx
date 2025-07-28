@@ -50,17 +50,19 @@ export function ForgotPasswordForm() {
       onSubmit={onSubmitHandler}
       validationSchema={forgotPasswordFormSchema}
     >
-      <div className="flex w-full flex-col gap-4 lg:w-[60%]">
-        <div className="grid grid-cols-1 gap-4">
-          <EmailInput />
+      {({ values }) => (
+        <div className="flex w-full flex-col gap-4 lg:w-[60%]">
+          <div className="grid grid-cols-1 gap-4">
+            <EmailInput value={values.email} />
+          </div>
+          <SubmitButton
+            title={
+              isPending ? <Spinner size="md" /> : RESET_PASSWORD_BUTTON_LABEL
+            }
+            mode="primary"
+          />
         </div>
-        <SubmitButton
-          title={
-            isPending ? <Spinner size="md" /> : RESET_PASSWORD_BUTTON_LABEL
-          }
-          mode="primary"
-        />
-      </div>
+      )}
     </Formik>
   );
 }

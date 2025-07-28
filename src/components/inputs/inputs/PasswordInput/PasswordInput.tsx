@@ -25,7 +25,6 @@ export function PasswordInput({...properties}: TextInputProps) {
       type={isPasswordVisible ? "text" : "password"}
       onChange={handleChange("password")}
       onBlur={handleBlur("password")}
-      value={values.password}
       isInvalid={touched.password && !!errors.password}
       errorMessage={touched.password && errors.password}
       isRequired

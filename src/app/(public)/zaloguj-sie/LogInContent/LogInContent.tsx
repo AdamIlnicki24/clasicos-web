@@ -23,7 +23,7 @@ export function LogInContent() {
       </div>
       <LogInCard />
       <div className="space-y-3 py-6 ps-3 lg:ps-0 lg:text-center">
-        <div>
+        {/* <div>
           Dane logowania to testowego konta znajdziesz{" "}
           <Link
             target="_blank"
@@ -34,7 +34,7 @@ export function LogInContent() {
             na moim Githubie
           </Link>
           .
-        </div>
+        </div> */}
         <div className="space-x-2">
           <span>{FORGOT_PASSWORD}</span>
           <Link
