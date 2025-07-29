@@ -34,6 +34,7 @@ export function KnowledgeZoneCard({
               src={src}
               className="h-full rounded-xl object-cover pb-6 lg:pb-0"
               fill
+              sizes="(min-width: 1280px) 23vw, (min-width: 1024px) 39vw, (min-width: 640px) 60vw, 72vw"
             />
           </div>
           <div className="flex w-full flex-col ps-4 text-[1.3rem] leading-normal tracking-normal sm:text-[1.4rem] xl:text-[1.3rem]">
