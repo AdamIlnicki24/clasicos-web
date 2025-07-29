@@ -42,7 +42,6 @@ export function KnowledgeZoneContent() {
           <InfoButton onPress={onOpen} />
           <Heading title={KNOWLEDGE_ZONE_HEADING} HeadingTag="h1" />
         </div>
-        {/* TODO: Unify the dashes */}
         <div className="space-y-6">
           <KnowledgeZoneCard
             src={luisFigo.src}
