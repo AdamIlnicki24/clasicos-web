@@ -1,15 +1,15 @@
+import Logo from "@/assets/icons/logo.svg";
 import { RegisterCard } from "@/components/cards/public/RegisterCard/RegisterCard";
-import { LOG_IN_URL } from "@/constants/urls";
-import Ball from "@/assets/icons/ball.svg";
 import { Heading } from "@/components/headings/Heading/Heading";
-import { Link } from "@heroui/react";
 import { DO_YOU_HAVE_AN_ACCOUNT, LOG_IN } from "@/constants/texts";
+import { LOG_IN_URL } from "@/constants/urls";
+import { Link } from "@heroui/react";
 
 export function RegisterContent() {
   return (
     <main className="flex flex-col items-center pt-6">
       <div className="flex gap-x-4 pb-3">
-        <Ball width={48} />
+        <Logo width={48} />
         <Heading HeadingTag="h1" title="Clasicos" />
       </div>
       <RegisterCard />

@@ -30,10 +30,6 @@ export function UpdatePlayerForm({ onClose, player }: UpdatePlayerFormProps) {
   const { mutate, isPending } = useUpdatePlayer(player.uuid);
 
   const onSubmitHandler = (values: UpdatePlayerFormData) => {
-    if (process.env.NODE_ENV === "development") {
-      console.log("Submitted values:", values);
-    }
-
     mutate(values, {
       onSuccess: async () => {
         await queryClient.invalidateQueries({
@@ -47,9 +43,6 @@ export function UpdatePlayerForm({ onClose, player }: UpdatePlayerFormProps) {
         if (onClose) onClose();
       },
       onError: (error) => {
-        if (process.env.NODE_ENV === "development") {
-          console.error("Error:", error);
-        }
         toast.error((error as ApiError).response.data.message);
       },
     });

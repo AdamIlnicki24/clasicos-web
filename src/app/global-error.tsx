@@ -13,13 +13,17 @@ export default function Error({
   reset: () => void;
 }) {
   useEffect(() => {
-    console.error(error);
+    if (process.env.NODE_ENV !== "production") {
+      console.error(error);
+    }
   }, [error]);
 
   return (
-    <div className="pt-[112px]">
+    <div className="flex min-h-svh flex-col items-center justify-center">
       <h2>{SOMETHING_WENT_WRONG}</h2>
-      <Button onPress={() => reset()} title={TRY_AGAIN_BUTTON_LABEL} />
+      <div className="mt-[20px]">
+        <Button onPress={() => reset()} title={TRY_AGAIN_BUTTON_LABEL} />
+      </div>
     </div>
   );
 }

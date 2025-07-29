@@ -4,6 +4,7 @@ import { Card, CardBody, CardProps } from "@heroui/react";
 import Image from "next/image";
 import styles from "./KnowledgeZoneCard.module.css";
 import { ReactNode } from "react";
+import { READ_MORE } from "@/constants/texts";
 
 interface KnowledgeZoneCardProps extends CardProps {
   src: string;
@@ -19,7 +20,6 @@ export function KnowledgeZoneCard({
   lead,
   ...properties
 }: KnowledgeZoneCardProps) {
-  // TODO: Correct styling
   return (
     <Card
       className={`mx-auto w-[85%] bg-accentColor text-defaultWhite sm:w-[60%] lg:w-[65%] ${styles.card}`}
@@ -34,11 +34,13 @@ export function KnowledgeZoneCard({
               src={src}
               className="h-full rounded-xl object-cover pb-6 lg:pb-0"
               fill
+              sizes="(min-width: 1280px) 23vw, (min-width: 1024px) 39vw, (min-width: 640px) 60vw, 72vw"
             />
           </div>
           <div className="flex w-full flex-col ps-4 text-[1.3rem] leading-normal tracking-normal sm:text-[1.4rem] xl:text-[1.3rem]">
             <Heading HeadingTag="h2" title={title} size="md" />
             <Paragraph>{lead}</Paragraph>
+            <p className="font-bold text-defaultGray">{READ_MORE}</p>
           </div>
         </div>
       </CardBody>

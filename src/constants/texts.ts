@@ -25,6 +25,13 @@ export const COMMENT_CANNOT_BE_CREATED =
 export const WELCOME_TO_FORUM =
   "Zapraszamy na nasze forum, na którym podyskutujesz z innymi fanami Klasyków!";
 export const CLASICOS_DESCRIPTION =
-  "Clasicos to portal o rywalizacji między Barceloną a Realem Madryt. Znajdziesz tu ciekawe artykuły o tej batalii, podyskutujesz z innymi fanatykami, a także stworzysz swoją jedenastkę najlepszych piłkarzy w historii Klasyków.";
+  "Clasicos to portal o rywalizacji między Barceloną a Realem Madryt. Znajdziesz tu ciekawe artykuły o tej batalii, podyskutujesz z innymi fanatykami, a także stworzysz swoją jedenastkę najlepszych piłkarzy Klasyków w XXI wieku.";
 export const CLASICOS_DETAILS =
   "Nie musisz być zalogowany, aby czytać artykuły czy dyskusje, ale już tak, jeśli chcesz wziąć udział w rozmowie, zarekomendować komentarz, czy też stworzyć swoją jedenastkę.";
+export const YOUR_NICK = "Twój nick:";
+export const INSPIRED_BY = `Artykuły były częściowo inspirowane wydarzeniami opisanymi przez Alfredo Relano w jego publikacji pt. <span style="font-style: italic">Barca vs Real: Wrogowie, którzy nie mogą bez siebie żyć</span> Jeśli chcesz bardziej zgłębić historię El Clasico, to warto sięgnąć po tę książkę.`;
+export const LOG_IN_TO_CHECK_OUT_PROFILE =
+  "Zaloguj się, aby zobaczyć użytkownika";
+export const READ_MORE = "Kliknij, aby czytać dalej";
+export const USE_ACCOUNT_CREATED_BY_ADMIN =
+  ", jeśli chcesz skorzystać z konta uprzednio stworzonego przez administratora.";

@@ -3,6 +3,7 @@ import {
   FORWARDS_LENGTH,
   GOALKEEPERS_LENGTH,
   MIDFIELDERS_LENGTH,
+  PASSWORD_MIN_LENGTH,
 } from "./lengths";
 
 export const PAGE_DOES_NOT_EXIST = "Ta strona nie istnieje.";
@@ -32,3 +33,5 @@ export const EMAIL_HAS_NOT_BEEN_SENT_ERROR_MESSAGE =
 export const YOU_MUST_BE_LOGGED_IN = "Nie jesteś zalogowany.";
 export const TEAM_CANNOT_BE_LOADED_ERROR_MESSAGE =
   "Nie udało się załadować drużyny.";
+
+export const PASSWORD_ERROR_MESSAGE = `Hasło musi mieć co najmniej ${PASSWORD_MIN_LENGTH} znaków, w tym wielką literę i cyfrę.`;

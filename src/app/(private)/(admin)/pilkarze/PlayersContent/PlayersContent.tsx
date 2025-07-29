@@ -21,8 +21,6 @@ export function PlayersContent() {
 
   if (isLoading) return <Loading />;
 
-  // TODO: Create no content card
-
   return (
     <>
       <main className="flex justify-end pb-6 pe-4 pt-8 lg:pb-0 lg:pe-12">
@@ -35,7 +33,7 @@ export function PlayersContent() {
         {items?.length ? (
           <PlayersTable columns={playersTableColumns} items={items} />
         ) : (
-          <div className="flex min-h-[80svh] items-center justify-center">
+          <div className="flex min-h-svh items-center justify-center">
             {NO_PLAYERS_YET}
           </div>
         )}

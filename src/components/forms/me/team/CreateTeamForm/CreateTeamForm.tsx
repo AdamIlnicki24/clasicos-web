@@ -21,12 +21,15 @@ import {
 } from "./createTeamFormSchema";
 import { Team } from "@/types/team";
 import { useParams } from "next/navigation";
+import { useGetPlayers } from "@/hooks/api/players/useGetPlayers";
 
 interface CreateTeamFormProps {
   onClose?: () => void;
 }
 
 export function CreateTeamForm({ onClose }: CreateTeamFormProps) {
+  const { data = [], isLoading: arePlayersLoading } = useGetPlayers();
+
   const { setTeam, goalkeepers, defenders, midfielders, forwards } =
     useTeamStore();
 
@@ -36,20 +39,28 @@ export function CreateTeamForm({ onClose }: CreateTeamFormProps) {
 
   const { mutate, isPending } = useCreateMyTeam();
 
-  const onSubmitHandler = (values: CreateTeamFormData) => {
-    if (process.env.NODE_ENV === "development") {
-      console.log("Submitted values:", values);
+  const players = data.reduce<
+    Record<"Goalkeeper" | "Defender" | "Midfielder" | "Forward", typeof data>
+  >(
+    (accumulator, current) => ({
+      ...accumulator,
+      [current.position]: [...accumulator[current.position], current],
+    }),
+    {
+      Goalkeeper: [],
+      Defender: [],
+      Midfielder: [],
+      Forward: [],
     }
+  );
 
+  const onSubmitHandler = (values: CreateTeamFormData) => {
     mutate(values, {
       onSuccess: (createdTeam) => {
         setTeam(values);
 
-        // 1) Wrzucamy bezpośrednio nową drużynę do cache "getMyTeam"
         queryClient.setQueryData<Team>(["getMyTeam"], createdTeam);
 
-        // 2) Inwalidujemy query, które używa TeamContent
-        //    (getTeam dla tego userUuid)
         queryClient.removeQueries({ queryKey: ["getTeam", userUuid] });
 
         toast.success(TEAM_HAS_BEEN_CREATED_TOAST);
@@ -57,9 +68,6 @@ export function CreateTeamForm({ onClose }: CreateTeamFormProps) {
         if (onClose) onClose();
       },
       onError: (error) => {
-        if (process.env.NODE_ENV === "development") {
-          console.error("Error:", error);
-        }
         toast.error((error as ApiError).response.data.message);
       },
     });
@@ -79,14 +87,22 @@ export function CreateTeamForm({ onClose }: CreateTeamFormProps) {
       enableReinitialize
     >
       <div className="flex flex-col gap-y-4">
-        <GoalkeepersSelect />
-        <DefendersSelect />
-        <MidfieldersSelect />
-        <ForwardsSelect />
-        <SubmitButton
-          title={isPending ? <Spinner size="md" /> : SUBMIT_FORM_BUTTON_LABEL}
-          mode="secondary"
-        />
+        {arePlayersLoading ? (
+          <Spinner size="md" />
+        ) : (
+          <>
+            <GoalkeepersSelect players={players.Goalkeeper} />
+            <DefendersSelect players={players.Defender} />
+            <MidfieldersSelect players={players.Midfielder} />
+            <ForwardsSelect players={players.Forward} />
+            <SubmitButton
+              title={
+                isPending ? <Spinner size="md" /> : SUBMIT_FORM_BUTTON_LABEL
+              }
+              mode="secondary"
+            />
+          </>
+        )}
       </div>
     </Formik>
   );

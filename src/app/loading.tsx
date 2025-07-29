@@ -4,8 +4,14 @@ import { Spinner } from "@heroui/react";
 export default function Loading() {
   return (
     <div className="flex min-h-svh flex-col items-center justify-center">
-      <div>{WAIT}</div>
-      <Spinner size="lg" className="mt-[20px]" />
+      <Spinner
+        variant="wave"
+        size="lg"
+        className="font-bold"
+        label={WAIT}
+        color="success"
+        labelColor="success"
+      />
     </div>
   );
 }

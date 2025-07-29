@@ -16,6 +16,7 @@ interface CommentCardProps {
   hasRecommended: boolean;
   recommendationsCount: number;
   onToggleRecommendation: () => void;
+  isRecommendationToggled: boolean;
 }
 
 export function CommentCard({
@@ -25,6 +26,7 @@ export function CommentCard({
   hasRecommended,
   recommendationsCount,
   onToggleRecommendation,
+  isRecommendationToggled,
 }: CommentCardProps) {
   const isMobile = useContext(MobileContext);
 
@@ -32,7 +34,7 @@ export function CommentCard({
     <Card className="w-[95%] bg-accentColor lg:w-[60%]">
       <CardHeader className="flex justify-between">
         <AuthorChip
-          nick={comment.user.visitor.nick ?? ENIGMA}
+          nick={comment.user.visitor.nick || ENIGMA}
           author={comment.user}
           me={currentUser}
         />
@@ -45,6 +47,7 @@ export function CommentCard({
             hasRecommended={hasRecommended}
             onPress={onToggleRecommendation}
             user={currentUser}
+            isRecommendationToggled={isRecommendationToggled}
           />
           {!isMobile && <CommentDate createdAt={comment.createdAt} />}
         </div>

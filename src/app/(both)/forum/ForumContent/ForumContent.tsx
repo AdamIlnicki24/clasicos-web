@@ -57,14 +57,15 @@ export function ForumContent() {
           queryKey: ["getComments", resourceFriendlyLink],
         });
 
+        await queryClient.invalidateQueries({
+          queryKey: ["getUserRecommendationsCount", selectedComment.user.uuid],
+        });
+
         toast.success(COMMENT_HAS_BEEN_DELETED_TOAST);
 
         setSelectedComment(null);
       },
       onError: (error) => {
-        if (process.env.NODE_ENV === "development") {
-          console.error("Error:", error);
-        }
         toast.error((error as ApiError).response.data.message);
       },
     });
@@ -73,15 +74,12 @@ export function ForumContent() {
   if (isUserLoading || isLoading) return <Loading />;
 
   if (isError) {
-    if (process.env.NODE_ENV === "development") {
-      console.error("Error:", error);
-    }
     return <div>{(error as ApiError).response.data.message}</div>;
   }
 
   return (
     <>
-      <main className="flex min-h-[80svh] flex-col items-center">
+      <main className="flex min-h-svh flex-col items-center">
         <Heading HeadingTag="h1" title={FORUM_HEADING} />
         <p className="px-3 py-8 text-center text-[1.4rem] lg:px-0 lg:text-start">
           {WELCOME_TO_FORUM}
@@ -91,7 +89,10 @@ export function ForumContent() {
         ) : user.visitor.bannedAt ? (
           <BannedUserCard bodyText={COMMENT_CANNOT_BE_CREATED} />
         ) : (
-          <CreateCommentCard nick={user.visitor.nick ?? ENIGMA} />
+          <CreateCommentCard
+            nick={user.visitor.nick || ENIGMA}
+            resourceFriendlyLink={resourceFriendlyLink}
+          />
         )}
         {comments && comments.length > 0 ? (
           <div className="flex w-full flex-col items-center gap-y-4 py-8">

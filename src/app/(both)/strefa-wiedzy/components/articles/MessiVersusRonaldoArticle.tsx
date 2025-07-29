@@ -9,15 +9,15 @@ import { Paragraph } from "../Paragraph/Paragraph";
 
 export default function MessiVersusRonaldoArticle() {
   return (
-    <article className="mx-auto flex w-[80%] flex-col pb-10 text-[22px] lg:w-[60%]">
+    <article className="mx-auto flex w-[80%] flex-col pb-10 text-[1.375rem] lg:w-[60%]">
       <div className="py-6 text-center">
         <Heading title={MESSI_VERSUS_RONALDO_ARTICLE_HEADING} HeadingTag="h1" />
       </div>
-      {/* TODO: Add sizes */}
       <div className="flex flex-col items-center">
         <div className="relative aspect-square w-[100%] sm:w-[45%]">
           <Image
             fill
+            sizes="(min-width: 640px) 45vw, 80vw"
             className="rounded-3xl object-cover pb-4"
             src={messiVersusRonaldo.src}
             alt={messiVersusRonaldo.alt}

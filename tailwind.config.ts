@@ -12,10 +12,8 @@ const config: Config = {
   theme: {
     extend: {
       colors: colors,
-      textShadow: {
-        sm: "0 1px 2px var(--tw-shadow-color)",
-        DEFAULT: "0 2px 4px var(--tw-shadow-color)",
-        lg: "0 8px 16px var(--tw-shadow-color)",
+      boxShadow: {
+        sm: "0 0px 7.2px 0.5px var(--tw-shadow-color)",
       },
     },
   },

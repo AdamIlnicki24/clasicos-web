@@ -4,22 +4,13 @@ import {
 } from "@/constants/ariaLabels";
 import { YOU_MUST_BE_LOGGED_IN } from "@/constants/errorMessages";
 import { logo } from "@/constants/images";
-import { visitorNavItems } from "@/constants/menuItems";
-import {
-  FORUM_TITLE,
-  KNOWLEDGE_ZONE_TITLE,
-  LOG_OUT_TITLE,
-} from "@/constants/titles";
+import { LOG_OUT_TITLE, PROFILE_TITLE } from "@/constants/titles";
 import { LOG_OUT_ERROR_TOAST, LOG_OUT_SUCCESS_TOAST } from "@/constants/toasts";
 import { MY_PROFILE_TOOLTIP } from "@/constants/tooltips";
-import {
-  FORUM_URL,
-  HOME_URL,
-  KNOWLEDGE_ZONE_URL,
-  PROFILE_URL,
-} from "@/constants/urls";
+import { HOME_URL, PROFILE_URL } from "@/constants/urls";
 import { MobileContext } from "@/context/MobileContext";
-import { useUser } from "@/hooks/context/useUser";
+import { NavItems } from "@/types/navItems";
+import { User } from "@/types/user";
 import {
   Avatar,
   Button,
@@ -32,7 +23,6 @@ import {
   NavbarMenu,
   NavbarMenuItem,
   NavbarMenuToggle,
-  Spinner,
   Tooltip,
 } from "@heroui/react";
 import { useRouter } from "next/navigation";
@@ -40,18 +30,30 @@ import { useContext, useState } from "react";
 import { toast } from "react-toastify";
 import { NavLink } from "../NavLink/NavLink";
 
-export function VisitorNav() {
+interface NavContentProps {
+  navItems: NavItems[];
+  showProfile?: boolean;
+  showLogout?: boolean;
+  user?: User;
+  logOut?: () => void;
+}
+
+export function NavContent({
+  navItems,
+  showProfile,
+  showLogout,
+  user,
+  logOut,
+}: NavContentProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const isMobile = useContext(MobileContext);
-
-  const { user, logOut, isUserLoading } = useUser();
 
   const router = useRouter();
 
   const handleLogout = () => {
     try {
-      logOut();
+      if (logOut) logOut();
 
       router.replace(HOME_URL);
 
@@ -61,8 +63,8 @@ export function VisitorNav() {
     }
   };
 
-  if (!user) {
-    return <div>{YOU_MUST_BE_LOGGED_IN}</div>;
+  if ((showProfile || showLogout) && !user) {
+    return <div className="text-center">{YOU_MUST_BE_LOGGED_IN}</div>;
   }
 
   return (
@@ -82,7 +84,7 @@ export function VisitorNav() {
           className="block w-[10rem] lg:w-[15rem]"
           onClick={() => isMobile && isMenuOpen && setIsMenuOpen(false)}
         >
-          <Image src={logo.src} alt={logo.alt} className="h-12 lg:h-16" />
+          <Image src={logo.src} alt={logo.alt} className="h-10 lg:h-16" />
         </Link>
       </NavbarBrand>
       <NavbarContent justify="end">
@@ -92,10 +94,8 @@ export function VisitorNav() {
         />
       </NavbarContent>
       <NavbarContent justify="end" className="hidden w-full lg:flex">
-        <NavbarItem>
-          {isUserLoading ? (
-            <Spinner size="sm" />
-          ) : (
+        {showProfile && (
+          <NavbarItem>
             <Tooltip
               content={MY_PROFILE_TOOLTIP}
               showArrow
@@ -103,56 +103,64 @@ export function VisitorNav() {
               className="text-defaultBlack"
             >
               <Button
-                onPress={() => router.push(`${PROFILE_URL}/${user.uuid}`)}
+                onPress={() => router.push(`${PROFILE_URL}/${user?.uuid}`)}
                 size="sm"
                 className="rounded-3xl"
               >
                 <Avatar size="sm" />
               </Button>
             </Tooltip>
-          )}
-        </NavbarItem>
-        <NavbarItem>
-          <NavLink
-            title={KNOWLEDGE_ZONE_TITLE}
-            href={KNOWLEDGE_ZONE_URL}
-            onClick={() => isMobile && isMenuOpen && setIsMenuOpen(false)}
-          />
-        </NavbarItem>
-        <NavbarItem>
-          <NavLink
-            title={FORUM_TITLE}
-            href={FORUM_URL}
-            onClick={() => isMobile && isMenuOpen && setIsMenuOpen(false)}
-          />
-        </NavbarItem>
-        <NavbarItem>
-          <NavLink
-            title={LOG_OUT_TITLE}
-            onClick={() => {
-              handleLogout();
-              return isMobile && setIsMenuOpen(false);
-            }}
-          />
-        </NavbarItem>
+          </NavbarItem>
+        )}
+        {navItems
+          ?.filter(({ title }) => title !== PROFILE_TITLE)
+          .map(({ title, href }) => (
+            <NavbarItem key={title}>
+              <NavLink
+                title={title}
+                href={href}
+                onClick={() => isMobile && isMenuOpen && setIsMenuOpen(false)}
+              />
+            </NavbarItem>
+          ))}
+        {showLogout && (
+          <NavbarItem>
+            <NavLink
+              title={LOG_OUT_TITLE}
+              onClick={() => {
+                handleLogout();
+                return isMobile && setIsMenuOpen(false);
+              }}
+            />
+          </NavbarItem>
+        )}
       </NavbarContent>
       <NavbarMenu>
-        {visitorNavItems.map((item) => (
-          <NavbarMenuItem key={item.title}>
+        {navItems?.map(({ title, href }) => (
+          <NavbarMenuItem key={title}>
             <NavLink
-              title={item.title}
+              title={title}
               href={
-                item.href && item.href === PROFILE_URL
-                  ? `${PROFILE_URL}/${user.uuid}`
-                  : item.href
+                title === PROFILE_TITLE ? `${PROFILE_URL}/${user?.uuid}` : href
               }
               onClick={() => {
-                if (item.title === LOG_OUT_TITLE) handleLogout();
+                if (title === LOG_OUT_TITLE) handleLogout();
                 return isMobile && setIsMenuOpen(false);
               }}
             />
           </NavbarMenuItem>
         ))}
+        {showLogout && (
+          <NavbarMenuItem>
+            <NavLink
+              title={LOG_OUT_TITLE}
+              onClick={() => {
+                handleLogout();
+                return isMobile && setIsMenuOpen(false);
+              }}
+            />
+          </NavbarMenuItem>
+        )}
       </NavbarMenu>
     </Navbar>
   );

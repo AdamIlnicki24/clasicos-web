@@ -10,7 +10,7 @@ export function NavLink({ title, isActive, ...properties }: NavLinkProps) {
     <Link
       {...(isActive ? { underline: "always" } : { underline: "hover" })}
       {...(isActive && { className: "font-bold" })}
-      className="w-full justify-center py-2 text-center text-lg font-bold text-defaultWhite hover:opacity-70 lg:text-[1.2rem]"
+      className="w-full justify-center py-2 text-center text-lg font-bold text-defaultWhite hover:opacity-70 hover:cursor-pointer lg:text-[1.2rem]"
       {...properties}
     >
       {title}

@@ -20,10 +20,6 @@ export function useAuth() {
 
   useEffect(() => {
     const unregisterAuthObserver = auth.onAuthStateChanged(async (user) => {
-      if (process.env.NODE_ENV === "development") {
-        console.log("User:", user);
-      }
-
       setAuthState({ isLoggedIn: !!user, isPending: false, user });
 
       await queryClient.invalidateQueries({ queryKey: ["getMe"] });

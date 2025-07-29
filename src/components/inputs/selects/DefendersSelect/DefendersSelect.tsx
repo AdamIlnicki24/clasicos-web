@@ -1,14 +1,18 @@
-import { SelectItem } from "@heroui/react";
-import { Select } from "../../components/Select/Select";
-import { Player } from "@/types/player";
-import { useGetPlayers } from "@/hooks/api/players/useGetPlayers";
-import { useFormikContext } from "formik";
 import { DEFENDERS_LABEL } from "@/constants/labels";
 import { DEFENDERS_LENGTH } from "@/constants/lengths";
+import { Player } from "@/types/player";
+import { SelectItem, SelectProps } from "@heroui/react";
+import { useFormikContext } from "formik";
+import { Select } from "../../components/Select/Select";
 
-export function DefendersSelect() {
-  const { data: defenders = [] } = useGetPlayers("Defender");
+interface DefendersSelectProps extends Omit<SelectProps, "children"> {
+  players: Player[];
+}
 
+export function DefendersSelect({
+  players,
+  ...properties
+}: DefendersSelectProps) {
   const { values, errors, touched, setFieldValue } = useFormikContext<{
     defenders: string[];
   }>();
@@ -28,8 +32,9 @@ export function DefendersSelect() {
       }}
       selectedKeys={new Set(values.defenders)}
       selectionMode="multiple"
+      {...properties}
     >
-      {defenders.map((defender: Player) => (
+      {players.map((defender: Player) => (
         <SelectItem
           key={defender.uuid}
         >{`${defender.name ? defender.name + " " : ""}${defender.surname}`}</SelectItem>

@@ -7,7 +7,7 @@ import { useContext } from "react";
 export const useUser = () => {
   const context = useContext(UserContext);
   if (!context) {
-    if (process.env.NODE_ENV === "development") {
+    if (process.env.NODE_ENV !== "production") {
       console.error(USER_CONTEXT_ERROR_MESSAGE);
     }
   }

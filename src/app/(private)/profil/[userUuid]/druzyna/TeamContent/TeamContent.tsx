@@ -24,6 +24,7 @@ import { MobileContext } from "@/context/MobileContext";
 import { useDeleteMyTeam } from "@/hooks/api/team/me/useDeleteMyTeam";
 import { useGetTeam } from "@/hooks/api/team/useGetTeam";
 import { useUser } from "@/hooks/context/useUser";
+import { useTeamStore } from "@/store/useTeamStore";
 import { ApiError } from "@/types/apiError";
 import { Position } from "@/types/position";
 import { Team } from "@/types/team";
@@ -71,10 +72,12 @@ export function TeamContent() {
     onOpenChange: onSuggestionModalOpenChange,
   } = useDisclosure();
 
+  const { resetTeam } = useTeamStore();
+
   if (!userUuid || isUserLoading || isTeamLoading) return <Loading />;
 
   if (!user) {
-    return <div>{YOU_MUST_BE_LOGGED_IN}</div>;
+    return <div className="text-center">{YOU_MUST_BE_LOGGED_IN}</div>;
   }
 
   const isMe = user.uuid === userUuid;
@@ -84,7 +87,7 @@ export function TeamContent() {
   const getPlayersByPosition = (position: Position) => {
     return (
       team?.teamPlayers
-        .filter(
+        ?.filter(
           (teamPlayer: TeamPlayer) => teamPlayer.player.position === position
         )
         .map((teamPlayer: TeamPlayer) => {
@@ -112,14 +115,13 @@ export function TeamContent() {
         queryClient.setQueryData<Team | undefined>(["getMyTeam"], undefined);
         queryClient.removeQueries({ queryKey: ["getTeam", userUuid] });
 
+        resetTeam();
+
         toast.success(TEAM_HAS_BEEN_DELETED_TOAST);
 
         onClose();
       },
       onError: (error) => {
-        if (process.env.NODE_ENV === "development") {
-          console.error("Error:", error);
-        }
         toast.error((error as ApiError).response.data.message);
       },
     });
@@ -136,24 +138,28 @@ export function TeamContent() {
               size={isMobile ? "md" : "lg"}
             />
           )}
-          {isMe && team ? (
+          {isMe && (
             <div className="flex justify-center gap-x-4">
-              <Button
-                title={UPDATE_TEAM_BUTTON_LABEL}
-                onPress={onUpdateTeamModalOpen}
-                mode="secondary"
-              />
-              <DeleteButton
-                title={DELETE_TEAM_BUTTON_LABEL}
-                onPress={onDeleteTeamModalOpen}
-              />
+              {team ? (
+                <>
+                  <Button
+                    title={UPDATE_TEAM_BUTTON_LABEL}
+                    onPress={onUpdateTeamModalOpen}
+                    mode="secondary"
+                  />
+                  <DeleteButton
+                    title={DELETE_TEAM_BUTTON_LABEL}
+                    onPress={onDeleteTeamModalOpen}
+                  />
+                </>
+              ) : (
+                <Button
+                  title={CREATE_TEAM_BUTTON_LABEL}
+                  onPress={onCreateTeamModalOpen}
+                  mode="secondary"
+                />
+              )}
             </div>
-          ) : (
-            <Button
-              title={CREATE_TEAM_BUTTON_LABEL}
-              onPress={onCreateTeamModalOpen}
-              mode="secondary"
-            />
           )}
           <div className="flex w-full items-center justify-center lg:py-4">
             {team ? (
@@ -164,7 +170,7 @@ export function TeamContent() {
                 forwards={forwards}
               />
             ) : (
-              <p>{TEAM_WILL_APPEAR_BELOW}</p>
+              <p className="text-center">{TEAM_WILL_APPEAR_BELOW}</p>
             )}
           </div>
           <SuggestAddingPlayerButton onPress={onSuggestionModalOpen} />

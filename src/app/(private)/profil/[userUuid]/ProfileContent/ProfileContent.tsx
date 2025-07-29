@@ -13,7 +13,7 @@ import {
   UPDATE_ABOUT_ME_DATA_BUTTON_LABEL,
 } from "@/constants/buttonLabels";
 import { YOU_MUST_BE_LOGGED_IN } from "@/constants/errorMessages";
-import { ENIGMA, NO_INFORMATION } from "@/constants/texts";
+import { ENIGMA, LOG_IN_TO_CHECK_OUT_PROFILE, NO_INFORMATION } from "@/constants/texts";
 import {
   USER_HAS_BEEN_BANNED_TOAST,
   USER_HAS_BEEN_UNBANNED_TOAST,
@@ -79,11 +79,11 @@ export function ProfileContent() {
   if (!userUuid || isUserLoading || isMeLoading) return <Loading />;
 
   if (!user || isUserError) {
-    return <div>Zaloguj się, aby zobaczyć użytkownika</div>;
+    return <div className="text-center">{LOG_IN_TO_CHECK_OUT_PROFILE}</div>;
   }
 
   if (!me) {
-    return <div>{YOU_MUST_BE_LOGGED_IN}</div>;
+    return <div className="text-center">{YOU_MUST_BE_LOGGED_IN}</div>;
   }
 
   const { visitor, createdAt } = user;
@@ -111,9 +111,6 @@ export function ProfileContent() {
         toast.success(USER_HAS_BEEN_BANNED_TOAST);
       },
       onError: (error) => {
-        if (process.env.NODE_ENV === "development") {
-          console.error("Error:", error);
-        }
         toast.error((error as ApiError).response.data.message);
       },
     });
@@ -133,9 +130,6 @@ export function ProfileContent() {
         toast.success(USER_HAS_BEEN_UNBANNED_TOAST);
       },
       onError: (error) => {
-        if (process.env.NODE_ENV === "development") {
-          console.error("Error:", error);
-        }
         toast.error((error as ApiError).response.data.message);
       },
     });
@@ -143,7 +137,7 @@ export function ProfileContent() {
 
   return (
     <>
-      <main className="min-h-[70svh]">
+      <main>
         <div className="flex justify-end pb-6 pe-4 pt-8 lg:pb-0 lg:pe-12">
           {isMe && (
             <Button
@@ -183,18 +177,21 @@ export function ProfileContent() {
             checkOutTeam={() => checkOutTeam()}
           />
         </div>
-        <UpdateProfileModal
-          visitor={visitor}
-          isOpen={isProfileModalOpen}
-          onOpenChange={onProfileModalOpenChange}
-        />
-        <UpdateNickModal
-          visitor={visitor}
-          isOpen={isNickModalOpen}
-          onOpenChange={onNickModalOpenChange}
-        />
-        <EnigmaModal isOpen={isEnigmaModalOpen} onOpenChange={onEnigmaModalOpenChange} />
       </main>
+      <UpdateProfileModal
+        visitor={visitor}
+        isOpen={isProfileModalOpen}
+        onOpenChange={onProfileModalOpenChange}
+      />
+      <UpdateNickModal
+        visitor={visitor}
+        isOpen={isNickModalOpen}
+        onOpenChange={onNickModalOpenChange}
+      />
+      <EnigmaModal
+        isOpen={isEnigmaModalOpen}
+        onOpenChange={onEnigmaModalOpenChange}
+      />
     </>
   );
 }

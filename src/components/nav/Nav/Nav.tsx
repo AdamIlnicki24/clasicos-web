@@ -1,22 +1,30 @@
 "use client";
 
+import {
+  adminNavItems,
+  publicNavItems,
+  visitorNavItems,
+} from "@/constants/menuItems";
 import { useUser } from "@/hooks/context/useUser";
-import { AdminNav } from "../AdminNav/AdminNav";
-import { PublicNav } from "../PublicNav/PublicNav";
-import { VisitorNav } from "../VisitorNav/VisitorNav";
 import { Spinner } from "@heroui/react";
+import { NavContent } from "../NavContent/NavContent";
 
 export function Nav() {
-  const { user, isUserLoading } = useUser();
+  const { user, isUserLoading, logOut } = useUser();
 
-  if (isUserLoading)
-    return (
-      <div className="flex items-center justify-center">
-        <Spinner size="lg" />
-      </div>
-    );
-
-  if (!user) return <PublicNav />;
-
-  return user.role === "Admin" ? <AdminNav /> : <VisitorNav />;
+  return isUserLoading ? (
+    <div className="flex justify-end">
+      <Spinner size="sm" color="default" />
+    </div>
+  ) : !user ? (
+    <NavContent navItems={publicNavItems} />
+  ) : (
+    <NavContent
+      navItems={user.role === "Visitor" ? visitorNavItems : adminNavItems}
+      showProfile
+      showLogout
+      user={user}
+      logOut={logOut}
+    />
+  );
 }

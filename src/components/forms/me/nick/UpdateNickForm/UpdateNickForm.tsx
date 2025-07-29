@@ -32,10 +32,6 @@ export function UpdateNickForm({ onClose, visitor }: UpdateNickFormProps) {
   const { mutate, isPending } = useUpdateMyNick();
 
   const onSubmitHandler = (values: UpdateNickFormData) => {
-    if (process.env.NODE_ENV === "development") {
-      console.log("Submitted values:", values);
-    }
-
     mutate(values, {
       onSuccess: async () => {
         await queryClient.invalidateQueries({
@@ -47,15 +43,12 @@ export function UpdateNickForm({ onClose, visitor }: UpdateNickFormProps) {
         if (onClose) onClose();
       },
       onError: (error) => {
-        if (process.env.NODE_ENV === "development") {
-          console.error("Error:", error);
-        }
         toast.error((error as ApiError).response.data.message);
       },
     });
   };
 
-  initialValues.nick = visitor.nick ?? ENIGMA;
+  initialValues.nick = visitor.nick || ENIGMA;
 
   return (
     <Formik

@@ -23,8 +23,6 @@ import { useRouter } from "next/navigation";
 export function ForgotPasswordForm() {
   const [isPending, setIsPending] = useState(false);
 
-  // TODO: Customize e-mail
-
   const router = useRouter();
 
   const onSubmitHandler = async (values: ForgotPasswordFormData) => {
@@ -36,10 +34,7 @@ export function ForgotPasswordForm() {
       await sendPasswordResetEmail(auth, values.email);
       router.replace(LOG_IN_URL);
       toast.success(RESET_PASSWORD_EMAIL_SENT_TOAST);
-    } catch (error) {
-      if (process.env.NODE_ENV === "development") {
-        console.error(error);
-      }
+    } catch {
       toast.error(EMAIL_HAS_NOT_BEEN_SENT_ERROR_TOAST);
     } finally {
       setIsPending(false);
@@ -52,17 +47,19 @@ export function ForgotPasswordForm() {
       onSubmit={onSubmitHandler}
       validationSchema={forgotPasswordFormSchema}
     >
-      <div className="flex flex-col gap-4">
-        <div className="grid grid-cols-1 gap-4">
-          <EmailInput />
+      {({ values }) => (
+        <div className="flex w-full flex-col gap-4 lg:w-[60%]">
+          <div className="grid grid-cols-1 gap-4">
+            <EmailInput value={values.email} />
+          </div>
+          <SubmitButton
+            title={
+              isPending ? <Spinner size="md" /> : RESET_PASSWORD_BUTTON_LABEL
+            }
+            mode="primary"
+          />
         </div>
-        <SubmitButton
-          title={
-            isPending ? <Spinner size="md" /> : RESET_PASSWORD_BUTTON_LABEL
-          }
-          mode="primary"
-        />
-      </div>
+      )}
     </Formik>
   );
 }

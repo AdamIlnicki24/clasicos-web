@@ -26,7 +26,7 @@ export function SuggestFixForm({ onClose }: SuggestFixFormProps) {
   const { user } = useUser();
 
   if (!user) {
-    return <div>{YOU_MUST_BE_LOGGED_IN}</div>;
+    return <div className="text-center">{YOU_MUST_BE_LOGGED_IN}</div>;
   }
 
   const { nick } = user.visitor;
@@ -35,10 +35,6 @@ export function SuggestFixForm({ onClose }: SuggestFixFormProps) {
     setIsPending(true);
 
     await createFixSuggestion({ message, nick }).then((response) => {
-      if (process.env.NODE_ENV === "development") {
-        console.log("Response:", response);
-      }
-
       if (response.success) {
         toast.success(SUGGESTION_HAS_BEEN_SENT_TOAST);
 

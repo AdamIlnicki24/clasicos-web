@@ -8,47 +8,44 @@ import { useCreateComment } from "@/hooks/api/comments/useCreateComment";
 import { ApiError } from "@/types/apiError";
 import { Spinner } from "@heroui/react";
 import { useQueryClient } from "@tanstack/react-query";
-import { Formik } from "formik";
-import { useParams } from "next/navigation";
+import { Form, Formik } from "formik";
 import { toast } from "react-toastify";
 import {
   CreateCommentFormData,
   createCommentFormSchema,
   initialValues,
 } from "./createCommentFormSchema";
+import { useRef } from "react";
 
 interface CreateCommentFormProps {
   onClose?: () => void;
+  resourceFriendlyLink: string;
 }
 
-export function CreateCommentForm({ onClose }: CreateCommentFormProps) {
+export function CreateCommentForm({
+  onClose,
+  resourceFriendlyLink,
+}: CreateCommentFormProps) {
+  const formRef = useRef<HTMLFormElement>(null);
+
   const queryClient = useQueryClient();
 
-  const { resourceFriendlyLink } = useParams();
-
-  const { mutate, isPending } = useCreateComment(
-    resourceFriendlyLink as string
-  );
+  const { mutate, isPending } = useCreateComment(resourceFriendlyLink);
 
   const onSubmitHandler = (values: CreateCommentFormData) => {
-    if (process.env.NODE_ENV === "development") {
-      console.log("Submitted values:", values);
-    }
-
     mutate(values, {
       onSuccess: async () => {
         await queryClient.invalidateQueries({
           queryKey: ["getComments", resourceFriendlyLink],
         });
 
+        formRef.current?.reset();
+
         toast.success(COMMENT_HAS_BEEN_CREATED_TOAST);
 
         if (onClose) onClose();
       },
       onError: (error) => {
-        if (process.env.NODE_ENV === "development") {
-          console.error("Error:", error);
-        }
         toast.error((error as ApiError).response.data.message);
       },
     });
@@ -60,12 +57,12 @@ export function CreateCommentForm({ onClose }: CreateCommentFormProps) {
       onSubmit={onSubmitHandler}
       validationSchema={createCommentFormSchema}
     >
-      <div className="flex flex-col">
+      <Form ref={formRef} className="flex flex-col">
         <CommentContentTextarea />
         <SubmitButton
           title={isPending ? <Spinner size="md" /> : SUBMIT_FORM_BUTTON_LABEL}
         />
-      </div>
+      </Form>
     </Formik>
   );
 }

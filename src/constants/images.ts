@@ -17,8 +17,3 @@ export const joseMourinho = {
   src: "/images/jose-mourinho.webp",
   alt: "Jose Mourinho - człowiek, który zmienił El Clasico",
 };
-
-export const logoBase64 = {
-  src: "",
-  alt: "El Clasico - Barcelona vs Real Madryt",
-};

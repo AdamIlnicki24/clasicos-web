@@ -1,19 +1,24 @@
 import { BallIcon } from "@/components/icons/BallIcon";
 import { RECOMMENDED_BY } from "@/constants/texts";
-import { LOG_IN_TO_RECOMMEND_COMMENT_TOOLTIP, RECOMMENDATION_CANNOT_BE_CREATED_TOOLTIP } from "@/constants/tooltips";
+import {
+  LOG_IN_TO_RECOMMEND_COMMENT_TOOLTIP,
+  RECOMMENDATION_CANNOT_BE_CREATED_TOOLTIP,
+} from "@/constants/tooltips";
 import { User } from "@/types/user";
-import { Button, ButtonProps, Tooltip } from "@heroui/react";
+import { Button, ButtonProps, Spinner, Tooltip } from "@heroui/react";
 
 interface BallWithCounterButtonProps extends ButtonProps {
   count: number;
   hasRecommended: boolean;
   user?: User;
+  isRecommendationToggled: boolean;
 }
 
 export function BallWithCounterButton({
   count,
   hasRecommended,
   user,
+  isRecommendationToggled,
   ...properties
 }: BallWithCounterButtonProps) {
   const isBanned = Boolean(user?.visitor.bannedAt);
@@ -31,10 +36,8 @@ export function BallWithCounterButton({
         {...properties}
       >
         <BallIcon className="pointer-events-none opacity-25" />
-        <span
-          className="pointer-events-none absolute inset-0 flex items-center justify-center text-[1.25rem] font-extrabold text-defaultWhite"
-        >
-          {count}
+        <span className="pointer-events-none absolute inset-0 flex items-center justify-center text-[1.25rem] font-extrabold text-defaultWhite">
+          {isRecommendationToggled ? <Spinner size="sm" /> : count}
         </span>
       </Button>
     </div>
@@ -48,7 +51,6 @@ export function BallWithCounterButton({
           : RECOMMENDATION_CANNOT_BE_CREATED_TOOLTIP
       }
       color={!user ? "warning" : "danger"}
-      showArrow
     >
       {button}
     </Tooltip>
