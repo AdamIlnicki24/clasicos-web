@@ -6,8 +6,10 @@ import { CreateCommentCard } from "@/components/cards/comments/CreateCommentCard
 import { NoAccountCard } from "@/components/cards/NoAccountCard/NoAccountCard";
 import { CommentCardContainer } from "@/components/containers/CommentCardContainer/CommentCardContainer";
 import { Heading } from "@/components/headings/Heading/Heading";
+import { ScrollLink } from "@/components/links/ScrollLink/ScrollLink";
 import { DeleteCommentModal } from "@/components/modals/DeleteCommentModal/DeleteCommentModal";
 import { COMMENTS_HEADING } from "@/constants/headings";
+import { COMMENTS_ID } from "@/constants/ids";
 import {
   COMMENT_CANNOT_BE_CREATED,
   ENIGMA,
@@ -18,6 +20,7 @@ import { COMMENT_HAS_BEEN_DELETED_TOAST } from "@/constants/toasts";
 import { useDeleteComment } from "@/hooks/api/comments/useDeleteComment";
 import { useGetComments } from "@/hooks/api/comments/useGetComments";
 import { useUser } from "@/hooks/context/useUser";
+import { useScrollAtBottom } from "@/hooks/scroll/useScrollAtBottom";
 import { ApiError } from "@/types/apiError";
 import { CommentWithCount } from "@/types/comment";
 import { useQueryClient } from "@tanstack/react-query";
@@ -30,6 +33,8 @@ export function ArticleContent({
 }: {
   ArticleComponent: ReactNode;
 }) {
+  const atBottom = useScrollAtBottom();
+
   const { resourceFriendlyLink } = useParams();
 
   const [selectedComment, setSelectedComment] =
@@ -79,10 +84,13 @@ export function ArticleContent({
   }
 
   return (
-    <>
+    <div>
       <div className="grid min-h-svh place-items-center">
         <main>{ArticleComponent}</main>
-        <div className="my-6 rounded-br-3xl rounded-tr-3xl bg-primaryColor pe-12 ps-4">
+        <div
+          className="my-6 rounded-br-3xl rounded-tr-3xl bg-primaryColor pe-12 ps-4"
+          id={COMMENTS_ID}
+        >
           <Heading HeadingTag="h2" title={COMMENTS_HEADING} />
         </div>
         {!user ? (
@@ -120,6 +128,10 @@ export function ArticleContent({
         onDeleteHandler={onDeleteCommentHandler}
         isPending={isPending}
       />
-    </>
+      <ScrollLink
+        href={`${atBottom ? "#" : `#${COMMENTS_ID}`}`}
+        rotated={atBottom}
+      />
+    </div>
   );
 }

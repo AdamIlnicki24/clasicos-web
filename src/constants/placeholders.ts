@@ -1,4 +1,3 @@
-// TODO: Improve placeholders
 export const EMAIL_PLACEHOLDER = "jan.kowalski@mail.com";
 export const PASSWORD_PLACEHOLDER = "Wpisz twoje hasło";
 export const PLAYER_SURNAME_PLACEHOLDER = "Wpisz nazwisko piłkarza";
