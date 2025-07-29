@@ -53,9 +53,7 @@ export default function RootLayout({
             newestOnTop={false}
             closeOnClick
             rtl={false}
-            pauseOnFocusLoss
             draggable
-            pauseOnHover
             theme="light"
             transition={Bounce}
             style={{ top: "4rem" }}
