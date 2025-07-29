@@ -9,7 +9,7 @@ import { luisFigo } from "@/constants/images";
 
 // TODO: Inner linking between articles
 
-export default function FigoArticle() {
+export default function FigoHistoryArticle() {
   return (
     <article className="mx-auto flex w-[80%] flex-col pb-10 text-[22px] lg:w-[60%]">
       <div className="py-6 text-center">

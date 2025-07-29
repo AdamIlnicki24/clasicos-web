@@ -5,12 +5,14 @@ import { ArticleContent } from "./ArticleContent/ArticleContent";
 
 const componentsMap = {
   "jak-luis-figo-przeszedl-z-barcelony-do-realu-i-odmienil-el-clasico": dynamic(
-    () => import("../components/articles/FigoArticle")
+    () => import("../components/articles/FigoHistoryArticle")
   ),
   "messi-kontra-ronaldo-ikoniczne-pojedynki-w-el-clasico": dynamic(
     () => import("../components/articles/MessiVersusRonaldoArticle")
   ),
-  // TODO: Add next article here
+  "era-mourinho-w-realu-jak-portugalczyk-zmienil-oblicze-el-clasico": dynamic(
+    () => import("../components/articles/MourinhoEraArticle")
+  ),
 } as const;
 
 export async function generateStaticParams() {

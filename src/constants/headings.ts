@@ -3,6 +3,8 @@ export const FIGO_HISTORY_ARTICLE_HEADING =
   "Jak Luis Figo przeszedł z Barcelony do Realu i odmienił Clasicos";
 export const MESSI_VERSUS_RONALDO_ARTICLE_HEADING =
   "Messi kontra Ronaldo - ikoniczne pojedynki w El Clasico";
+export const MOURINHO_ERA_ARTICLE_HEADING =
+  "Era Mourinho w Realu - jak Portugalczyk zmienił oblicze El Clasico";
 export const COMMENTS_HEADING = "Komentarze:";
 export const ABOUT_ME_HEADING = "O mnie";
 export const RESET_PASSWORD_HEADING = "Zresetuj hasło";

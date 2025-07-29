@@ -3,3 +3,6 @@ export const FIGO_HISTORY_ARTICLE_LEAD =
 
 export const MESSI_VERSUS_RONALDO_ARTICLE_LEAD =
   "El Clasico od lat elektryzuje kibiców futbolu, a rywalizacja między Leo Messim i Cristiano Ronaldo zawsze rozgrzewała wyobraźnię fanów. Okres wspólnej gry Messiego i Ronaldo (2009-2018) w Hiszpanii często bywa uznawany za najciekawszy w historii El Clasico. W początkach obaj byli wówczas u szczytu formy - Messi jako lider Barcelony, zdobywca swojej pierwszej Złotej Piłki z dużą przewagą nad Ronaldo, a Cristiano - świeżo po transferze do Realu za rekordowe na tamten czas 80 milionów funtów. W latach 2009-2018 obaj napastnicy regularnie spotykali się w ligowych El Clasico oraz w krajowych pucharach czy Lidze Mistrzów, czyniąc tę erę niezapomnianą dla historii Klasyków.";
+
+export const MOURINHO_ERA_ARTICLE_LEAD =
+  "W latach 2010-2013, gdy na stanowisku trenera Realu Madryt zasiadał José Mourinho, oblicze El Clasico zmieniło się radykalnie. Portugalczyk przyniósł ze sobą bezkompromisowe podejście, ostre słowa w mediach i nowatorskie rozwiązania na boisku. To wszystko sprawiło, że mecze z Barceloną stały się prawdziwym dramatem pełnym napięcia i pasji.";

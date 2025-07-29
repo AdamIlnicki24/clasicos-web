@@ -12,6 +12,7 @@ export const PROFILE_URL = "/profil";
 export const TEAM_URL = "/druzyna";
 export const FIGO_HISTORY_URL = `${KNOWLEDGE_ZONE_URL}/jak-luis-figo-przeszedl-z-barcelony-do-realu-i-odmienil-el-clasico`;
 export const MESSI_VERSUS_RONALDO_URL = `${KNOWLEDGE_ZONE_URL}/messi-kontra-ronaldo-ikoniczne-pojedynki-w-el-clasico`;
+export const MOURINHO_ERA_URL = `${KNOWLEDGE_ZONE_URL}/era-mourinho-w-realu-jak-portugalczyk-zmienil-oblicze-el-clasico`;
 
 // URLs for the needs of the sitemap:
 export const HOME_SITEMAP_URL = "https://clasicos.pl";
@@ -20,3 +21,4 @@ export const FORUM_SITEMAP_URL = `${HOME_SITEMAP_URL}${FORUM_URL}`;
 
 export const FIGO_HISTORY_SITEMAP_URL = `${HOME_SITEMAP_URL}${FIGO_HISTORY_URL}`;
 export const MESSI_VERSUS_RONALDO_SITEMAP_URL = `${HOME_SITEMAP_URL}${MESSI_VERSUS_RONALDO_URL}`;
+export const MOURINHO_ERA_SITEMAP_URL = `${HOME_SITEMAP_URL}${MOURINHO_ERA_URL}`;
