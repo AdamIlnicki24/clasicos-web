@@ -9,7 +9,7 @@ import { Paragraph } from "../Paragraph/Paragraph";
 
 export default function MourinhoEraArticle() {
   return (
-    <article className="mx-auto flex w-[80%] flex-col pb-10 text-[22px] lg:w-[60%]">
+    <article className="mx-auto flex w-[80%] flex-col pb-10 text-[1.375rem] lg:w-[60%]">
       <div className="py-6 text-center">
         <Heading title={MOURINHO_ERA_ARTICLE_HEADING} HeadingTag="h1" />
       </div>
@@ -141,7 +141,7 @@ export default function MourinhoEraArticle() {
           muzeum, co Real uznał za obrazę.
         </li>
         <li>
-          <span className="font-bold">Półfinały Ligi Mistrzów 2011</span> -
+          <span className="font-bold">Półfinały Ligi Mistrzów w 2011</span> -
           rywalizacja w LM w 2011 roku to jeden z najbardziej pamiętnych
           momentów ery Mourinho. W pierwszym meczu w Madrycie Barcelona wygrała
           2:0 po dwóch golach Messiego, a Pepe otrzymał czerwoną kartkę za

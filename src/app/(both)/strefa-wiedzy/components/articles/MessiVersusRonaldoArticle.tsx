@@ -9,7 +9,7 @@ import { Paragraph } from "../Paragraph/Paragraph";
 
 export default function MessiVersusRonaldoArticle() {
   return (
-    <article className="mx-auto flex w-[80%] flex-col pb-10 text-[22px] lg:w-[60%]">
+    <article className="mx-auto flex w-[80%] flex-col pb-10 text-[1.375rem] lg:w-[60%]">
       <div className="py-6 text-center">
         <Heading title={MESSI_VERSUS_RONALDO_ARTICLE_HEADING} HeadingTag="h1" />
       </div>
