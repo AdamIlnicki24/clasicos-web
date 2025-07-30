@@ -83,6 +83,11 @@ export default function FigoHistoryArticle() {
         dla późniejszego awansu, a media chwaliły go za klasę i zaangażowanie,
         mimo że sam czuł narastającą frustrację.
       </Paragraph>
+      <Heading
+        title="Podziały w szatni i konflikt z Van Gaalem"
+        HeadingTag="h2"
+        size="md"
+      />
       <Paragraph>
         Narastał również konflikt Portugalczyka z trenerem. Według późniejszych
         relacji Van Gaal atakował Figo i sugerował, że to on prowokował ataki
@@ -92,6 +97,11 @@ export default function FigoHistoryArticle() {
         kulturowymi i językowymi. W tak zmienionej rzeczywistości ani Figo, ani
         większość kolegów nie byli już bezwarunkowo pewni swojej pozycji.
       </Paragraph>
+      <Heading
+        title="Kulisy transferu i polityczne rozgrywki lata 2000"
+        HeadingTag="h2"
+        size="md"
+      />
       <Paragraph>
         Lato 2000 roku było przełomowe dla <strong>El Clásico</strong> -
         Barcelona i Real wymieniły prezesów, a kulminacją emocji stał się
@@ -230,6 +240,7 @@ export default function FigoHistoryArticle() {
         prezentacji Figo. To był pierwszy z jego Galácticos - później mieli
         nadejść Zidane, Ronaldo, Beckham i reszta gwiazd.
       </Paragraph>
+      <Heading title="Początek ery Galácticos" HeadingTag="h2" size="md" />
       <Paragraph>
         Figo nie wyglądał na szczęśliwego. Jego twarz zdradzała ciężar, mimo że
         przed chwilą parafował umowę z pięciokrotnie wyższymi zarobkami. Jeden z
