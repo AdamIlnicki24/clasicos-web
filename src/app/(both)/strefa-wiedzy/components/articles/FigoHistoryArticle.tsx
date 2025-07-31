@@ -29,8 +29,8 @@ export default function FigoHistoryArticle() {
       <Paragraph>
         Kiedy w 1995 roku Luís Figo trafił do Barcelony, zrobił to niemal bez
         rozgłosu - klub zapłacił Sportingowi zaledwie 2.2 mln funtów, a
-        Portugalczyk dołączył do zespołu. W ostatnim sezonie Johana Cruyffa
-        Portugalczyk otrzymał czas na aklimatyzację. Już jednak w pierwszym{" "}
+        Portugalczyk dołączył do zespołu. W ostatnim sezonie Johana Cruyffa Figo
+        otrzymał czas na aklimatyzację. Już jednak w pierwszym{" "}
         <strong>El Clásico</strong> zaimponował skutecznością: po remisie na
         Bernabéu, w rewanżu na Camp Nou zdobył drugą bramkę w zwycięstwie 3:0.
       </Paragraph>
@@ -58,17 +58,16 @@ export default function FigoHistoryArticle() {
         publiczności zmieniała się jego rola: stał się ulubieńcem Camp Nou oraz
         kapitanem Barcelony. Robiło wrażenie tak silne zaangażowanie
         obcokrajowca w katalońską tożsamość. Porównywano go nawet z dziedzictwem
-        Cruyffa - zdaniem ówczesnych komentatorów Figo nie był wprawdzie
-        urodzony w Katalonii, ale uważano go za jednego z nich. Kibice wyrażali
-        entuzjazm przy każdej jego akcji, a on wzrastał w oczach fanów,
-        nabierając pewności siebie i stając się idolem Barcelony. Jego transfer
-        do Realu w 2000 roku całkowicie zniszczył tę więź. Fani poczuli się
-        oszukani. Przed wyjazdem do Madrytu darzyli go ogromną sympatią, a
-        poczucie zdrady było nie do zniesienia. Późniejsze powroty gracza do
-        Camp Nou w białej koszulce Realu kończyły się spektakularnymi protestami
-        kibiców - pomidory, petardy, a nawet rzucany na murawę świński łeb - co
-        tylko świadczyło o tym, jak bardzo dobitna była relacja między Figo a
-        katalońską publicznością.
+        Cruyffa - Figo nie był wprawdzie urodzony w Katalonii, ale uważano go za
+        jednego z nich. Kibice wyrażali entuzjazm przy każdej jego akcji, a on
+        wzrastał w oczach fanów, nabierając pewności siebie i stając się idolem
+        Barcelony. Jego transfer do Realu w 2000 roku całkowicie zniszczył tę
+        więź. Fani poczuli się oszukani. Przed wyjazdem do Madrytu darzyli go
+        ogromną sympatią, a poczucie zdrady było nie do zniesienia. Późniejsze
+        powroty gracza do Camp Nou w białej koszulce Realu kończyły się
+        spektakularnymi protestami kibiców - pomidory, petardy, a nawet rzucany
+        na murawę świński łeb - co tylko świadczyło o tym, jak bardzo dobitna
+        była relacja między Figo a katalońską publicznością.
       </Paragraph>
       <Heading title="Napięcia wewnątrz Barcelony" HeadingTag="h2" size="md" />
       <Paragraph>
@@ -90,12 +89,13 @@ export default function FigoHistoryArticle() {
       />
       <Paragraph>
         Narastał również konflikt Portugalczyka z trenerem. Według późniejszych
-        relacji Van Gaal atakował Figo i sugerował, że to on prowokował ataki
-        kibiców, na co Portugalczyk reagował oburzeniem. W klubie było coraz
-        bardziej niespokojnie - drużyna skoncentrowana na zwycięstwach walczyła
-        z wewnętrznymi rywalizacjami, niekiedy spowodowanymi różnicami
-        kulturowymi i językowymi. W tak zmienionej rzeczywistości ani Figo, ani
-        większość kolegów nie byli już bezwarunkowo pewni swojej pozycji.
+        relacji Van Gaal atakował Figo i sugerował, że to on prowokował złość
+        kibiców w stosunku do Holendra, na co Portugalczyk reagował oburzeniem.
+        W klubie było coraz bardziej niespokojnie - drużyna skoncentrowana na
+        zwycięstwach walczyła z wewnętrznymi rywalizacjami, niekiedy
+        spowodowanymi różnicami kulturowymi i językowymi. W tak zmienionej
+        rzeczywistości ani Figo, ani większość kolegów nie byli już bezwarunkowo
+        pewni swojej pozycji.
       </Paragraph>
       <Heading
         title="Kulisy transferu i polityczne rozgrywki lata 2000"
@@ -119,7 +119,7 @@ export default function FigoHistoryArticle() {
         pensji Portugalczyka.
       </Paragraph>
       <Paragraph>
-        W Madrycie natomiast Lorenzo Sanz świętował ósmy triumf w Pucharze
+        W Madrycie natomiast Lorenzo Sanz świętował ósmy triumf Realu w Pucharze
         Europy i natychmiast ogłosił przyspieszone wybory prezydenckie, licząc
         na zwycięstwo w wyniku potencjalnego zadziałania „efektu podwójnego
         wygrania Ligi Mistrzów” z 1998 i 2000 roku. Jego kontrkandydatem został
@@ -148,15 +148,15 @@ export default function FigoHistoryArticle() {
       <Paragraph>
         Gdy informacja o zamiarach Figo dotarła do Barcelony, wywołała sensację.
         Klub znajdował się w politycznym impasie między odejściem Núñeza a
-        kolejnymi wyborami - miał stracić jedną ze swoich największych gwiazd na
-        rzecz odwiecznego rywala. Gaspart zapytał Figo: „Jak możesz nam to
-        robić?” Portugalczyk odpowiedział, że jego kontrakt w Barcelonie jest za
-        niski. Gaspart obiecał więc, że jeśli wygra wybory, wyrówna ofertę
-        Realu. Figo nie był jednak pewny zwycięstwa Gasparta. Przyszły prezes
-        Barcelony, aby uspokoić sytuację, zaproponował wydanie publicznego
-        oświadczenia lojalności Figo wobec Barcelony. Wspólnie z Asensio,
-        właścicielem prasowego dziennika „Sport” i krewnym Lorenzo Sanza,
-        załatwili reportaż z wakacji Portugalczyka.
+        kolejnymi wyborami - a teraz dodatkowo miał stracić jedną ze swoich
+        największych gwiazd na rzecz odwiecznego rywala. Gaspart zapytał Figo:
+        „Jak możesz nam to robić?” Portugalczyk odpowiedział, że jego kontrakt w
+        Barcelonie jest za niski. Gaspart obiecał więc, że jeśli wygra wybory,
+        wyrówna ofertę Realu. Figo nie był jednak pewny zwycięstwa Gasparta.
+        Przyszły prezes Barcelony, aby uspokoić sytuację, zaproponował wydanie
+        publicznego oświadczenia lojalności Figo wobec Barcelony. Wspólnie z
+        Asensio, właścicielem prasowego dziennika „Sport” i krewnym Lorenzo
+        Sanza, załatwili reportaż z wakacji Portugalczyka.
       </Paragraph>
       <Paragraph>
         Po zakończeniu Euro 2000 Figo wypoczywał na Korsyce. 9 lipca na
@@ -169,7 +169,7 @@ export default function FigoHistoryArticle() {
         Zapowiedział, że gdyby wygrał i Figo się nie pojawił, to Perez
         zrekompensuje to wszystkim socios klubu ze stolicy - mieli oni otrzymać
         darmowe karnety na wszystkie domowe mecze Realu przez cały sezon. Była
-        to jego karta przetargowa: układy przewidywały kary finansowe - pięć
+        to jego karta przetargowa: układ przewidywał kary finansowe - pięć
         miliardów peset, które Veiga i Figo mieliby zapłacić, gdyby wycofali się
         z transferu.
       </Paragraph>
@@ -204,7 +204,7 @@ export default function FigoHistoryArticle() {
         najlepszą drużynę na świecie. Potrzebujemy ciebie - obiecuję Złotą Piłkę
         i Ligę Mistrzów”. Figo jednak odparł, że to wszystko jest dla niego zbyt
         ryzykowne, boi się o rodzinę i nie wyobraża sobie przejścia do Realu.
-        Rozmowa trwała do świtu - gdy Pérez dopytywał, czego Portugalczyk
+        Rozmowa trwała do świtu - gdy Pérez dopytał, czego jeszcze Portugalczyk
         oczekuje w zamian za zgodę, atmosfera nieco się rozluźniła.
       </Paragraph>
       <Paragraph>
