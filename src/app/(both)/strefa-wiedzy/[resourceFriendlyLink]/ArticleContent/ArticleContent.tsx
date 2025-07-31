@@ -20,7 +20,7 @@ import { COMMENT_HAS_BEEN_DELETED_TOAST } from "@/constants/toasts";
 import { useDeleteComment } from "@/hooks/api/comments/useDeleteComment";
 import { useGetComments } from "@/hooks/api/comments/useGetComments";
 import { useUser } from "@/hooks/context/useUser";
-import { useScrollAtBottom } from "@/hooks/scroll/useScrollAtBottom";
+import { useScrollAtComments } from "@/hooks/scroll/useScrollAtComments";
 import { ApiError } from "@/types/apiError";
 import { CommentWithCount } from "@/types/comment";
 import { useQueryClient } from "@tanstack/react-query";
@@ -33,7 +33,7 @@ export function ArticleContent({
 }: {
   ArticleComponent: ReactNode;
 }) {
-  const atBottom = useScrollAtBottom();
+  const isAtComments = useScrollAtComments(COMMENTS_ID, 100);
 
   const { resourceFriendlyLink } = useParams();
 
@@ -84,7 +84,7 @@ export function ArticleContent({
   }
 
   return (
-    <div>
+    <>
       <div className="grid min-h-svh place-items-center">
         <main>{ArticleComponent}</main>
         <div
@@ -129,9 +129,9 @@ export function ArticleContent({
         isPending={isPending}
       />
       <ScrollLink
-        href={`${atBottom ? "#" : `#${COMMENTS_ID}`}`}
-        rotated={atBottom}
+        href={`${isAtComments ? "#" : `#${COMMENTS_ID}`}`}
+        rotated={isAtComments}
       />
-    </div>
+    </>
   );
 }
