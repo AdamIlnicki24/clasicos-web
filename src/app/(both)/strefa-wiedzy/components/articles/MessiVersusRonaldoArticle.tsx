@@ -28,14 +28,14 @@ export default function MessiVersusRonaldoArticle() {
       <Heading title="Początki rywalizacji" HeadingTag="h2" size="md" />
       <Paragraph>
         Rywalizacja nabrała tempa latem 2009 roku, gdy Ronaldo dołączył do Realu
-        Madryt. Latem Real potwierdził transfer Portugalczyka z Manchesteru
-        United - kwota 80 milionów funtów była wówczas rekordowa na rynku
-        transferowym. Do Realu przenosił się zawodnik przez wielu uznawany za
-        najlepszego na świecie. Ronaldo zdobył swoją pierwszą Złotą Piłkę w 2008
-        roku, podczas gdy Messi stawał się gwiazdą Barcelony, a sam otrzymał to
-        indywidualne trofeum w 2009 roku, wyprzedzając w głosowaniu Ronaldo o
-        240 punktów. Od tego momentu każde starcie Barcelony z Realem stało się
-        bezpośrednim porównaniem ich umiejętności.
+        Madryt. Latem Królewscy potwierdzili transfer Portugalczyka z
+        Manchesteru United - kwota 80 milionów funtów była wówczas rekordowa na
+        rynku transferowym. Do Realu przenosił się zawodnik przez wielu uznawany
+        za najlepszego na świecie. Ronaldo zdobył swoją pierwszą Złotą Piłkę w
+        2008 roku, podczas gdy Messi stawał się gwiazdą Barcelony, a sam
+        otrzymał to indywidualne trofeum w 2009 roku, wyprzedzając w głosowaniu
+        Ronaldo o 240 punktów. Od tego momentu każde starcie Barcelony z Realem
+        stało się bezpośrednim porównaniem ich umiejętności.
       </Paragraph>
       <Paragraph>
         Ronaldo w momencie transferu był wielkim piłkarzem. Wprawdzie było to
@@ -79,9 +79,9 @@ export default function MessiVersusRonaldoArticle() {
         size="md"
       />
       <Paragraph>
-        W trakcie wspólnych lat w Hiszpanii oba kluby stworzyły wiele
-        spektakularnych spotkań, które stały się częścią piłkarskiej historii.
-        Oto niektóre z najważniejszych:
+        W trakcie wspólnych lat w Messiego i Ronaldo Hiszpanii, Barcelona i Real
+        odbyły wiele spektakularnych spotkań, które stały się częścią
+        piłkarskiej historii. Oto niektóre z najważniejszych:
       </Paragraph>
       <ul className="list-disc space-y-3 ps-4 lg:ps-8">
         <li>
@@ -151,12 +151,12 @@ export default function MessiVersusRonaldoArticle() {
         Clasico przywołuje wspomnienia tamtej ery - kibice i komentatorzy nadal
         zestawiają statystyki obu gwiazd i wspominają ich niezapomniane starcia.
         Jak podkreślił jeden z dziennikarzy: ”Messi jest niekwestionowanym
-        królem El Clasico” - co w praktyce oznacza, że to on w derbach zdobywał
-        więcej punktów dla Barcelony, mimo że Ronaldo potrafił mu dorównać w
-        najbardziej spektakularnych momentach. W rezultacie starcia El Clasico z
-        udziałem Messiego i Ronaldo przeszły do legendy i pozostaną wzorcem
-        doskonałego widowiska sportowego, nawet gdy obaj gracze kontynuują
-        kariery już poza Hiszpanią.
+        królem El Clasico” - co w praktyce oznacza, że to on dominował w
+        Klasykach, mimo że Ronaldo potrafił mu dorównać w najbardziej
+        spektakularnych momentach. W rezultacie starcia El Clasico z udziałem
+        Messiego i Ronaldo przeszły do legendy i pozostaną wzorcem doskonałego
+        widowiska sportowego, nawet gdy obaj gracze kontynuują kariery już poza
+        Hiszpanią.
       </Paragraph>
       <Paragraph>
         Epoka wspólnej gry Leo Messiego i Cristiano Ronaldo w Hiszpanii to złoty
