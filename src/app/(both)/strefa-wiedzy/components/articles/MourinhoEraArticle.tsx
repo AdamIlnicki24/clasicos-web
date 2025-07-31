@@ -65,16 +65,16 @@ export default function MourinhoEraArticle() {
             Zmniejszona rola klasycznej „dziesiątki”
           </span>{" "}
           - zamiast oddelegowania Mesuta Özila czy Kaki jako głównego
-          rozgrywającego, Real częściej opierał grę na rozciąganiu obrony
+          rozgrywającego, Real częściej bazował swoją grę na rozciąganiu obrony
           Barcelony i szybkich podaniach do napastników. Özil występował raczej
           na skrzydle lub schodził po piłkę, co utrudniało Barçy przewidywanie
           akcji Królewskich.
         </li>
         <li>
           <span className="font-bold">Nastawienie na kontrataki</span> - z
-          udziałem Cristiano Ronaldo i energicznych skrzydłowych, np. Ángel Dí
-          Maríi. Real pozwalał Barcelonie prowadzić grę, by następnie
-          błyskawicznie atakować wolne przestrzenie.
+          udziałem Cristiano Ronaldo i energicznych skrzydłowych, np. di Marii.
+          Real pozwalał Barcelonie prowadzić grę, by następnie błyskawicznie
+          atakować wolne przestrzenie.
         </li>
         <li>
           <span className="font-bold">Agresywny pressing</span> - mimo
@@ -86,7 +86,7 @@ export default function MourinhoEraArticle() {
         <li>
           <span className="font-bold">Aktywność bocznych obrońców</span> -{" "}
           Marcelo i Arbeloa często wspierali ataki, co pozwalało wykorzystać
-          luki na skrzydłach, gdy ofensywni obrońcy Barçy włączali się do akcji.
+          luki na skrzydłach. Gdy ofensywni obrońcy Barçy włączali się do akcji.
           Real umiejętnie atakował wolne sektory boiska.
         </li>
       </ul>
@@ -123,7 +123,8 @@ export default function MourinhoEraArticle() {
           Mourinho uwypukliła potrzebę zmian. Kibice Realu w geście protestu
           opuścili loże na koniec meczu, świadomi, że czeka ich długa droga
           powrotna do równowagi. Mecz został również zapamiętany z gestu Gerarda
-          Pique, który wzorem Toniego Bruinsa uniósł pięć palców ku górze.
+          Pique, który wzorem Toniego Bruinsa przed laty uniósł pięć palców ku
+          górze.
         </li>
         <li>
           <span className="font-bold">
