@@ -109,12 +109,13 @@ export default function MourinhoEraArticle() {
       />
       <Paragraph>
         Za czasów Mourinho relacje na linii Real - Barcelona stały się czymś
-        znacznie więcej niż tylko sportowym pojedynkiem. Każde El Clasico było
-        naznaczone ogromnym napięciem ze strony piłkarzy, trenerów i kibiców.
-        Stadion był zawsze pełen emocji: kibice Realu głośno dopingowali swoją
-        drużynę, wyśpiewując przyśpiewki pełne ironii wobec Barcelony, zaś fani
-        Barçy odpowiadali prowokacyjnymi transparentami. Jednocześnie trenerzy i
-        media podsycały napięcie, agresywną retoryką eskalując konflikt.
+        znacznie więcej niż tylko sportowym pojedynkiem. Każde{" "}
+        <strong>El Clasico</strong> było naznaczone ogromnym napięciem ze strony
+        piłkarzy, trenerów i kibiców. Stadion był zawsze pełen emocji: kibice
+        Realu głośno dopingowali swoją drużynę, wyśpiewując przyśpiewki pełne
+        ironii wobec Barcelony, zaś fani Barçy odpowiadali prowokacyjnymi
+        transparentami. Jednocześnie trenerzy i media podsycały napięcie,
+        agresywną retoryką eskalując konflikt.
       </Paragraph>
       <Paragraph>
         Poniżej najbardziej zapamiętane momenty ery Mourinho:
@@ -171,11 +172,12 @@ export default function MourinhoEraArticle() {
         </li>
       </ul>
       <Paragraph>
-        El Clasico ery Mourinho było więc prawdziwą wojną. Zawodnicy walczyli o
-        każdy centymetr murawy. W efekcie na koncie piłkarzy często lądowały
-        żółte i czerwone kartki. Meczom towarzyszyła atmosfera ciągłej
-        konfrontacji - takie napięcie było rzadkością. Każdy pojedynek Realu z
-        Barceloną budził coraz większe emocje i żył własnym życiem.
+        <strong>El Clasico</strong> ery Mourinho było więc prawdziwą wojną.
+        Zawodnicy walczyli o każdy centymetr murawy. W efekcie na koncie
+        piłkarzy często lądowały żółte i czerwone kartki. Meczom towarzyszyła
+        atmosfera ciągłej konfrontacji - takie napięcie było rzadkością. Każdy
+        pojedynek Realu z Barceloną budził coraz większe emocje i żył własnym
+        życiem.
       </Paragraph>
       <Heading
         title="Wojna psychologiczna Mourinho kontra Guardiola"
@@ -199,7 +201,11 @@ export default function MourinhoEraArticle() {
         bardziej korzystną passę w Klasykach już po odejściu Katalończyka z
         Barcelony w 2012. Rywalizacja trenerów była także bezpośrednio powiązana
         z tą prowadzoną przez Messiego i Ronaldo - o niej więcej można poczytać
-        pod <Link href={MESSI_VERSUS_RONALDO_URL} className="text-linkColor">tym linkiem</Link>.
+        pod{" "}
+        <Link href={MESSI_VERSUS_RONALDO_URL} className="text-linkColor">
+          tym linkiem
+        </Link>
+        .
       </Paragraph>
       <Heading
         title="Zmiana mentalności Realu Madryt"
@@ -249,9 +255,9 @@ export default function MourinhoEraArticle() {
         kolejnego El Clasico. Wiele meczów Realu komentowano przez pryzmat
         tamtych batalii, a presja na zawodnikach stale wzrastała. Wielu kibiców
         uznaje tamte lata za najlepsze w kontekście Klasyków. Mecze te były
-        wtedy niezwykle ciekawe na boisku, jak i poza na nim. Era Mourinho w
-        Realu pokazała, jak jeden człowiek był w stanie przekształcić naturę
-        najważniejszego piłkarskiego pojedynku.
+        wtedy niezwykle ciekawe na boisku, jak i poza na nim.{" "}
+        <strong>Era Mourinho w Realu</strong> pokazała, jak jeden człowiek był w
+        stanie przekształcić naturę najważniejszego piłkarskiego pojedynku.
       </Paragraph>
     </article>
   );
