@@ -7,7 +7,7 @@ import { MESSI_VERSUS_RONALDO_ARTICLE_HEADING } from "@/constants/headings";
 import { Lead } from "../Lead/Lead";
 import { Paragraph } from "../Paragraph/Paragraph";
 import Link from "next/link";
-import { FIGO_HISTORY_URL } from "@/constants/urls";
+import { FIGO_HISTORY_URL, MOURINHO_ERA_URL } from "@/constants/urls";
 
 export default function MessiVersusRonaldoArticle() {
   return (
@@ -38,12 +38,12 @@ export default function MessiVersusRonaldoArticle() {
         <Link href={FIGO_HISTORY_URL} className="text-linkColor">
           tym linkiem
         </Link>
-        . Do Madrytu przenosił się zawodnik przez wielu uznawany za najlepszego na
-        świecie. Ronaldo zdobył swoją pierwszą Złotą Piłkę w 2008 roku, podczas
-        gdy Messi stawał się gwiazdą Barcelony, a sam otrzymał to indywidualne
-        trofeum w 2009 roku, wyprzedzając w głosowaniu Ronaldo o 240 punktów. Od
-        tego momentu każde starcie Barcelony z Realem stało się bezpośrednim
-        porównaniem ich umiejętności.
+        . Do Madrytu przenosił się zawodnik przez wielu uznawany za najlepszego
+        na świecie. Ronaldo zdobył swoją pierwszą Złotą Piłkę w 2008 roku,
+        podczas gdy Messi stawał się gwiazdą Barcelony, a sam otrzymał to
+        indywidualne trofeum w 2009 roku, wyprzedzając w głosowaniu Ronaldo o
+        240 punktów. Od tego momentu każde starcie Barcelony z Realem stało się
+        bezpośrednim porównaniem ich umiejętności.
       </Paragraph>
       <Paragraph>
         Ronaldo w momencie transferu był wielkim piłkarzem. Wprawdzie było to
@@ -95,9 +95,13 @@ export default function MessiVersusRonaldoArticle() {
         <li>
           <span className="font-bold">Listopad 2010 (La Liga)</span> -{" "}
           <em>La Manita</em> Barcelony 5:0. To pierwsze El Clasico Jose Mourinho
-          zakończyło się kompromitującą porażką Realu. Xavi otworzył wynik
+          (którego szerszą historię w Madrycie można przeczytać{" "}
+          <Link href={MOURINHO_ERA_URL} className="text-linkColor">
+            tutaj
+          </Link>
+          ) zakończyło się kompromitującą porażką Realu. Xavi otworzył wynik
           celnym uderzeniem po podaniu Iniesty, Pedro i David Villa podwyższyli
-          wynik, a Jeffrén dobił trzeci punkt. Messi asystował przy jednym z
+          wynik, a Jeffrén dobił Real. Messi asystował przy jednym z
           goli (podanie do Villi na 3:0).
         </li>
         <li>
