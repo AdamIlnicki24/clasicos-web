@@ -21,6 +21,7 @@ export default function MourinhoEraArticle() {
             className="rounded-3xl object-cover pb-4"
             src={joseMourinho.src}
             alt={joseMourinho.alt}
+            priority
           />
         </div>
       </div>

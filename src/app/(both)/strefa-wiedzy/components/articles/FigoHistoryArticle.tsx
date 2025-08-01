@@ -21,6 +21,7 @@ export default function FigoHistoryArticle() {
             className="rounded-3xl object-cover pb-4"
             src={luisFigo.src}
             alt={luisFigo.alt}
+            priority
           />
         </div>
       </div>

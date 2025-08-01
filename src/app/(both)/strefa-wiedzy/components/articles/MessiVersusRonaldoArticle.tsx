@@ -21,6 +21,7 @@ export default function MessiVersusRonaldoArticle() {
             className="rounded-3xl object-cover pb-4"
             src={messiVersusRonaldo.src}
             alt={messiVersusRonaldo.alt}
+            priority
           />
         </div>
       </div>
