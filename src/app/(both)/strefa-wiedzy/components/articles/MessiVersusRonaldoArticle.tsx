@@ -33,8 +33,9 @@ export default function MessiVersusRonaldoArticle() {
         Rywalizacja nabrała tempa latem 2009 roku, gdy Ronaldo dołączył do Realu
         Madryt. Latem Królewscy potwierdzili transfer Portugalczyka z
         Manchesteru United - kwota 80 milionów funtów była wówczas rekordowa na
-        rynku transferowym. To więcej niż Real płacił za Zinedine'a Zidane'a czy
-        Luisa Figo, którego transferu szczegółową historię można przeczytać pod{" "}
+        rynku transferowym. To więcej niż Real płacił za Zinedine&apos;a
+        Zidane&apos;a czy Luisa Figo, którego transferu szczegółową historię
+        można przeczytać pod{" "}
         <Link href={FIGO_HISTORY_URL} className="text-linkColor">
           tym linkiem
         </Link>
@@ -101,8 +102,8 @@ export default function MessiVersusRonaldoArticle() {
           </Link>
           ) zakończyło się kompromitującą porażką Realu. Xavi otworzył wynik
           celnym uderzeniem po podaniu Iniesty, Pedro i David Villa podwyższyli
-          wynik, a Jeffrén dobił Real. Messi asystował przy jednym z
-          goli (podanie do Villi na 3:0).
+          wynik, a Jeffrén dobił Real. Messi asystował przy jednym z goli
+          (podanie do Villi na 3:0).
         </li>
         <li>
           <span className="font-bold">Kwiecień 2011 (Liga Mistrzów)</span> -
