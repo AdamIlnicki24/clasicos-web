@@ -6,6 +6,8 @@ import parse from "html-react-parser";
 import Image from "next/image";
 import { Lead } from "../Lead/Lead";
 import { Paragraph } from "../Paragraph/Paragraph";
+import Link from "next/link";
+import { MESSI_VERSUS_RONALDO_URL } from "@/constants/urls";
 
 export default function MourinhoEraArticle() {
   return (
@@ -21,6 +23,7 @@ export default function MourinhoEraArticle() {
             className="rounded-3xl object-cover pb-4"
             src={joseMourinho.src}
             alt={joseMourinho.alt}
+            priority
           />
         </div>
       </div>
@@ -65,16 +68,16 @@ export default function MourinhoEraArticle() {
             Zmniejszona rola klasycznej „dziesiątki”
           </span>{" "}
           - zamiast oddelegowania Mesuta Özila czy Kaki jako głównego
-          rozgrywającego, Real częściej opierał grę na rozciąganiu obrony
+          rozgrywającego, Real częściej bazował swoją grę na rozciąganiu obrony
           Barcelony i szybkich podaniach do napastników. Özil występował raczej
           na skrzydle lub schodził po piłkę, co utrudniało Barçy przewidywanie
           akcji Królewskich.
         </li>
         <li>
           <span className="font-bold">Nastawienie na kontrataki</span> - z
-          udziałem Cristiano Ronaldo i energicznych skrzydłowych, np. Ángel Dí
-          Maríi. Real pozwalał Barcelonie prowadzić grę, by następnie
-          błyskawicznie atakować wolne przestrzenie.
+          udziałem Cristiano Ronaldo i energicznych skrzydłowych, np. di Marii.
+          Real pozwalał Barcelonie prowadzić grę, by następnie błyskawicznie
+          atakować wolne przestrzenie.
         </li>
         <li>
           <span className="font-bold">Agresywny pressing</span> - mimo
@@ -86,7 +89,7 @@ export default function MourinhoEraArticle() {
         <li>
           <span className="font-bold">Aktywność bocznych obrońców</span> -{" "}
           Marcelo i Arbeloa często wspierali ataki, co pozwalało wykorzystać
-          luki na skrzydłach, gdy ofensywni obrońcy Barçy włączali się do akcji.
+          luki na skrzydłach. Gdy ofensywni obrońcy Barçy włączali się do akcji.
           Real umiejętnie atakował wolne sektory boiska.
         </li>
       </ul>
@@ -106,12 +109,13 @@ export default function MourinhoEraArticle() {
       />
       <Paragraph>
         Za czasów Mourinho relacje na linii Real - Barcelona stały się czymś
-        znacznie więcej niż tylko sportowym pojedynkiem. Każde El Clasico było
-        naznaczone ogromnym napięciem ze strony piłkarzy, trenerów i kibiców.
-        Stadion był zawsze pełen emocji: kibice Realu głośno dopingowali swoją
-        drużynę, wyśpiewując przyśpiewki pełne ironii wobec Barcelony, zaś fani
-        Barçy odpowiadali prowokacyjnymi transparentami. Jednocześnie trenerzy i
-        media podsycały napięcie, agresywną retoryką eskalując konflikt.
+        znacznie więcej niż tylko sportowym pojedynkiem. Każde{" "}
+        <strong>El Clasico</strong> było naznaczone ogromnym napięciem ze strony
+        piłkarzy, trenerów i kibiców. Stadion był zawsze pełen emocji: kibice
+        Realu głośno dopingowali swoją drużynę, wyśpiewując przyśpiewki pełne
+        ironii wobec Barcelony, zaś fani Barçy odpowiadali prowokacyjnymi
+        transparentami. Jednocześnie trenerzy i media podsycały napięcie,
+        agresywną retoryką eskalując konflikt.
       </Paragraph>
       <Paragraph>
         Poniżej najbardziej zapamiętane momenty ery Mourinho:
@@ -123,7 +127,8 @@ export default function MourinhoEraArticle() {
           Mourinho uwypukliła potrzebę zmian. Kibice Realu w geście protestu
           opuścili loże na koniec meczu, świadomi, że czeka ich długa droga
           powrotna do równowagi. Mecz został również zapamiętany z gestu Gerarda
-          Pique, który wzorem Toniego Bruinsa uniósł pięć palców ku górze.
+          Pique, który wzorem Toniego Bruinsa przed laty uniósł pięć palców ku
+          górze.
         </li>
         <li>
           <span className="font-bold">
@@ -167,11 +172,12 @@ export default function MourinhoEraArticle() {
         </li>
       </ul>
       <Paragraph>
-        El Clasico ery Mourinho było więc prawdziwą wojną. Zawodnicy walczyli o
-        każdy centymetr murawy. W efekcie na koncie piłkarzy często lądowały
-        żółte i czerwone kartki. Meczom towarzyszyła atmosfera ciągłej
-        konfrontacji - takie napięcie było rzadkością. Każdy pojedynek Realu z
-        Barceloną budził coraz większe emocje i żył własnym życiem.
+        <strong>El Clasico</strong> ery Mourinho było więc prawdziwą wojną.
+        Zawodnicy walczyli o każdy centymetr murawy. W efekcie na koncie
+        piłkarzy często lądowały żółte i czerwone kartki. Meczom towarzyszyła
+        atmosfera ciągłej konfrontacji - takie napięcie było rzadkością. Każdy
+        pojedynek Realu z Barceloną budził coraz większe emocje i żył własnym
+        życiem.
       </Paragraph>
       <Heading
         title="Wojna psychologiczna Mourinho kontra Guardiola"
@@ -193,7 +199,13 @@ export default function MourinhoEraArticle() {
         Piłkarsko, biorąc pod uwagę ogół pojedynków za kadencji Mourinho,
         zdecydowanie górą wyszedł Guardiola. Real Mourinho zaczął notować
         bardziej korzystną passę w Klasykach już po odejściu Katalończyka z
-        Barcelony w 2012.
+        Barcelony w 2012. Rywalizacja trenerów była także bezpośrednio powiązana
+        z tą prowadzoną przez Messiego i Ronaldo - o niej więcej można poczytać
+        pod{" "}
+        <Link href={MESSI_VERSUS_RONALDO_URL} className="text-linkColor">
+          tym linkiem
+        </Link>
+        .
       </Paragraph>
       <Heading
         title="Zmiana mentalności Realu Madryt"
@@ -243,9 +255,9 @@ export default function MourinhoEraArticle() {
         kolejnego El Clasico. Wiele meczów Realu komentowano przez pryzmat
         tamtych batalii, a presja na zawodnikach stale wzrastała. Wielu kibiców
         uznaje tamte lata za najlepsze w kontekście Klasyków. Mecze te były
-        wtedy niezwykle ciekawe na boisku, jak i poza na nim. Era Mourinho w
-        Realu pokazała, jak jeden człowiek był w stanie przekształcić naturę
-        najważniejszego piłkarskiego pojedynku.
+        wtedy niezwykle ciekawe na boisku, jak i poza na nim.{" "}
+        <strong>Era Mourinho w Realu</strong> pokazała, jak jeden człowiek był w
+        stanie przekształcić naturę najważniejszego piłkarskiego pojedynku.
       </Paragraph>
     </article>
   );
