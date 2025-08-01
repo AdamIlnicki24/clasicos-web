@@ -6,6 +6,8 @@ import { MESSI_VERSUS_RONALDO_ARTICLE_LEAD } from "@/constants/articles";
 import { MESSI_VERSUS_RONALDO_ARTICLE_HEADING } from "@/constants/headings";
 import { Lead } from "../Lead/Lead";
 import { Paragraph } from "../Paragraph/Paragraph";
+import Link from "next/link";
+import { FIGO_HISTORY_URL } from "@/constants/urls";
 
 export default function MessiVersusRonaldoArticle() {
   return (
@@ -31,12 +33,17 @@ export default function MessiVersusRonaldoArticle() {
         Rywalizacja nabrała tempa latem 2009 roku, gdy Ronaldo dołączył do Realu
         Madryt. Latem Królewscy potwierdzili transfer Portugalczyka z
         Manchesteru United - kwota 80 milionów funtów była wówczas rekordowa na
-        rynku transferowym. Do Realu przenosił się zawodnik przez wielu uznawany
-        za najlepszego na świecie. Ronaldo zdobył swoją pierwszą Złotą Piłkę w
-        2008 roku, podczas gdy Messi stawał się gwiazdą Barcelony, a sam
-        otrzymał to indywidualne trofeum w 2009 roku, wyprzedzając w głosowaniu
-        Ronaldo o 240 punktów. Od tego momentu każde starcie Barcelony z Realem
-        stało się bezpośrednim porównaniem ich umiejętności.
+        rynku transferowym. To więcej niż Real płacił za Zinedine'a Zidane'a czy
+        Luisa Figo, którego transferu szczegółową historię można przeczytać pod{" "}
+        <Link href={FIGO_HISTORY_URL} className="text-linkColor">
+          tym linkiem
+        </Link>
+        . Do Madrytu przenosił się zawodnik przez wielu uznawany za najlepszego na
+        świecie. Ronaldo zdobył swoją pierwszą Złotą Piłkę w 2008 roku, podczas
+        gdy Messi stawał się gwiazdą Barcelony, a sam otrzymał to indywidualne
+        trofeum w 2009 roku, wyprzedzając w głosowaniu Ronaldo o 240 punktów. Od
+        tego momentu każde starcie Barcelony z Realem stało się bezpośrednim
+        porównaniem ich umiejętności.
       </Paragraph>
       <Paragraph>
         Ronaldo w momencie transferu był wielkim piłkarzem. Wprawdzie było to

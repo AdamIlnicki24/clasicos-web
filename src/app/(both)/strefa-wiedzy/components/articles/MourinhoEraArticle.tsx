@@ -6,6 +6,8 @@ import parse from "html-react-parser";
 import Image from "next/image";
 import { Lead } from "../Lead/Lead";
 import { Paragraph } from "../Paragraph/Paragraph";
+import Link from "next/link";
+import { MESSI_VERSUS_RONALDO_URL } from "@/constants/urls";
 
 export default function MourinhoEraArticle() {
   return (
@@ -195,7 +197,9 @@ export default function MourinhoEraArticle() {
         Piłkarsko, biorąc pod uwagę ogół pojedynków za kadencji Mourinho,
         zdecydowanie górą wyszedł Guardiola. Real Mourinho zaczął notować
         bardziej korzystną passę w Klasykach już po odejściu Katalończyka z
-        Barcelony w 2012.
+        Barcelony w 2012. Rywalizacja trenerów była także bezpośrednio powiązana
+        z tą prowadzoną przez Messiego i Ronaldo - o niej więcej można poczytać
+        pod <Link href={MESSI_VERSUS_RONALDO_URL} className="text-linkColor">tym linkiem</Link>.
       </Paragraph>
       <Heading
         title="Zmiana mentalności Realu Madryt"
