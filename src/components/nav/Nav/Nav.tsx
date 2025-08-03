@@ -5,9 +5,9 @@ import {
   publicNavItems,
   visitorNavItems,
 } from "@/constants/menuItems";
+import { useAuth } from "@/hooks/auth/useAuth";
 import { useUser } from "@/hooks/context/useUser";
 import { NavContent } from "../NavContent/NavContent";
-import { useAuth } from "@/hooks/auth/useAuth";
 
 export function Nav() {
   const { user, isUserLoading, logOut } = useUser();
