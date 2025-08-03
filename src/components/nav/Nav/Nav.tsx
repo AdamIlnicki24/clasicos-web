@@ -6,17 +6,14 @@ import {
   visitorNavItems,
 } from "@/constants/menuItems";
 import { useUser } from "@/hooks/context/useUser";
-import { Spinner } from "@heroui/react";
 import { NavContent } from "../NavContent/NavContent";
+import { useAuth } from "@/hooks/auth/useAuth";
 
 export function Nav() {
   const { user, isUserLoading, logOut } = useUser();
+  const { isPending } = useAuth();
 
-  return isUserLoading ? (
-    <div className="flex justify-end">
-      <Spinner size="sm" color="default" />
-    </div>
-  ) : !user ? (
+  return !user ? (
     <NavContent navItems={publicNavItems} />
   ) : (
     <NavContent
@@ -25,6 +22,7 @@ export function Nav() {
       showLogout
       user={user}
       logOut={logOut}
+      isUserLoading={isUserLoading || isPending}
     />
   );
 }
