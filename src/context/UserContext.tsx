@@ -22,7 +22,7 @@ export const UserContext = createContext<UserContextProps>({
 });
 
 export function UserProvider({ children }: { children: ReactNode }) {
-  const { data, isLoading, isError } = useGetMe();
+  const { data, isLoading, isError, isFetching } = useGetMe();
   const { isLoggedIn } = useAuth();
 
   const [user, setUser] = useState<User | null>(null);
@@ -40,7 +40,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
       value={{
         user,
         logOut,
-        isUserLoading: isLoading,
+        isUserLoading: isLoading || isFetching,
         isError: !!isError,
       }}
     >
