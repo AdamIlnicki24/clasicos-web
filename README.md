@@ -18,9 +18,11 @@ I styled the application with **Tailwind CSS**, ensuring a fully responsive desi
 - **Axios** for making HTTP requests to the backend API
 
 ## Articles  
-It was important for me to ensure descriptive titles and meta descriptions. Articles are authored following SEO best practices and crafted to deliver the best possible user experience.  
+Ensuring descriptive titles and meta descriptions was a top priority. Articles are authored following SEO best practices and crafted to deliver the best possible user experience.  
 
-It was essential for me to carefully select key phrases, maintain proper keyword density in the content, use `<strong>` tags appropriately, and implement internal linking.
+Selecting key phrases carefully, maintaining proper keyword density, using `<strong>` tags appropriately, and implementing internal linking helps guide both users and search engines.  
+
+Additionally, I leverage Next.js’s `generateStaticParams` method to predefine dynamic routes at build time, boosting performance and reducing server load.
 
 ## Deployment  
 The app is deployed on **Vercel**, the platform maintained by the Next.js creators and optimized specifically for Next.js projects.
