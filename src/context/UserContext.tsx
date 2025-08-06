@@ -27,11 +27,11 @@ export function UserProvider({ children }: { children: ReactNode }) {
 
   const [user, setUser] = useState<User | null>(null);
 
-  const logOut = () => signOut(auth);
-
   useEffect(() => {
     if (!isLoading && isLoggedIn && data) setUser(data);
   }, [isLoading, isLoggedIn, data]);
+
+  const logOut = () => signOut(auth);
 
   return (
     <UserContext.Provider
