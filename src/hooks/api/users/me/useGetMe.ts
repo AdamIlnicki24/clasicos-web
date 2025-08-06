@@ -1,4 +1,5 @@
 import { ME_API_ENDPOINT } from "@/constants/apiEndpoints";
+import { useAuth } from "@/hooks/auth/useAuth";
 import { api } from "@/services/API";
 import { User } from "@/types/user";
 import { useQuery } from "@tanstack/react-query";
@@ -14,8 +15,11 @@ export const getMe = async (): Promise<User> => {
 };
 
 export function useGetMe() {
+  const { isPending, isLoggedIn } = useAuth();
+
   return useQuery({
     queryKey: ["getMe"],
     queryFn: () => getMe(),
+    enabled: !isPending && isLoggedIn,
   });
 }

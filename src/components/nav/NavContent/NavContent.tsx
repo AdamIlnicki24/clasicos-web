@@ -23,6 +23,7 @@ import {
   NavbarMenu,
   NavbarMenuItem,
   NavbarMenuToggle,
+  Spinner,
   Tooltip,
 } from "@heroui/react";
 import { useRouter } from "next/navigation";
@@ -36,6 +37,7 @@ interface NavContentProps {
   showLogout?: boolean;
   user?: User;
   logOut?: () => void;
+  isUserLoading?: boolean;
 }
 
 export function NavContent({
@@ -44,6 +46,7 @@ export function NavContent({
   showLogout,
   user,
   logOut,
+  isUserLoading,
 }: NavContentProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -94,6 +97,7 @@ export function NavContent({
         />
       </NavbarContent>
       <NavbarContent justify="end" className="hidden w-full lg:flex">
+        {isUserLoading && <Spinner size="sm" />}
         {showProfile && (
           <NavbarItem>
             <Tooltip
