@@ -1,5 +1,6 @@
 "use client";
 
+import Loading from "@/app/loading";
 import { auth } from "@/firebase";
 import { useGetMe } from "@/hooks/api/users/me/useGetMe";
 import { useAuth } from "@/hooks/auth/useAuth";
@@ -23,22 +24,30 @@ export const UserContext = createContext<UserContextProps>({
 
 export function UserProvider({ children }: { children: ReactNode }) {
   const { data, isLoading, isError } = useGetMe();
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn, isPending } = useAuth();
 
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    if (!isLoading && isLoggedIn && data) setUser(data);
+    if (!isLoading && isLoggedIn && data) {
+      setUser(data);
+    }
+
+    if (!isLoggedIn) setUser(null);
   }, [isLoading, isLoggedIn, data]);
 
   const logOut = () => signOut(auth);
+
+  if (isPending) {
+    return <Loading />;
+  }
 
   return (
     <UserContext.Provider
       value={{
         user,
         logOut,
-        isUserLoading: isLoading,
+        isUserLoading: isPending || isLoading,
         isError: !!isError,
       }}
     >
