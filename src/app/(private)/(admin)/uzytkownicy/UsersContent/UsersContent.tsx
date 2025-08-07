@@ -1,7 +1,7 @@
 "use client";
 
 import Loading from "@/app/loading";
-import { UsersTable } from "@/components/tables/UsersTable/UsersTable";
+import { UsersTable } from "@/components/tables/admin/UsersTable/UsersTable";
 import { usersTableColumns } from "@/constants/tables/usersTableColumns";
 import { NO_USERS_YET } from "@/constants/texts";
 import { useGetUsers } from "@/hooks/api/users/useGetUsers";

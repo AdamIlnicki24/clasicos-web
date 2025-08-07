@@ -2,18 +2,22 @@
 
 import Loading from "@/app/loading";
 import { Button } from "@/components/buttons/Button/Button";
-import { AboutMeCard } from "@/components/cards/AboutMeCard/AboutMeCard";
-import { UserDataCard } from "@/components/cards/UserDataCard/UserDataCard";
-import { EnigmaModal } from "@/components/modals/EnigmaModal/EnigmaModal";
-import { UpdateNickModal } from "@/components/modals/UpdateNickModal/UpdateNickModal";
-import { UpdateProfileModal } from "@/components/modals/UpdateProfileModal/UpdateProfileModal";
+import { AboutMeCard } from "@/components/cards/user/AboutMeCard/AboutMeCard";
+import { UserDataCard } from "@/components/cards/user/UserDataCard/UserDataCard";
+import { EnigmaModal } from "@/components/modals/user/EnigmaModal/EnigmaModal";
+import { UpdateNickModal } from "@/components/modals/user/UpdateNickModal/UpdateNickModal";
+import { UpdateProfileModal } from "@/components/modals/user/UpdateProfileModal/UpdateProfileModal";
 import {
   BAN_BUTTON_LABEL,
   UNBAN_BUTTON_LABEL,
   UPDATE_ABOUT_ME_DATA_BUTTON_LABEL,
 } from "@/constants/buttonLabels";
 import { YOU_MUST_BE_LOGGED_IN } from "@/constants/errorMessages";
-import { ENIGMA, LOG_IN_TO_CHECK_OUT_PROFILE, NO_INFORMATION } from "@/constants/texts";
+import {
+  ENIGMA,
+  LOG_IN_TO_CHECK_OUT_PROFILE,
+  NO_INFORMATION,
+} from "@/constants/texts";
 import {
   USER_HAS_BEEN_BANNED_TOAST,
   USER_HAS_BEEN_UNBANNED_TOAST,
@@ -61,7 +65,7 @@ export function ProfileContent() {
     isLoading: isUserLoading,
     isError: isUserError,
   } = useGetUser(userUuid as string);
-  
+
   const { user: me, isUserLoading: isMeLoading } = useUser();
 
   const { data: recommendationsCount } = useGetUserRecommendationsCount(

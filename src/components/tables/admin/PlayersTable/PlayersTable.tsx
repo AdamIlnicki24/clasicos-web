@@ -1,6 +1,6 @@
 import { EditButton } from "@/components/buttons/EditButton/EditButton";
 import { Heading } from "@/components/headings/Heading/Heading";
-import { UpdatePlayerModal } from "@/components/modals/UpdatePlayerModal/UpdatePlayerModal";
+import { UpdatePlayerModal } from "@/components/modals/admin/players/UpdatePlayerModal/UpdatePlayerModal";
 import { PLAYERS_TABLE_ARIA_LABEL } from "@/constants/ariaLabels";
 import { PLAYERS_TABLE_HEADING } from "@/constants/headings";
 import { Player } from "@/types/player";

@@ -2,19 +2,15 @@
 
 import Logo from "@/assets/icons/logo.svg";
 import Envelope from "@/assets/icons/envelope.svg";
-import { SuggestFixModal } from "@/components/modals/SuggestFixModal/SuggestFixModal";
+import { SuggestFixModal } from "@/components/modals/suggestions/SuggestFixModal/SuggestFixModal";
 import { colors } from "@/constants/colors";
 import {
   CONTACT_EMAIL_TITLE,
   FORUM_TITLE,
   KNOWLEDGE_ZONE_TITLE,
-  SUGGEST_FIX_TITLE
+  SUGGEST_FIX_TITLE,
 } from "@/constants/footer";
-import {
-  FORUM_URL,
-  HOME_URL,
-  KNOWLEDGE_ZONE_URL
-} from "@/constants/urls";
+import { FORUM_URL, HOME_URL, KNOWLEDGE_ZONE_URL } from "@/constants/urls";
 import { MobileContext } from "@/context/MobileContext";
 import { useUser } from "@/hooks/context/useUser";
 import { Spinner, useDisclosure } from "@heroui/react";
