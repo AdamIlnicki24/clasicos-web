@@ -1,13 +1,13 @@
 "use client";
 
 import Loading from "@/app/loading";
-import { BannedUserCard } from "@/components/cards/BannedUserCard/BannedUserCard";
+import { BannedUserCard } from "@/components/cards/user/BannedUserCard/BannedUserCard";
 import { CreateCommentCard } from "@/components/cards/comments/CreateCommentCard/CreateCommentCard";
-import { NoAccountCard } from "@/components/cards/NoAccountCard/NoAccountCard";
+import { NoAccountCard } from "@/components/cards/user/NoAccountCard/NoAccountCard";
 import { CommentCardContainer } from "@/components/containers/CommentCardContainer/CommentCardContainer";
 import { Heading } from "@/components/headings/Heading/Heading";
 import { ScrollLink } from "@/components/links/ScrollLink/ScrollLink";
-import { DeleteCommentModal } from "@/components/modals/DeleteCommentModal/DeleteCommentModal";
+import { DeleteCommentModal } from "@/components/modals/admin/comments/DeleteCommentModal/DeleteCommentModal";
 import { COMMENTS_HEADING } from "@/constants/headings";
 import { COMMENTS_ID } from "@/constants/ids";
 import {

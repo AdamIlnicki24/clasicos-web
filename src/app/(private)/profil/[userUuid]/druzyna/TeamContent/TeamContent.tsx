@@ -6,10 +6,10 @@ import { Button } from "@/components/buttons/Button/Button";
 import { DeleteButton } from "@/components/buttons/DeleteButton/DeleteButton";
 import { SuggestAddingPlayerButton } from "@/components/buttons/SuggestAddingPlayerButton/SuggestAddingPlayerButton";
 import { Heading } from "@/components/headings/Heading/Heading";
-import { CreateTeamModal } from "@/components/modals/CreateTeamModal/CreateTeamModal";
-import { DeleteTeamModal } from "@/components/modals/DeleteTeamModal/DeleteTeamModal";
-import { SuggestAddingPlayerModal } from "@/components/modals/SuggestAddingPlayerModal/SuggestAddingPlayerModal";
-import { UpdateTeamModal } from "@/components/modals/UpdateTeamModal/UpdateTeamModal";
+import { CreateTeamModal } from "@/components/modals/team/CreateTeamModal/CreateTeamModal";
+import { DeleteTeamModal } from "@/components/modals/team/DeleteTeamModal/DeleteTeamModal";
+import { SuggestAddingPlayerModal } from "@/components/modals/suggestions/SuggestAddingPlayerModal/SuggestAddingPlayerModal";
+import { UpdateTeamModal } from "@/components/modals/team/UpdateTeamModal/UpdateTeamModal";
 import { PlayerTile } from "@/components/tiles/PlayerTile/PlayerTile";
 import {
   CREATE_TEAM_BUTTON_LABEL,

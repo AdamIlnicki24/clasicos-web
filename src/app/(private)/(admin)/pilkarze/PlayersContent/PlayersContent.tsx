@@ -2,8 +2,8 @@
 
 import Loading from "@/app/loading";
 import { Button } from "@/components/buttons/Button/Button";
-import { CreatePlayerModal } from "@/components/modals/CreatePlayerModal/CreatePlayerModal";
-import { PlayersTable } from "@/components/tables/PlayersTable/PlayersTable";
+import { CreatePlayerModal } from "@/components/modals/admin/players/CreatePlayerModal/CreatePlayerModal";
+import { PlayersTable } from "@/components/tables/admin/PlayersTable/PlayersTable";
 import { CREATE_PLAYER_BUTTON_LABEL } from "@/constants/buttonLabels";
 import { playersTableColumns } from "@/constants/tables/playersTableColumns";
 import { NO_PLAYERS_YET } from "@/constants/texts";

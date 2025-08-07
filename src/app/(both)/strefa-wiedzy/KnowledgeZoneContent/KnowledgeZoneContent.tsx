@@ -1,9 +1,9 @@
 "use client";
 
 import { InfoButton } from "@/components/buttons/InfoButton/InfoButton";
-import { KnowledgeZoneCard } from "@/components/cards/KnowledgeZoneCard/KnowledgeZoneCard";
+import { KnowledgeZoneCard } from "@/components/cards/knowledge-zone/KnowledgeZoneCard/KnowledgeZoneCard";
 import { Heading } from "@/components/headings/Heading/Heading";
-import { InspiredByModal } from "@/components/modals/InspiredByModal/InspiredByModal";
+import { InspiredByModal } from "@/components/modals/knowledge-zone/InspiredByModal/InspiredByModal";
 import {
   FIGO_HISTORY_ARTICLE_LEAD,
   MESSI_VERSUS_RONALDO_ARTICLE_LEAD,
