@@ -1,8 +1,8 @@
 "use client";
 
 import Loading from "@/app/loading";
-import { BannedUserCard } from "@/components/cards/user/BannedUserCard/BannedUserCard";
 import { CreateCommentCard } from "@/components/cards/comments/CreateCommentCard/CreateCommentCard";
+import { BannedUserCard } from "@/components/cards/user/BannedUserCard/BannedUserCard";
 import { NoAccountCard } from "@/components/cards/user/NoAccountCard/NoAccountCard";
 import { CommentCardContainer } from "@/components/containers/CommentCardContainer/CommentCardContainer";
 import { Heading } from "@/components/headings/Heading/Heading";
@@ -102,6 +102,8 @@ export function ForumContent() {
                 comment={comment}
                 currentUser={user ?? undefined}
                 onTrashPress={() => onTrashPress(comment)}
+                hasRecommended={comment.hasRecommended ?? false}
+                recommendationsCount={comment._count.recommendations}
               />
             ))}
           </div>
