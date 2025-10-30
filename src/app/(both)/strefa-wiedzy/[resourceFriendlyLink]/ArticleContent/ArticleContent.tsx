@@ -111,6 +111,8 @@ export function ArticleContent({
                 comment={comment}
                 currentUser={user ?? undefined}
                 onTrashPress={() => onTrashPress(comment)}
+                hasRecommended={comment.hasRecommended ?? false}
+                recommendationsCount={comment._count.recommendations}
               />
             ))}
           </div>

@@ -1,8 +1,6 @@
 "use client";
 
 import { CommentCard } from "@/components/cards/comments/CommentCard/CommentCard";
-import { useGetCommentRecommendationsCount } from "@/hooks/api/recommendations/useGetCommentRecommendationsCount";
-import { useHasUserRecommendedComment } from "@/hooks/api/recommendations/me/useHasUserRecommendedComment";
 import { useToggleRecommendation } from "@/hooks/api/recommendations/useToggleRecommendation";
 import { ApiError } from "@/types/apiError";
 import { CommentWithCount } from "@/types/comment";
@@ -14,21 +12,18 @@ interface CommentCardContainerProps {
   comment: CommentWithCount;
   currentUser?: User;
   onTrashPress: () => void;
+  hasRecommended: boolean;
+  recommendationsCount: number;
 }
 
 export function CommentCardContainer({
   comment,
   currentUser,
   onTrashPress,
+  hasRecommended,
+  recommendationsCount,
 }: CommentCardContainerProps) {
   const queryClient = useQueryClient();
-
-  const { data: hasRecommended = false } = useHasUserRecommendedComment(
-    comment.uuid
-  );
-
-  const { data: recommendationsCount = comment._count.recommendations } =
-    useGetCommentRecommendationsCount(comment.uuid);
 
   const { mutate, isPending: isRecommendationToggled } =
     useToggleRecommendation(comment.uuid);
@@ -37,13 +32,23 @@ export function CommentCardContainer({
     mutate(undefined, {
       onSuccess: async (data) => {
         queryClient.setQueryData(
-          ["hasUserRecommendedComment", comment.uuid],
-          data.hasRecommended
-        );
-
-        queryClient.setQueryData(
-          ["getCommentRecommendationsCount", comment.uuid],
-          data.count
+          ["getComments", comment.resourceFriendlyLink],
+          (
+            previousComments:
+              | (CommentWithCount & { hasRecommended?: boolean })[]
+              | undefined
+          ) =>
+            previousComments
+              ? previousComments.map((commentItem) =>
+                  commentItem.uuid === comment.uuid
+                    ? {
+                        ...commentItem,
+                        hasRecommended: data.hasRecommended,
+                        _count: { recommendations: data.count },
+                      }
+                    : commentItem
+                )
+              : previousComments
         );
 
         await queryClient.invalidateQueries({

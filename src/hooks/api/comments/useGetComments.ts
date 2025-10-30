@@ -4,12 +4,12 @@ import { CommentWithCount } from "@/types/comment";
 import { useQuery } from "@tanstack/react-query";
 
 interface GetCommentsResponse {
-  data: CommentWithCount[];
+  data: (CommentWithCount & { hasRecommended?: boolean })[];
 }
 
 const getComments = async (
   resourceFriendlyLink: string
-): Promise<CommentWithCount[]> => {
+): Promise<(CommentWithCount & { hasRecommended?: boolean })[]> => {
   const { data } = await api.get<undefined, GetCommentsResponse>(
     `${resourceFriendlyLink}${COMMENTS_API_ENDPOINT}`
   );
